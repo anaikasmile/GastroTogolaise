@@ -1,0 +1,114 @@
+{% extends 'base_principal.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% load account socialaccount %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+
+{% block content_base %}
+ <!-- Post -->
+
+    <div class="row">
+        <div class="col-lg-offset-3 col-lg-6">    
+        <section class="paper">
+            <h3 class="h3-responsive text-center">Sign in</h3>
+            <hr>
+            <div class="panel panel-default">
+              
+              <div class="panel-body text-center">
+
+               
+                <h4>Login with:</h4>
+
+                
+                
+                <ul class="list-inline">
+                  
+                  <li> <a href="{% provider_login_url "facebook" method="oauth2" %}" class="btn-floating btn-lg-full fb-bg"><i class="fa fa-facebook"> </i></a>
+                  </li>
+                  <li><a href="{% url 'google_login' %}" class="btn-floating btn-lg-full gplus-bg"><i class="fa fa-google-plus"> </i></a></li>
+                  <li><a class="btn-floating btn-lg-full tw-bg"><i class="fa fa-twitter"></i></a></li>
+                  
+                </ul>
+                <h4>Or use your email </h4>
+                
+                <form role="form" method="POST" action="{% url 'account_login' %}">
+                    
+                  {% csrf_token %}
+                  
+                   {% for hidden in form.hidden_fields %}
+                      {{ hidden }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
+                      <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field|add_class:'form-control' }}
+                        {% for error in field.errors %}
+                          <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endfor %}
+                  {% if redirect_field_value %}
+                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                  {% endif %}
+                  <input class="btn btn-sm btn-danger" type="submit" value="Log in">
+                  
+                  </form>
+                         
+              </div>
+              <div class="panel-footer">
+                  <p>Don't have an account yet <a class="red-text" href="{% url 'account_signup' %}">Sign up</a></p>
+              </div>
+            </div>
+        </section>
+    </div>
+  </div>
+
+
+
+
+
+
+<!-- <h1>{% trans "Sign In" %}</h1>
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+</form> -->
+
+{% endblock %}

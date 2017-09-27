@@ -1,0 +1,24 @@
+from django.conf.urls import include, url
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles import views
+from . import views
+
+urlpatterns = [
+	url(r'^$', views.post_list, name='post_list'),
+	url(r'^detail/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
+	url(r'^like/$',views.like, name='post_like'),
+
+	url(r'^new/$', views.post_new, name='post_new'),
+	url(r'^preview/(?P<pk>[0-9]+)/$', views.post_preview, name='post_preview'),
+	url(r'^(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_update'),
+	url(r'^draft/list/$', views.post_draft_list, name='post_draft_list'),
+	url(r'^publish/list/$', views.post_publish_list, name='post_publish_list'), 
+	url(r'^(?P<pk>[0-9]+)/publish/$', views.post_publish, name='post_publish'),
+	url(r'^(?P<pk>[0-9]+)/delete/$', views.post_delete, name='post_delete'),
+	# url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
+	# url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
+]+ static(
+        settings.STATIC_URL,
+        document_root=settings.STATIC_ROOT
+        )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

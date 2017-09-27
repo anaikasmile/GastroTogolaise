@@ -1,0 +1,48 @@
+{% extends 'blog/post_publish_list.html' %}	
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% block content_blog %}
+
+
+    <div class="row text-center">
+        
+        <div class="col-lg-offset-2 col-lg-8">
+
+        <h2><a href="">{{ post.title }}</a></h2>
+               
+                    <ul class="list-inline">
+                        <li><i class="fa fa-calendar" aria-hidden="true"></i>
+                        {{ post.published_at|date:'F j, Y' }}</li>
+                        <li><i class="fa fa-user" aria-hidden="true"></i>
+                        By {{post.author}}
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {{post.view}}</a></li>    
+                        <li><a><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>{{post.like}}</a></li>
+                        <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 0 </a></li>
+                    </ul>
+                
+               
+                    {% if post.image %}
+                        {% thumbnail post.image  "600x300" crop="center" as im %}
+                        <img src="{{im.url}}" class="img-responsive">
+                        {% endthumbnail %}         
+                    {% endif %}
+                
+                    <br>
+                    <p>{{ post.text|safe }}</p>      
+                
+                <hr>
+                
+                <div class="">
+                    <a href="{% url 'post_update' pk=post.pk %}" class="btn btn-primary">Update</a>
+                    {% if not post.published_at %}
+                    <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default">Publish</a>
+                    {% endif %}
+                </div>
+                
+        </div>
+    </div>
+    <!-- /.row -->
+
+{% endblock %}

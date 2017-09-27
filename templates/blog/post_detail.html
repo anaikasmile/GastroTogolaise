@@ -1,0 +1,216 @@
+{% extends 'base.html' %}	
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+{% load i18n %}
+{% load humanize %}
+{% load comments %}
+{% load threadedcomments_tags %}
+
+{% block slider %}
+	<div class="container">
+		<div class="top-image">
+		
+		<div class="top-title">
+	            <h1 class="h1-responsive">{{ post.title }} </h1>
+	            <p>
+	            	
+	            	<ul class="list-inline">
+						<li><img src="{% static 'img/user.png' %}" class="img-circle" width="30px;" alt=""> By <a href="">{{post.author}}</a> . </li>
+						<li>
+							<i class="fa fa-calendar materialize-red-text" aria-hidden="true"></i>
+						{{ post.published_at|date:'F j, Y' }} .
+						</li>
+						<!-- <li><i class="fa fa-eye" aria-hidden="true"></i><a href="#"> {{post.view}}</a></li>    --> 
+	                    <li>
+                        	<a class="like" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
+                        
+                    	</li>
+
+	                    {% get_comment_count for post as comment_count %}
+	                    <li><a href="#commentaire"><i class="fa fa-comments" aria-hidden="true"></i></a> {{comment_count}}</li>
+
+	                    
+					</ul>
+	            </p>
+	        </div>
+		{% if post.image %}
+			{% thumbnail post.image  "1500x400" crop="center" as im %}
+			<img src="{{im.url}}" class="img-responsive">
+			{% endthumbnail %} 
+		{% else %}
+				 
+		{% endif %}
+	    </div>
+	</div>
+{% endblock slider %}
+
+{% block header %}
+
+    <div class="container">
+
+        <div class="rp-post-breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="">
+                    <a href="">{% trans 'Home' %}</a>
+                </li>
+                <li class="">
+                    <a href="">{% trans 'Blog' %}</a>
+                </li>
+                <li class="active">
+                    {{ post.title }}
+                </li>
+                
+            </ol>
+        </div>
+
+    </div>
+{% endblock header %}
+
+{% block content %}	
+
+	<div class="rp-post-detail"> 
+        
+        <div class="row">
+        	<div class="col-md-12">
+	        	
+				<div class="rp-post-description">
+					<p>{{ post.text|safe }}</p>		
+				</div>
+				<div class="rp-post-share border">
+		            <strong> SHARE</strong>
+		             <!--Facebook-->
+		            <a class="btn fb-bg"><i class="fa fa-facebook left"></i> | Facebook</a>
+		            <!--Twitter-->
+		            <a class="btn tw-bg" ><i class="fa fa-twitter left"></i> | Twitter</a>
+		            <!--Gplus-->
+		            <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
+		            <!--Pinterest-->
+		            <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
+		        </div>  
+			</div>
+		</div>
+	
+		<!-- Section comment -->
+		<br>
+		<section class="row" id="commentaire">
+			<div class="col-lg-12">
+			{% get_comment_count for post as comment_count %}
+            <h3 class="" data-toggle="collapse" href="#collapse1"><label class="btn btn-danger">{{comment_count}}</label> Comments</h3>
+            <div id="collapse1" class="panel-collapse collapse">
+            	<br>
+	            <div id="comment-list">
+
+	                <ul class="list">
+             {% get_comment_list for post as comment_list %}
+                {% for comment in comment_list|fill_tree reversed %}
+                    <div class="name">
+                        <div class="media">
+                            <a class="pull-left" href="#"> 
+                            {% if comment.user.profile.photo %}
+                            
+                                <img src="{{comment.user.profile.photo.url}}" class="img-circle" width="50px;" alt="">
+                            
+                             {% else %}
+                                <img src="{% static 'img/user-logo.jpg' %}" class="" width="50px;" alt=""> 
+                             {% endif %}  
+                            </a> 
+                            <div class="media-body">
+                                <h6 class="media-heading"><a href=""><!-- {{comment.user}} --> {{comment.user_name}}</a></h6>  .   {{comment.submit_date|naturaltime}}
+                                <hr> 
+                                <p>{{comment.comment}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                  {% endfor %}    
+            	</ul>
+               
+                <!-- Pagination comments -->
+
+                <div class="comment-pagination">
+                    <ul class="pagination"></ul>
+                </div>
+                
+            </div> 
+
+            </div>
+			<div class="form-block col-xs-12">
+                <div class="text-center">
+                    <h4>LEAVE A COMMENT HERE</h4>
+                    <p class="text-center">Your email address will not be published.</p>
+                </div>
+                <br>
+            {% if user.is_authenticated %}
+            {% get_comment_form for post as form %}
+                <form action="{% comment_form_target %}" method="POST">
+                {% csrf_token %}
+                {{ form.comment|add_class:'form-control' }}
+                
+                <!-- {{ form.honeypot }} -->
+                {{ form.content_type }}
+                {{ form.object_pk }}
+                {{ form.timestamp }}
+                {{ form.security_hash }}
+                <br>
+                <input type="hidden" name="next" value="{% url 'post_detail' post.pk %}" />
+                
+                <button class="btn btn-danger" type="submit" id="id_submit"value="Post">Submit</button>
+                </form>
+            {% else %}
+
+                <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
+                {% get_comment_form for post as form %}
+                    <form action="{% comment_form_target %}" method="post">
+                    {% csrf_token %}
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name}}  
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email}}  
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Website <span class="label-description">(Optional)</span> </label> {{form.url}}  
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                        <label>Comment <sup>*</sup></label></span><br> {{ form.comment }}
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-danger" type="submit">Submit</button>   
+               	 </form> 
+                {% endif %}
+                </div>
+            </section> 
+
+
+			<!-- Related post -->
+		    <section class="rp-post-related">
+		        <ul class="nav nav-tabs tabs-4">
+		            <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
+		            <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
+		        </ul>   
+
+		        <div class="tab-content">
+
+		            <div id="posts" class="tab-pane fade in active">
+		                
+		            </div>
+		            <div id="authors" class="tab-pane fade in active">
+		                
+		            </div>
+		        </div>
+
+		    </section>
+
+
+		</div>
+	{% endblock content %}

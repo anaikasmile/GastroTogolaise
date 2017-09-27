@@ -1,0 +1,117 @@
+{% extends 'base.html' %}	
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% load comments %}
+
+
+{% block slider %}
+	
+		<div class="top-image">
+		
+			
+			
+	    </div>
+	
+{% endblock slider %}
+
+{% block header %}
+
+    <div class="container">
+
+        <div class="rp-post-breadcrumbs text-center">
+            <ol class="breadcrumb">
+                <li class="">
+                    <a href="">Accueil</a>
+                </li>
+                <li class="active">
+                    <a href="">Contributors</a>
+                </li>
+                
+            </ol>
+        </div>
+
+        <div class="rp-post-header">
+            <h4 class="rp-post-title h4-responsive">CONTRIBUTORS</h4>
+            <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+	
+<section class="rp-post-detail"> 
+	{% for user in users %}
+	<div class="row border">
+		<div class="col-md-3"> 
+		{% if user.profile.photo %}
+            <span class="author-inner">
+            <img src="{{user.profile.photo.url}}" class="img-responsive img-circle">
+            </span>
+                
+        {% else %}
+            
+        	<img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+        	
+    	{% endif %}
+    		<h5 class="text-center"><strong>{% if user.last_name %}{{user.first_name}} {{user.last_name}} {% else %} {{user.username}} {% endif %}</strong></h5>
+		</div>
+		<div class="col-md-9"> 
+			<div class="rp-post-cat">
+                
+                <ul class="list-inline">
+                    <li><a href="{% url 'recipe_per_contributor' pk=user.pk %}">{{user.recipe.count}} Posts</a></li>   
+                    
+                    <li><a href="">{% get_comment_count for user as user_comment  %}{{user_comment}} Comments</a></li>
+                        
+                </ul>
+                
+            </div>
+            <div class="rp-post-description">
+                    <p>
+                    {{user.profile.bio}}
+                    </p>
+        	</div>
+        	<div class="rp-post-social-button">
+        		<a><i class="fa fa-facebook"> </i></a>
+                <a><i class="fa fa-twitter"> </i></a>
+                <a><i class="fa fa-instagram"> </i></a>
+                <a><i class="fa fa-google-plus"> </i></a>
+                <a><i class="fa fa-linkedin"> </i></a>
+        	</div>
+
+		</div>
+	</div>
+	<br>
+	{% endfor %}
+
+</section>
+<br>
+	
+	<div class="text-center">
+	{% if users.has_other_pages %}
+		<ul class="pagination">
+			{% if users.has_previous %}
+		      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+		    {% else %}
+			<li class="disabled"><span>&laquo;</span></li>
+		    {% endif %}
+		    {% for i in users.paginator.page_range %}
+		      {% if users.number == i %}
+		        <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+		      {% else %}
+		        <li><a href="?page={{ i }}">{{ i }}</a></li>
+		      {% endif %}
+		    {% endfor %}
+		    {% if users.has_next %}
+		      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+		    {% else %}
+		      <li class="disabled"><span>&raquo;</span></li>
+		    {% endif %}
+		</ul>
+	{% endif %}
+	</div>
+
+	
+{% endblock content %}

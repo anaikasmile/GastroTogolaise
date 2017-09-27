@@ -1,0 +1,254 @@
+{% extends 'base.html' %}   
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+{% load widget_tweaks %}
+<!-- {% load comments %} -->
+{% load threadedcomments_tags %}
+{% load embed_video_tags %}
+
+
+{% block slider %}
+    <div class="top-image">
+        <!-- <div class="top-title">
+            <h3 class="h3-responsive">Retrouvez vos plus belles recettes</h3>
+        </div> -->
+        <img src="{% static 'img/top-recette.jpg' %}" class="img-responsive">   
+    </div>
+    
+{% endblock slider %} 
+
+
+{% block header %}
+
+    <div class="container">
+        <div class="rp-post-breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="">
+                    <a href="">Accueil</a>
+                </li>
+                <li class="">
+                    <a href="">Video</a>
+                </li>
+                
+                <li class="active">
+                    {{video.title}}
+                </li>
+            </ol>
+        </div>
+        {% video video.video as video %}
+            {% video video '1500 x 400'  %}
+        {% endvideo %}
+
+    </div>   
+ <br><br>       
+{% endblock header %}
+
+{% block content %}
+ <!-- Post -->
+
+<div class="rp-post-detail">
+
+
+            
+    <div class="rp-post-cat">
+        
+        <ul class="list-inline">
+            <li><a href="">Video</a></li>      
+        </ul>
+        
+    </div>
+    <h4 class="rp-post-title h4-responsive">{{video.title}}</h4>
+    
+    <div class="rp-post-meta-info">
+        <div class="row">
+            <div class="col-xs-8">
+                <ul class="list-inline">
+                    <li>
+                {% if video.author.profile.photo %}
+                   <!-- <img src="{{video.author.profile.photo.url}}" class="img-circle" width="25px;" alt=""> -->
+                 {% else %}
+                    <!-- <img src="{% static 'img/user-logo.jpg' %}" class="img-circle" width="25px;" alt=""> --> 
+                 {% endif %}  
+                    By <a href="" class="rp-author">{{video.author}}</a></li>  
+                    <li> - {{ video.published_at|date:'F j, Y' }}</li> 
+                </ul>
+            </div>
+            <div class="col-xs-4"> 
+                <ul class="list-inline text-right">    
+                    <li><i class="fa fa-eye" aria-hidden="true"></i> {{video.view}}</li>
+
+                    <li> <a class="likevideo" data-video-pk="{{video.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span></li>
+                    {% get_comment_count for video as comment_count %}
+                    <li><a href="#comments"><i class="fa fa-comments" aria-hidden="true"></i></a> {{ comment_count }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rp-post-share">
+        <!--Facebook-->
+        <a class="btn fb-bg"><i class="fa fa-facebook"></i> | Share on Facebook</a>
+        <!--Twitter-->
+        <a class="btn tw-bg" ><i class="fa fa-twitter"></i> | Tweet on Twitter</a>
+        <!--Gplus-->
+        <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
+        <!--Pinterest-->
+        <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
+        
+    </div>
+    <br>
+    <div class="rp-post-description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {% if v.description %}
+            <p>
+            {{v.description|safe}}
+            
+            </p>
+        {% endif %} 
+    </div>
+            
+
+    <!-- Section comments -->
+    <section>
+
+        <div class="row" id="comments">
+            <div class="col-lg-12">
+            {% get_comment_count for video as comment_count %}
+            <h3 class="" data-toggle="collapse" href="#collapse1"><label class="btn btn-danger">{{comment_count}}</label> Comments</h3>
+            
+            <div id="collapse1" class="panel-collapse collapse">
+             
+                 <br>
+                <div id="comment-list">
+
+                    <ul class="list">
+                    {% get_comment_list for video as comment_list %}
+
+                    {% for comment in comment_list|fill_tree reversed %}
+                        <div class="name">
+                            <div class="media">
+                                <a class="pull-left" href="#"> 
+                                {% if comment.user.profile.photo %}
+                                
+                                    <img src="{{comment.user.profile.photo.url}}" class="img-circle" width="50px;" alt="">
+                                
+                                 {% else %}
+                                    <img src="{% static 'img/user-logo.jpg' %}" class="" width="50px;" alt=""> 
+                                 {% endif %}  
+                                </a> 
+                                <div class="media-body">
+                                    <h6 class="media-heading"><a href=""><!-- {{comment.user}} --> {{comment.user_name}}</a></h6>  .   {{comment.submit_date|naturaltime}}
+                                    <hr> 
+                                    <p>{{comment.comment}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </ul>
+                   
+                    <!-- Pagination comments -->
+
+                    <div class="comment-pagination">
+                        <ul class="pagination"></ul>
+                    </div>
+                    
+                </div>
+            </div>  
+            <!-- Comment form -->
+                <div class="form-block col-xs-12">
+                    <div class="text-center">
+                        <h4>LEAVE A COMMENT HERE</h4>
+                        <p class="text-center">Your email address will not be published.</p>
+                    </div>
+                    <br>
+                {% if user.is_authenticated %}
+                {% get_comment_form for video as form %}
+                    <form action="{% comment_form_target %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.comment|add_class:'form-control' }}
+                    
+                    <!-- {{ form.honeypot }} -->
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <br>
+                    <input type="hidden" name="next" value="{% url 'video_detail' video.pk %}" />
+                    
+                    <button class="btn btn-danger" type="submit" id="id_submit">Submit</button>
+                    </form>
+                {% else %}
+
+                    <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
+                    {% get_comment_form for video as form %}
+                        <form action="{% comment_form_target %}" method="post">
+                        {% csrf_token %}
+                        {{ form.content_type }}
+                        {{ form.object_pk }}
+                        {{ form.timestamp }}
+                        {{ form.security_hash }}
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                            <label>Comment <sup>*</sup></label></span><br> 
+                            {{form.comment|add_class:'form-control'}}
+                            </div>
+                        </div>
+                        <button class="btn btn-danger" type="submit">Submit</button>
+                        
+                      
+                    </form> 
+                {% endif %}
+                </div>    
+            </div>
+    </section>
+
+
+
+    <!-- Related post -->
+    <section class="rp-post-related">
+        <ul class="nav nav-tabs tabs-4">
+            <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
+            <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
+        </ul>   
+
+        <div class="tab-content">
+            <div id="posts" class="tab-pane fade in active">
+                Related posts
+            </div>
+
+            <div id="authors" id="content" class="defaults tab-pane fade">
+                <ul class="row list-unstyled" id="itemContainer">
+                
+                </ul>
+                    
+                <!-- pagination -->
+                <div class="rp-related-pagination"></div>
+                      
+            </div>
+        </div>
+
+    </section>
+
+</div>
+{% endblock content %}      
+
+

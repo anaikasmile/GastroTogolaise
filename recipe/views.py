@@ -1,0 +1,223 @@
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, Group
+from django.contrib import messages
+from django_comments.models import Comment
+from recipe.models import Recipe, Category
+from recipe.forms import RecipeForm
+
+from gastronomie.decorators import *
+# Create your views here.
+
+def pagination(request,fichier):
+    paginator = Paginator(fichier,6)
+
+    page = request.GET.get('page')
+    try:
+        p = paginator.page(page)
+
+    except PageNotAnInteger:
+
+        p = paginator.page(1)
+
+    except EmptyPage:
+
+        p = paginator.page(paginator.num_pages)
+
+    return p
+
+
+def admin_pagination(request,fichier):
+    paginator = Paginator(fichier,15)
+
+    page = request.GET.get('page')
+    try:
+        p = paginator.page(page)
+
+    except PageNotAnInteger:
+
+        p = paginator.page(1)
+
+    except EmptyPage:
+
+        p = paginator.page(paginator.num_pages)
+
+    return p
+
+
+#Liste des categories
+def home(request):
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')[:6]	
+	return render(request,'recipe/accueil.html',{'recipes':recipes})
+
+
+
+
+#Ajouter une recette
+@login_required
+def recipe_add(request):
+	if request.method == "POST":
+
+		form = RecipeForm(request.POST, request.FILES)
+		if form.is_valid():
+			recipe = form.save(commit=False)
+			recipe.author = request.user
+			recipe.save()
+			recipe.readytime()
+			messages.success(request, 'Your recipe was send',extra_tags='alert')
+	else:
+		form = RecipeForm()
+	return render(request,'recipe/recipe_add.html', {'form':form})
+
+
+
+
+#Liste de toutes les recettes
+def recipe_list(request):
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
+	recipes = pagination(request, recipes)
+
+	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
+
+
+#Liste des recettes par categorie
+def recipe_per_cat(request,pk):
+	category = get_object_or_404(Category, pk=pk)
+	recipes = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
+	recipes = pagination(request, recipes)
+	return render(request,'recipe/recipe_list.html', {'recipes':recipes, 'category':category})
+
+#Liste des recettes par contributeur
+def recipe_per_contributor(request,pk):
+	contributor = get_object_or_404(User, pk=pk)
+	recipes = contributor.recipe.all().filter(published_at__isnull=False).order_by('-published_at')
+	recipes = pagination(request, recipes)
+	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
+
+
+#Affiche les details d'une recette
+def recipe_detail(request,pk):
+	recipe = get_object_or_404(Recipe,pk=pk)
+	recipe.view = recipe.view+1 #Incrementer le nombre de vue a chaque visaualisation d'une recette
+	recipe.save()
+	
+
+	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(pk=recipe.pk)
+	page = request.GET.get('page', 1)
+	paginator = Paginator(recipe_author, 3)
+	try:
+		recipe_author = paginator.page(page)
+	except PageNotAnInteger:
+		recipe_author = paginator.page(1)
+	except EmptyPage:
+		recipe_author = paginator.page(paginator.num_pages)
+
+	return render(request,'recipe/recipe_detail.html',{'recipe':recipe,'recipe_author':recipe_author})
+
+# Liker une recette
+def like(request):
+	if request.method =='GET':
+		recipe_pk  = request.GET['recipe_pk']
+		r = Recipe.objects.get(pk=recipe_pk)
+		like = r.like + 1
+		r.like = like
+		r.save()
+	return HttpResponse(like)
+
+#Box de l'utilisateur en ligne
+@login_required
+def recipe_box_user(request):
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=request.user)
+	recipes = admin_pagination(request, recipes)
+	return render(request,'recipe/recipe_box_user.html',{'recipes':recipes})
+
+
+""" Partie Administration """
+
+
+#Page accueil administration
+def stats(request):
+	return render(request,'stats.html',{})
+
+
+#Liste des recettes en attente de publication
+@login_required
+@group_required('staff')
+def recipe_draft_list(request):
+	recipes = Recipe.objects.filter(published_at__isnull=True).order_by('created_at')
+	recipes = admin_pagination(request, recipes)
+	return render(request, 'recipe/recipe_draft_list.html', {'recipes':recipes})
+
+#Liste des recettes en attente de publication
+@login_required
+@group_required('staff')
+def recipe_publish_list(request):
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
+	recipes = admin_pagination(request, recipes)
+	return render(request, 'recipe/recipe_publish_list.html', {'recipes':recipes})
+
+
+#Affiche les details d'une recette
+@login_required
+@group_required('staff')
+def recipe_preview(request,pk):
+	recipe = get_object_or_404(Recipe,pk=pk)
+	return render(request,'recipe/recipe_preview.html',{'recipe':recipe})
+
+#Approuver une recette
+@login_required
+@group_required('staff')
+def recipe_publish(request,pk):
+	recipe = get_object_or_404(Recipe,pk=pk)
+	recipe.publish()
+	messages.success(request, 'Votre recette a ete publiee',extra_tags='alert')
+	return redirect('recipe_draft_list')
+
+#Ajouter une recette
+@login_required
+@group_required('staff')
+def recipe_new(request):
+	if request.method == "POST":
+		form = RecipeForm(request.POST, request.FILES)
+		if form.is_valid():
+			recipe = form.save(commit=False)
+			recipe.author = request.user
+			#recipe.published_at = timezone.now()
+			recipe.save()
+			recipe.readytime()
+			messages.success(request, 'Your recipe was send',extra_tags='alert')
+			return redirect ('recipe_preview',pk=recipe.pk)
+
+	else:
+		form = RecipeForm()
+	return render(request,'recipe/recipe_new.html', {'form':form})
+
+
+#Modifier une recette
+@login_required
+@group_required('staff')
+def recipe_update(request,pk):
+	recipe = get_object_or_404(Recipe, pk=pk)
+	if request.method == "POST":
+		form = RecipeForm(request.POST,request.FILES, instance=recipe)
+		if form.is_valid():
+			recipe = form.save(commit=False)
+			recipe.save()
+			recipe.readytime()
+			messages.success(request, 'Recipe updated',extra_tags='alert')
+		return redirect('recipe_preview', pk=recipe.pk)
+	else:
+		form = RecipeForm(instance=recipe)
+	return render(request, 'recipe/recipe_update.html', {'form': form})
+
+
+#Supprimer une recette
+def recipe_delete(request,pk):
+	recipe = get_object_or_404(Recipe, pk=pk)
+	recipe.delete()
+	messages.success(request, 'Your recipe deleted',extra_tags='alert')	
+	return redirect('recipe_publish_list')

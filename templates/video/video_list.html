@@ -1,0 +1,123 @@
+{% extends 'base.html' %}	
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% load embed_video_tags %}
+{% load threadedcomments_tags %}
+
+{% block slider %}
+    <div class="top-image">
+    	<div class="top-title">
+            <h3 class="h3-responsive">Retrouvez vos plus belles recettes</h3>
+        </div>
+        <img src="{% static 'img/top-recette.jpg' %}" class="img-responsive">
+    </div>
+
+{% endblock slider %}
+
+{% block header %}
+
+    <div class="container">
+
+        <div class="rp-post-breadcrumbs text-center">
+            <ol class="breadcrumb">
+                <li class="">
+                    <a href="">{% trans 'Home' %}</a>
+                </li>
+                <li class="active">
+                    <a href="" >{% trans 'Videos' %}</a>
+                </li>
+               
+            </ol>
+        </div>
+
+        <div class="rp-post-header">
+            <h4 class="rp-post-title h4-responsive">Videos</h4>
+            <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
+        </div>
+    </div>
+{% endblock header %}
+{% block content %}
+ <!-- Post -->
+ 		
+    <section class="rp-post-detail">  
+        
+        <div class="row">
+        {% for video in videos %}  
+                
+        <div class="col-sm-6"> 
+            <div class="rp-card-post">    
+                    {% video video.video as video %}
+                    {% video video '360 x 260'  %}
+                    {% endvideo %}
+                <div class="card-content">
+                        
+                        <div class="card-title">
+                            <h5 class="h5-responsive"><a href="{% url 'video_detail' pk=video.pk %}">{{video.title}}</a></h5>
+                            <p >By <a href="">{{video.author}}</a></p>
+                        </div>
+                </div>
+                    <!-- Footer -->
+                <div class="card-footer">
+                    <ul class="list-inline">
+                        
+                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></span> {{video.view}}</a></li>
+                        {% get_comment_count for video as comment_count %}
+                        <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}}</a></li>
+                        <li> <a class="likevideo" data-video-pk="{{video.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span></li>
+                         
+                    </ul>
+                </div> 
+            </div>  
+             <br>  
+        </div>      
+            
+             
+            
+            {% endfor %}    
+       
+         </div>
+        
+        <div class="text-center">
+		{% if videos.has_other_pages %}
+			<ul class="pagination">
+				{% if videos.has_previous %}
+			      <li><a href="?page={{ videos.previous_page_number }}">&laquo;</a></li>
+			    {% else %}
+				<li class="disabled"><span>&laquo;</span></li>
+			    {% endif %}
+			    {% for i in videos.paginator.page_range %}
+			      {% if videos.number == i %}
+			        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+			      {% else %}
+			        <li><a href="?page={{ i }}">{{ i }}</a></li>
+			      {% endif %}
+			    {% endfor %}
+			    {% if videos.has_next %}
+			      <li><a href="?page={{ videos.next_page_number }}">&raquo;</a></li>
+			    {% else %}
+			      <li class="disabled"><span>&raquo;</span></li>
+			    {% endif %}
+			</ul>
+		{% endif %}
+		</div>
+	</section> 	
+{% endblock content %}
+
+{% block javascript %}
+ 
+    $(document).ready(function() {
+    $('.like').click(function() {
+    var id;
+        id = $(this).attr('data-video-id');
+        $.get('video/like/', {
+            video_pk: id
+        }, function(data) {
+            $('#count-like-'+id).html(data);
+            
+        });
+        return false;
+    });
+
+});
+{% endblock javascript%}

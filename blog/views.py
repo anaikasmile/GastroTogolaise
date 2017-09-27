@@ -1,0 +1,187 @@
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+from .models import Post
+from .forms import PostForm
+# Create your views here.
+from gastronomie.decorators import *
+
+
+def pagination(request,fichier):
+    paginator = Paginator(fichier,3)
+
+    page = request.GET.get('page')
+    try:
+        p = paginator.page(page)
+
+    except PageNotAnInteger:
+
+        p = paginator.page(1)
+
+    except EmptyPage:
+
+        p = paginator.page(paginator.num_pages)
+
+    return p
+
+def admin_pagination(request,fichier):
+    paginator = Paginator(fichier,15)
+
+    page = request.GET.get('page')
+    try:
+        p = paginator.page(page)
+
+    except PageNotAnInteger:
+
+        p = paginator.page(1)
+
+    except EmptyPage:
+
+        p = paginator.page(paginator.num_pages)
+
+    return p
+
+def post_list(request):
+	posts = Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
+	posts = pagination(request, posts)
+	return render(request,'blog/post_list.html',{'posts':posts})
+
+def post_detail(request,pk):
+	post = get_object_or_404(Post, pk=pk)
+	post.view = post.view + 1 #Incrementer le nombre de vue a chaque clique sur les details de la recette
+	post.save()
+	post_author = Post.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=post.author).exclude(pk=post.pk)
+	# page = request.GET.get('page', 1)
+	# paginator = Paginator(post_author, 3)
+	# try:
+	# 	post_author = paginator.page(page)
+	# except PageNotAnInteger:
+	# 	post_author = paginator.page(1)
+	# except EmptyPage:
+	# 	post_author = paginator.page(paginator.num_pages)
+	return render(request, 'blog/post_detail.html',{'post':post})
+
+
+
+# Liker 
+def like(request):
+	if request.method =='GET':
+		post_pk  = request.GET['post_pk']
+		p = Post.objects.get(pk=post_pk)
+		like = p.like + 1
+		p.like = like
+		p.save()
+	return HttpResponse(like)
+
+
+''' Administration '''
+
+
+
+# @login_required
+@login_required
+@group_required('staff')
+def post_new(request):
+	if request.method == "POST":
+
+		form = PostForm(request.POST)
+		if form.is_valid():
+			post = form.save(commit=False)
+			post.author = request.user
+			post.save()
+			return redirect ('post_preview',pk=post.pk)
+	else:
+		form = PostForm()
+	return render(request, 'blog/post_new.html',{'form':form})
+
+# Apercu
+@login_required
+@group_required('staff')
+def post_preview(request,pk):
+	post = get_object_or_404(Post, pk=pk)
+	return render(request, 'blog/post_preview.html',{'post':post})
+
+
+#@login_required
+@login_required
+@group_required('staff')
+def post_edit(request,pk):
+	post = get_object_or_404(Post, pk=pk)
+	if request.method == "POST":
+		form = PostForm(request.POST,request.FILES, instance=post)
+		if form.is_valid():
+			post = form.save(commit=False)
+			post.save()
+			messages.success(request, 'Post updated',extra_tags='alert')
+		return redirect('post_preview', pk=post.pk)
+	else:
+		form = PostForm(instance=post)
+	return render(request, 'blog/post_new.html', {'form': form})
+
+#@login_required
+@login_required
+@group_required('staff')
+def post_draft_list(request):
+	posts = Post.objects.filter(published_at__isnull=True).order_by('published_at')
+	posts = admin_pagination(request, posts)
+	return render(request,'blog/post_draft_list.html',{'posts':posts})
+
+#@login_required
+@login_required
+@group_required('staff')
+def post_publish_list(request):
+	posts = Post.objects.filter(published_at__isnull=False).order_by('published_at')
+	posts = admin_pagination(request, posts)
+	return render(request,'blog/post_publish_list.html',{'posts':posts})
+
+
+#@login_required
+@login_required
+@group_required('staff')
+def post_publish(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.publish()
+    messages.success(request, 'Your post was published!',extra_tags='alert')
+    return redirect('post_draft_list')
+
+# @login_required
+@login_required
+@group_required('staff')
+def post_delete(request,pk):
+	post = get_object_or_404(Post, pk=pk)
+	post.delete()
+	messages.success(request, 'Post deleted',extra_tags='alert')
+	return redirect('post_publish_list')
+
+
+# def add_comment_post(request,pk):
+# 	post = get_object_or_404(Post, pk=pk)
+# 	if request.method == "POST":
+# 		form = CommentForm(request.POST)
+# 		if form.is_valid():
+# 			comment = form.save(commit=False)
+# 			comment.post = post
+# 			comment.save()
+# 		return redirect('post_detail', pk=post.pk)
+# 	else:
+# 		form = CommentForm()
+# 	return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+
+# @login_required
+# def comment_approve(request, pk):
+#     comment = get_object_or_404(Comment, pk=pk)
+#     comment.approve()
+#     return redirect('post_detail', pk=comment.post.pk)
+
+# @login_required
+# def comment_remove(request, pk):
+#     comment = get_object_or_404(Comment, pk=pk)
+#     comment.delete()
+#     return redirect('post_detail', pk=comment.post.pk)

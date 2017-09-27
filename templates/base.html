@@ -1,0 +1,139 @@
+{% extends 'base_principal.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+
+
+{% block content_base %}
+    <div class="row">
+        
+        <!-- First part -->
+        <div class="col-md-8">
+           {% include 'partials/messages.html' %}
+           {% block content %}
+
+           {% endblock content %}
+        </div><!-- end col -->
+        <!-- Second part -->
+        <div class="col-md-4">
+           
+            <div class="widget-left">
+                <ul class="nav nav-tabs tabs-4">
+                    <li class="active"><a data-toggle="tab" href="#menu1">TOP RECIPES</a></li>
+                    
+                    <li><a data-toggle="tab" href="#menu2">TOP VIDEOS</a></li>
+                    <li><a data-toggle="tab" href="#menu3">RECENT POSTS</a></li>
+                </ul>   
+
+                <div class="tab-content">
+                <br>
+                <div id="menu1" class="tab-pane fade in active">
+                    {% for r in toprecipes %}
+                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ r.published_at|date:'F j, Y' }}</div>
+                    <div class="media">
+
+                        <a class="pull-left card" href="{% url 'recipe_detail' pk=r.pk %}">
+                            {% thumbnail r.image  "70x50" crop="center" as im %}
+                            <img src={{im.url}} class="media-object">
+                            {% endthumbnail %}
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading"><a href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:25}}</a></h5>
+                          
+                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</span></a>
+                            
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    
+                
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                    {% for p in lastposts %}
+                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ p.published_at|date:'F j, Y' }}</div>
+                    <div class="media">
+
+                        <a class="pull-left card" href="{% url 'post_detail' pk=p.pk %}">
+                        {% thumbnail p.image  "70x50" crop="center" as im %}
+                            <img src={{im.url}} class="media-object" width="70" height="50">
+                        {% endthumbnail %}
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading"><a href="{% url 'post_detail' pk=p.pk %}">{{p.title|truncatechars:25}}</a></h5>
+                            <p>{{p.text|safe|truncatewords_html:5}}<a class="post-btn" href="{% url 'post_detail' pk=p.pk %}"><em> Lire la suite → </em></a>
+                            </p>
+                            
+                        </div>
+                    </div>
+                    <hr>
+                  {% endfor %}
+                </div>
+
+                <div id="menu2" class="tab-pane fade">
+                    {% for v in lastvideos %}
+                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ v.published_at|date:'F j, Y' }}</div>
+                    <div class="media">
+
+                        
+                            {% video v.video as video %}
+                        
+                                <a class="pull-left" href="#"> 
+                                    {% video video '70 x 50'  %}
+                                </a>   
+                                
+                            {% endvideo %}
+                        
+                        <div class="media-body">
+                            <h5 class="media-heading"><a href="{% url 'video_detail' pk=v.pk %}">{{v.title|truncatechars:25}}</a></h5> 
+                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{v.view}}</span></a>
+                        </div>
+                    </div>
+                    <hr>
+                  {% endfor %}
+                </div>
+
+            </div>
+            </div>
+            
+            <h4 class="widget-title">Advertisement</h4>
+            <div class="widget-left">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <hr>
+            </div>
+
+
+            <h4 class="widget-title">Popular tags</h4>
+            <div class="widget-left">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
+                <hr>
+            </div>
+
+            <br>
+            <aside class="ht-widget hw-subscribe">
+						
+	           <h4 class="widget-title">Subscribe to our newsletter</h4>
+	            
+	            <p> Always up to date about our news </p>
+	           
+	            <form action="#" >
+					<input type="text" placeholder="Email">
+					<button type="submit" class="">GO</button>
+				</form>
+            </aside>
+           	
+        </div><!-- end col -->
+
+        
+
+    </div><!-- end row -->
+
+{% endblock content_base %}

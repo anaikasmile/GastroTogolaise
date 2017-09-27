@@ -1,0 +1,369 @@
+{% extends 'base.html' %}   
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+{% load widget_tweaks %}
+<!-- {% load comments %} -->
+{% load threadedcomments_tags %}
+
+{% block slider %}
+    <div class="top-image">
+        <!-- <div class="top-title">
+            <h3 class="h3-responsive">Retrouvez vos plus belles recettes</h3>
+        </div> -->
+        <img src="{% static 'img/top-recette.jpg' %}" class="img-responsive">   
+    </div>
+{% endblock slider %}
+
+{% block header %}
+
+    <div class="container">
+
+        <div class="rp-post-breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="">
+                    <a href="">{% trans 'Home' %}</a>
+                </li>
+                <li class="">
+                    <a href="">{% trans 'Recipes' %}</a>
+                </li>
+                <li class="">
+                    <a href="">{{recipe.category.name}}</a>
+                </li>
+                <li class="active">
+                    {{recipe.title}}
+                </li>
+            </ol>
+        </div>
+        <div class="rp-post-header">
+            
+            <div class="rp-post-cat">
+                
+                <ul class="list-inline">
+                    <li><a href="">{{recipe.category.name}}</a></li>   
+                    {% if recipe.locality %}
+                    <li><a href="">{{recipe.locality}}</a></li>
+                    {% endif %}    
+                </ul>
+                
+            </div>
+            <h2 class="rp-post-title h2-responsive">{{recipe.title}}</h2>
+            
+            <div class="rp-post-meta-info">
+                <ul class="list-inline">
+                {% if recipe.author.profile.photo %}
+                    <li><img src="{{recipe.author.profile.photo.url}}" class="img-circle" width="30px;" alt="">
+                 {% else %}
+                    <img src="{% static 'img/user-logo.jpg' %}" class="img-circle" width="30px;" alt=""> 
+                 {% endif %}  
+                    By <a href="" class="rp-author">{{recipe.author}}</a></li>  
+                    <li> - {{ recipe.published_at|date:'F j, Y' }}</li> 
+                    
+                    <li><i class="fa fa-eye" aria-hidden="true"></i> {{recipe.view}}</li>
+
+                    <li><a class="like" data-recipe-pk="{{recipe.pk}}" type="button">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    </a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                    </li>
+                    {% get_comment_count for recipe as comment_count %}
+                    <li><a href="#comment"><i class="fa fa-comments" aria-hidden="true"></i></a> {{ comment_count }}</li>
+                </ul>
+            </div>
+            <div class="rp-post-share">
+                <!--Facebook-->
+                <a class="btn fb-bg overlay"><i class="fa fa-facebook left"></i> | Share on Facebook</a>
+                <!--Twitter-->
+                <a class="btn tw-bg overlay" ><i class="fa fa-twitter left"></i> | Tweet on Twitter</a>
+                <!--Gplus-->
+                <a class="btn gplus-bg overlay"><i class="fa fa-google-plus"></i></a>
+                <!--Pinterest-->
+                <a class="btn pin-bg overlay"><i class="fa fa-pinterest"></i></a>
+                
+            </div>
+        </div>
+       
+    </div>
+{% endblock header %}
+
+{% block content %}
+ <!-- Post -->
+
+<section class="rp-post-detail">
+     
+    <div class="rp-post-image">
+        <div id="carousel-thum" class="carousel slide carousel-fade carousel-thumbnails">
+
+        
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner card" role="listbox">
+
+                <!-- First slide -->
+                <div class="item active">
+                    {% thumbnail recipe.image  "800x400" crop="center" as img %}
+                    <img src="{{img.url}}" class="img-responsive">
+                    {% endthumbnail %}
+                </div>
+                <!-- /.item -->
+                {% if recipe.image_1 %}
+                <!-- Second slide -->
+                <div class="item">
+                    {% thumbnail recipe.image_1  "800x400" crop="center" as img %}
+                   <img src="{{img.url}}" class="img-responsive">
+                    {% endthumbnail %}
+                </div>
+                <!-- /.item -->
+                {% endif %}
+                <!-- Third slide -->
+                {% if recipe.image_2 %}
+                <div class="item">
+                    {% thumbnail recipe.image_2  "800x400" crop="center" as img %}
+                    <img src="{{img.url}}" class="img-responsive">
+                    {% endthumbnail %}
+                </div>
+                {% endif %}
+                <!-- /.item -->
+
+                <!-- four  slide -->
+                {% if recipe.image_3 %}
+                <div class="item">
+                    {% thumbnail recipe.image_3  "800x400" crop="center" as img %}
+                    <img src="{{img.url}}" class="img-responsive">
+                    {% endthumbnail %}
+                </div>
+                {% endif %}
+
+            </div>
+            <!-- /.carousel-inner -->
+
+            <!-- Controls -->
+            <a class="left carousel-control new-control" href="#carousel-thum" role="button" data-slide="prev">
+                <span class="fa fa fa-angle-left waves-effect waves-light"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control new-control" href="#carousel-thum" role="button" data-slide="next">
+                <span class="fa fa fa-angle-right waves-effect waves-light"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+        </div>
+        <!-- /.carousel -->
+    </div>
+
+    <div class="rp-post-time">  
+        <div class="row">
+        {% if recipe.prepare_time %}
+            <div class="col-md-4">
+                <strong>Prepare time:</strong>  {{recipe.prepare_time}}
+            </div>
+        {% endif %}
+        {% if recipe.cooking_time %}
+            <div class="col-md-4">
+                <strong>Cooking time:</strong>  {{recipe.cooking_time}}
+            </div>
+        {% endif %}
+        {% if recipe.total_time %}
+            <div class="col-md-4">
+               <strong>Ready in:</strong> {{recipe.total_time}}
+            </div>
+        {% endif %}
+        </div>
+
+    </div>
+    
+    <div class="rp-post-description">
+        {% if recipe.description %}
+            <p>
+            {{recipe.description|safe}}
+            </p>
+        {% endif %} 
+    </div>
+        
+
+    <div class="rp-post-instruction">
+               
+        <h5 class=""> Ingredients</h5>
+        <hr>
+        <p>
+            {{recipe.ingredient|safe}}                            
+        </p>
+            
+        <h5 class="">Instructions</h5>
+        <hr>
+        <p> 
+            {{recipe.preparation|safe}}
+        </p> 
+    </div>
+            
+    <div class="rp-post-share border">
+        <strong> SHARE &nbsp;&nbsp;  </strong>
+         <!--Facebook-->
+        <a class="btn fb-bg"><i class="fa fa-facebook left"></i> | Facebook</a>
+        <!--Twitter-->
+        <a class="btn tw-bg" ><i class="fa fa-twitter left"></i> | Twitter</a>
+        <!--Gplus-->
+        <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
+        <!--Pinterest-->
+        <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
+    </div>    
+
+</section>
+<br>
+
+<!-- Section comments -->
+<section>
+
+    <div class="row" id="comment">
+        {% get_comment_count for recipe as comment_count %}
+        <h3 class="" data-toggle="collapse" href="#collapse1"><label class="btn btn-danger">{{comment_count}}</label> Comments</h3>
+        
+
+        <div id="collapse1" class="panel-collapse collapse">
+         
+             <br>
+            <div id="comment-list">
+
+                <ul class="list">
+                {% get_comment_list for recipe as comment_list %}
+
+                {% for comment in comment_list|fill_tree reversed %}
+                    <div class="name">
+                        <div class="media">
+                            <a class="pull-left" href="#"> 
+                            {% if comment.user.profile.photo %}
+                            
+                                <img src="{{comment.user.profile.photo.url}}" class="img-circle" width="50px;" alt="">
+                            
+                             {% else %}
+                                <img src="{% static 'img/user-logo.jpg' %}" class="" width="50px;" alt=""> 
+                             {% endif %}  
+                            </a> 
+                            <div class="media-body">
+                                <h6 class="media-heading"><a href=""><!-- {{comment.user}} --> {{comment.user_name}}</a></h6>  .   {{comment.submit_date|naturaltime}}
+                                <hr> 
+                                <p>{{comment.comment}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                  {% endfor %}
+                </ul>
+               
+                <!-- Pagination comments -->
+
+                <div class="comment-pagination">
+                    <ul class="pagination"></ul>
+                </div>
+                
+            </div>
+
+            
+        </div> 
+
+        <!-- Comment form -->
+            <div class="form-block col-xs-12">
+                <div class="text-center">
+                    <h4>LEAVE A COMMENT HERE</h4>
+                    <p class="text-center">Your email address will not be published.</p>
+                </div>
+                <br>
+            {% if user.is_authenticated %}
+            {% get_comment_form for recipe as form %}
+                <form action="{% comment_form_target %}" method="POST">
+                {% csrf_token %}
+                {{ form.comment|add_class:'form-control' }}
+                
+                <!-- {{ form.honeypot }} -->
+                {{ form.content_type }}
+                {{ form.object_pk }}
+                {{ form.timestamp }}
+                {{ form.security_hash }}
+                <br>
+                <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
+                
+                <button class="btn btn-danger" type="submit" id="id_submit">Submit</button>
+                </form>
+            {% else %}
+
+                <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
+                {% get_comment_form for recipe as form %}
+                    <form action="{% comment_form_target %}" method="post">
+                    {% csrf_token %}
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                        <label>Comment <sup>*</sup></label></span><br> 
+                        {{form.comment|add_class:'form-control'}}
+                        </div>
+                    </div>
+                    <button class="btn btn-danger" type="submit">Submit</button>
+                    
+                  
+                </form> 
+            {% endif %}
+            </div>     
+
+</section>
+
+
+
+<!-- Related post -->
+<section class="rp-post-related">
+    <ul class="nav nav-tabs tabs-4">
+        <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
+        <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
+    </ul>   
+
+
+    <div class="tab-content">
+        <div id="posts" class="tab-pane fade in  active">
+            Related posts
+        </div>
+
+        <div id="authors" id="content" class="defaults tab-pane fade in active">
+        
+            <ul class="row list-unstyled" id="itemContainer">
+            {% for r in recipe_author %}
+                <li class="col-md-4">    
+                {% if r.image %}
+                    <a href="{% url 'recipe_detail' pk=r.pk %}">
+                    {% thumbnail r.image  "900x500" crop="center" as im %}
+                        <img src="{{im.url}}" class="img-responsive">       
+                    {% endthumbnail %}  
+                    </a>
+                {% else %}
+                    <a href=""></a>
+                {% endif %}
+
+                    <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>     
+                </li>    
+            {% endfor %} 
+            </ul>
+        
+                
+            <!-- pagination -->
+        {% if recipe_author.has_other_pages %}
+            <div class="rp-related-pagination"></div>
+        {% endif %}         
+        </div>
+    </div>
+
+</section>
+
+
+{% endblock content %}      

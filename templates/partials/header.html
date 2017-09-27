@@ -1,0 +1,204 @@
+{% load static %}
+{% load i18n %}
+<header>
+  
+ 
+<div class="navbar navbar-inverse">
+    <div class="container">
+    <div class="col-md-8 col-xs-8">
+    <ul class="social-link list-inline">
+         <li><a class=""><i class="fa fa-facebook"> </i></a></li> 
+         <li><a class=""><i class="fa fa-twitter"> </i></a></li>
+         <li><a class=""><i class="fa fa-google-plus"> </i></a></li>
+         <li><a class=""><i class="fa fa-instagram"> </i></a></li>
+         <li><a class=""><i class="fa fa-pinterest"> </i></a></li>
+         <li><a class=""><i class="fa fa-youtube"> </i></a></li>
+      </ul>
+      </div>
+      <div class="col-md-offset-3 col-md-1 col-xs-4 log">
+         <a class="dropdown">
+            {% if user.is_authenticated %}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ request.user.username }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                            <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{% url 'recipe_add' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> Add a recipe</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear"></i>Account settings</a>
+                        </li>
+                        {% if user.is_staff %}
+                        <li>
+                            <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        </li>
+                        {% endif %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                {% else %}
+            <a href="{% url 'account_login' %}"><i class="fa fa-user"></i>&nbsp; Log in </a>
+                
+        {% endif %}
+               
+        </a>
+      </div>     
+  </div>
+  </div>
+
+<div class="mainmenu-area">
+  <div class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-6">
+   
+            <a class="navbar-brand" href="/"><!-- <img src="{% static 'img/logo.jpg' %}" class="img-responsive"> -->GastroTogolaise</a>
+          
+          </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="col-md-7 hidden-sm hidden-xs">
+          
+            <ul class="nav navbar-nav">
+              <li class=""><a href="/">{% trans 'Home' %}<span class="sr-only">(current)</span></a></li>
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Recipes' %} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                {%for cat in categories %}
+                  <li><a href="{% url 'recipe_per_cat' pk=cat.pk %}">{{cat.name}}</a></li>
+                 {% endfor %}
+                </ul>
+              </li>
+              <li><a href="{% url 'video_list' %}">{% trans 'Videos' %}</a></li> 
+              <li><a href="{% url 'post_list' %}">{% trans 'Blog' %}</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'restaurant_list' %}">{% trans 'Restaurants' %}</a></li>
+                  <li><a href="{% url 'traiteur_list' %}">{% trans 'Services traiteurs' %}</a></li>
+                </ul>
+              </li>
+              <li><a href="#">{% trans 'E-shop' %}</a></li>
+              <li><a href="#">{% trans 'Community' %}</a></li>
+              <li></li>
+            </ul>
+            
+            <!-- <button type="button" class="rp-search-toggle">
+              <i class="fa fa-search"></i>
+            </button> -->
+            <div id="wrap" class="rp-search">
+              <form action="" autocomplete="on">
+              <input id="search" name="search" type="text" placeholder="What're we looking for ?"><button type="button" class="rp-search-toggle"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+
+          </div>
+          <div class="col-md-2 col-xs-6">
+                <div class="recipe">
+                   <a href="{% url 'recipe_add' %}" class="a-responsive">{% trans 'Submit your recipe' %}</a>
+                </div>
+          </div>
+
+        </div>
+    </div><!-- /.container-fluid -->
+    
+  </div>
+
+
+  <!-- <div class="mobile-menu  visible-xs visible-sm">
+    
+   
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <h4 class="navbar-brand" href="#">MENU</h4>
+          </div>
+         
+          
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            
+            <ul class="nav navbar-nav">
+              <li class=""><a href="/">Accueil <span class="sr-only">(current)</span></a></li>
+              <li class="divider"></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recettes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                {%for cat in categories %}
+                  <li><a href="{% url 'recipe_per_cat' pk=cat.pk %}">{{cat.name}}</a></li>
+                 {% endfor %}
+                </ul>
+              </li>
+              <li class="divider"></li>
+              <li><a href="{% url 'video_list' %}">Videos</a></li> 
+              <li class="divider"></li>
+              <li><a href="{% url 'post_list' %}">Blog</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Restaurants</a></li>
+              <li class="divider"></li>
+              <li><a href="#">E-Shop</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Communaute</a></li>
+              
+            </ul>
+          
+            
+          </div>
+    
+  
+    </div>
+  </div> -->
+</header>
+
+
+<!-- Modal  for logout-->
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+         
+        </button>
+          <h5 class="h5-responsive"> {% trans 'Sign out' %}</h5>
+      </div>
+      <div class="modal-body">
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+        <form method="post" action="{% url 'account_logout' %}">
+          {% csrf_token %}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+          {% endif %}
+          <button  class="btn btn-danger" type="submit">{% trans 'Yes' %}</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ht-search-form" tabindex="-1" role="dialog" aria-labelledby="ht-search-form" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form action="#">
+          <input type="text" placeholder="Type keyword ..." autofocus />
+          <button class="search-button" type="button">
+            <span class="sr-only">Toggle search</span>
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
