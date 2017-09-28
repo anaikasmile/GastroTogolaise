@@ -153,7 +153,7 @@ DATABASES = {
     #     'PORT': '', 
     # }
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=config('postgresql-deep-18681')
     )
     # 'default': dj_database_url.config(
     #       default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
