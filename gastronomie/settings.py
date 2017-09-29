@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import tempfile
 import dj_database_url
-from decouple import config
+from decouple import config, Csv
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,13 +23,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#l3#%g^k@g9wjtsnzkwce-7uy92_%1x=)gt%t_o_+fd!7%g($3'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': '',
+    }
+}
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -145,7 +152,6 @@ WSGI_APPLICATION = 'gastronomie.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2', 
     #     'NAME': 'gastro_db', 
@@ -154,14 +160,14 @@ DATABASES = {
     #     'HOST': 'localhost', 
     #     'PORT': '', 
     # }
-    'default': dj_database_url.config(
-        default=config('postgresql-deep-18681')
-    )
-    # 'default': dj_database_url.config(
-    #       default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-    #   )
 
-}
+
+    # 'default': dj_database_url.config(
+    #     default=config('postgresql-deep-18681')
+    # )
+    
+
+
 
 
 # Password validation
