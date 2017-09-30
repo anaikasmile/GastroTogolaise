@@ -1,0 +1,5 @@
+thumbnail KVSTORE
+makemigrations thumbnail
+migrate thumbnail
+
+

@@ -1,0 +1,102 @@
+Deploiement de l'app sur Heroku
+
+*********************************Préréquis*************************************************
+
+** 1ere étape****
+- Activer le virtual env du projet 
+	source /VirtualEnv/bin/activate
+- Installer les packets 
+	pip install python-decouple
+	pip install dj-database-url gunicorn whitenoise
+
+-Aller a la racine du projet pour creer un fichier requirements en faisont
+	pip freeze >> requirements.txt
+
+- Creer un fichier runtime.txt et ajouter dans ce fichier la version de python:
+	python-3.6.2
+
+- Heroku fonctionne avec postgres si ce n'est pas encore installer faire 
+	pip install psycopg2 or simply add psycopg2==2.6.2 to the requirements.txt file and run pip install
+
+-First create a file named .env in the root of your project. You can also use a .ini file, in case the .env isn’t suitable for your use case.
+Exemple de parametres dans ce fichier:
+	SECRET_KEY=3izb^ryglj(bvrjb2_y1fZvcnbky#358_l6-nn#i8fkug4mmz!
+	DEBUG=True
+	DB_NAME=HELLO_DJANGO
+	DB_USER=U_HELLO
+	DB_PASSWORD=hA8(scA@!fg3*sc&xaGh&6%-l<._&xCf
+	DB_HOST=127.0.0.1
+	ALLOWED_HOSTS=.localhost, .herokuapp.com
+
+-Retrieve the settings parameters in settings.py:
+
+	import os
+	from decouple import config
+
+	BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+	SECRET_KEY = config('SECRET_KEY')
+	DEBUG = config('DEBUG', default=True, cast=bool)
+	DATABASES = {
+	    'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': config('DB_NAME'),
+		'USER': config('DB_USER'),
+		'PASSWORD': config('DB_PASSWORD'),
+		'HOST': config('DB_HOST'),
+		'PORT': '',
+	    }
+	}
+
+	STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage' 
+
+
+***2 eme etape ***
+
+- Creer un fichier nommé Procfile dans le repertoire du projet copier ceci dans le fichier:
+ web: gunicorn xyz.wsgi --log-file - 
+(*xyz remplacer le par le nom de votre application ou se trouve le fichier .wsgi)
+
+- Dans le fichier xyz.wsgi ajouter cette ligne:
+from whitenoise.django import DjangoWhiteNoise
+  application = DjangoWhiteNoise(application)
+
+*********************** Heroku *******************************************
+1- Installer Heroku cli
+2- Creer un compte
+3- Se connecter a heroku dans la console
+	heroku login
+4- Creer son app
+	heroku create app_name
+
+5- Creer la base de données postgres sur heroku
+	heroku addons:create heroku-postgresql:hobby-dev
+
+6- Copier Url de la base et modifier votre settings.py comme ceci:
+DATABASES = {'default': dj_database_url.config(default="DATABASE_URL")}
+
+7- Pusher son projet
+	git add .
+	git commit -m "First commit"
+	git push heroku master
+
+8- Migrate de la base
+	heroku run python manage.py migrate
+	heroku run python manage.py createsuperuser
+	heroku run python manage.py makemigrations
+
+You can now visit your app in your browser by running heroku open command on the terminal.
+
+
+
+
+
+
+
+***************PROTOTYPE EN LIGNE SUR HEROKU***********************************
+compte gmail. gastronomie.togolaise@gmail.com
+password: gastronomie.togolaise_2017
+
+compte aws: 
+nom: gastronomie.togolaise
+adresse mail:gastronomie.togolaise@gmail.com
+password: gastronomie.togolaise_2017

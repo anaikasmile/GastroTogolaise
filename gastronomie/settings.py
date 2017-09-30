@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'widget_tweaks',
     'sorl.thumbnail',
+    'storages',
     'ckeditor',
     'threadedcomments',
     'django_comments',
@@ -228,6 +229,21 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'   
+
+
+#Files storages
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'usanidiservice'
+AWS_ACCESS_KEY_ID = 'AKIAJY4CRLNSYF6EGCMA'
+AWS_SECRET_ACCESS_KEY = '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'
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+#STATIC_URL = S3_URL
+MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
 
 EMBED_VIDEO_BACKENDS = (
     'embed_video.backends.YoutubeBackend',
