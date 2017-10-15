@@ -38,6 +38,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # }
 
 DATABASES = {'default': dj_database_url.config(default="postgres://qfshiulqbogrll:11e2a4a020aaca0707ecf132d0a0685caf76a7cb07feb6383a44771377fe8804@ec2-54-221-212-208.compute-1.amazonaws.com:5432/dfqktli8ama0hd")}
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -153,21 +154,22 @@ WSGI_APPLICATION = 'gastronomie.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+#https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-    #     'NAME': 'gastro_db', 
-    #     'USER': 'admin', 
-    #     'PASSWORD': 'root', 
-    #     'HOST': 'localhost', 
-    #     'PORT': '', 
-    # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+#         'NAME': 'gastro_db', 
+#         'USER': 'admin', 
+#         'PASSWORD': 'root', 
+#         'HOST': 'localhost', 
+#         'PORT': '', 
+#     }
+# }
 
-
-    # 'default': dj_database_url.config(
-    #     default=config('postgresql-deep-18681')
-    # )
+    #'default': dj_database_url.config(
+     #   default=config('postgresql-deep-18681')
+    #)
     
 
 
@@ -232,10 +234,11 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 #Files storages
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_STORAGE_BUCKET_NAME = 'usanidiservice'
+
+AWS_STORAGE_BUCKET_NAME = 'tgfood'
 AWS_ACCESS_KEY_ID = 'AKIAJY4CRLNSYF6EGCMA'
 AWS_SECRET_ACCESS_KEY = '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'
+
 #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 #STATIC_URL = S3_URL
