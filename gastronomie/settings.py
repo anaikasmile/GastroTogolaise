@@ -235,7 +235,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #Files storages
 
-AWS_STORAGE_BUCKET_NAME = 'tgfood'
+AWS_STORAGE_BUCKET_NAME = 'tgfoods'
 AWS_ACCESS_KEY_ID = 'AKIAJY4CRLNSYF6EGCMA'
 AWS_SECRET_ACCESS_KEY = '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'
 
