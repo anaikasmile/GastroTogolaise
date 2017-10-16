@@ -125,13 +125,7 @@ SOCIALACCOUNT_PROVIDERS = [
         'LOCALE_FUNC': lambda request: 'kr_KR',
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.4'}
-        },
-
-    { 'google': 
-        { 'SCOPE': ['email'],
-           'AUTH_PARAMS': { 'access_type': 'online' }
         }
-      }
 
     ]
 
