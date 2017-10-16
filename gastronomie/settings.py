@@ -104,7 +104,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SOCIALACCOUNT_PROVIDERS = [
+SOCIALACCOUNT_PROVIDERS = \
     {'facebook':
        {'METHOD': 'oauth2',
         'SCOPE': ['email','public_profile', 'user_friends'],
@@ -127,7 +127,7 @@ SOCIALACCOUNT_PROVIDERS = [
         'VERSION': 'v2.4'}
         }
 
-    ]
+    
 
 ROOT_URLCONF = 'gastronomie.urls'
 
