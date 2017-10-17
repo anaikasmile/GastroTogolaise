@@ -110,7 +110,11 @@ SOCIALACCOUNT_PROVIDERS = { 'facebook':
                                 'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
                                 'LOCALE_FUNC': lambda request: 'en_US',
                                 'VERSION': 'v2.4'
-                               }
+                               },
+                            'google': 
+                             { 'SCOPE': ['email'],
+                               'AUTH_PARAMS': { 'access_type': 'online' }
+                             }
                            }
 
     
