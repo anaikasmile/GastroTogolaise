@@ -12,19 +12,22 @@
 
 {% block content_base %}
  <!-- Post -->
+  <section class="rp-form">
+    <div class="row ">
+        <div class="col-lg-6">
+          <h3>Don't have an account yet</h3>
+          <hr>
+          <p> Click here to create an acccount  <br><br>
+          <a class="btn" href="{% url 'account_signup' %}">Sign up</a></p>
+          <div class="form-container register-form">
 
-    <div class="row">
-        <div class="col-lg-offset-3 col-lg-6">    
-        <section class="paper">
-            <h3 class="h3-responsive text-center">Sign in</h3>
-            <hr>
-            <div class="panel panel-default">
-              
-              <div class="panel-body text-center">
+          </div>
+        </div>
 
-               
+        <div class="col-lg-6">    
+        <div class="form-container login-form card text-center">
                 <h4>Login with:</h4>
-
+                <hr>
                 
                 
                 <ul class="list-inline">
@@ -61,16 +64,14 @@
                   
                   </form>
                          
-              </div>
-              <div class="panel-footer">
-                  <p>Don't have an account yet <a class="red-text" href="{% url 'account_signup' %}">Sign up</a></p>
-              </div>
-            </div>
-        </section>
+              
+        </div>
     </div>
+
+
   </div>
 
-
+</section>
 
 
 

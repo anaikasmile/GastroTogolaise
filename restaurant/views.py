@@ -39,7 +39,6 @@ def restaurant_list(request):
 def traiteur_list(request):
 	restaurants = Restaurant.objects.filter(category='Traiteur')
 	restaurants = pagination(request, restaurants)
-
 	return render(request,'restaurant/restaurant_list.html', {'restaurants':restaurants})
 
 

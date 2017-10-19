@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.restaurant_list, name='restaurant_list'),
-    url(r'^traiteur$', views.traiteur_list, name='traiteur_list'),
+    url(r'^catering$', views.traiteur_list, name='catering_list'),
 
     url(r'^add/$', views.restaurant_add, name='restaurant_add'),
     url(r'^(?P<pk>[0-9]+)/delete/$', views.restaurant_delete, name='restaurant_delete'),

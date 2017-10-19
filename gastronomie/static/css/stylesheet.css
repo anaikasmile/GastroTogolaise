@@ -528,6 +528,35 @@ img .card-img{
   background-color: #c00;
   border: 1px solid transparent;
   border-radius: 10em;
-  color: fff;
+  color: #fff;
 
+}
+
+
+.rp-form{
+  background: linear-gradient(45deg, rgba(249, 63, 35, 1) 0%, rgba(249, 63, 35, 1) 20%, rgba(249, 63, 35, 0.8) 60%, rgba(249, 63, 35, 0.6) 100%);
+  margin-top:150px;
+  min-height: 350px;
+  padding: 50px;
+  color: #fff;
+}
+
+.rp-form .form-container{
+    position: absolute;
+    padding: 60px;
+    top: -80px;
+    right: 20px;
+    left: 20px;
+    min-height: 400px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
 }

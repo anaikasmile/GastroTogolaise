@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-<header>
+<header class="navbar-fixed-top">
   
  
 <div class="navbar navbar-inverse">
@@ -52,7 +52,7 @@
   </div>
 
 <div class="mainmenu-area">
-  <div class="navbar navbar-default">
+  <div class="navbar navbar-default ">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-6">
@@ -80,11 +80,11 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{% url 'restaurant_list' %}">{% trans 'Restaurants' %}</a></li>
-                  <li><a href="{% url 'traiteur_list' %}">{% trans 'Services traiteurs' %}</a></li>
+                  <li><a href="{% url 'catering_list' %}">{% trans 'Services traiteurs' %}</a></li>
                 </ul>
               </li>
               <li><a href="#">{% trans 'E-shop' %}</a></li>
-              <li><a href="#">{% trans 'Community' %}</a></li>
+              <li><a href="{% url 'contributors' %}">{% trans 'Community' %}</a></li>
               <li></li>
             </ul>
             

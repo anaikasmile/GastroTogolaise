@@ -13,8 +13,8 @@ class RecipeForm(forms.ModelForm):
             'category':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'title':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'description':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
-            'prepare_time':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'cooking_time':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'prepare_time':forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'cooking_time':forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
            
             'ingredient':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'preparation':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),

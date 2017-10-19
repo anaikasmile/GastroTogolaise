@@ -264,7 +264,7 @@ CKEDITOR_CONFIGS = {
         "removePlugins": "stylesheetparser",
         'toolbar': 'full',
         'height': 300,
-        'width': 600,
+        'width': "auto",
     },
 }
 
@@ -290,7 +290,3 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-
-
-
-
