@@ -6795,3 +6795,18 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+background: #f6f6f6;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    margin: 0px 0 20px 0px;
+    position: relative;
+    width: 100%;
+    background-image: -webkit-radial-gradient(#e6e6e6 21%, transparent 21%),-webkit-radial-gradient(rgba(0,0,0,0.25) 21%, transparent 26%),-webkit-linear-gradient(top, transparent 0%, transparent 95%, rgba(96,159,159,0.1) 95%, rgba(96,159,159,0.1) 100%);
+    background-image: -moz-radial-gradient(#e6e6e6 21%, transparent 21%),-moz-radial-gradient(#e6e6e6 10%, transparent 12%),-moz-linear-gradient(top, transparent 0%, transparent 95%, rgba(96,159,159,0.1) 95%, rgba(96,159,159,0.1) 100%);
+    background-image: radial-gradient(#e6e6e6 61%,rgba(0,0,0,0) 21%),radial-gradient(#e6e6e6 10%,rgba(0,0,0,0) 12%),linear-gradient(top, transparent 0%, transparent 95%, rgba(96,159,159,0.1) 95%, rgba(96,159,159,0.1) 100%);
+    background-position: 0px 6px, 0px 5px, 10% 8px;
+    background-repeat: repeat-y, repeat-y, repeat;
+    background-size: 48px 48px, 48px 48px, 24px 24px;
+    padding: 17px 24px 4px 64px;
+    top: 0px;

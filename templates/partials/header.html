@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-<header class="navbar-fixed-top">
+<header class="navbar-fixed-top z-depth-1">
   
  
 <div class="navbar navbar-inverse">
@@ -55,13 +55,9 @@
   <div class="navbar navbar-default ">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-3 col-sm-6 col-xs-6">
-   
-            <a class="navbar-brand" href="/"><!-- <img src="{% static 'img/logo.jpg' %}" class="img-responsive"> -->GastroTogolaise</a>
-          
-          </div>
+        
     <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="col-md-7 hidden-sm hidden-xs">
+          <div class="col-md-5 hidden-sm hidden-xs">
           
             <ul class="nav navbar-nav">
               <li class=""><a href="/">{% trans 'Home' %}<span class="sr-only">(current)</span></a></li>
@@ -76,32 +72,44 @@
               </li>
               <li><a href="{% url 'video_list' %}">{% trans 'Videos' %}</a></li> 
               <li><a href="{% url 'post_list' %}">{% trans 'Blog' %}</a></li>
-              <li class="dropdown">
+               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{% url 'restaurant_list' %}">{% trans 'Restaurants' %}</a></li>
                   <li><a href="{% url 'catering_list' %}">{% trans 'Services traiteurs' %}</a></li>
                 </ul>
               </li>
-              <li><a href="#">{% trans 'E-shop' %}</a></li>
-              <li><a href="{% url 'contributors' %}">{% trans 'Community' %}</a></li>
-              <li></li>
+              
             </ul>
             
-            <!-- <button type="button" class="rp-search-toggle">
-              <i class="fa fa-search"></i>
-            </button> -->
-            <div id="wrap" class="rp-search">
+            
+
+          </div>
+
+          <div class="col-md-2 col-sm-6 col-xs-6">
+   
+            <a class="navbar-brand" href="/"><!-- <img src="{% static 'img/logo.jpg' %}" class="img-responsive"> -->Papilles Gustatives</a>
+          
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <ul class="nav navbar-nav">
+              
+              
+             
+              <li><a href="#">{% trans 'E-shop' %}</a></li>
+              <li><a href="{% url 'contributors' %}">{% trans 'Community' %}</a></li>
+               <li><a href="">{% trans 'About us' %}</a></li>
+              <li><div class="recipe ">
+                   <a href="{% url 'recipe_add' %}" class="a-responsive rp-bg-color-first">{% trans 'Submit your recipe' %}</a>
+                </div></li>
+            </ul>
+
+            <!-- <div id="wrap" class="rp-search">
               <form action="" autocomplete="on">
               <input id="search" name="search" type="text" placeholder="What're we looking for ?"><button type="button" class="rp-search-toggle"><i class="fa fa-search"></i></button>
               </form>
-            </div>
-
-          </div>
-          <div class="col-md-2 col-xs-6">
-                <div class="recipe">
-                   <a href="{% url 'recipe_add' %}" class="a-responsive">{% trans 'Submit your recipe' %}</a>
-                </div>
+            </div> -->
+                
           </div>
 
         </div>

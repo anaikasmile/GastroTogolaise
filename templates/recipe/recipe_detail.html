@@ -71,14 +71,17 @@
                 </ul>
             </div>
             <div class="rp-post-share">
+              
+               
                 <!--Facebook-->
-                <a class="btn fb-bg overlay"><i class="fa fa-facebook left"></i> | Share on Facebook</a>
+                <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs">  | Share on Facebook</span></a>
+                    
                 <!--Twitter-->
-                <a class="btn tw-bg overlay" ><i class="fa fa-twitter left"></i> | Tweet on Twitter</a>
+                <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs">  | Tweet on Twitter</span></a>
                 <!--Gplus-->
-                <a class="btn gplus-bg overlay"><i class="fa fa-google-plus"></i></a>
+                <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
                 <!--Pinterest-->
-                <a class="btn pin-bg overlay"><i class="fa fa-pinterest"></i></a>
+                <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
                 
             </div>
         </div>
@@ -183,24 +186,26 @@
     <div class="rp-post-instruction">
                
         <h5 class=""> Ingredients</h5>
-        <hr>
-        <p>
+        
+        <div class="rp-bloc-note">
             {{recipe.ingredient|safe}}                            
-        </p>
-            
+        </div>
+    </div>
+    
+    <div class="rp-post-instruction">       
         <h5 class="">Instructions</h5>
         <hr>
-        <p> 
+        <div class="rp-post-step">
             {{recipe.preparation|safe}}
-        </p> 
+        </div> 
     </div>
             
     <div class="rp-post-share border">
         <strong> SHARE &nbsp;&nbsp;  </strong>
          <!--Facebook-->
-        <a class="btn fb-bg"><i class="fa fa-facebook left"></i> | Facebook</a>
+        <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
         <!--Twitter-->
-        <a class="btn tw-bg" ><i class="fa fa-twitter left"></i> | Twitter</a>
+        <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | | Twitter</span></a>
         <!--Gplus-->
         <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
         <!--Pinterest-->
@@ -238,7 +243,9 @@
                                 <img src="{% static 'img/user-logo.jpg' %}" class="" width="50px;" alt=""> 
                              {% endif %}  
                             </a> 
-                            <div class="media-body">
+                            <div class="media-body rp-comment">
+                                <span class="rp-arrow">
+                                </span>
                                 <h6 class="media-heading"><a href=""><!-- {{comment.user}} --> {{comment.user_name}}</a></h6>  .   {{comment.submit_date|naturaltime}}
                                 <hr> 
                                 <p>{{comment.comment}}</p>

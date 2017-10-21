@@ -32,7 +32,7 @@
         </div>
 
         <div class="rp-post-header">
-            <h4 class="rp-post-title h4-responsive">CONTRIBUTORS</h4>
+            <h4 class="rp-post-title h4-responsive">OURS CONTRIBUTORS</h4>
             <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
         </div>
     </div>
@@ -42,8 +42,9 @@
 
 	
 <section class="rp-post-detail"> 
+	<div class="row">
 	{% for user in users %}
-	<div class="row border">
+	<!-- <div class="row border">
 		<div class="col-md-3"> 
 		{% if user.profile.photo %}
             <span class="author-inner">
@@ -82,9 +83,48 @@
         	</div>
 
 		</div>
-	</div>
-	<br>
-	{% endfor %}
+	</div> -->
+	
+		<div class="col-md-6"> 
+			<div class="panel panel-default panel-profile">
+		        <div class="panel-heading" style="background-image: url(//cdn.shopify.com/s/files/1/0691/5403/t/141/assets/insta-2.jpg?16007593649882510692);">
+		        	<div class="rp-post-cat">
+                
+		                <ul class="list-inline">
+		                    <li><a href="{% url 'recipe_per_contributor' pk=user.pk %}">{{user.recipe.count}} Posts</a></li>   
+		                    
+		                    <li><a href="">{% get_comment_count for user as user_comment  %}{{user_comment}} Comments</a></li>
+		                        
+		                </ul>
+                
+           			 </div>
+		        </div>
+		        <div class="panel-body text-center">
+		        {% if user.profile.photo %}
+		          	<img class="panel-profile-img" src="{{user.profile.photo.url}}">
+        		{% else %}
+        			<img src="{% static 'img/user-logo.jpg' %}" class="panel-profile-img">
+    			{% endif %}
+
+		         	<h5 class="panel-title"><strong>
+		         		{% if user.last_name %}{{user.first_name}} {{user.last_name}} 
+		         		{% else %} {{user.username}} {% endif %}</strong>
+		         	</h5>
+		            <p class="">{{user.profile.bio}}</p>
+		            <div class="rp-post-social-button">
+		        		<a><i class="fa fa-facebook"> </i></a>
+		                <a><i class="fa fa-twitter"> </i></a>
+		                <a><i class="fa fa-instagram"> </i></a>
+		                <a><i class="fa fa-google-plus"> </i></a>
+		                <a><i class="fa fa-linkedin"> </i></a>
+		        	</div>
+
+		        </div>
+		    </div>
+	    </div>
+	    {% endfor %}
+    </div>
+	
 
 </section>
 <br>

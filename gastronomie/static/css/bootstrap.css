@@ -1440,6 +1440,22 @@ ul ol,
 ol ol {
   margin-bottom: 0;
 }
+ol>li:before{
+    position: absolute;
+    top: 3px;
+    left: -34px;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    line-height: 32px;
+    color: #999;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    content: counter(li-counter);
+    counter-increment: li-counter;
+    cursor: default;
+}
 .list-unstyled {
   padding-left: 0;
   list-style: none;
@@ -4036,7 +4052,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs {
   border-bottom: 1px solid #ddd;
-  background-color: #c00;
+  background-color: #cc2d63;
 }
 .nav-tabs > li {
   float: left;
@@ -4284,7 +4300,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
-  
   right: 0;
   left: 0;
   z-index: 1030;
@@ -4529,8 +4544,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #fff;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Lora', sans-serif;
+  font-style: italic;
+  font-weight: 400;
   font-size: 14px;
+  text-transform: capitalize;
   padding-top: 20px;
   padding-bottom: 15px;
   /*border-color: #e7e7e7;*/
@@ -4548,11 +4566,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #333;
+  
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #c00;
+  color:#cc2d63;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -4799,8 +4818,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 3;
   color: #fff;
   cursor: default;
-  background-color: #c00;
-  border-color: #c00;
+  background-color: #cc2d63;
+  border-color: #cc2d63;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
@@ -5500,6 +5519,7 @@ button.list-group-item-danger.active:focus {
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+
 }
 .panel-body {
   padding: 15px;
@@ -5512,6 +5532,19 @@ button.list-group-item-danger.active:focus {
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
+}
+
+.panel-profile .panel-heading {
+    height: 150px;
+    background-size: cover;
+}
+.panel-profile-img {
+    max-width: 100px;
+    margin-top: -70px;
+    margin-bottom: 5px;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 .panel-title {
   margin-top: 0;
