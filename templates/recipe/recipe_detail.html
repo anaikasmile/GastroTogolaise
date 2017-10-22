@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load thumbnail %}
 {% load humanize %}
+{% load apps_filters %}
 {% load widget_tweaks %}
 <!-- {% load comments %} -->
 {% load threadedcomments_tags %}
@@ -157,17 +158,17 @@
         <div class="row">
         {% if recipe.prepare_time %}
             <div class="col-md-4">
-                <strong>Prepare time:</strong>  {{recipe.prepare_time}}
+                <strong>Prepare time:</strong>  {{recipe.prepare_time|format_time}}
             </div>
         {% endif %}
         {% if recipe.cooking_time %}
             <div class="col-md-4">
-                <strong>Cooking time:</strong>  {{recipe.cooking_time}}
+                <strong>Cooking time:</strong>  {{recipe.cooking_time|format_time}}
             </div>
         {% endif %}
         {% if recipe.total_time %}
             <div class="col-md-4">
-               <strong>Ready in:</strong> {{recipe.total_time}}
+               <strong>Ready in:</strong> {{recipe.total_time|format_time}}
             </div>
         {% endif %}
         </div>
@@ -182,22 +183,24 @@
         {% endif %} 
     </div>
         
-
-    <div class="rp-post-instruction">
-               
-        <h5 class=""> Ingredients</h5>
-        
-        <div class="rp-bloc-note">
-            {{recipe.ingredient|safe}}                            
+    <div class="row">
+        <div class="col-md-4 rp-post-instruction">
+                   
+            <h5 class=""> Ingredients</h5>
+            
+            <div class="rp-bloc-note">
+                {{recipe.ingredient|safe}}                            
+            </div>
         </div>
+        
+        <div class="col-md-8 rp-post-instruction"> 
+            <br><br>      
+            <h5 class="">Instructions</h5>
+            
+            <div class="rp-post-step">
+                {{recipe.preparation|safe}}
+            </div> 
     </div>
-    
-    <div class="rp-post-instruction">       
-        <h5 class="">Instructions</h5>
-        <hr>
-        <div class="rp-post-step">
-            {{recipe.preparation|safe}}
-        </div> 
     </div>
             
     <div class="rp-post-share border">
@@ -220,7 +223,7 @@
 
     <div class="row" id="comment">
         {% get_comment_count for recipe as comment_count %}
-        <h3 class="" data-toggle="collapse" href="#collapse1"><label class="btn btn-danger">{{comment_count}}</label> Comments</h3>
+        <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> Comments ({{comment_count}})</h3>
         
 
         <div id="collapse1" class="panel-collapse collapse">

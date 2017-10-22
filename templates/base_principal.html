@@ -38,9 +38,28 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+
+      // document.onreadystatechange = function () {
+      //   var state = document.readyState
+      //   if (state == 'complete') {
+      //       setTimeout(function(){
+      //           document.getElementById('interactive');
+      //          document.getElementById('se-pre-con').style.visibility="hidden";
+      //       },5000);
+      //   }
+      // }
+
+      $(window).load(function() {
+          $(".loader").fadeOut("slow");
+      })
+
+    </script>
 
 </head>
 <body>
+
+<div class="loader"></div>
 
 {% load i18n %}
 <header class="navbar-fixed-top z-depth-1">
@@ -142,10 +161,12 @@
               <li><a href="#">{% trans 'E-shop' %}</a></li>
               <li><a href="{% url 'contributors' %}">{% trans 'Community' %}</a></li>
                <li><a href="">{% trans 'About us' %}</a></li>
-              <li><div class="recipe ">
-                   <a href="{% url 'recipe_add' %}" class="a-responsive rp-bg-color-first">{% trans 'Submit your recipe' %}</a>
-                </div></li>
+              <li></li>
             </ul>
+
+            <div class="recipe ">
+               <a href="{% url 'recipe_add' %}" class="a-responsive rp-bg-color-first">{% trans 'Submit your recipe' %}</a>
+            </div>
 
             <!-- <div id="wrap" class="rp-search">
               <form action="" autocomplete="on">
