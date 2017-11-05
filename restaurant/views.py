@@ -31,6 +31,8 @@ def pagination(request,fichier):
 
 #Liste de tous les restaurants
 def restaurant_list(request):
+	category = get_object_or_404(Category, pk=pk)
+	#recipes = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
 	restaurants = Restaurant.objects.filter(category='Restaurant')
 	restaurants = pagination(request, restaurants)
 

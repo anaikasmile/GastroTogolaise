@@ -36,7 +36,7 @@
         </div>
 
         <div class="rp-post-header">
-            <h4 class="rp-post-title h4-responsive">ARTICLES</h4>
+            <h4 class="rp-post-title h4-responsive">Articles</h4>
             <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
         </div>
     </div>
@@ -49,6 +49,7 @@
 	<article class="row"> 	
 	
 		<div class="col-sm-5">
+			<div class="view hm-zoom">
 			{% if post.image %}
 				{% thumbnail post.image  "900x800" crop="center" as im %}
 					<img src="{{im.url}}" class="img-responsive">
@@ -57,7 +58,10 @@
 			{% else %}
 				<img src="{% static 'img/post-1.jpg' %}" class="img-responsive">	 
 			{% endif %}
-
+				 <div class="mask flex-center">
+       
+    			</div>
+			</div>
 		</div>
 		<div class="col-sm-7">
 			<i class="fa fa-calendar" aria-hidden="true"></i>

@@ -80,9 +80,9 @@
 				<div class="rp-post-share border">
 		            <strong> SHARE</strong>
 		             <!--Facebook-->
-		            <a class="btn fb-bg"><i class="fa fa-facebook left"></i> | Facebook</a>
+		            <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
 		            <!--Twitter-->
-		            <a class="btn tw-bg" ><i class="fa fa-twitter left"></i> | Twitter</a>
+		            <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
 		            <!--Gplus-->
 		            <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
 		            <!--Pinterest-->
@@ -93,16 +93,20 @@
 	
 		<!-- Section comment -->
 		<br>
-		<section class="row" id="commentaire">
-			<div class="col-lg-12">
-			{% get_comment_count for post as comment_count %}
-            <h3 class="" data-toggle="collapse" href="#collapse1"><label class="btn btn-danger">{{comment_count}}</label> Comments</h3>
-            <div id="collapse1" class="panel-collapse collapse">
-            	<br>
-	            <div id="comment-list">
+		<section>
+			<div class="row" id="commentaire">
+        {% get_comment_count for post as comment_count %}
+        <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> Comments ({{comment_count}})</h3>
+        
 
-	                <ul class="list">
-             {% get_comment_list for post as comment_list %}
+        <div id="collapse1" class="panel-collapse collapse">
+         
+             <br>
+            <div id="comment-list">
+
+                <ul class="list">
+                {% get_comment_list for post as comment_list %}
+
                 {% for comment in comment_list|fill_tree reversed %}
                     <div class="name">
                         <div class="media">
@@ -115,7 +119,9 @@
                                 <img src="{% static 'img/user-logo.jpg' %}" class="" width="50px;" alt=""> 
                              {% endif %}  
                             </a> 
-                            <div class="media-body">
+                            <div class="media-body rp-comment">
+                                <span class="rp-arrow">
+                                </span>
                                 <h6 class="media-heading"><a href=""><!-- {{comment.user}} --> {{comment.user_name}}</a></h6>  .   {{comment.submit_date|naturaltime}}
                                 <hr> 
                                 <p>{{comment.comment}}</p>
@@ -123,8 +129,8 @@
 
                         </div>
                     </div>
-                  {% endfor %}    
-            	</ul>
+                  {% endfor %}
+                </ul>
                
                 <!-- Pagination comments -->
 
@@ -132,9 +138,10 @@
                     <ul class="pagination"></ul>
                 </div>
                 
-            </div> 
-
             </div>
+
+            
+        </div> 
 			<div class="form-block col-xs-12">
                 <div class="text-center">
                     <h4>LEAVE A COMMENT HERE</h4>

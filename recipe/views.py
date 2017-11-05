@@ -69,6 +69,7 @@ def recipe_add(request):
 			recipe.save()
 			recipe.readytime()
 			messages.success(request, 'Your recipe was send',extra_tags='alert')
+			return redirect("recipe_add")
 	else:
 		form = RecipeForm()
 	return render(request,'recipe/recipe_add.html', {'form':form})
@@ -190,6 +191,7 @@ def recipe_new(request):
 			recipe.save()
 			recipe.readytime()
 			messages.success(request, 'Your recipe was send',extra_tags='alert')
+			return redirect("recipe_new")
 			return redirect ('recipe_preview',pk=recipe.pk)
 
 	else:

@@ -159,7 +159,7 @@
               
              
               <li><a href="#">{% trans 'E-shop' %}</a></li>
-              <li><a href="{% url 'contributors' %}">{% trans 'Community' %}</a></li>
+              <li><a href="{% url 'contributors' %}">{% trans 'Contributors' %}</a></li>
                <li><a href="">{% trans 'About us' %}</a></li>
               <li></li>
             </ul>
@@ -342,42 +342,15 @@
   </script>
   <!-- Related -->
 <script type="text/javascript">
-/*            $(document).ready(function () {
+  
+  // Ajouter  function like
+$(document).ready(function() {
 
-            var menu = $('.menu');
-            var origOffsetY = menu.offset().top;
+  setTimeout(function(){
+      $('.del-msg').css( "display",'none');
+   },5000);
 
-            function scroll() {
-                if ($(window).scrollTop() >= origOffsetY) {
-                    $('.menu').addClass('sticky');
-                    $('.content').addClass('menu-padding');
-                } else {
-                    $('.menu').removeClass('sticky');
-                    $('.content').removeClass('menu-padding');
-                }
-
- }
-
-    document.onscroll = scroll;
-
-});*/
-
-	/*$(function() {
-		$('#carousel').carouFredSel({
-            direction: 'right',
-			auto: true,
-			scroll: {
-				duration: 1500,
-                transition: 100,
-			},
-			pagination: {
-				container: '#pager',
-				anchorBuilder: function() {
-					return '<a href="#">'+ this.alt +'</a>';
-				}
-			}
-		});
-	});*/
+});
 </script>
 
 <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>

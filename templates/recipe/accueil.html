@@ -9,15 +9,21 @@
 	<div class="slider">
 		
 			<div id="carousel" class="carousel-fade">
-			<!-- {% for recipe in recipes %}
-
-				{% thumbnail recipe.image  "880x355" crop="center" as img %}
-                    <img src="{{img.url}}" class="img-responsive"/>
-                {% endthumbnail %}
-				
-			{% endfor %} -->
-			</div>
 			
+            <div class="row">
+
+              
+
+                  <!--   <img src="{% static 'img/rp3.jpg' %}">
+                
+                
+                    
+                         <img src="{% static 'img/rp2.jpg' %}" class="img-responsive">
+                  
+                    
+                -->
+			</div>
+		</div>	
 	
 	</div>
 </div>
@@ -65,10 +71,10 @@
                     <div class="card-footer">
                         <ul class="list-inline">
                             
-                            <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a> {{recipe.view}}</li>
+                            <li><a href=""><i class="fa fa-eye" aria-hidden="true"></i></a> {{recipe.view}}</li>
 
                             {% get_comment_count for recipe as comment_count %}
-                            <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i></a> {{comment_count}} </li>
+                            <li><a href=""><i class="fa fa-comments" aria-hidden="true"></i></a> {{comment_count}} </li>
                             
                             <li>
                             <a class="like" data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
