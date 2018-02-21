@@ -3,73 +3,95 @@
 {% load thumbnail %}
 {% load i18n %}
 
-{% block slider %}
+{% block slide %}
 
-    <div class="top-user">
-        <br>
-        <div class="col-md-8">
-            <div class="media">
+      
+<section id="home" class="home">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
-                <a class="pull-left" href="">
-                {% if request.user.profile.photo %}
-                    <!-- {% thumbnail request.user.profile.photo  "200x200" as im %}
- -->
-                    <img src="{{request.user.profile.photo.url}}"  class="img-responsive img-circle">
-                   <!--  {% endthumbnail %}   -->
-                {% else %}
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" class="media-object img-circle img-responsive" width="" height="">
-                {% endif %}
-                
-                </a>
-                <div class="media-body">
-                <br>
-                    <h3 class="media-heading">{{request.user.first_name}} {{request.user.last_name}}</h3>
-                    <p>
-                    {{request.user.profile.bio}}
-                    </p>
-                    
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Cuisiner</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+{% endblock slide %}
+
+{% block content %}
+ <!-- Post -->
+    {% include 'partials/messages.html' %}
+    <div class="main_mix_content padding">
+
+        <div id="mixcontent" class="mixcontent row">
+      
+            
+            <div class="col-lg-12">    
+                <section class="paper">
+                    <h3 class="h3-responsive text-center">Proposer votre recette</h3>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    
+                            
+                    <form method="POST"  name="add-form" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form.as_p }}
+
+                        <button type="submit" class="btn btn-primary">Submit recipe</button>
+                    </form>
+                        
+                </section>
+                
+            </div>   
+        
+
+        </div>
     </div>
     
-
-{% endblock slider %}
-
-{% block content_base %}
- <!-- Post -->
-     <div class="row">
-        {% include 'partials/messages.html' %}
-        <div class="col-lg-offset-2 col-lg-8">    
-        <section class="paper">
-            <h3 class="h3-responsive text-center">Add a recipe</h3>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
-                    
-            <form method="POST"  name="add-form" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-
-                <button type="submit" class="btn btn-danger">Submit recipe</button>
-            </form>
-                
-        </section>
         
-        </div>    
-
-    </div>
-                <!-- /.row -->
-
-
-        
-{% endblock content_base %}
+{% endblock content %}
 
 
 

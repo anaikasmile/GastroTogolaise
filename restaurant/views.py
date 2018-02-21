@@ -8,7 +8,7 @@ from django.contrib import messages
 from django_comments.models import Comment
 
 
-from .models import Restaurant
+from .models import Restaurant, Category
 from .forms import RestaurantForm
 # Create your views here.
 
@@ -31,7 +31,6 @@ def pagination(request,fichier):
 
 #Liste de tous les restaurants
 def restaurant_list(request):
-	category = get_object_or_404(Category, pk=pk)
 	#recipes = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
 	restaurants = Restaurant.objects.filter(category='Restaurant')
 	restaurants = pagination(request, restaurants)
@@ -43,6 +42,12 @@ def traiteur_list(request):
 	restaurants = pagination(request, restaurants)
 	return render(request,'restaurant/restaurant_list.html', {'restaurants':restaurants})
 
+#Liste des addresses par categorie
+def restaurant_per_cat(request,pk):
+	category = get_object_or_404(Category, pk=pk)
+	restaurants = category.addresses.all().filter(enabled='True')
+	restaurants = pagination(request, restaurants)
+	return render(request,'restaurant/restaurant_list.html', {'restaurants':restaurants, 'category_address':category})
 
 
 
@@ -89,7 +94,7 @@ def restaurant_delete(request,pk):
 	return redirect('')
 
 
-#Liste de tous les restaurants
+#Liste de tous les bons plans
 def restaurant_publish_list(request):
 	restaurants = Restaurant.objects.filter(category='Restaurant')
 	restaurants = pagination(request, restaurants)

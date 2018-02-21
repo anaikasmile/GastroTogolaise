@@ -1,143 +1,165 @@
-{% extends 'base.html' %}	
+{% extends 'base_principal.html' %}	
 {% load staticfiles %}
 {% load i18n %}
 {% load thumbnail %}
 {% load comments %}
 {% load ratings %}
 
-{% block slider %}
+{% block slide %}
 
-    <div class="top-image">
-    	<div class="top-title">
-            <h3 class="h3-responsive"></h3>
+    <section id="home" class="home">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Cuisiner</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <img src="{% static 'img/top-restaurant.jpg' %}" class="img-responsive">
-    </div>
+    </section>
 
-{% endblock slider %}
+{% endblock slide %}
 
 {% block header %}
 
-    <div class="container">
-
-        <div class="rp-post-breadcrumbs text-center">
-            <ol class="breadcrumb">
-                <li class="">
-                    <a href="">{% trans 'Home' %}</a>
-                   
-                </li>
-                <li class="">
-                    <a href="">Bonnes adresses</a>
-                </li>
-                <li class="active">
-                   {{restaurant.category}}
-                </li>
-                
-            </ol>
-        </div>
-        <div class="rp-post-header">
-            <h4 class="rp-post-title h4-responsive"> Restaurants </h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            </p>
-        </div>
-    </div>
+    
 {% endblock header %}
 
 {% block content %}
 
-    
-<section class="rp-post-detail"> 
-    {% for restaurant in restaurants %}
-    <article class="row">   
-    
-        <div class="col-sm-5">
-            <div class="view hm-zoom">
-            {% if restaurant.image %}
-                {% thumbnail restaurant.image  "900x800" crop="center" as im %}
-                    <img src="{{im.url}}" class="img-responsive">
-                {% endthumbnail %} 
-            
-            {% else %}
-                <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
-            {% endif %}
-                <div class="mask flex-center">
-                   
+<div class="main_mix_content ">
+
+    {% for restaurant in restaurants %}                
+                      
+        <div id="mixcontent" class="mixcontent row">
+          
+
+                      
+           
+            <div class="mix cat1 margin-bottom-20">
+                
+                    
+                    <div class="col-sm-5">
+                        <div class="view hm-zoom">
+                        {% if restaurant.image %}
+                            {% thumbnail restaurant.image  "900x800" crop="center" as im %}
+                                <img src="{{im.url}}" class="img-responsive">
+                            {% endthumbnail %} 
+                        
+                        {% else %}
+                            <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                        {% endif %}
+                            <div class="mask flex-center">
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-7">
+                       
+                        <h4 class="rp-post-title"><a href="">{{ restaurant.name|truncatechars:50 }}</a></h4>
+                        
+                   <!--Rating-->
+                        
+                        {% ratings restaurant %}
+                        
+
+                        <!--/.Rating-->
+                        <p>{{ restaurant.description|safe|truncatechars:150 }}</p>
+                       <!--  <a href="" class="rp-post-btn"><em> Lire la suite → </em></a> -->
+                       
+
+                        <div class="rp-post-meta-info">
+                            
+                            <dfn>
+                            <ul class="list-inline">
+                            {% if restaurant.tel %}
+                                <li><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{restaurant.tel}}</li>
+                                
+                            {% endif %}
+                               
+                            {% if restaurant.address %} 
+                                <li><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{restaurant.address}}</li>
+                                
+                            {% endif %}
+                               
+                            {% if restaurant.web_site %}  
+                                <li><strong>Web site: </strong> {{restaurant.web_site}}</li>
+                            {% endif %}   
+                            </ul>
+                            </dfn>
+                        </div>
+
+                    </div> 
+
                 </div>
-            </div>
-
+           
+              
         </div>
-        <div class="col-sm-7">
-           
-            <h4 class="rp-post-title"><a href="">{{ restaurant.name|truncatechars:50 }}</a></h4>
-            
-       <!--Rating-->
-            
-                   {% ratings restaurant %}
-            
 
-            <!--/.Rating-->
-            <p>{{ restaurant.description|safe|truncatechars:150 }}</p>
-           <!--  <a href="" class="rp-post-btn"><em> Lire la suite → </em></a> -->
-           
-
-            <div class="rp-post-detail">
-                <br>
-                <dfn>
-                <ul class="list-inline">
-                {% if restaurant.tel %}
-                    <li><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{restaurant.tel}}</li>
-                     <br>
-                {% endif %}
-                   
-                {% if restaurant.address %} 
-                    <li><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{restaurant.address}}</li>
-                    <br>
-                {% endif %}
-                   
-                {% if restaurant.web_site %}  
-                    <li><strong>Web site: </strong> {{restaurant.web_site}}</li>
-                {% endif %}   
-                </ul>
-                </dfn>
-            </div>
-
-        </div> 
-       
-            
-        
-    </article>  
     <hr>
-    <br>
-    {% endfor %}
-</section>
-<br>
+     {% endfor %}
     
-    <div class="text-center">
-    {% if restaurants.has_other_pages %}
-        <ul class="pagination">
-            {% if restaurants.has_previous %}
-              <li><a href="?page={{ restaurants.previous_page_number }}">&laquo;</a></li>
-            {% else %}
-            <li class="disabled"><span>&laquo;</span></li>
-            {% endif %}
-            {% for i in restaurants.paginator.page_range %}
-              {% if restaurants.number == i %}
-                <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-              {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% if restaurants.has_next %}
-              <li><a href="?page={{ restaurants.next_page_number }}">&raquo;</a></li>
-            {% else %}
-              <li class="disabled"><span>&raquo;</span></li>
-            {% endif %}
-        </ul>
-    {% endif %}
-    </div>
+</div>
+
+<!-- <div class="text-center">
+{% if restaurants.has_other_pages %}
+    <ul class="pagination">
+        {% if restaurants.has_previous %}
+          <li><a href="?page={{ restaurants.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in restaurants.paginator.page_range %}
+          {% if restaurants.number == i %}
+            <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if restaurants.has_next %}
+          <li><a href="?page={{ restaurants.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endif %}
+</div> -->
 
     
 {% endblock content %}

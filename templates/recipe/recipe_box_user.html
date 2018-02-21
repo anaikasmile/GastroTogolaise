@@ -4,19 +4,46 @@
 {% load thumbnail %}
 
 
-{% block slider %}
+{% block slide %}
 
-    <div class="top-user">
+
+   <section id="home" class="home">
+    
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/top-user.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+    <!-- <div class="top-user">
         <br>
         <div class="col-md-8">
             <div class="media">
 
                 <a class="pull-left" href="">
                 {% if request.user.profile.photo %}
-                    <!-- {% thumbnail request.user.profile.photo  "200x200" as im %}
- -->
+
                     <img src="{{request.user.profile.photo.url}}"  class="img-responsive img-circle">
-                   <!--  {% endthumbnail %}   -->
+  
                 {% else %}
                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" class="media-object img-circle img-responsive" width="" height="">
                 {% endif %}
@@ -32,14 +59,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
 
-{% endblock slider %}
+{% endblock slide %}
 
-{% block content_base %}
+{% block content %}
  <!-- Post -->
-     <div class="row">
+ <div class="main_mix_content text-center padding">
+
+    <div id="mixcontent" class="mixcontent row">
+     
             {% include 'partials/messages.html' %}
             <div class="col-lg-8">
                 <p>
@@ -133,6 +163,7 @@
 			</ul>
 		{% endif %}
 		</div>
+    </div>
 		
-{% endblock content_base %}
+{% endblock content %}
 

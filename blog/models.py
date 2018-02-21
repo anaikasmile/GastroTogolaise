@@ -2,14 +2,26 @@ from django.db import models
 from django.utils import timezone
 from sorl.thumbnail import ImageField
 from ckeditor.fields import RichTextField
+from embed_video.fields import EmbedVideoField
 # Create your models here.
 
 
+class Category(models.Model):
+	name = models.CharField(max_length=50)
+	created_at = models.DateTimeField(auto_now_add=True)
+	update_at = models.DateTimeField(auto_now=True)
+
+	def __str__(self):
+		return self.name 
+
+
 class Post(models.Model):
+	category = models.ForeignKey(Category,related_name='posts')
 	author = models.ForeignKey('auth.User')
 	title =  models.CharField(max_length=200)
 	text =   RichTextField()
 	image = models.ImageField(blank=True, null= True,upload_to="blog")
+	video = EmbedVideoField(blank=True, null= True)
 	view = models.IntegerField(default=0,null=True, blank= True)
 	like = models.IntegerField(default=0,null=True, blank= True)
 	created_at = models.DateTimeField(default=timezone.now)

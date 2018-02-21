@@ -17,10 +17,10 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('bio', 'location','tel', 'photo','facebook','twitter','linkedin','gplus')
+        fields = ('bio', 'country','tel', 'photo','facebook','twitter','linkedin','gplus')
         widgets = {
             'bio':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
-            'location':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'country':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'tel':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'facebook':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
            	'twitter':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),

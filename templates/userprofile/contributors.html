@@ -1,135 +1,90 @@
-{% extends 'base.html' %}	
+{% extends 'base_principal.html' %}	
 {% load staticfiles %}
+
 {% load i18n %}
 {% load thumbnail %}
 {% load comments %}
 
 
-{% block slider %}
+{% block slide %}
 	
-		<div class="top-image">
-		
-			
-			
-	    </div>
-	
-{% endblock slider %}
+	<section id="home" class="home">
+    
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/team.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+{% endblock slide %}
 
 {% block header %}
 
-    <div class="container">
+    <section class="rp-post-header margin-top-40">
+        <h4 class="rp-post-title h4-responsive">OURS CONTRIBUTORS</h4> 
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. </p>
+    </section>
 
-        <div class="rp-post-breadcrumbs text-center">
-            <ol class="breadcrumb">
-                <li class="">
-                    <a href="">Accueil</a>
-                </li>
-                <li class="active">
-                    <a href="">Contributors</a>
-                </li>
-                
-            </ol>
-        </div>
-
-        <div class="rp-post-header">
-            <h4 class="rp-post-title h4-responsive">OURS CONTRIBUTORS</h4>
-            <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
-        </div>
-    </div>
 {% endblock header %}
 
 {% block content %}
 
-	
-<section class="rp-post-detail"> 
-	<div class="row">
+
+<div id="mixcontent" class="mixcontent">
 	{% for user in users %}
-	<!-- <div class="row border">
-		<div class="col-md-3"> 
-		{% if user.profile.photo %}
-            <span class="author-inner">
-            <img src="{{user.profile.photo.url}}" class="img-responsive img-circle">
-            </span>
-                
-        {% else %}
-            
-        	<img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
-        	
-    	{% endif %}
-    		<h5 class="text-center"><strong>{% if user.last_name %}{{user.first_name}} {{user.last_name}} {% else %} {{user.username}} {% endif %}</strong></h5>
-		</div>
-		<div class="col-md-9"> 
-			<div class="rp-post-cat">
-                
-                <ul class="list-inline">
-                    <li><a href="{% url 'recipe_per_contributor' pk=user.pk %}">{{user.recipe.count}} Posts</a></li>   
-                    
-                    <li><a href="">{% get_comment_count for user as user_comment  %}{{user_comment}} Comments</a></li>
-                        
-                </ul>
-                
+    <div class="col-md-6 mix card-user padding">
+        <div class="single_mixi_portfolio margin-bottom-20">
+    	{% if user.profile.photo %}
+	          	<img class="panel-profile-img" src="{{user.profile.photo.url}}" width="100%" alt="" class="img-responsive" >
+    		{% else %}
+    			<img src="{% static 'img/user-logo.jpg' %}" class="panel-profile-img" width="100%" alt="" class="img-responsive" >
+			{% endif %}
+        
+            <div class="mixi_portfolio_overlay">
+                <div class="overflow_hover_text">
+                   <ul class="social-link list-inline text-center">
+                        <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                   </ul>
+                </div>
             </div>
-            <div class="rp-post-description">
-                    <p>
-                    {{user.profile.bio}}
-                    </p>
-        	</div>
-        	<div class="rp-post-social-button">
-        		<a><i class="fa fa-facebook"> </i></a>
-                <a><i class="fa fa-twitter"> </i></a>
-                <a><i class="fa fa-instagram"> </i></a>
-                <a><i class="fa fa-google-plus"> </i></a>
-                <a><i class="fa fa-linkedin"> </i></a>
-        	</div>
+        </div>
+        <div class="description text-left">
+            <h4 class="cook-first-color">{% if user.last_name %}{{user.first_name}} {{user.last_name}} 
+		         		{% else %} {{user.username}} {% endif %}</h4>
+            <small></small>
 
-		</div>
-	</div> -->
-	
-		<div class="col-md-6"> 
-			<div class="panel panel-default panel-profile">
-		        <div class="panel-heading" style="background-image: url(//cdn.shopify.com/s/files/1/0691/5403/t/141/assets/insta-2.jpg?16007593649882510692);">
-		        	<div class="rp-post-cat">
-                
-		                <ul class="list-inline">
-		                    <li><a href="{% url 'recipe_per_contributor' pk=user.pk %}">{{user.recipe.count}} Posts</a></li>   
-		                    
-		                    <li><a href="">{% get_comment_count for user as user_comment  %}{{user_comment}} Comments</a></li>
-		                        
-		                </ul>
-                
-           			 </div>
-		        </div>
-		        <div class="panel-body text-center">
-		        {% if user.profile.photo %}
-		          	<img class="panel-profile-img" src="{{user.profile.photo.url}}">
-        		{% else %}
-        			<img src="{% static 'img/user-logo.jpg' %}" class="panel-profile-img">
-    			{% endif %}
-
-		         	<h5 class="panel-title"><strong>
-		         		{% if user.last_name %}{{user.first_name}} {{user.last_name}} 
-		         		{% else %} {{user.username}} {% endif %}</strong>
-		         	</h5>
-		            <p class="">{{user.profile.bio}}</p>
-		            <div class="rp-post-social-button">
-		        		<a><i class="fa fa-facebook"> </i></a>
-		                <a><i class="fa fa-twitter"> </i></a>
-		                <a><i class="fa fa-instagram"> </i></a>
-		                <a><i class="fa fa-google-plus"> </i></a>
-		                <a><i class="fa fa-linkedin"> </i></a>
-		        	</div>
-
-		        </div>
-		    </div>
-	    </div>
-	    {% endfor %}
+            <p class="margin-top-20">{{user.profile.bio}}
+            
+            </p>
+        </div>
     </div>
-	
-
-</section>
-<br>
-	
-	<div class="text-center">
+  
+   {% endfor %}
+   
+    <div class="text-center">
 	{% if users.has_other_pages %}
 		<ul class="pagination">
 			{% if users.has_previous %}
@@ -153,5 +108,9 @@
 	{% endif %}
 	</div>
 
+	
+
+</div>
+	
 	
 {% endblock content %}

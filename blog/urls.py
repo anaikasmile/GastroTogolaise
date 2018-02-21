@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.post_list, name='post_list'),
+	url(r'^category/(?P<pk>[0-9]+)/$', views.post_per_cat, name='post_per_cat'),
 	url(r'^detail/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
 	url(r'^like/$',views.like, name='post_like'),
 

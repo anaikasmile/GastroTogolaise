@@ -5,11 +5,18 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from sorl.thumbnail import ImageField
+from django_countries.fields import CountryField
 
 class Profile(models.Model):
+	SEXE = (
+        (u'F', _(u'Female')),
+        (u'M', _(u'Male')),
+    )
+	sexe = models.CharField(max_length=10, choices= SEXE)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	sexe = models.TextField(max_length=2, blank=True)
 	bio = models.TextField(max_length=500, blank=True)
-	location = models.CharField(max_length=30, blank=True)
+	country = CountryField(blank_label=_(u'select country'),blank=True, null=True)
 	# birth_date = models.DateField(null=True, blank=True)
 	tel = models.CharField(max_length=50, verbose_name=_(u'Phone number'), blank=True, help_text=_(u'00228 00 00 00 00'))
 	photo = models.ImageField(upload_to="profiles", blank=True, null=True)

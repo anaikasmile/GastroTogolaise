@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^restaurant/', include('restaurant.urls')),
     url(r'', include('recipe.urls')),
     url(r'^blog/', include('blog.urls')),
-    url(r'^video/', include('video.urls')),
+  
 ]+ static(
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT

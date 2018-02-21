@@ -1,181 +1,157 @@
-{% extends 'base.html' %}	
+{% extends 'base_principal.html' %}
 {% load staticfiles %}
-{% load i18n %}
 {% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
 {% load comments %}
+{% load i18n %}
+
+{% block slide %}
+<section id="home" class="home">
+
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+{% endblock slide %}
 
 
-{% block slider %}
-
-    <div class="top-image">
-    	<div class="top-title">
-            <h3 class="h3-responsive">Retrouvez vos plus belles recettes</h3>
-        </div>
-        <img src="{% static 'img/top-recette.jpg' %}" class="img-responsive">
-    </div>
-
-{% endblock slider %}
-
-{% block header %}
-
-    <div class="container">
-
-        <div class="rp-post-breadcrumbs text-center">
-            <ol class="breadcrumb">
-                <li class="">
-                    <a href="">{% trans 'Home' %}</a>
-                </li>
-                <li class="">
-                    <a href="">{% trans 'Recipes' %}</a>
-                </li>
-                <li class="active">
-                    {{category}}
-                </li>
-            </ol>
-        </div>
-
-        <div class="rp-post-header">
-            <h4 class="rp-post-title h4-responsive"> {{category}}</h4>
-            <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
-        </div>
-    </div>
-{% endblock header %}
 
 {% block content %}
  <!-- Post -->
- 		{% block content_recipe %}
-        <div class="row">
-        {% for recipe in recipes %}
+ 		
+    <div class="main_mix_content text-center padding">
 
-            <article class="col-sm-6">
-                <div class="rp-card-post">
-                    <!-- Image wrapper -->
-                    <div class="view overlay hm-white-light card-up">
-                    	<!-- <div class="card-label">
-                        <h5 class=""> <span class="label"></span></h5>
-                        </div> -->
-                        
-                    {% if recipe.image %}
-                    	<a>
-                    	{% thumbnail recipe.image  "900x500" crop="center" as im %}
-                    		<img src="{{im.url}}" class="img-responsive">
-                    		<div class="mask flex-center">
-                    			<a class="btn btn-default" href="{% url 'recipe_detail' pk=recipe.pk %}">View</a>
-    						</div>
-                    	{% endthumbnail %}	
-                    	</a>
-                    {% else %}
-						<a href=""></a>
-					{% endif %}
-            						
-                    </div>
-                    
-                    <div class="card-content">
-                        
-                        <div class="card-title">
-                        	<h5 class="h5-responsive"><a href="{% url 'recipe_detail' pk=recipe.pk %}">{{recipe.title|truncatechars:30}}</a></h5>
-                        	<p >By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a></p>
+        <div id="mixcontent" class="mixcontent row">
+        {% for recipe in recipes %}
+            <div class="col-md-6 mix cat1">
+                <div class="single_mixi_portfolio margin-bottom-40">
+                    <div class="view hm-zoom">
+           
+                        {% if recipe.image %}
+                        <a href="{% url 'recipe_detail' pk=recipe.pk %}">
+                        {% thumbnail recipe.image  "900x500" crop="center" as im %}
+                            <img src="{{im.url}}" class="img-responsive">
+                        {% endthumbnail %}  
+                        </a>
+                        {% else %}
+                            <a href=""></a>
+                        {% endif %}
+                        <div class="text-floating">
+                            <ul class="list-inline">
+                                <li class="">
+                                    <a class="like " data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                                </li>
+                                <li class=""><a href="#"><i class="fa fa-eye cook-second-color" aria-hidden="true"></i></a><span> {{recipe.view}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="mask flex-center">
+
                         </div>
                     </div>
-                    <!-- Footer -->
-                    <div class="card-footer">
-                        <ul class="list-inline">
-                            
-                            <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a> {{recipe.view}}</li>
-
-                            {% get_comment_count for recipe as comment_count %}
-                            <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i></a> {{comment_count}} </li>
-                            
-                            <li>
-                            <a class="like" data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
-                            </li>
-                             
-                        </ul>
+                   
+                    <div class="single_mixi_portfolio_content">
+                        <a href="{% url 'recipe_detail' pk=recipe.pk %}" class="title">{{recipe.title|truncatechars:15}}</a>
+                        <p>By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a></p>
                     </div>
+                   
                 </div>
-            </article>
+            </div>
 
-            <!-- Modal -->
+
+             <!-- Modal -->
            <div class="modal fade" id="modalAvatar{{recipe.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
-              	<div class="modal-dialog" role="document">
-                	<div class="modal-content">
-	                  	<div class="modal-header">
-	                    	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                    	<div class="col-md-4">
-	                    	
-	                    	{% if recipe.author.profile.photo %}
-			                    <span class="author-inner">
-			                    <img src="{{recipe.author.profile.photo.url}}" class="img-responsive img-circle">
-			                    </span>
-			                    
-			                {% else %}
-			                
-	                    	<img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
-	                    	
-	                    	{% endif %}
-	                    	<h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
-	                    	</div>
-	                    	<div class="col-md-8">
-                   				<p>{{recipe.author.profile.bio}}</p>
-	                    	</div>
-	                    </div>
-                 		<!-- <div class="modal-body">
-                    	</div> -->
-                  		<div class="modal-footer">
-                    		<a class="btn-floating btn-sm-full fb-bg"><i class="fa fa-facebook"> </i></a>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                            
+                            {% if recipe.author.profile.photo %}
+                                <span class="author-inner">
+                                <img src="{{recipe.author.profile.photo.url}}" class="img-responsive img-circle">
+                                </span>
+                                
+                            {% else %}
+                            
+                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                            
+                            {% endif %}
+                            <h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{recipe.author.profile.bio}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-body">
+                        </div> -->
+                        <div class="modal-footer">
+                            <a class="btn-floating btn-sm-full fb-bg"><i class="fa fa-facebook"> </i></a>
                             <a class="btn-floating btn-sm-full tw-bg"><i class="fa fa-twitter"> </i></a>
                             <a class="btn-floating btn-sm-full in-bg"><i class="fa fa-instagram"> </i></a>
                             <a class="btn-floating btn-sm-full gplus-bg"><i class="fa fa-google-plus"> </i></a>
                             <a class="btn-floating btn-sm-full li-bg"><i class="fa fa-linkedin"> </i></a>
                             
                             
-                   		</div>
-                	</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-             {% empty %}
+        {% empty %}
                 <h2>No recipe for the moment.</h2>
-        {% endfor %}    
+        {% endfor %}
+
         </div>
-       <!--  <div id="test-list">
-    		 
-			    <ul class="list">
-			    {% for recipe in recipes %}
-			      <li><p class="name">{{recipe.title|truncatechars:30}}</p></li>
-			    {% endfor %}
-			    </ul>
-			
-			    <ul class="pagination"></ul>
+    </div>
 
-			</div> -->
+    <div class="rp-pagination text-center">
+        {% if recipes.has_other_pages %}
+            <ul class="pagination">
+                {% if recipes.has_previous %}
+                  <li><a href="?page={{ recipes.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in recipes.paginator.page_range %}
+                  {% if recipes.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if recipes.has_next %}
+                  <li><a href="?page={{ recipes.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
 
- 
-        <div class="rp-pagination text-center">
-		{% if recipes.has_other_pages %}
-			<ul class="pagination">
-				{% if recipes.has_previous %}
-			      <li><a href="?page={{ recipes.previous_page_number }}">&laquo;</a></li>
-			    {% else %}
-				<li class="disabled"><span>&laquo;</span></li>
-			    {% endif %}
-			    {% for i in recipes.paginator.page_range %}
-			      {% if recipes.number == i %}
-			        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-			      {% else %}
-			        <li><a href="?page={{ i }}">{{ i }}</a></li>
-			      {% endif %}
-			    {% endfor %}
-			    {% if recipes.has_next %}
-			      <li><a href="?page={{ recipes.next_page_number }}">&raquo;</a></li>
-			    {% else %}
-			      <li class="disabled"><span>&raquo;</span></li>
-			    {% endif %}
-			</ul>
-		{% endif %}
-		</div>
+                <!-- End   -->
 
 
-
-		{% endblock content_recipe %}
 {% endblock content %}

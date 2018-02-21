@@ -1,4 +1,4 @@
-{% extends 'base.html' %}	
+{% extends 'base_principal.html' %}	
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% load thumbnail %}
@@ -7,96 +7,116 @@
 {% load comments %}
 {% load threadedcomments_tags %}
 
-{% block slider %}
-	<div class="container">
-		<div class="top-image">
-		
-		<div class="top-title">
-	            <h1 class="h1-responsive">{{ post.title }} </h1>
-	            <p>
-	            	
-	            	<ul class="list-inline">
-						<li><img src="{% static 'img/user.png' %}" class="img-circle" width="30px;" alt=""> By <a href="">{{post.author}}</a> . </li>
-						<li>
-							<i class="fa fa-calendar materialize-red-text" aria-hidden="true"></i>
-						{{ post.published_at|date:'F j, Y' }} .
-						</li>
-						<!-- <li><i class="fa fa-eye" aria-hidden="true"></i><a href="#"> {{post.view}}</a></li>    --> 
-	                    <li>
-                        	<a class="like" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
-                        
-                    	</li>
+{% block slide %}
+	
+    <section id="home" class="home">
+    
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/blog.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
-	                    {% get_comment_count for post as comment_count %}
-	                    <li><a href="#commentaire"><i class="fa fa-comments" aria-hidden="true"></i></a> {{comment_count}}</li>
-
-	                    
-					</ul>
-	            </p>
-	        </div>
-		{% if post.image %}
-			{% thumbnail post.image  "1500x400" crop="center" as im %}
-			<img src="{{im.url}}" class="img-responsive">
-			{% endthumbnail %} 
-		{% else %}
-				 
-		{% endif %}
-	    </div>
-	</div>
-{% endblock slider %}
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+{% endblock slide %}
 
 {% block header %}
 
-    <div class="container">
-
-        <div class="rp-post-breadcrumbs">
-            <ol class="breadcrumb">
-                <li class="">
-                    <a href="">{% trans 'Home' %}</a>
-                </li>
-                <li class="">
-                    <a href="">{% trans 'Blog' %}</a>
-                </li>
-                <li class="active">
-                    {{ post.title }}
-                </li>
-                
-            </ol>
-        </div>
-
-    </div>
+   
 {% endblock header %}
 
 {% block content %}	
 
-	<div class="rp-post-detail"> 
+<div class="main_mix_content padding">
+    
+  
+    <div id="mixcontent" class="mixcontent row">
+      
         
-        <div class="row">
-        	<div class="col-md-12">
-	        	
-				<div class="rp-post-description">
-					<p>{{ post.text|safe }}</p>		
-				</div>
-				<div class="rp-post-share border">
-		            <strong> SHARE</strong>
-		             <!--Facebook-->
-		            <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
-		            <!--Twitter-->
-		            <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
-		            <!--Gplus-->
-		            <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
-		            <!--Pinterest-->
-		            <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
-		        </div>  
-			</div>
-		</div>
-	
-		<!-- Section comment -->
-		<br>
-		<section>
-			<div class="row" id="commentaire">
+        <h5><a href="#" class="blog_title " style="padding-left: 15px;" >{{post.title}}</a></h5>
+        <!-- By <a href="" class="rp-author">Admin</a> -->
+        <div class="rp-post-meta-info padding">
+            <ul class="list-inline">
+            
+                <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
+              
+                    By <a href="" class="rp-author">Admin</a></li>  
+                <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_at|date:'F j, Y' }} </li> 
+                
+                <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
+
+                <li>
+                    <a class="like" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
+                </li>
+                {% get_comment_count for post as comment_count %}
+                <li><a href="#commentaire"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+            </ul>
+        </div>
+      
+
+
+                
+       
+        <div class="col-md-12 mix cat1 margin-bottom-80">
+            <div class="single_mixi_portfolio margin-bottom-20">
+                {% if post.image %}
+                    {% thumbnail post.image  "900x500" crop="center" as im %}
+                        <img src="{{im.url}}" class="img-responsive">
+                    {% endthumbnail %} 
+                
+                {% else %}
+                    <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                {% endif %}
+                                                     
+            </div>
+           
+               
+            <p>{{post.text|safe}}</p>
+
+               
+              
+                
+           
+            <div class="rp-post-share border" >
+                <strong> SHARE &nbsp;&nbsp;  </strong>
+                 <!--Facebook-->
+                <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
+                <!--Twitter-->
+                <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
+                <!--Gplus-->
+                <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
+                <!--Pinterest-->
+                <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
+            </div>    
+
+        </div>
+
+    </div>
+
+
+    <!-- Section comment -->
+    <section class="">
+        <div class="row" id="commentaire">
         {% get_comment_count for post as comment_count %}
-        <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> Comments ({{comment_count}})</h3>
+        <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> Comments {{comment_count}}</h3>
         
 
         <div id="collapse1" class="panel-collapse collapse">
@@ -142,82 +162,62 @@
 
             
         </div> 
-			<div class="form-block col-xs-12">
-                <div class="text-center">
-                    <h4>LEAVE A COMMENT HERE</h4>
-                    <p class="text-center">Your email address will not be published.</p>
-                </div>
-                <br>
-            {% if user.is_authenticated %}
+        <div class="form-block col-xs-12">
+            <div class="text-center">
+                <h4>LEAVE A COMMENT HERE</h4>
+                <p class="text-center">Your email address will not be published.</p>
+            </div>
+            <br>
+        {% if user.is_authenticated %}
+        {% get_comment_form for post as form %}
+            <form action="{% comment_form_target %}" method="POST">
+            {% csrf_token %}
+            {{ form.comment|add_class:'form-control' }}
+            
+            <!-- {{ form.honeypot }} -->
+            {{ form.content_type }}
+            {{ form.object_pk }}
+            {{ form.timestamp }}
+            {{ form.security_hash }}
+            <br>
+            <input type="hidden" name="next" value="{% url 'post_detail' post.pk %}" />
+            
+            <button class="btn btn-primary" type="submit" id="id_submit" value="Post">Submit</button>
+            </form>
+        {% else %}
+
+            <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
             {% get_comment_form for post as form %}
-                <form action="{% comment_form_target %}" method="POST">
+                <form action="{% comment_form_target %}" method="post">
                 {% csrf_token %}
-                {{ form.comment|add_class:'form-control' }}
-                
-                <!-- {{ form.honeypot }} -->
                 {{ form.content_type }}
                 {{ form.object_pk }}
                 {{ form.timestamp }}
                 {{ form.security_hash }}
-                <br>
-                <input type="hidden" name="next" value="{% url 'post_detail' post.pk %}" />
-                
-                <button class="btn btn-danger" type="submit" id="id_submit"value="Post">Submit</button>
-                </form>
-            {% else %}
-
-                <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
-                {% get_comment_form for post as form %}
-                    <form action="{% comment_form_target %}" method="post">
-                    {% csrf_token %}
-                    {{ form.content_type }}
-                    {{ form.object_pk }}
-                    {{ form.timestamp }}
-                    {{ form.security_hash }}
-                    <div class="row">
-                        <div class="form-group col-xs-12 col-sm-4">
-                            <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name}}  
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-4">
-                            <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email}}  
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-4">
-                            <label>Website <span class="label-description">(Optional)</span> </label> {{form.url}}  
-                        </div>
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-4">
+                        <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
                     </div>
-                    
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                        <label>Comment <sup>*</sup></label></span><br> {{ form.comment }}
-                        </div>
+                    <div class="form-group col-xs-12 col-sm-4">
+                        <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
                     </div>
-                    
-                    <button class="btn btn-danger" type="submit">Submit</button>   
-               	 </form> 
-                {% endif %}
+                    <div class="form-group col-xs-12 col-sm-4">
+                        <label>Website <span class="label-description">(Optional)</span> </label> {{form.url}|add_class:'form-control'}  
+                    </div>
                 </div>
-            </section> 
+                
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                    <label>Comment <sup>*</sup></label></span><br> {{ form.comment|add_class:'form-control'}}
+                    </div>
+                </div>
+                   <input type="hidden" name="next" value="{% url 'post_detail' post.pk %}" />
+                <button class="btn btn-primary" type="submit">Submit</button>   
+             </form> 
+            {% endif %}
+            </div>
+    </section> 
 
 
-			<!-- Related post -->
-		    <section class="rp-post-related">
-		        <ul class="nav nav-tabs tabs-4">
-		            <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
-		            <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
-		        </ul>   
-
-		        <div class="tab-content">
-
-		            <div id="posts" class="tab-pane fade in active">
-		                
-		            </div>
-		            <div id="authors" class="tab-pane fade in active">
-		                
-		            </div>
-		        </div>
-
-		    </section>
-
-
-		</div>
-	{% endblock content %}
+</div>
+{% endblock content %}

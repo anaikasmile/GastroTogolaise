@@ -31,6 +31,14 @@ urlpatterns = [
     url(r'^recipe/user/box/$', views.recipe_box_user, name='recipe_box_user'),
 
 
+    url(r'^video', views.video_list, name='video_list'),
+    url(r'^video/detail/(?P<pk>[0-9]+)/$', views.video_detail, name='video_detail'),
+
+    url(r'^video/like/$',views.like, name='video_like'),
+    
+    
+
+
 
     url(r'^dashboard/$', views.stats, name='stats'),
     url(r'^recipe/draft/list/$', views.recipe_draft_list, name='recipe_draft_list'),
@@ -40,5 +48,13 @@ urlpatterns = [
     url(r'^recipe/(?P<pk>[0-9]+)/delete/$', views.recipe_delete, name='recipe_delete'),
     url(r'^recipe/(?P<pk>[0-9]+)/update/$', views.recipe_update, name='recipe_update'),
     url(r'^recipe/new/$', views.recipe_new, name='recipe_new'),
+
+    url(r'^video/new/$', views.video_new, name='video_new'),
+    url(r'^video/preview/(?P<pk>[0-9]+)/$', views.video_preview, name='video_preview'),   
+    url(r'^video/(?P<pk>[0-9]+)/edit/$', views.video_edit, name='video_update'),
+    url(r'^video/draft/list/$', views.video_draft_list, name='video_draft_list'),
+    url(r'^video/publish/list/$', views.video_publish_list, name='video_publish_list'), 
+    url(r'^video/(?P<pk>[0-9]+)/publish/$', views.video_publish, name='video_publish'),
+    url(r'^video/(?P<pk>[0-9]+)/delete/$', views.video_delete, name='video_delete'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

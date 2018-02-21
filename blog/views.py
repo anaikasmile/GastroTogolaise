@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm
 # Create your views here.
 from gastronomie.decorators import *
@@ -47,24 +47,24 @@ def admin_pagination(request,fichier):
 
     return p
 
+
 def post_list(request):
 	posts = Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
 	posts = pagination(request, posts)
 	return render(request,'blog/post_list.html',{'posts':posts})
+
+#Liste des articles par categorie
+def post_per_cat(request,pk):
+	category_post = get_object_or_404(Category, pk=pk)
+	posts = category_post.posts.all().filter(published_at__isnull=False).order_by('-published_at')
+	posts = pagination(request, posts)
+	return render(request,'blog/post_list.html', {'posts':posts, 'category_post':category_post})
 
 def post_detail(request,pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.view = post.view + 1 #Incrementer le nombre de vue a chaque clique sur les details de la recette
 	post.save()
 	post_author = Post.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=post.author).exclude(pk=post.pk)
-	# page = request.GET.get('page', 1)
-	# paginator = Paginator(post_author, 3)
-	# try:
-	# 	post_author = paginator.page(page)
-	# except PageNotAnInteger:
-	# 	post_author = paginator.page(1)
-	# except EmptyPage:
-	# 	post_author = paginator.page(paginator.num_pages)
 	return render(request, 'blog/post_detail.html',{'post':post})
 
 

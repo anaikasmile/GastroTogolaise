@@ -1,107 +1,174 @@
-{% extends 'base.html' %}	
+{% extends 'base_principal.html' %}	
 {% load staticfiles %}
 {% load i18n %}
 {% load thumbnail %}
 {% load embed_video_tags %}
 {% load threadedcomments_tags %}
 
-{% block slider %}
-    <div class="top-image">
-    	<div class="top-title">
-            <h3 class="h3-responsive">Retrouvez vos plus belles recettes</h3>
-        </div>
-        <img src="{% static 'img/top-recette.jpg' %}" class="img-responsive">
-    </div>
+{% block slide %}
+    <section id="home" class="home">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
-{% endblock slider %}
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Cuisiner</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="single_home_slider">
+                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                    <h1>Cook' iT</h1>
+                                    <p class="subtitle">Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock slide %}
 
 {% block header %}
 
-    <div class="container">
-
-        <div class="rp-post-breadcrumbs text-center">
-            <ol class="breadcrumb">
-                <li class="">
-                    <a href="">{% trans 'Home' %}</a>
-                </li>
-                <li class="active">
-                    <a href="" >{% trans 'Videos' %}</a>
-                </li>
-               
-            </ol>
-        </div>
-
-        <div class="rp-post-header">
-            <h4 class="rp-post-title h4-responsive">Videos</h4>
-            <p>Browse our collection of family favourite meals for deliciously simple and crowd-pleasing recipes to get supper on the table in a jiffy. Find easy cheesecake recipes to make a show-stopping end to any dinner.</p>
-        </div>
-    </div>
+   
 {% endblock header %}
+
+
 {% block content %}
  <!-- Post -->
- 		
-    <section class="rp-post-detail">  
-        
-        <div class="row">
-        {% for video in videos %}  
-                
-        <div class="col-sm-6"> 
-            <div class="rp-card-post">    
-                    {% video video.video as video %}
-                    {% video video '360 x 260'  %}
-                    {% endvideo %}
-                <div class="card-content">
-                        
-                        <div class="card-title">
-                            <h5 class="h5-responsive"><a href="{% url 'video_detail' pk=video.pk %}">{{video.title}}</a></h5>
-                            <p >By <a href="">{{video.author}}</a></p>
+ 	
+     <div class="main_mix_content text-center padding">
+
+        <div id="mixcontent" class="mixcontent row">
+         {% for video in videos %}  
+            <div class="col-md-6 mix cat1">
+                <div class="single_mixi_portfolio">
+                    <div class="view hm-zoom">
+           
+                            {% video video.video as video %}
+                            {% video video '360 x 260'  %}
+                            {% endvideo %}
+                        <div class="text-floating">
+                            <ul class="list-inline">
+                                <li class="">
+                                    <a class="like " data-video-pk="{{video.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span>
+                                </li>
+                                <li class=""><a href=""><i class="fa fa-eye cook-second-color" aria-hidden="true"></i></a> {{video.view}}</li>
+                            </ul>
                         </div>
+                        <div class="mask flex-center">
+
+                        </div>
+                    </div>
+                   
+                    <div class="single_mixi_portfolio_content">
+                       <a href="{% url 'video_detail' pk=video.pk %}" class="title">{{video.title|truncatechars:20}}</a>
+                        <p>By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}">{{video.author}}</a></p>
+                    </div>
+                   
                 </div>
-                    <!-- Footer -->
-                <div class="card-footer">
-                    <ul class="list-inline">
-                        
-                        <li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></span> {{video.view}}</a></li>
-                        {% get_comment_count for video as comment_count %}
-                        <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}}</a></li>
-                        <li> <a class="likevideo" data-video-pk="{{video.pk}}" type="button"><i class="fa fa-heart" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span></li>
-                         
-                    </ul>
-                </div> 
-            </div>  
-             <br>  
-        </div>      
+            </div>
+
+
+             <!-- Modal -->
+           <div class="modal fade" id="modalAvatar{{video.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{video.id}}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                            
+                            {% if video.author.profile.photo %}
+                                <span class="author-inner">
+                                <img src="{{video.author.profile.photo.url}}" class="img-responsive img-circle">
+                                </span>
+                                
+                            {% else %}
+                            
+                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                            
+                            {% endif %}
+                            <h5 class="">{{video.author.first_name}} {{video.author.last_name}}</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{video.author.profile.bio}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-body">
+                        </div> -->
+                        <div class="modal-footer">
+                            <a class="btn-floating btn-sm-full fb-bg"><i class="fa fa-facebook"> </i></a>
+                            <a class="btn-floating btn-sm-full tw-bg"><i class="fa fa-twitter"> </i></a>
+                            <a class="btn-floating btn-sm-full in-bg"><i class="fa fa-instagram"> </i></a>
+                            <a class="btn-floating btn-sm-full gplus-bg"><i class="fa fa-google-plus"> </i></a>
+                            <a class="btn-floating btn-sm-full li-bg"><i class="fa fa-linkedin"> </i></a>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-             
-            
-            {% endfor %}    
-       
-         </div>
-        
-        <div class="text-center">
-		{% if videos.has_other_pages %}
-			<ul class="pagination">
-				{% if videos.has_previous %}
-			      <li><a href="?page={{ videos.previous_page_number }}">&laquo;</a></li>
-			    {% else %}
-				<li class="disabled"><span>&laquo;</span></li>
-			    {% endif %}
-			    {% for i in videos.paginator.page_range %}
-			      {% if videos.number == i %}
-			        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-			      {% else %}
-			        <li><a href="?page={{ i }}">{{ i }}</a></li>
-			      {% endif %}
-			    {% endfor %}
-			    {% if videos.has_next %}
-			      <li><a href="?page={{ videos.next_page_number }}">&raquo;</a></li>
-			    {% else %}
-			      <li class="disabled"><span>&raquo;</span></li>
-			    {% endif %}
-			</ul>
-		{% endif %}
-		</div>
-	</section> 	
+        {% empty %}
+                <h2>No video for the moment.</h2>
+        {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="rp-pagination text-center">
+        {% if videos.has_other_pages %}
+            <ul class="pagination">
+                {% if videos.has_previous %}
+                  <li><a href="?page={{ videos.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in videos.paginator.page_range %}
+                  {% if videos.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                  {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                {% if videos.has_next %}
+                  <li><a href="?page={{ videos.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+
+
+
+    
 {% endblock content %}
 
 {% block javascript %}
