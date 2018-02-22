@@ -57,11 +57,11 @@
             <div class="col-md-12 mix cat1">
 
 
-                <div class="single_mixi_portfolio margin-bottom-80">
+                <div class="single_mixi_portfolio  border margin-bottom-80">
                 <br>
                 	<h5><a href="{% url 'post_detail' pk=post.pk %}" class="blog_title " style="padding-left: 15px;" >{{post.title}}</a></h5>
 			        <!-- By <a href="" class="rp-author">Admin</a> -->
-			        <div class="rp-post-meta-info ">
+			        <div class="rp-post-meta-info "  style="padding-left: 15px;">
 			            <ul class="list-inline">
 			            
 			         <!--        <li>
@@ -95,17 +95,21 @@
                     </div>
                     <div class="padding-20">
                     	 <p>{{post.text|safe|truncatewords:50}}</p>
+                    	 <div class="pull-left ">
+                    		<i class="fa fa-tags"></i><strong>TAGS:</strong>
+                    	</div>
+
                     </div>
                    
                     <div class="rp-footer">
 
                     	<hr>
                     	<div class="pull-left ">
-                    		<strong><a href="{% url 'post_detail' pk=post.pk %}" class="cook-first-color">Read more</a></strong>
+                    		<strong><a href="{% url 'post_detail' pk=post.pk %}" class="cook-first-color">READ MORE</a></strong>
                     	</div>
                     	<div class="share pull-right clearfix">
                     		
-                    			<strong style="padding-right:25px;">Share:</strong> 
+                    			<strong style="padding-right:25px;">SHARE:</strong> 
 
                     		<div class="pull-right">
                     			<a class="" href=""><i class="fa fa-facebook"></i></a> 

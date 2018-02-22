@@ -3,6 +3,7 @@ from django.utils import timezone
 from sorl.thumbnail import ImageField
 from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
+from taggit.managers import TaggableManager
 # Create your models here.
 
 
@@ -27,6 +28,7 @@ class Post(models.Model):
 	created_at = models.DateTimeField(default=timezone.now)
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null= True)
+	tags = TaggableManager()
 
 	def publish(self):
 		self.published_at = timezone.now()

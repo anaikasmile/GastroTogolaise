@@ -5,7 +5,7 @@ from sorl.thumbnail import ImageField
 from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 from django_countries.fields import CountryField
-#from taggit.managers import TaggableManager
+from taggit.managers import TaggableManager
 
 # Create your models here.
 
@@ -40,14 +40,14 @@ class Recipe(models.Model):
 	image_1 = models.ImageField(upload_to="recipes",blank=True, null=True)
 	image_2 = models.ImageField(upload_to="recipes",blank=True, null=True)
 	image_3 = models.ImageField(upload_to="recipes",blank=True, null=True)
-	origin = models.ManyToManyField(Origin, related_name='recipe_origin',blank=True)
+	origin = models.ManyToManyField(Origin, related_name='origines',blank=True)
 	view = models.IntegerField(default=0,null=True, blank= True)
 	like = models.IntegerField(default=0,null=True, blank= True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null=True)
 	author = models.ForeignKey('auth.User',related_name='recipe')
-	#tags = TaggableManager(blank=True, null=True)
+	tags = TaggableManager()
 
 	# def view(self):
 	# 	self.view = self.view+1 
@@ -77,6 +77,7 @@ class Video(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null= True)
+	tags = TaggableManager()
 	#tags = TaggableManager(blank=True, null=True)
 
 	def publish(self):

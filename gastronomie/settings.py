@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'threadedcomments',
     'django_comments',
+    'taggit',
 
     #'ckeditor_uploader',
     #'secretballot',

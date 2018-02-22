@@ -230,7 +230,7 @@ p:last-child {
 
 .blog_title{
     margin-bottom: 0px;
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     text-transform: lowercase;
     color: #111;
 }
@@ -1704,9 +1704,9 @@ blockquote footer, blockquote small, blockquote .small {
 
 .rp-post-instruction h5{
     font-family: 'Tangerine', serif;
-    font-size: 32px;
+    font-size: 38px;
     color: #111;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .rp-post-instruction .rp-bloc-note{

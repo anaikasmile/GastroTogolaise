@@ -48,9 +48,9 @@
                 <ul class="list-inline">
 
                     <li><a href="">{{recipe.category.name}}</a></li>   
-                   
-                    {% for origin in recipe.origin_set.all %} 
-                    <li><a href="">{{origin.name}}</a></li>
+                  
+                    {% for origin in recipe.origines_set.all %} 
+                     <li><a href="">{{ origin.ethnic }}</a></li>
                     {% endfor %}
                 
                 </ul>
@@ -208,7 +208,7 @@
             
             <div class="col-md-8 rp-post-instruction"> 
                  
-                <h5 class="">Instructions</h5>
+                <h5 class="text-center">Instructions</h5>
                 
                 <div class="rp-post-step">
                 
@@ -218,8 +218,22 @@
                 
                 
                 </div> 
+            </div>
         </div>
+
+        <div class="pull-left">
+              
+                <ul class="list-inline tags">
+
+                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                {% for tag in recipe.tags.all %}
+
+                 <li><a>{{tag.name}}</a></li>
+
+                {% endfor %}
+                </ul>
         </div>
+        <br>
                 
         <div class="rp-post-share border" >
             <strong> SHARE &nbsp;&nbsp;  </strong>

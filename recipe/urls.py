@@ -33,6 +33,7 @@ urlpatterns = [
 
     url(r'^video', views.video_list, name='video_list'),
     url(r'^video/detail/(?P<pk>[0-9]+)/$', views.video_detail, name='video_detail'),
+    url(r'^video/view', views.video_view, name='video_view'),
 
     url(r'^video/like/$',views.like, name='video_like'),
     

@@ -80,6 +80,7 @@
                    
                     {% if user.is_authenticated %}
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ request.user.username }} <b class="caret"></b></a>
+                        
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -90,17 +91,17 @@
                             </li>
                              <li class="divider"></li>
                             <li>
-                                <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear"></i>Account settings</a>
+                                <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>Account settings</a>
                             </li>
                             {% if user.is_staff %}
                             
                             <li>
-                                <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                                <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard" ia-hidden="true"></i> Dashboard</a>
                             </li>
                             {% endif %}
                             <li class="divider"></li>
                             <li>
-                                <a href="" data-toggle="modal" data-target="#logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                <a href="" data-toggle="modal" data-target="#logout"><i class="fa fa-fw fa-power-off" ia-hidden="true"></i> Log Out</a>
                             </li>
                         </ul>
                     {% else %}

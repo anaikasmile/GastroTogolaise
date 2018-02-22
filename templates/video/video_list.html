@@ -88,7 +88,7 @@
                     </div>
                    
                     <div class="single_mixi_portfolio_content">
-                       <a href="{% url 'video_detail' pk=video.pk %}" class="title">{{video.title|truncatechars:20}}</a>
+                       <a href="{% url 'video_view' %}" class="title">{{video.title|truncatechars:20}}</a>
                         <p>By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}">{{video.author}}</a></p>
                     </div>
                    

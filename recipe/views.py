@@ -165,7 +165,11 @@ def video_detail(request,pk):
 	except EmptyPage:
 		video_author = paginator.page(paginator.num_pages)
 
-	return render(request,'video/video_detail.html',{'video':video,'video_author':video_author})
+	return render(request,'video/video_view.html',{'video':video,'video_author':video_author})
+
+def video_view(request):
+
+	return render(request,'recipe/video_view.html',{})
 
 
 

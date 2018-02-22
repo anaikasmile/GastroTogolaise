@@ -91,7 +91,21 @@
                
             <p>{{post.text|safe}}</p>
 
-               
+            <br>
+
+            <div class="pull-left">
+              
+                <ul class="list-inline tags">
+
+                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                {% for tag in post.tags.all %}
+
+                 <li><a>{{tag.name}}</a></li>
+
+                {% endfor %}
+                </ul>
+        </div>
+            <br> 
               
                 
            
