@@ -19,7 +19,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/blog.jpg' %}">
+                                 <img src="{% static 'assets/images/top-blog.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -50,32 +50,9 @@
   
     <div id="mixcontent" class="mixcontent row">
       
-        
-        <h5><a href="#" class="blog_title " style="padding-left: 15px;" >{{post.title}}</a></h5>
-        <!-- By <a href="" class="rp-author">Admin</a> -->
-        <div class="rp-post-meta-info padding">
-            <ul class="list-inline">
-            
-                <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
-              
-                    By <a href="" class="rp-author">Admin</a></li>  
-                <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_at|date:'F j, Y' }} </li> 
-                
-                <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
-
-                <li>
-                    <a class="like" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
-                </li>
-                {% get_comment_count for post as comment_count %}
-                <li><a href="#commentaire"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
-            </ul>
-        </div>
       
-
-
-                
        
-        <div class="col-md-12 mix cat1 margin-bottom-80">
+        <div class="col-md-12 mix cat1 margin-bottom-20">
             <div class="single_mixi_portfolio margin-bottom-20">
                 {% if post.image %}
                     {% thumbnail post.image  "900x500" crop="center" as im %}
@@ -85,49 +62,68 @@
                 {% else %}
                     <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
                 {% endif %}
-                                                     
+
+                <br>
+                <h5><a href="#" class="blog_title padding" >{{post.title}}</a></h5>
+                <!-- By <a href="" class="rp-author">Admin</a> -->
+                <div class="rp-post-meta-info padding-20">
+                    <ul class="list-inline">
+                    
+                        <li><!-- <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt=""> -->
+                      
+                            By <a href="" class="rp-author">Admin</a></li>  
+                        <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_at|date:'F j, Y' }} </li> 
+                        
+                        <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
+
+                        <li>
+                            <a class="likepost" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
+                        </li>
+                        {% get_comment_count for post as comment_count %}
+                        <li><a href="#commentaire"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                    </ul>
+
+                    <p class="">{{post.text|safe}}</p>
+
+                </div>
+
+                <div class="rp-footer">
+                    <div class="pull-left">
+                      
+                            <ul class="list-inline tags">
+
+                            <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                            {% for tag in post.tags.all %}
+
+                             <li><a>{{tag.name}}</a></li>
+
+                            {% endfor %}
+                            </ul>
+                    </div>   
+                    
+                </div>                                      
             </div>
+        
            
-               
-            <p>{{post.text|safe}}</p>
-
-            <br>
-
-            <div class="pull-left">
-              
-                <ul class="list-inline tags">
-
-                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
-                {% for tag in post.tags.all %}
-
-                 <li><a>{{tag.name}}</a></li>
-
-                {% endfor %}
-                </ul>
-        </div>
-            <br> 
-              
-                
-           
-            <div class="rp-post-share border" >
-                <strong> SHARE &nbsp;&nbsp;  </strong>
-                 <!--Facebook-->
-                <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
-                <!--Twitter-->
-                <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
-                <!--Gplus-->
-                <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
-                <!--Pinterest-->
-                <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
-            </div>    
-
         </div>
 
     </div>
 
+    <div class="rp-post-share border" >
+            <strong> SHARE &nbsp;&nbsp;  </strong>
+             <!--Facebook-->
+            <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
+            <!--Twitter-->
+            <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
+            <!--Gplus-->
+            <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
+            <!--Pinterest-->
+            <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
+        </div>    
+
 
     <!-- Section comment -->
-    <section class="">
+    <section class="margin-top-20">
         <div class="row" id="commentaire">
         {% get_comment_count for post as comment_count %}
         <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> Comments {{comment_count}}</h3>
@@ -216,7 +212,7 @@
                         <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
                     </div>
                     <div class="form-group col-xs-12 col-sm-4">
-                        <label>Website <span class="label-description">(Optional)</span> </label> {{form.url}|add_class:'form-control'}  
+                        <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}} 
                     </div>
                 </div>
                 

@@ -73,7 +73,7 @@
                     </div>
                    
                     <div class="single_mixi_portfolio_content">
-                        <a href="{% url 'recipe_detail' pk=recipe.pk %}" class="title">{{recipe.title|truncatechars:15}}</a>
+                        <a href="{% url 'recipe_detail' pk=recipe.pk %}" class="title">{{recipe.title|truncatechars:20}}</a>
                         <p>By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a></p>
                     </div>
                    

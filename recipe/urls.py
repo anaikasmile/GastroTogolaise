@@ -31,16 +31,11 @@ urlpatterns = [
     url(r'^recipe/user/box/$', views.recipe_box_user, name='recipe_box_user'),
 
 
-    url(r'^video', views.video_list, name='video_list'),
+    url(r'^recipe/video', views.video_list, name='video_list'),
     url(r'^video/detail/(?P<pk>[0-9]+)/$', views.video_detail, name='video_detail'),
-    url(r'^video/view', views.video_view, name='video_view'),
-
-    url(r'^video/like/$',views.like, name='video_like'),
+    url(r'^video/like/$',views.likevideo, name='video_like'),
+   
     
-    
-
-
-
     url(r'^dashboard/$', views.stats, name='stats'),
     url(r'^recipe/draft/list/$', views.recipe_draft_list, name='recipe_draft_list'),
     url(r'^recipe/publish/list/$', views.recipe_publish_list, name='recipe_publish_list'),

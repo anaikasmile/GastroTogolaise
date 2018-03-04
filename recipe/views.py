@@ -51,7 +51,9 @@ def admin_pagination(request,fichier):
 
 #Liste des categories
 def home(request):
-	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')[:6]	
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')	
+	recipes = pagination(request, recipes)
+
 	return render(request,'recipe/accueil.html',{'recipes':recipes})
 
 
@@ -130,25 +132,14 @@ def like(request):
 	return HttpResponse(like)
 
 
-
-
 ###   Videos  ###
 
 def video_list(request):
-	videos = Video.objects.all().order_by('-published_at')
-	videos = pagination(request, videos)
-	return render(request,'video/video_list.html',{'videos':videos})
+ 	videos = Video.objects.all().order_by('-published_at')
+ 	videos = pagination(request, videos)
+ 	return render(request,'recipe/video_list.html',{'videos':videos})
 
 
-
-#Liste des videos par categorie
-def videos_per_cat(request,pk):
-	category = get_object_or_404(Category, pk=pk)
-	videos = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
-	videos = pagination(request, videos)
-	return render(request,'video/video_list.html', {'videos':videos, 'category_video':category})
-
-# Video detail
 def video_detail(request,pk):
 	video = get_object_or_404(Video,pk=pk)
 	video.view = video.view+1 #Incrementer le nombre de vue a chaque visaualisation d'une recette
@@ -165,21 +156,26 @@ def video_detail(request,pk):
 	except EmptyPage:
 		video_author = paginator.page(paginator.num_pages)
 
-	return render(request,'video/video_view.html',{'video':video,'video_author':video_author})
+	return render(request,'recipe/video_detail.html',{'video':video,'recipe_author':video_author})
 
-def video_view(request):
-
-	return render(request,'recipe/video_view.html',{})
-
-
+# Liker une video
+def likevideo(request):
+	if request.method =='GET':
+		video_pk  = request.GET['video_pk']
+		r = Video.objects.get(pk=video_pk)
+		like = r.like + 1
+		r.like = like
+		r.save()
+	return HttpResponse(like)
 
 
 #Box de l'utilisateur en ligne
 @login_required
 def recipe_box_user(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=request.user)
+	nb = recipes.count()
 	recipes = admin_pagination(request, recipes)
-	return render(request,'recipe/recipe_box_user.html',{'recipes':recipes})
+	return render(request,'recipe/recipe_box_user.html',{'recipes':recipes, 'nb':nb})
 
 
 """ Partie Administration """
@@ -282,7 +278,7 @@ def video_new(request):
 			return redirect ('video_preview',pk=video.pk)
 	else:
 		form = VideoForm()
-	return render(request, 'video/video_new.html',{'form':form})
+	return render(request, 'recipe//video_new.html',{'form':form})
 
 #@login_required
 def video_edit(request,pk):
@@ -296,24 +292,24 @@ def video_edit(request,pk):
 		return redirect('video_preview', pk=video.pk)
 	else:
 		form = VideoForm(instance=video)
-	return render(request, 'video/video_new.html', {'form': form})
+	return render(request, 'recipe//video_new.html', {'form': form})
 
 
 # Apercu
 def video_preview(request,pk):
 	video = get_object_or_404(Video, pk=pk)
-	return render(request, 'video/video_preview.html',{'video':video})
+	return render(request, 'recipe//video_preview.html',{'video':video})
 
 
 #@login_required
 def video_draft_list(request):
 	videos = Video.objects.filter(published_at__isnull=True).order_by('published_at')
-	return render(request,'video/video_draft_list.html',{'videos':videos})
+	return render(request,'recipe//video_draft_list.html',{'videos':videos})
 
 #@login_required
 def video_publish_list(request):
 	videos = Video.objects.filter(published_at__isnull=False).order_by('published_at')
-	return render(request,'video/video_publish_list.html',{'videos':videos})
+	return render(request,'recipe//video_publish_list.html',{'videos':videos})
 
 
 #@login_required

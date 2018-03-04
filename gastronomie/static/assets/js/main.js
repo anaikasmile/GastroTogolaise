@@ -262,7 +262,7 @@ $(document).ready(function() {
     $('.likevideo').click(function() {
     var pk;
         pk = $(this).attr('data-video-pk');
-        $.get('/video/like/', {
+        $.get('video/like/', {
             video_pk: pk
         }, function(data) {
             $('#count-like-'+pk).html(data);

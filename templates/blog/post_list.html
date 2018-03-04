@@ -17,7 +17,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/blog.jpg' %}">
+                                    <img src="{% static 'assets/images/top-blog.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -57,9 +57,21 @@
             <div class="col-md-12 mix cat1">
 
 
-                <div class="single_mixi_portfolio  border margin-bottom-80">
-                <br>
-                	<h5><a href="{% url 'post_detail' pk=post.pk %}" class="blog_title " style="padding-left: 15px;" >{{post.title}}</a></h5>
+                <div class="single_mixi_portfolio margin-bottom-40">
+                
+           
+                    {% if post.image %}
+                    <a href="{% url 'post_detail' pk=post.pk %}">
+                    {% thumbnail post.image  "680x350" crop="center" as im %}
+                        <img src="{{im.url}}" class="img-responsive">
+                    {% endthumbnail %}  
+                    </a>
+                    {% else %}
+                        <a href=""></a>
+                    {% endif %}
+                   
+
+                    <h5 class="padding"><a href="{% url 'post_detail' pk=post.pk %}" class="blog_title " >{{post.title}}</a></h5>
 			        <!-- By <a href="" class="rp-author">Admin</a> -->
 			        <div class="rp-post-meta-info "  style="padding-left: 15px;">
 			            <ul class="list-inline">
@@ -72,29 +84,16 @@
 			                <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
 
 			                <li>
-			                    <a class="like" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
+			                    <a class="likepost" data-recipe-pk="{{post.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i><span id="count-like-{{post.pk}}"></a>{{post.like}}</span>
 			                </li>
 			                {% get_comment_count for post as comment_count %}
 			                <li><a href="#commentaire"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
 			            </ul>
 			        </div>
 
-                    <div class="margin-top-20">
-           
-                        {% if post.image %}
-                        <a href="{% url 'post_detail' pk=post.pk %}">
-                        {% thumbnail post.image  "680x350" crop="center" as im %}
-                            <img src="{{im.url}}" class="img-responsive">
-                        {% endthumbnail %}  
-                        </a>
-                        {% else %}
-                            <a href=""></a>
-                        {% endif %}
-                       
-                       
-                    </div>
                     <div class="padding-20">
                     	 <p>{{post.text|safe|truncatewords:50}}</p>
+                    	 <br>
                     	 <div class="pull-left ">
                     		<i class="fa fa-tags"></i><strong>TAGS:</strong>
                     	</div>

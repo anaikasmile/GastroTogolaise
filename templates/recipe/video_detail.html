@@ -1,0 +1,148 @@
+{% extends 'base_principal.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% load comments %}
+{% load i18n %}
+
+{% block slide %}
+<section id="home" class="home">
+
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+{% endblock slide %}
+
+
+{% block header %}
+
+   <section class="rp-post-header margin-top-40">
+            
+            <div class="rp-post-cat">
+                
+                <ul class="list-inline">
+
+                    <li><a href="">{{video.category.name}}</a></li>   
+                  
+                    {% for origin in video.origines_set.all %} 
+                     <li><a href="">{{ origin.ethnic }}</a></li>
+                    {% endfor %}
+                
+                </ul>
+                
+            </div>
+            <h2 class="rp-post-title">{{video.title}}</h2>
+        
+            <div class="rp-post-meta-info">
+                <ul class="list-inline">
+                
+                    <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
+                  
+                        By <a href="" class="rp-author">Admin</a></li>  
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ video.published_at|date:'F j, Y' }} </li> 
+                    
+                    <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
+
+                    <li>
+                        <a class="video-like " data-video-pk="{{video.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span>
+                    </li>
+                    {% get_comment_count for video as comment_count %}
+                    <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                </ul>
+            </div>
+            <div class="rp-post-share">
+                 <!--Facebook-->
+                <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs">  | Share on Facebook</span></a>
+                    
+                <!--Twitter-->
+                <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs">  | Tweet on Twitter</span></a>
+                <!--Gplus-->
+                <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+                <!--Pinterest-->
+                <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+                
+            </div>
+            
+           
+        </section>
+
+{% endblock header %}
+
+{% block content %}
+ 
+
+    <section class="rp-post-detail">
+     
+        <div class="rp-post-image">
+            
+           {% video video.video as video %}
+            {% video video '700 x 400'  %}
+            {% endvideo %}
+        </div>
+
+        
+        
+        <div class="rp-post-description">
+            
+                <p>
+                {{video.description}}
+                </p>
+          
+        </div>
+        
+
+        <div class="pull-left">
+              
+                <ul class="list-inline tags">
+
+                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                {% for tag in video.tags.all %}
+
+                 <li><a>{{tag.name}}</a></li>
+
+                {% endfor %}
+                </ul>
+        </div>
+        <br><br>
+                
+        <div class="rp-post-share border" >
+            <strong> SHARE &nbsp;&nbsp;  </strong>
+             <!--Facebook-->
+            <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
+            <!--Twitter-->
+            <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
+            <!--Gplus-->
+            <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+            <!--Pinterest-->
+            <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+        </div>    
+
+    </section>
+
+  
+
+{% endblock content %}    

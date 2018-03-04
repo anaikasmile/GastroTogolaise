@@ -6,7 +6,7 @@ from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 from django_countries.fields import CountryField
 from taggit.managers import TaggableManager
-
+#from bootstrap3_datetime.widgets import DateTimePicker
 # Create your models here.
 
 class Category(models.Model):

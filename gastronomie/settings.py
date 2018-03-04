@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'threadedcomments',
     'django_comments',
     'taggit',
-
+    'dm2bn',
     #'ckeditor_uploader',
     #'secretballot',
     # 'likes',

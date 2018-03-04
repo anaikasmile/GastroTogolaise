@@ -7,6 +7,14 @@
 {% load widget_tweaks %}
 <!-- {% load comments %} -->
 {% load threadedcomments_tags %}
+{% block extrahead %}
+
+    {{ block.super }}
+
+    {% include "comments/ajax_comments.html" %}
+
+{% endblock %}
+
 
 {% block slide %}
    
@@ -49,8 +57,10 @@
 
                     <li><a href="">{{recipe.category.name}}</a></li>   
                   
-                    {% for origin in recipe.origines_set.all %} 
-                     <li><a href="">{{ origin.ethnic }}</a></li>
+                    {% for origin in recipe.origin.all %}
+
+                     <li><a>{{origin.ethnic}}</a></li>
+
                     {% endfor %}
                 
                 </ul>
@@ -168,18 +178,18 @@
            
                 <div class="col-md-4">
                     <strong>Prepare time:</strong>
-                    {% if recipe.prepare_time %} {{recipe.prepare_time}} {% else %} --- {% endif %}
+                    {% if recipe.prepare_time %} {{recipe.prepare_time|format_time}} {% else %} --- {% endif %}
                 </div>
             
             
                 <div class="col-md-4">
                     <strong>Cooking time:</strong>
-                     {% if recipe.cooking_time %}  {{recipe.cooking_time}} {% else %} --- {% endif %}
+                     {% if recipe.cooking_time %}  {{recipe.cooking_time|format_time}} {% else %} --- {% endif %}
                 </div>
            
                 <div class="col-md-4">
                    <strong>Ready in:</strong> 
-                   {% if recipe.total_time %}{{recipe.total_time}} {% else %} --- {% endif %}
+                   {% if recipe.total_time %}{{recipe.total_time|format_time}} {% else %} --- {% endif %}
                 </div>
            
             </div>
@@ -221,21 +231,7 @@
             </div>
         </div>
 
-        <div class="pull-left">
-              
-                <ul class="list-inline tags">
-
-                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
-                {% for tag in recipe.tags.all %}
-
-                 <li><a>{{tag.name}}</a></li>
-
-                {% endfor %}
-                </ul>
-        </div>
-        <br>
-                
-        <div class="rp-post-share border" >
+        <div class="rp-post-share border margin-bottom-20">
             <strong> SHARE &nbsp;&nbsp;  </strong>
              <!--Facebook-->
             <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
@@ -245,7 +241,25 @@
             <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
             <!--Pinterest-->
             <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
-        </div>    
+        </div> 
+
+        <div class="row"> 
+
+            <div class="pull-left">
+                  
+                    <ul class="list-inline tags">
+
+                    <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                    {% for tag in recipe.tags.all %}
+
+                     <li><a>{{tag.name}}</a></li>
+
+                    {% endfor %}
+                    </ul>
+            </div>
+       
+        </div>      
+           
 
     </section>
 
@@ -265,7 +279,7 @@
                         {% get_comment_list for recipe as comment_list %}
 
                         {% for comment in comment_list|fill_tree reversed %}
-                   
+                        <div {% if request.REQUEST.c|add:"0" == node.id %}id="newly_posted_comment"{% endif %}>
                         <div class="name">
                             <div class="media">
                                 <a class="pull-left" href="#"> 
@@ -275,13 +289,19 @@
                                 <div class="media-body rp-comment">
                                     <span class="rp-arrow">
                                     </span>
-                                    <h6 class="media-heading"><a href="" class="cook-second-color">{{comment.user_name}}</a> <span class="text-right">{{comment.submit_date|naturaltime}}</span></h6>
+                                   
+                                    <h6 class="media-heading"><a href="" class="cook-second-color">
+                            
+
+                                    {{comment.user_name}}</a> <span class="text-right">{{comment.submit_date|naturaltime}}</span></h6>
                                    
                                     <hr>
                                     <p>{{comment.comment}}</p>
+                                    
                                 </div>
 
                             </div>
+                        </div>
                         </div>
                         <br>
                         {% endfor %}
@@ -305,10 +325,11 @@
                     <br>
                 </div>
             
-           
+               
                {% if user.is_authenticated %}
                 {% get_comment_form for recipe as form %}
-                    <form action="{% comment_form_target %}" method="POST">
+                 <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %} style="display:none;" {% endif %}>
+                    <form action="{% comment_form_target %}" method="POST"  id="comment-form-{{ node.id }}f">
                     {% csrf_token %}
                     {{ form.comment|add_class:'form-control' }}
                     
@@ -322,39 +343,44 @@
                     
                     <button class="btn btn-primary" type="submit" id="id_submit">Submit</button>
                     </form>
+                </div>
                 {% else %}
 
                 <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
+                
                 {% get_comment_form for recipe as form %}
+                
+               <!--  <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %}style="display:none;"{% endif %}> -->
                     <form action="{% comment_form_target %}" method="post">
-                    {% csrf_token %}
-                    {{ form.content_type }}
-                    {{ form.object_pk }}
-                    {{ form.timestamp }}
-                    {{ form.security_hash }}
-                    <div class="row">
-                        <div class="form-group col-xs-12 col-sm-4">
-                            <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                        {% csrf_token %}
+                        {{ form.content_type }}
+                        {{ form.object_pk }}
+                        {{ form.timestamp }}
+                        {{ form.security_hash }}
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12 col-sm-4">
-                            <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                            <label>Comment <sup>*</sup></label></span><br> 
+                            {{form.comment|add_class:'form-control'}}
+                            </div>
                         </div>
-                        <div class="form-group col-xs-12 col-sm-4">
-                            <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                        <label>Comment <sup>*</sup></label></span><br> 
-                        {{form.comment|add_class:'form-control'}}
-                        </div>
-                    </div>
-                       <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                    
-                  
-                </form> 
+                           <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        
+                    </form> 
+                <!-- </div> -->
+
             {% endif %}
             </div>     
 
