@@ -48,8 +48,10 @@
 
                     <li><a href="">{{video.category.name}}</a></li>   
                   
-                    {% for origin in video.origines_set.all %} 
-                     <li><a href="">{{ origin.ethnic }}</a></li>
+                    {% for origin in video.origin.all %}
+
+                    <li><a href="">{{origin.ethnic}}</a></li>
+
                     {% endfor %}
                 
                 </ul>

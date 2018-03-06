@@ -58,8 +58,8 @@
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 
-        <script src="{% static 'assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script> 
-         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+        <!-- <script src="{% static 'assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>  -->
+        <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -100,7 +100,7 @@
                             <li>
                                 <a href="{% url 'recipe_add' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> Add a recipe</a>
                             </li>
-                             <li class="divider"></li>
+                            
                             <li>
                                 <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>Account settings</a>
                             </li>
@@ -124,8 +124,121 @@
                             
                 </div>     
             </div>
-        </div>            
-        <header id="main_menu" class="header navbar-fixed-top ">
+        </div>  
+
+    <header class="main_menu">
+           
+        <div class="main_menu_bg">     
+
+        <nav class="navbar navbar-default">
+                <div class="container">
+
+                    <div class="row">
+                       
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/">
+                             
+                                Cook'iT
+                            </a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            <ul class="nav navbar-nav">
+                                
+                             
+                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recettes</a>
+                                    <ul class="dropdown-menu">
+                                        {%for cat in categories %}
+                                        <li>
+                                            <a href="{% url 'recipe_per_cat' pk=cat.pk %}">{{cat.name}}</a>
+                                            <hr>
+                                        </li>
+                                        {% endfor %}
+                                       
+                                     
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'video_list' %}">Videos</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                                    <ul class="dropdown-menu">
+                                        {%for post_cat in post_categories %}
+                                        <li>
+                                            <a href="{% url 'post_per_cat' pk=post_cat.pk %}">{{post_cat.name}}</a>
+                                            <hr>
+                                        </li>
+                                        {% endfor %}
+                                       
+                                 
+                                    </ul>
+                                </li>
+                               
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bons Plans</a>
+                                    <ul class="dropdown-menu">
+                                         {%for restaurant_cat in restaurant_categories %}
+                                        <li>
+                                            <a href="{% url 'restaurant_per_cat' pk=restaurant_cat.pk %}">{{restaurant_cat.name}}</a>
+                                            <hr>
+                                        </li>
+                                        {% endfor %}
+                                      
+                                    </ul>
+                                </li>
+                            
+                                
+
+                              
+                                
+                                 <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
+                                    <ul class="dropdown-menu">
+                                 
+                                       <li><a href="">L'équipe</a></li>
+                                       <hr>
+                                       <li><a href="{% url 'contributors' %}">Contributeurs</a></li>
+                                       <hr>
+                                       <li><a href="">Mentions Légales</a></li>
+                                      
+                                    </ul>
+                                </li>
+                            
+                                <li><a href="{% url 'recipe_add' %}"> Proposer votre recette</a></li>
+                                
+                                <li>
+                                    <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <span class="glyphicon glyphicon-search" style="font-size:20px;"></span></a>
+                                    <ul class="dropdown-menu search">
+                                        <li>
+                                            <form class="navbar-form" role="search">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Search">
+                                                </div>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>    
+            </div>
+
+                   
+        </nav>
+        </div>
+                   
+    </header>
+<!--         <header id="main_menu" class="header navbar-fixed-top ">
 
             
             <div class="main_menu_bg">
@@ -134,7 +247,7 @@
                       
                             <nav class="navbar navbar-default" id="navmenu">
                                 <div class="container-fluid">
-                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                   
                                     <div class="navbar-header">
                                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                             <span class="sr-only">Toggle navigation</span>
@@ -142,21 +255,18 @@
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="#home">
-                                            <!-- <img src="{% static 'assets/images/logo.png' %}"/> -->
+                                        <a class="navbar-brand" href="/">
+                                         
                                             Cook'iT
                                         </a>
                                     </div>
-
-                                    <!-- Collect the nav links, forms, and other content for toggling -->
-
 
 
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                         <ul class="nav navbar-nav">
                                             
-                                            <li><a href="/">Accueil</a></li>
+                                         
                                             
                                             <li class="dropdown">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recettes</a>
@@ -202,12 +312,14 @@
                                             
 
                                           
-                                            <li><a href="{% url 'contributors' %}">Contributeurs</a></li>
+                                            
                                              <li class="dropdown">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                                                 <ul class="dropdown-menu">
                                              
                                                    <li><a href="">L'équipe</a></li>
+                                                   <hr>
+                                                   <li><a href="{% url 'contributors' %}">Contributeurs</a></li>
                                                    <hr>
                                                    <li><a href="">Mentions Légales</a></li>
                                                   
@@ -242,7 +354,9 @@
                 </div>
 
             </div>
-        </header> <!--End of header -->
+        </header> -->
+
+         <!--End of header -->
 
 
 
@@ -384,17 +498,19 @@
             <a href="#"><i class="fa fa-chevron-up"></i></a>
         </div>
 
-        <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
-        <script src="{% static 'assets/js/vendor/bootstrap.min.js' %}"></script>
 
-        <script src="{% static 'assets/js/jquery.easypiechart.min.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'assets/js/main.js' %}"></script> 
+        
+
+    <!--     <script src="{% static 'assets/js/jquery.easypiechart.min.js' %}"></script>
         <script src="{% static 'assets/js/portfolio.jquery.js' %}"></script>
         <script src="{% static 'assets/js/jquery.mixitup.min.js' %}"></script>
         <script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
         <script src="{% static 'assets/css/skills/inview.min.js' %}"></script>
         <script src="{% static 'assets/css/skills/progressbar.js' %}"></script>
-        <script src="{% static 'assets/css/skills/main.js' %}"></script> 
+        <script src="{% static 'assets/css/skills/main.js' %}"></script>  -->
         <!--This is link only for gmaps-->
         <!-- <script src="http://maps.google.com/maps/api/js"></script>
         <script src="assets/js/gmaps.min.js"></script>
@@ -410,8 +526,9 @@
         
        
         <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-        <script src="{% static 'assets/js/plugins.js' %}"></script>
-        <script src="{% static 'assets/js/main.js' %}"></script>
+      
+       
+         <!--  <script src="{% static 'assets/js/plugins.js' %}"></script>-->
 
 
        <!--  {% dm2bn_settings %}

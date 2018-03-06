@@ -59,7 +59,7 @@
                   
                     {% for origin in recipe.origin.all %}
 
-                     <li><a>{{origin.ethnic}}</a></li>
+                    <li><a href="">{{origin.ethnic}}</a></li>
 
                     {% endfor %}
                 
@@ -177,18 +177,18 @@
             <div class="row">
            
                 <div class="col-md-4">
-                    <strong>Prepare time:</strong>
+                    <strong>{% trans 'Temps de préparation' %}:</strong>
                     {% if recipe.prepare_time %} {{recipe.prepare_time|format_time}} {% else %} --- {% endif %}
                 </div>
             
             
                 <div class="col-md-4">
-                    <strong>Cooking time:</strong>
+                    <strong>{% trans 'Temps de cuisson' %}:</strong>
                      {% if recipe.cooking_time %}  {{recipe.cooking_time|format_time}} {% else %} --- {% endif %}
                 </div>
            
                 <div class="col-md-4">
-                   <strong>Ready in:</strong> 
+                   <strong>{% trans 'Total' %}:</strong> 
                    {% if recipe.total_time %}{{recipe.total_time|format_time}} {% else %} --- {% endif %}
                 </div>
            
@@ -244,18 +244,20 @@
         </div> 
 
         <div class="row"> 
+            <div class="col-md-12">
 
-            <div class="pull-left">
-                  
-                    <ul class="list-inline tags">
+                <div class="pull-left">
+                      
+                        <ul class="list-inline tags">
 
-                    <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
-                    {% for tag in recipe.tags.all %}
+                        <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                        {% for tag in recipe.tags.all %}
 
-                     <li><a>{{tag.name}}</a></li>
+                         <li><a>{{tag.name}}</a></li>
 
-                    {% endfor %}
-                    </ul>
+                        {% endfor %}
+                        </ul>
+                </div>
             </div>
        
         </div>      
@@ -268,11 +270,10 @@
 
         <div class="row" id="comment">
            {% get_comment_count for recipe as comment_count %}
-            <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} Comments </h3>              
+            <h3 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaires' %} </h3>              
 
             <div id="collapse1" class="panel-collapse collapse">
              
-                <br>
                 <div id="comment-list">
 
                     <ul class="list">

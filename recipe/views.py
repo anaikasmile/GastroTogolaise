@@ -181,6 +181,7 @@ def recipe_box_user(request):
 """ Partie Administration """
 
 
+
 #Page accueil administration
 def stats(request):
 	return render(request,'stats.html',{})
@@ -278,7 +279,7 @@ def video_new(request):
 			return redirect ('video_preview',pk=video.pk)
 	else:
 		form = VideoForm()
-	return render(request, 'recipe//video_new.html',{'form':form})
+	return render(request, 'recipe/video_new.html',{'form':form})
 
 #@login_required
 def video_edit(request,pk):
@@ -292,24 +293,24 @@ def video_edit(request,pk):
 		return redirect('video_preview', pk=video.pk)
 	else:
 		form = VideoForm(instance=video)
-	return render(request, 'recipe//video_new.html', {'form': form})
+	return render(request, 'recipe/video_new.html', {'form': form})
 
 
 # Apercu
 def video_preview(request,pk):
 	video = get_object_or_404(Video, pk=pk)
-	return render(request, 'recipe//video_preview.html',{'video':video})
+	return render(request, 'recipe/video_preview.html',{'video':video})
 
 
 #@login_required
 def video_draft_list(request):
 	videos = Video.objects.filter(published_at__isnull=True).order_by('published_at')
-	return render(request,'recipe//video_draft_list.html',{'videos':videos})
+	return render(request,'recipe/video_draft_list.html',{'videos':videos})
 
 #@login_required
 def video_publish_list(request):
 	videos = Video.objects.filter(published_at__isnull=False).order_by('published_at')
-	return render(request,'recipe//video_publish_list.html',{'videos':videos})
+	return render(request,'recipe/video_publish_list.html',{'videos':videos})
 
 
 #@login_required

@@ -52,7 +52,7 @@
       
       
        
-        <div class="col-md-12 mix cat1 margin-bottom-20">
+        <div class="col-md-12 mix cat1">
             <div class="single_mixi_portfolio margin-bottom-20">
                 {% if post.image %}
                     {% thumbnail post.image  "900x500" crop="center" as im %}
@@ -126,42 +126,45 @@
     <section class="margin-top-20">
         <div class="row" id="commentaire">
         {% get_comment_count for post as comment_count %}
-        <h3 class="" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> Comments {{comment_count}}</h3>
+        <h3 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaire' %} </h3>
         
 
         <div id="collapse1" class="panel-collapse collapse">
          
-             <br>
             <div id="comment-list">
 
-                <ul class="list">
-                {% get_comment_list for post as comment_list %}
+                 <ul class="list">
+                        {% get_comment_list for post as comment_list %}
 
-                {% for comment in comment_list|fill_tree reversed %}
-                    <div class="name">
-                        <div class="media">
-                            <a class="pull-left" href="#"> 
-                            {% if comment.user.profile.photo %}
+                        {% for comment in comment_list|fill_tree reversed %}
+                        <div {% if request.REQUEST.c|add:"0" == node.id %}id="newly_posted_comment"{% endif %}>
+                        <div class="name">
+                            <div class="media">
+                                <a class="pull-left" href="#"> 
+                                  
+                                    <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="50px;" alt="">
+                                </a> 
+                                <div class="media-body rp-comment">
+                                    <span class="rp-arrow">
+                                    </span>
+                                   
+                                    <h6 class="media-heading"><a href="" class="cook-second-color">
                             
-                                <img src="{{comment.user.profile.photo.url}}" class="img-circle" width="50px;" alt="">
-                            
-                             {% else %}
-                                <img src="{% static 'img/user-logo.jpg' %}" class="" width="50px;" alt=""> 
-                             {% endif %}  
-                            </a> 
-                            <div class="media-body rp-comment">
-                                <span class="rp-arrow">
-                                </span>
-                                <h6 class="media-heading"><a href=""><!-- {{comment.user}} --> {{comment.user_name}}</a></h6>  .   {{comment.submit_date|naturaltime}}
-                                <hr> 
-                                <p>{{comment.comment}}</p>
+
+                                    {{comment.user_name}}</a> <span class="text-right">{{comment.submit_date|naturaltime}}</span></h6>
+                                   
+                                    <hr>
+                                    <p>{{comment.comment}}</p>
+                                    
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
-                  {% endfor %}
-                </ul>
-               
+                        </div>
+                        <br>
+                        {% endfor %}
+                      
+                    </ul>
                 <!-- Pagination comments -->
 
                 <div class="comment-pagination">
