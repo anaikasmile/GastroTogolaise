@@ -45,6 +45,7 @@
         <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/colors.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/mdb.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/toastr.scss' %}">
         <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
 
 
@@ -54,6 +55,8 @@
 
         <!--Theme custom css -->
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/login-register.css' %}">
+    
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
@@ -116,7 +119,7 @@
                             </li>
                         </ul>
                     {% else %}
-                        <a href="{% url 'account_login' %}"><i class="fa fa-user"></i>&nbsp; Log in </a>
+                        <a  href="{% url 'account_login' %}"><i class="fa fa-user"></i>&nbsp; Log in </a>
                         
                     {% endif %}
                
@@ -134,7 +137,7 @@
                 <div class="container">
 
                     <div class="row">
-                       
+                        <div class="col-md-3">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
@@ -147,6 +150,9 @@
                                 Cook'iT
                             </a>
                         </div>
+                        </div>
+
+                        <div class="col-md-9">
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -230,6 +236,8 @@
                             </ul>
                             
                         </div>
+
+                        </div>
                     </div>    
             </div>
 
@@ -238,125 +246,8 @@
         </div>
                    
     </header>
-<!--         <header id="main_menu" class="header navbar-fixed-top ">
 
-            
-            <div class="main_menu_bg">
-                <div class="container">
-                    <div class="row">
-                      
-                            <nav class="navbar navbar-default" id="navmenu">
-                                <div class="container-fluid">
-                                   
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="/">
-                                         
-                                            Cook'iT
-                                        </a>
-                                    </div>
-
-
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                                        <ul class="nav navbar-nav">
-                                            
-                                         
-                                            
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recettes</a>
-                                                <ul class="dropdown-menu">
-                                                    {%for cat in categories %}
-                                                    <li>
-                                                        <a href="{% url 'recipe_per_cat' pk=cat.pk %}">{{cat.name}}</a>
-                                                        <hr>
-                                                    </li>
-                                                    {% endfor %}
-                                                   
-                                                 
-                                                </ul>
-                                            </li>
-                                            <li><a href="{% url 'video_list' %}">Videos</a></li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                                <ul class="dropdown-menu">
-                                                    {%for post_cat in post_categories %}
-                                                    <li>
-                                                        <a href="{% url 'post_per_cat' pk=post_cat.pk %}">{{post_cat.name}}</a>
-                                                        <hr>
-                                                    </li>
-                                                    {% endfor %}
-                                                   
-                                             
-                                                </ul>
-                                            </li>
-                                           
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bons Plans</a>
-                                                <ul class="dropdown-menu">
-                                                     {%for restaurant_cat in restaurant_categories %}
-                                                    <li>
-                                                        <a href="{% url 'restaurant_per_cat' pk=restaurant_cat.pk %}">{{restaurant_cat.name}}</a>
-                                                        <hr>
-                                                    </li>
-                                                    {% endfor %}
-                                                  
-                                                </ul>
-                                            </li>
-                                        
-                                            
-
-                                          
-                                            
-                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
-                                                <ul class="dropdown-menu">
-                                             
-                                                   <li><a href="">L'équipe</a></li>
-                                                   <hr>
-                                                   <li><a href="{% url 'contributors' %}">Contributeurs</a></li>
-                                                   <hr>
-                                                   <li><a href="">Mentions Légales</a></li>
-                                                  
-                                                </ul>
-                                            </li>
-                                        
-                                            <li><a href="{% url 'recipe_add' %}"> Proposer votre recette</a></li>
-                                            
-                                            <li>
-                                                <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="glyphicon glyphicon-search" style="font-size:20px;"></span></a>
-                                                <ul class="dropdown-menu search">
-                                                    <li>
-                                                        <form class="navbar-form" role="search">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Search">
-                                                            </div>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-
-                                        
-                                    </div>
-
-                                </div>
-                            </nav>
-                        </div>  
-                   
-
-                </div>
-
-            </div>
-        </header> -->
-
-         <!--End of header -->
+ <!--End of header -->
 
 
 
@@ -474,16 +365,16 @@
                   <span aria-hidden="true">&times;</span>
                  
                 </button>
-                  <h5 class="h5-responsive"> {% trans 'Sign out' %}</h5>
+                  <h5 class="h5-responsive"> {% trans 'Log out' %}</h5>
               </div>
               <div class="modal-body">
-                <p>{% trans 'Are you sure you want to sign out?' %}</p>
+                <p>{% trans 'Etes-vous sur de vouloir vous déconnecter?' %}</p>
                 <form method="post" action="{% url 'account_logout' %}">
                   {% csrf_token %}
                   {% if redirect_field_value %}
                   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
                   {% endif %}
-                  <button  class="btn btn-danger" type="submit">{% trans 'Yes' %}</button>
+                  <button  class="btn btn-primary" type="submit">{% trans 'Oui' %}</button>
                 </form>
               </div>
               
@@ -491,6 +382,11 @@
           </div>
         </div>
 
+<!-- Modal for login -->
+   
+
+     
+<!-- End modal -->
 
         <!-- START SCROLL TO TOP  -->
 
@@ -502,7 +398,7 @@
         <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
         <script  type="text/javascript" src="{% static 'assets/js/main.js' %}"></script> 
-        
+       
 
     <!--     <script src="{% static 'assets/js/jquery.easypiechart.min.js' %}"></script>
         <script src="{% static 'assets/js/portfolio.jquery.js' %}"></script>
@@ -526,18 +422,42 @@
         
        
         <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-      
-       
-         <!--  <script src="{% static 'assets/js/plugins.js' %}"></script>-->
-
-
-       <!--  {% dm2bn_settings %}
+        <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script> 
+        <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script> 
         <script type="text/javascript">
-            $(function () {
-                // show messages
-                $.showMessages({{ messages|messages2json }});
+          $(document).ready(function() { 
+                
+                toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": true,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "300",
+                  "hideDuration": "1000",
+                  "timeOut": "5000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                 }
+
+           
+
             });
-        </script> -->
+        </script>
+        {% if messages %}
+        {% for message in messages %}
+         
+          <script type="text/javascript">
+               toastr.{{message.tags }}("{{ message }}");
+          </script>
+        {% endfor %}
+        {% endif  %}
+
 
     </body>
 </html>

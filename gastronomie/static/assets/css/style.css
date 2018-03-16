@@ -820,7 +820,7 @@ ul.tags li a {
     display: block;
     padding: 5px 15px;
     color: #111;
-    font-size: 5px;
+    font-size: small;
     border: 1px solid #c0c0c0;
 }
 
@@ -1872,6 +1872,7 @@ blockquote footer, blockquote small, blockquote .small {
  .rp-footer .share .fa-google-plus {
     color: #cc2127;
 }
+
 
 .border {
     border: 1px solid #ededed;

@@ -51,9 +51,9 @@
 {% block content %}
 
 
-<div id="mixcontent" class="mixcontent">
+<div class="mixcontent">
 	{% for user in users %}
-    <div class="col-md-6 mix card-user padding">
+    <div class="col-md-6  card-user padding">
         <div class="single_mixi_portfolio margin-bottom-20">
     	{% if user.profile.photo %}
 	          	<img class="panel-profile-img" src="{{user.profile.photo.url}}" width="100%" alt="" class="img-responsive" >

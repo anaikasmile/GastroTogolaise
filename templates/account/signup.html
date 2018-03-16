@@ -1,4 +1,4 @@
-{% extends 'base_principal.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% load thumbnail %}
@@ -8,61 +8,131 @@
 {% providers_media_js %}
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
+{% block slide %}
+   
+<section id="home" class="home">
+    
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+{% endblock slide %}
+
+{% block header %}
+
+   
+{% endblock header %}
 
 {% block content_base %}
 
 
+<section class="portfolio">
+    <div class="container">                                 
+        <div class="row ">
 
-<div class="row">
-    <div class="col-lg-offset-3 col-lg-6">    
-    <section class="paper">
-        <h3 class="h3-responsive text-center">Sign up</h3>
-        <hr>
-        <div class="panel panel-default">
-              
-			<div class="panel-body text-center">
-				<h4>Register with:</h4>
-                <ul class="list-inline">
-                  
-					<li> <a href="{% url 'facebook_login'  %}" class="btn-floating btn-lg-full fb-bg"><i class="fa fa-facebook"> </i></a>
-					</li>
-					<li><a href="{% url 'google_login' %}" class="btn-floating btn-lg-full gplus-bg"><i class="fa fa-google-plus"> </i></a></li>
-					<li><a class="btn-floating btn-lg-full tw-bg"><i class="fa fa-twitter"></i></a></li> 
-				</ul>
+		    <div class="col-md-offset-4 col-md-4">
+		        <div class="login">
+		            <h4 class="text-center">Register with</h4>
+		                    
+		              <div class="box">
+		                   <div class="content">
+		                        <div class="social">
+		                            <a  href="{% url 'google_login' %}"  class="circle google">
+		                              <i class="fa fa-google-plus fa-fw"></i>
+		                            </a>
+		                            <a href="{% url 'facebook_login'  %}"  class="circle facebook" >
+		                              <i class="fa fa-facebook fa-fw"></i>
+		                            </a>
+		                        </div>
 
-				<h4>Or register with your email:</h4>
-				<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-				  {% csrf_token %}
-				  
-				  {% for hidden in form.hidden_fields %}
-                      {{ hidden }}
-                    {% endfor %}
+		                    <div class="division">
+		                        <div class="line l"></div>
+		                            <span>or</span>
+		                        <div class="line r"></div>
+		                    </div>
+		                    <h4 class="text-center">Use your email </h4>
 
-                    {% for field in form.visible_fields %}
-                      <div class="form-group">
-                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ field|add_class:'form-control' }}
-                        {% for error in field.errors %}
-                          <span class="help-block">{{ error }}</span>
-                        {% endfor %}
-                      </div>
-                    {% endfor %}
+		                    <div class="form loginBox">
+		                        <form method="POST" action="{% url 'account_signup' %}">
+		                          {% csrf_token %}
 
-				  {% if redirect_field_value %}
-				  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-				  {% endif %}
-				  <button type="submit" class="btn btn-danger">{% trans "Sign Up" %}</button>
-				</form>
+		                          {% if form.errors %}
+                                        {% for field in form %}
+                                            {% for error in field.errors %}
+                                                <div class="alert alert-error">
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        {% for error in form.non_field_errors %}
+                                            <div class="alert alert-error">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+		                  
+		                           {% for hidden in form.hidden_fields %}
+		                              {{ hidden }}
+		                            {% endfor %}
+			                       
+			                        <div class="form-group">
+		                          
+		                                {{ form.email |add_class:'form-control'}}
+		                                <span class="help-block">{{ form.email.error }}</span>
+		                             	
+		                            </div>
+		                            <div class="form-group">
+		                             
+		                                {{ form.password1 |add_class:'form-control'}} 
+		                                <span class="help-block">{{ form.password1.error }}</span>
+		                            </div>
+		                            <div class="form-group">
+		                             
+		                                {{ form.password2 |add_class:'form-control'}} 
+		                                <span class="help-block">{{ form.password2.error }}</span>
+		                            </div>
+		                            
+		                            
+		                            
+		                           {% if redirect_field_value %}
+										<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+									{% endif %}
+		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Create account" %}</button>
 
-				<p>By signing up you agree to Gastro's Terms of Use and Privacy Policy</p>
-			</div>
+		                        </form>
+		                    </div>
 
-			<div class="panel-footer">
-                  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-                  </p>
-            </div>
-		</div>
+		                    <div class="forgot login-footer">
+		                        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+		                  		</p>
+		                    </div>
+		                </div>
+		            </div>
+		                          
+		        </div>           
+		    </div>  
+		</div> 
 	</div>
-</div>
+</section>       
 {% endblock %}

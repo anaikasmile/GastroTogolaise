@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django_comments',
     'taggit',
     'dm2bn',
+    'datetimepicker',
     #'ckeditor_uploader',
     #'secretballot',
     # 'likes',
@@ -209,9 +210,26 @@ USE_L10N = True
 USE_TZ = True
 
 #Login
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION  = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+EMAIL_CONFIRMATION_SIGNUP = True
+
 SOCIALACCOUNT_QUERY_EMAIL = True
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'gastronomie.togolaise@gmail.com'
+EMAIL_HOST_PASSWORD = 'gastronomie.togolaise_2017'
+EMAIL_PORT = 587
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 LOGIN_REDIRECT_URL = "/"
 
 
@@ -291,10 +309,10 @@ THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.cached_db_kvstore.KVStore'
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
-    messages.DEBUG: 'alert-info',
-    messages.INFO: 'alert-info',
-    messages.SUCCESS: 'alert-success',
-    messages.WARNING: 'alert-warning',
-    messages.ERROR: 'alert-danger',
+    messages.DEBUG: 'info',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
 }
 

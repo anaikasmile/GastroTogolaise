@@ -70,7 +70,7 @@ def recipe_add(request):
 			recipe.author = request.user
 			recipe.save()
 			recipe.readytime()
-			messages.success(request, 'Your recipe was send',extra_tags='alert')
+			messages.success(request, 'Votre recette a été envoyée',extra_tags='alert')
 			return redirect("recipe_add")
 	else:
 		form = RecipeForm()

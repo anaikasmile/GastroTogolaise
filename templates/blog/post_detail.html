@@ -48,12 +48,12 @@
 <div class="main_mix_content padding">
     
   
-    <div id="mixcontent" class="mixcontent row">
+    <div class="mixcontent row">
       
       
        
-        <div class="col-md-12 mix cat1">
-            <div class="single_mixi_portfolio margin-bottom-20">
+        <div class="col-md-12">
+            <div class="margin-bottom-20">
                 {% if post.image %}
                     {% thumbnail post.image  "900x500" crop="center" as im %}
                         <img src="{{im.url}}" class="img-responsive">

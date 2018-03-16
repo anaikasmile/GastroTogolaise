@@ -67,52 +67,52 @@ jQuery(document).ready(function ($) {
      Carousel
      ---------------------------------------------------------------------= */
 
-    // $('.main_home_slider').owlCarousel({
-    //     responsiveClass: true,
-    //     autoplay: false,
-    //     items: 1,
-    //     loop: true,
-    //     dots: true,
-    //     nav: false,
-    //     navText: [
-    //         "<i class='lnr lnr-chevron-left'></i>",
-    //         "<i class='lnr lnr-chevron-right'></i>"
-    //     ],
-    //     autoplayHoverPause: true
+    $('.main_home_slider').owlCarousel({
+        responsiveClass: true,
+        autoplay: false,
+        items: 1,
+        loop: true,
+        dots: true,
+        nav: false,
+        navText: [
+            "<i class='lnr lnr-chevron-left'></i>",
+            "<i class='lnr lnr-chevron-right'></i>"
+        ],
+        autoplayHoverPause: true
 
-    // });
-
-
-    // $('.main_team_content').owlCarousel({
-    //     responsiveClass: true,
-    //     autoplay: false,
-    //     items: 1,
-    //     loop: true,
-    //     dots: false,
-    //     nav: true,
-    //     navText: [
-    //         "<i class='lnr lnr-chevron-left'></i>",
-    //         "<i class='lnr lnr-chevron-right'></i>"
-    //     ],
-    //     autoplayHoverPause: true
-
-    // });
+    });
 
 
-    // $('.main_blog').owlCarousel({
-    //     responsiveClass: true,
-    //     autoplay: false,
-    //     items: 4,
-    //     loop: true,
-    //     dots: false,
-    //     nav: true,
-    //     navText: [
-    //         "<i class='lnr lnr-chevron-left'></i>",
-    //         "<i class='lnr lnr-chevron-right'></i>"
-    //     ],
-    //     autoplayHoverPause: true
+    $('.main_team_content').owlCarousel({
+        responsiveClass: true,
+        autoplay: false,
+        items: 1,
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: [
+            "<i class='lnr lnr-chevron-left'></i>",
+            "<i class='lnr lnr-chevron-right'></i>"
+        ],
+        autoplayHoverPause: true
 
-    // });
+    });
+
+
+    $('.main_blog').owlCarousel({
+        responsiveClass: true,
+        autoplay: false,
+        items: 4,
+        loop: true,
+        dots: false,
+        nav: true,
+        navText: [
+            "<i class='lnr lnr-chevron-left'></i>",
+            "<i class='lnr lnr-chevron-right'></i>"
+        ],
+        autoplayHoverPause: true
+
+    });
 
     // $('.main_gellary_content').owlCarousel({
     //     responsiveClass: true,
@@ -167,7 +167,7 @@ jQuery(document).ready(function ($) {
 
 
 
-//    $('#menu').slicknav();
+    // $('#menu').slicknav();
 
     // $('#mixcontent').mixItUp({
     //     animation: {
@@ -248,7 +248,7 @@ $(document).ready(function() {
     $('.likevideo').click(function() {
     var pk;
         pk = $(this).attr('data-video-pk');
-        $.get('video/like/', {
+        $.get('/video/like/', {
             video_pk: pk
         }, function(data) {
             $('#count-like-'+pk).html(data);

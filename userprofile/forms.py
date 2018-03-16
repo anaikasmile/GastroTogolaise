@@ -20,7 +20,7 @@ class ProfileForm(forms.ModelForm):
         fields = ('bio', 'country','tel', 'photo','facebook','twitter','linkedin','gplus')
         widgets = {
             'bio':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
-            'country':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'country':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'tel':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'facebook':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
            	'twitter':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),

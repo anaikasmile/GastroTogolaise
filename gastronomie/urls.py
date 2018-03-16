@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^restaurant/', include('restaurant.urls')),
     url(r'', include('recipe.urls')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^datetimepicker/', include('datetimepicker.urls')),
   
 ]+ static(
         settings.STATIC_URL,

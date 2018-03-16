@@ -73,13 +73,13 @@
                 
                     <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
                   
-                        By <a href="" class="rp-author">Admin</a></li>  
+                        By <a  data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}" class="rp-author">Admin</a></li>  
                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ recipe.published_at|date:'F j, Y' }} </li> 
                     
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{recipe.view}}</li>
 
                     <li>
-                        <a class="like " data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                        <a hef="" class="like" data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
                     </li>
                     {% get_comment_count for recipe as comment_count %}
                     <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
@@ -321,8 +321,8 @@
             <!-- Comment form -->
             <div class="form-block col-xs-12">
                 <div class="text-center">
-                    <h4>LEAVE A COMMENT HERE</h4>
-                    <p class="text-center">Your email address will not be published.</p>
+                    <h4>{% trans 'Laisser un commentaire' %}</h4>
+                    <p class="text-center">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
                     <br>
                 </div>
             
@@ -342,7 +342,7 @@
                     <br>
                     <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
                     
-                    <button class="btn btn-primary" type="submit" id="id_submit">Submit</button>
+                    <button class="btn btn-primary" type="submit" id="id_submit">{% trans 'Envoyer' %}</button>
                     </form>
                 </div>
                 {% else %}
@@ -360,24 +360,24 @@
                         {{ form.security_hash }}
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-4">
-                                <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                                <label>{% trans 'Nom' %} <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
                             </div>
                             <div class="form-group col-xs-12 col-sm-4">
-                                <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                                <label>{% trans 'Email' %} <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
                             </div>
                             <div class="form-group col-xs-12 col-sm-4">
-                                <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
+                                <label>{% trans 'Website' %}<span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="form-group col-xs-12">
-                            <label>Comment <sup>*</sup></label></span><br> 
+                            <label>{% trans 'Commentaire' %}<sup>*</sup></label></span><br> 
                             {{form.comment|add_class:'form-control'}}
                             </div>
                         </div>
                            <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">{% trans 'Envoyer' %}</button>
                         
                     </form> 
                 <!-- </div> -->
@@ -388,4 +388,42 @@
     </section>
 
 
+             <!-- Modal -->
+           <div class="modal fade" id="modalAvatar{{recipe.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                            
+                            {% if recipe.author.profile.photo %}
+                                <span class="author-inner">
+                                <img src="{{recipe.author.profile.photo.url}}" class="img-responsive img-circle">
+                                </span>
+                                
+                            {% else %}
+                            
+                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                            
+                            {% endif %}
+                            <h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{recipe.author.profile.bio}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-body">
+                        </div> -->
+                        <div class="modal-footer">
+                            <ul class="social-link list-inline">
+                                <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                           </ul>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
 {% endblock content %}     

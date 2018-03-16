@@ -5,6 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.models import User
 from datetimewidget.widgets import DateTimeWidget
+from datetimepicker.widgets import DateTimePicker
+from datetimepicker.helpers import js_loader_url
 
 class RecipeForm(forms.ModelForm):
     class Meta:
@@ -15,9 +17,8 @@ class RecipeForm(forms.ModelForm):
             'origin':forms.SelectMultiple(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'title':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'description':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
-            'prepare_time':forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'cooking_time':forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-           
+            'prepare_time': forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'ingredient':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'preparation':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             
@@ -29,6 +30,7 @@ class RecipeForm(forms.ModelForm):
             
             
             }
+        
 
 # RecipeFormSet = inlineformset_factory(Origin, Recipe,
 #                                             form=RecipeForm, extra=1)

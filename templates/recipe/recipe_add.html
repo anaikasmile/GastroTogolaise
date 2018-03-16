@@ -5,56 +5,39 @@
 
 {% block slide %}
 
-      
 <section id="home" class="home">
-        <div class="overlay">
+
+      <!--   <div class="overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 ">
                         <div class="main_home_slider">
                             <div class="single_home_slider">
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                    <h1>Cook' iT</h1>
-                                    <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
                                         <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div>
-
+                                    </div> -->
+<!-- 
                                 </div>
                             </div>
-                            <div class="single_home_slider">
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                    <h1>Cook' iT</h1>
-                                    <p class="subtitle">Cuisiner</p>
-
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="single_home_slider">
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                    <h1>Cook' iT</h1>
-                                    <p class="subtitle">Savourer</p>
-
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div>
-
-                                </div>
-                            </div>
+                            
+                            
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
 {% endblock slide %}
 
 {% block content %}
+
+
  <!-- Post -->
     <!-- {% include 'partials/messages.html' %} -->
     <div class="main_mix_content padding">
@@ -76,7 +59,7 @@
                             
                     <form method="POST"  name="add-form" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.media }}
+                         {{ form.media }}
                        <!--  {{ form.as_p }} -->
                         <p>
                             <label>{% trans 'Categorie' %}*</label>
@@ -103,7 +86,7 @@
                             {{form.cooking_time}}
                         </p>
                         <p>
-                            <label>{% trans 'Ingrédients' %}*</label>
+                            <label>{% trans 'Liste des ingrédients' %}*</label>
                             {{form.ingredient}}
                         </p>
                         <p>
@@ -143,7 +126,7 @@
 {% endblock content %}
 
 
-
+{% include 'partials/messages.html' %}
 
 
 
