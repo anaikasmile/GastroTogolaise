@@ -1,5 +1,6 @@
 {% extends 'recipe/recipe_publish_list.html' %}   
-{% load staticfiles %}
+% load staticfiles %}
+{% load thumbnail %}
 {% load i18n %}
 
 
@@ -12,13 +13,13 @@
                     <div class="col-lg-12">
                        
                         <div class="col-lg-offset-2 col-lg-8">
-                        <form method="POST"  action="."  class="" enctype="multipart/form-data">
+                        <form method="POST"  action="."  name="add-form" class="form-block" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.media }}
                         {{ form.as_p }}
                        
                        
-                        <button type="submit" class="save btn btn-default">Submit</button>
+                        <button type="submit" class="save btn btn-default">{% trans 'Envoyer' %}</button>
                         </form>
                         </div>
                         

@@ -35,9 +35,9 @@
                 <hr>
                 
                 <div class="">
-                    <a href="{% url 'post_update' pk=post.pk %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'post_update' pk=post.pk %}" class="btn btn-primary">Modifier</a>
                     {% if not post.published_at %}
-                    <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default">Publish</a>
+                    <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default">Publier</a>
                     {% endif %}
                 </div>
                 

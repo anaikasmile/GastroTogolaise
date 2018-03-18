@@ -10,7 +10,7 @@ class UserForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
         widgets = {
             'first_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'last_name':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'last_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'email':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
               }
 

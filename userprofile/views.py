@@ -56,7 +56,7 @@ def profile_update(request):
             user_form.save()
             profile_form.save()
             messages.success(request, ('Votre profile a été mis à jour.'))
-            return redirect('/')
+            return redirect('recipe_box_user')
         else:
             messages.error(request, ('Une erreur s'/'est produite'))
     else:

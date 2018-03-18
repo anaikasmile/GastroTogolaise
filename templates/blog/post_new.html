@@ -1,5 +1,9 @@
 {% extends 'blog/post_publish_list.html' %}	
-{% load static %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load thumbnail %}
+{% load i18n %}
+{% load humanize %} 
 
 {% block content_blog %}
 
@@ -12,7 +16,7 @@
                          {{ form.media }}
 		                  {{ form.as_p }}
                         
-	                	<button type="submit" class="save btn btn-default">Submit</button>
+	                	<button type="submit" class="save btn btn-default">{% trans 'Envoyer' %}</button>
 	                </form>
                 </div>
                 

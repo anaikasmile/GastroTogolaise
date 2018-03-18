@@ -177,10 +177,11 @@
         </div> 
         <div class="form-block col-xs-12">
             <div class="text-center">
-                <h4>LEAVE A COMMENT HERE</h4>
-                <p class="text-center">Your email address will not be published.</p>
+                 <h4>{% trans 'Laisser un commentaire' %}</h4>
+                    <p class="text-center">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
+                <br>
             </div>
-            <br>
+        
         {% if user.is_authenticated %}
         {% get_comment_form for post as form %}
             <form action="{% comment_form_target %}" method="POST">

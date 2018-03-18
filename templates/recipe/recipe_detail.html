@@ -387,6 +387,48 @@
 
     </section>
 
+    <!-- Related post -->
+        <section class="rp-post-related">
+            <ul class="nav nav-tabs tabs-4">
+                <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
+                <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
+            </ul>   
+
+
+            <div class="tab-content">
+                <div id="posts" class="tab-pane fade in  active">
+                    Related posts
+                </div>
+
+                <div id="authors" id="content" class="defaults tab-pane fade in active">
+                
+                    <ul class="row list-unstyled" id="itemContainer">
+                    {% for r in recipe_author %}
+                        <li class="col-md-4">    
+                        {% if r.image %}
+                            <a href="{% url 'recipe_detail' pk=r.pk %}">
+                            {% thumbnail r.image  "900x500" crop="center" as im %}
+                                <img src="{{im.url}}" class="img-responsive">       
+                            {% endthumbnail %}  
+                            </a>
+                        {% else %}
+                            <a href=""></a>
+                        {% endif %}
+
+                            <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>     
+                        </li>    
+                    {% endfor %} 
+                    </ul>
+                
+                        
+                    <!-- pagination -->
+                {% if recipe_author.has_other_pages %}
+                    <div class="rp-related-pagination"></div>
+                {% endif %}         
+                </div>
+            </div>
+
+        </section>
 
              <!-- Modal -->
            <div class="modal fade" id="modalAvatar{{recipe.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">

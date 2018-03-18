@@ -20,9 +20,9 @@ class Restaurant(models.Model):
         ('False', _(u'False')),
     )
 
-	category = models.ForeignKey(Category,related_name='addresses')
+	category = models.ForeignKey(Category,related_name='addresses',verbose_name="Catégorie")
 	author = models.ForeignKey('auth.User')
-	name = models.CharField(max_length=200)
+	name = models.CharField(max_length=200,verbose_name="Nom")
 	description =   RichTextField(null=True, blank=True)
 	tel = models.CharField(max_length=50,null=True, blank=True)
 	fb_id = models.CharField(max_length=50,null=True, blank=True)
@@ -30,7 +30,7 @@ class Restaurant(models.Model):
 	twit_id = models.CharField(max_length=50,null=True, blank=True)
 	lind_id = models.CharField(max_length=50,null=True, blank=True)
 	address = models.CharField(max_length=200,null=True, blank=True)
-	web_site = models.CharField(max_length=100,null=True, blank=True)
+	web_site = models.CharField(max_length=100,null=True, blank=True,verbose_name="Site web")
 	image = models.ImageField(upload_to="restaurants",null=True, blank=True)
 	enabled = models.CharField(max_length=5, choices=ENABLED, default='False')
 	created_at = models.DateTimeField(auto_now_add=True)

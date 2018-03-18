@@ -45,8 +45,14 @@
                 <div class="col-md-offset-1 col-md-10">
                     <form method="post"  class="form-block" action="." enctype="multipart/form-data">
                       {% csrf_token %}
-                      {{ user_form.as_p }}
+                <!--       {{ user_form.as_p }} -->
+                      <label>Nom:</label>
+                      <p>{{ user_form.last_name }}</p>
+                      <label>Prénoms:</label>
+                      <p>{{ user_form.first_name }}</p>
+
                       {{ profile_form.as_p }}
+
                       <button class="btn btn-primary" type="submit">Enregister</button>
                     </form>
                 

@@ -70,7 +70,8 @@ def recipe_add(request):
 			recipe.author = request.user
 			recipe.save()
 			recipe.readytime()
-			messages.success(request, 'Votre recette a été envoyée',extra_tags='alert')
+			messages.success(request, ('Votre recette a été envoyée'))
+
 			return redirect("recipe_add")
 	else:
 		form = RecipeForm()
@@ -156,7 +157,7 @@ def video_detail(request,pk):
 	except EmptyPage:
 		video_author = paginator.page(paginator.num_pages)
 
-	return render(request,'recipe/video_detail.html',{'video':video,'recipe_author':video_author})
+	return render(request,'recipe/video_detail.html',{'video':video,'video_author':video_author})
 
 # Liker une video
 def likevideo(request):
@@ -217,7 +218,7 @@ def recipe_preview(request,pk):
 def recipe_publish(request,pk):
 	recipe = get_object_or_404(Recipe,pk=pk)
 	recipe.publish()
-	messages.success(request, 'Votre recette a ete publiee',extra_tags='alert')
+	messages.success(request, 'Votre recette a été publiée')
 	return redirect('recipe_draft_list')
 
 #Ajouter une recette
@@ -232,7 +233,7 @@ def recipe_new(request):
 			#recipe.published_at = timezone.now()
 			recipe.save()
 			recipe.readytime()
-			messages.success(request, 'Your recipe was send',extra_tags='alert')
+			messages.success(request, 'Votre recette a été enregistrée')
 			return redirect("recipe_new")
 			return redirect ('recipe_preview',pk=recipe.pk)
 
@@ -252,7 +253,7 @@ def recipe_update(request,pk):
 			recipe = form.save(commit=False)
 			recipe.save()
 			recipe.readytime()
-			messages.success(request, 'Recipe updated',extra_tags='alert')
+			messages.success(request, 'Recipe updated')
 		return redirect('recipe_preview', pk=recipe.pk)
 	else:
 		form = RecipeForm(instance=recipe)
@@ -263,7 +264,7 @@ def recipe_update(request,pk):
 def recipe_delete(request,pk):
 	recipe = get_object_or_404(Recipe, pk=pk)
 	recipe.delete()
-	messages.success(request, 'Your recipe deleted',extra_tags='alert')	
+	messages.success(request, 'Your recipe deleted')	
 	return redirect('recipe_publish_list')
 
 
@@ -289,7 +290,7 @@ def video_edit(request,pk):
 		if form.is_valid():
 			video = form.save(commit=False)
 			video.save()
-			messages.success(request, 'Video updated',extra_tags='alert')
+			messages.success(request, 'Video updated')
 		return redirect('video_preview', pk=video.pk)
 	else:
 		form = VideoForm(instance=video)
@@ -317,12 +318,12 @@ def video_publish_list(request):
 def video_publish(request, pk):
     video = get_object_or_404(Video, pk=pk)
     video.publish()
-    messages.success(request, 'Your video was published!',extra_tags='alert')
+    messages.success(request, 'Your video was published!')
     return redirect('video_draft_list')
 
 # @login_required
 def video_delete(request,pk):
 	video = get_object_or_404(Video, pk=pk)
 	video.delete()
-	messages.success(request, 'Video deleted',extra_tags='alert')
+	messages.success(request, 'Video deleted')
 	return redirect('video_publish_list')

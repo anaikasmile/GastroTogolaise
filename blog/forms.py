@@ -14,7 +14,7 @@ class PostForm(forms.ModelForm):
 		widgets = {
 			'category':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
 			'title':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-			'text':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),    
+			'text':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textarea','class':'form-control'}),    
 			'image':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
 			'video':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
         
