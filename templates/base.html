@@ -97,29 +97,29 @@
                         
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-user"></i> Profile</a>
+                                <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-user"></i> {% trans 'Profil' %}</a>
                             </li>
                             
                             <li>
-                                <a href="{% url 'recipe_add' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> Add a recipe</a>
+                                <a href="{% url 'recipe_add' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> {% trans 'Ajouter une recette' %}</a>
                             </li>
                             
                             <li>
-                                <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>Account settings</a>
+                                <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>{% trans 'Paramètres' %}</a>
                             </li>
-                            {% if user.is_staff %}
+                            {% if user.is_staff_member or user.is_staff %}
                             
                             <li>
-                                <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard" ia-hidden="true"></i> Dashboard</a>
+                                <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard" ia-hidden="true"></i> {% trans 'Dashboard' %}</a>
                             </li>
                             {% endif %}
                             <li class="divider"></li>
                             <li>
-                                <a href="" data-toggle="modal" data-target="#logout"><i class="fa fa-fw fa-power-off" ia-hidden="true"></i> Log Out</a>
+                                <a href="" data-toggle="modal" data-target="#logout"><i class="fa fa-fw fa-power-off" ia-hidden="true"></i> {% trans 'Se déconnecter' %}</a>
                             </li>
                         </ul>
                     {% else %}
-                        <a  href="{% url 'account_login' %}"><i class="fa fa-user"></i>&nbsp; Log in </a>
+                        <a  href="{% url 'account_login' %}"><i class="fa fa-user"></i>&nbsp; {% trans 'Se connecter' %} </a>
                         
                     {% endif %}
                
@@ -208,8 +208,14 @@
                                  <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                                     <ul class="dropdown-menu">
-                                 
-                                       <li><a href="">L'équipe</a></li>
+                                      
+                                        {% get_flatpages as flatpages %}
+                                        
+                                       {% for page in flatpages %}
+                                            <li><a href="/pages{{ page.url }}">L'équipe</a></li>
+                                       {% endfor %}
+                                       
+                                      
                                        <hr>
                                        <li><a href="{% url 'contributors' %}">Contributeurs</a></li>
                                        <hr>
@@ -227,7 +233,7 @@
                                         <li>
                                             <form class="navbar-form" role="search">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Search">
+                                                    <input type="text" class="form-control" placeholder="{% trans 'Rechercher' %}">
                                                 </div>
                                             </form>
                                         </li>

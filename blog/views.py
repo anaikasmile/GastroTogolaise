@@ -13,6 +13,7 @@ from .forms import PostForm
 from gastronomie.decorators import *
 
 
+
 def pagination(request,fichier):
     paginator = Paginator(fichier,3)
 
@@ -86,7 +87,7 @@ def like(request):
 
 # @login_required
 @login_required
-@group_required('staff')
+@staff_required
 def post_new(request):
 	if request.method == "POST":
 
@@ -102,7 +103,7 @@ def post_new(request):
 
 # Apercu
 @login_required
-@group_required('staff')
+@staff_required
 def post_preview(request,pk):
 	post = get_object_or_404(Post, pk=pk)
 	return render(request, 'blog/post_preview.html',{'post':post})
@@ -110,7 +111,7 @@ def post_preview(request,pk):
 
 #@login_required
 @login_required
-@group_required('staff')
+@staff_required
 def post_edit(request,pk):
 	post = get_object_or_404(Post, pk=pk)
 	if request.method == "POST":
@@ -126,7 +127,7 @@ def post_edit(request,pk):
 
 #@login_required
 @login_required
-@group_required('staff')
+@staff_required
 def post_draft_list(request):
 	posts = Post.objects.filter(published_at__isnull=True).order_by('published_at')
 	posts = admin_pagination(request, posts)
@@ -134,7 +135,7 @@ def post_draft_list(request):
 
 #@login_required
 @login_required
-@group_required('staff')
+@staff_required
 def post_publish_list(request):
 	posts = Post.objects.filter(published_at__isnull=False).order_by('published_at')
 	posts = admin_pagination(request, posts)
@@ -143,21 +144,24 @@ def post_publish_list(request):
 
 #@login_required
 @login_required
-@group_required('staff')
+@staff_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     messages.success(request, 'Your post was published!',extra_tags='alert')
     return redirect('post_draft_list')
 
+
+
 # @login_required
 @login_required
-@group_required('staff')
+@staff_required
 def post_delete(request,pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.delete()
 	messages.success(request, 'Post deleted',extra_tags='alert')
 	return redirect('post_publish_list')
+
 
 
 # def add_comment_post(request,pk):

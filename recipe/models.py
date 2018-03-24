@@ -6,6 +6,7 @@ from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 from django_countries.fields import CountryField
 from taggit.managers import TaggableManager
+from django.conf import settings
 #from bootstrap3_datetime.widgets import DateTimePicker
 # Create your models here.
 
@@ -46,7 +47,7 @@ class Recipe(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null=True)
-	author = models.ForeignKey('auth.User',related_name='recipe')
+	author = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='recipe')
 	tags = TaggableManager()
 
 	# def view(self):
@@ -68,7 +69,7 @@ class Recipe(models.Model):
 class Video(models.Model):
 	category = models.ForeignKey(Category,related_name='category_video', verbose_name="Catégorie")
 	origin = models.ManyToManyField(Origin, related_name='origin_video',blank=True,verbose_name="Origine de la recette")
-	author = models.ForeignKey('auth.User',related_name='videos')
+	author = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='videos')
 	title = models.CharField(max_length=100, verbose_name="Titre")
 	description = RichTextField(null=True, blank= True)
 	video = EmbedVideoField()

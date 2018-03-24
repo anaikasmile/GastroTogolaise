@@ -6,10 +6,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django_comments.models import Comment
-
+from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import Restaurant, Category
 from .forms import RestaurantForm
+from gastronomie.decorators import *
 # Create your views here.
 
 def pagination(request,fichier):
@@ -31,7 +32,7 @@ def pagination(request,fichier):
 
 #Liste de tous les restaurants
 def restaurant_list(request):
-	#recipes = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
+	#restaurants = category.restaurants.all().filter(published_at__isnull=False).order_by('-published_at')
 	restaurants = Restaurant.objects.filter(category='Restaurant')
 	restaurants = pagination(request, restaurants)
 
@@ -53,10 +54,10 @@ def restaurant_per_cat(request,pk):
 
 """ Administration """
 
-#Ajouter une recette
+#Ajouter 
 @login_required
-# @group_required('staff')
-def restaurant_add(request):
+@staff_required
+def restaurant_new(request):
 	if request.method == "POST":
 		form = RestaurantForm(request.POST, request.FILES)
 		if form.is_valid():
@@ -66,12 +67,12 @@ def restaurant_add(request):
 
 	else:
 		form = RestaurantForm()
-	return render(request,'restaurant/restaurant_add.html', {'form':form})
+	return render(request,'restaurant/restaurant_new.html', {'form':form})
 
 
 #Modifier
 @login_required
-#@group_required('staff')
+@staff_required
 def restaurant_update(request,pk):
 	restaurant = get_object_or_404(Restaurant, pk=pk)
 	if request.method == "POST":
@@ -87,6 +88,7 @@ def restaurant_update(request,pk):
 
 #Supprimer
 @login_required
+@staff_required
 def restaurant_delete(request,pk):
 	restaurant = get_object_or_404(Restaurant, pk=pk)
 	restaurant.delete()
@@ -95,7 +97,25 @@ def restaurant_delete(request,pk):
 
 
 #Liste de tous les bons plans
+@login_required
+@staff_required
 def restaurant_publish_list(request):
-	restaurants = Restaurant.objects.filter(category='Restaurant')
+	restaurants = Restaurant.objects.all()
 	restaurants = pagination(request, restaurants)
 	return render(request,'restaurant/restaurant_publish_list.html', {'restaurants':restaurants})
+
+
+@login_required
+@staff_required
+def restaurant_preview(request,pk):
+	restaurant = get_object_or_404(Restaurant,pk=pk)
+	return render(request,'restaurant/restaurant_preview.html',{'restaurant':restaurant})
+
+#Approuver une recette
+@login_required
+@staff_required
+def restaurant_publish(request,pk):
+	restaurant = get_object_or_404(Restaurant,pk=pk)
+	restaurant.publish()
+	messages.success(request, 'Restaurant publié')
+	return redirect('restaurant_publish_list')

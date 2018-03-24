@@ -9,8 +9,10 @@ from django.contrib import messages
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
 from recipe.forms import RecipeForm, VideoForm
-
+from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
+
+
 # Create your views here.
 
 def pagination(request,fichier):
@@ -184,13 +186,15 @@ def recipe_box_user(request):
 
 
 #Page accueil administration
+@login_required
+@staff_required
 def stats(request):
 	return render(request,'stats.html',{})
 
 
 #Liste des recettes en attente de publication
 @login_required
-@group_required('staff')
+@staff_required
 def recipe_draft_list(request):
 	recipes = Recipe.objects.filter(published_at__isnull=True).order_by('created_at')
 	recipes = admin_pagination(request, recipes)
@@ -198,7 +202,7 @@ def recipe_draft_list(request):
 
 #Liste des recettes en attente de publication
 @login_required
-@group_required('staff')
+@staff_required
 def recipe_publish_list(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
 	recipes = admin_pagination(request, recipes)
@@ -207,14 +211,14 @@ def recipe_publish_list(request):
 
 #Affiche les details d'une recette
 @login_required
-@group_required('staff')
+@staff_required
 def recipe_preview(request,pk):
 	recipe = get_object_or_404(Recipe,pk=pk)
 	return render(request,'recipe/recipe_preview.html',{'recipe':recipe})
 
 #Approuver une recette
 @login_required
-@group_required('staff')
+@staff_required
 def recipe_publish(request,pk):
 	recipe = get_object_or_404(Recipe,pk=pk)
 	recipe.publish()
@@ -223,7 +227,7 @@ def recipe_publish(request,pk):
 
 #Ajouter une recette
 @login_required
-@group_required('staff')
+@staff_required
 def recipe_new(request):
 	if request.method == "POST":
 		form = RecipeForm(request.POST, request.FILES)
@@ -244,7 +248,7 @@ def recipe_new(request):
 
 #Modifier une recette
 @login_required
-@group_required('staff')
+@staff_required
 def recipe_update(request,pk):
 	recipe = get_object_or_404(Recipe, pk=pk)
 	if request.method == "POST":
@@ -260,7 +264,10 @@ def recipe_update(request,pk):
 	return render(request, 'recipe/recipe_update.html', {'form': form})
 
 
+
 #Supprimer une recette
+@login_required
+@staff_required
 def recipe_delete(request,pk):
 	recipe = get_object_or_404(Recipe, pk=pk)
 	recipe.delete()
@@ -268,7 +275,8 @@ def recipe_delete(request,pk):
 	return redirect('recipe_publish_list')
 
 
-
+@login_required
+@staff_required
 def video_new(request):
 	if request.method == "POST":
 
@@ -282,7 +290,8 @@ def video_new(request):
 		form = VideoForm()
 	return render(request, 'recipe/video_new.html',{'form':form})
 
-#@login_required
+@login_required
+@staff_required
 def video_edit(request,pk):
 	video = get_object_or_404(Video, pk=pk)
 	if request.method == "POST":
@@ -298,30 +307,37 @@ def video_edit(request,pk):
 
 
 # Apercu
+@login_required
+@staff_required
 def video_preview(request,pk):
 	video = get_object_or_404(Video, pk=pk)
 	return render(request, 'recipe/video_preview.html',{'video':video})
 
 
-#@login_required
+@login_required
+@staff_required
 def video_draft_list(request):
 	videos = Video.objects.filter(published_at__isnull=True).order_by('published_at')
 	return render(request,'recipe/video_draft_list.html',{'videos':videos})
 
-#@login_required
+@login_required
+@staff_required
 def video_publish_list(request):
 	videos = Video.objects.filter(published_at__isnull=False).order_by('published_at')
 	return render(request,'recipe/video_publish_list.html',{'videos':videos})
 
 
-#@login_required
+
+@login_required
+@staff_required
 def video_publish(request, pk):
     video = get_object_or_404(Video, pk=pk)
     video.publish()
     messages.success(request, 'Your video was published!')
     return redirect('video_draft_list')
 
-# @login_required
+@login_required
+@staff_required
 def video_delete(request,pk):
 	video = get_object_or_404(Video, pk=pk)
 	video.delete()

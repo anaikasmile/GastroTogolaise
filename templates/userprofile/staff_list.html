@@ -1,6 +1,6 @@
 {% extends 'base_admin.html' %}   
 {% load staticfiles %}
-
+{% load i18n %}
 {% block content %}
 
 
@@ -26,9 +26,12 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-12"><a href="{% url 'userprofile_add' %}" class="btn btn-primary"> Ajouter un utilisateur</a></div>
-                </div>
+                
+                   {% if request.user.is_staff %}
+                    <div class="row">
+                        <div class="col-lg-12"><a href="{% url 'userprofile_add' %}" class="btn btn-primary"> Ajouter un utilisateur</a></div>
+                    </div>
+                {% endif %}
 
                 {% block content_user %}
                 <div class="row" id="modal-user">
@@ -41,8 +44,10 @@
                                     <tr>
                                         <th>Joined at</th>
                                          <th>Username</th>
-                                        <th>Full name</th>
-                                        <th>Status</th>
+                                        <th>{% trans 'Noms' %}</th>
+                                        <th>{% trans 'Role' %}</th>
+                                        <th>{% trans 'Statut' %}</th>
+                                        
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -55,7 +60,14 @@
 
                                         <td><a href="">{{user.username}}</a></td>
                                         <td><a href="">{{user.first_name}} {{user.last_name}}</a></td>
-                                        <td><a href="">{{user.is_active}}</a></td>
+                                        <td><a href="">{% trans 'Staff member' %}</a></td>
+                                        <td><a href="">{% if user.is_active %}
+                                            Active
+                                        {% else %}
+                                            Desactiver
+                                        {% endif %}
+
+                                        </a></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="collapse" data-target="#action_{{user.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                             <ul id="action_{{user.id}}" class="collapse">
@@ -69,6 +81,12 @@
                                                 {% else %}
                                                     <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Activer</a>
                                                 {% endif %}
+                                                </li>
+                                               <li>
+                                                    <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="modal" data-target="#deleteuser{{user.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Supprimer</a>
                                                 </li>
                                             {% endif %}
                                             </ul>

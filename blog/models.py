@@ -4,6 +4,8 @@ from sorl.thumbnail import ImageField
 from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
 from taggit.managers import TaggableManager
+from django.conf import settings
+
 # Create your models here.
 
 
@@ -18,7 +20,7 @@ class Category(models.Model):
 
 class Post(models.Model):
 	category = models.ForeignKey(Category,related_name='posts',verbose_name="Catégorie")
-	author = models.ForeignKey('auth.User')
+	author = models.ForeignKey(settings.AUTH_USER_MODEL)
 	title =  models.CharField(max_length=200,verbose_name="Titre")
 	text =   RichTextField(verbose_name="Description")
 	image = models.ImageField(blank=True, null= True,upload_to="blog")

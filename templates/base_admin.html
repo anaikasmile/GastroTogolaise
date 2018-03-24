@@ -213,10 +213,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#resto"><i class="" aria-hidden="true"></i> Bons plans<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="resto" class="list-unstyled collapse">
                             <li>
-                                <a href="">{% trans 'Ajouter' %}</a>
+                                <a href="{% url 'restaurant_new' %}">{% trans 'Ajouter' %}</a>
                             </li>
                             <li>
-                                <a href="">{% trans 'Liste' %}</a>
+                                <a href="{% url 'restaurant_publish_list' %}">{% trans 'Liste' %}</a>
                             </li>
                             
                         </ul>
@@ -236,7 +236,6 @@
                     </li>
 
 
-              	
                  	<li>
                         
                         <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-user"></i>Utilisateurs</a>
@@ -251,12 +250,8 @@
 	                        </ul>
                     </li>
                     
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
+                    
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

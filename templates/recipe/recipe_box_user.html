@@ -84,7 +84,7 @@
                         <tbody>
                             <tr>
                                 <td> 
-                                    <p>Recipes</p>
+                                    <p>{% trans 'Recettes' %}</p>
                                     <h3 class="">{{nb}}</h3>
                                 </td>
                                  
@@ -106,11 +106,11 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Published at</th>
-                                         <th>Categorie</th>
-                                        <th>Title</th>
-                                        <th>Views</th>
-                                        <th>Likes</th>
+                                        <th>{% trans 'Publié le' %}</th>
+                                         <th>{% trans 'Catégorie' %}</th>
+                                        <th>{% trans 'Nom' %}</th>
+                                        <th>{% trans 'Vues' %}</th>
+                                        <th>{% trans 'Likes' %}</th>
                                        
                                     </tr>
                                 </thead>
@@ -127,7 +127,7 @@
                                     </tr>
 
                                     {% empty %}
-                                        <tr>No recipe for the moment.</tr>
+                                        <tr>{% trans 'Aucune recette publiée' %}.</tr>
                                     {% endfor %}  
 
 

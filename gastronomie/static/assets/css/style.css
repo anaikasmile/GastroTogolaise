@@ -1944,47 +1944,27 @@ blockquote footer, blockquote small, blockquote .small {
     background-color:#d86051;
 }
 
-@media(max-width:768px){
-    #login-dp{
-        background-color: inherit;
-        color: #fff;
-    }
-    #login-dp .bottom{
-        background-color: inherit;
-        border-top:0 none;
-    }
+
+
+.social-link .facebook:hover{
+    background: rgb(59, 89, 152);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(59, 89, 152);
+    
 }
-
-
-
-.menu ul {
- margin:0;
- padding:0;
- list-style-type:none;
- text-align:center;
- }
-.menu li {
- float:left;
- margin:auto;
- padding:0;
- background-color:black;
- }
-.menu li a {
- display:block;
- width:100px;
- color:white;
- text-decoration:none;
- padding:5px;
- }
-.menu li a:hover {
- color:#FFD700;
- }
- .menu ul li:hover ul {
- display:block;
- }
-.menu li:hover ul li {
- float:none;
- }
- .menu li ul {
- position:absolute;
- }
+.social-link .twitter:hover{
+    
+    background: rgb(85, 172, 238);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(85, 172, 238);
+    
+}
+.social-link .gplus:hover{
+    background: rgb(221, 75, 57);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(221, 75, 57);
+    
+}

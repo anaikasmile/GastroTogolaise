@@ -1,6 +1,6 @@
 from django import forms
-from .models import Profile 
-from django.contrib.auth.models import User
+from .models import Profile , User
+
 from django.forms import SelectDateWidget, SplitDateTimeField
 from django.utils.translation import ugettext_lazy as _
 
@@ -34,13 +34,12 @@ class ProfileForm(forms.ModelForm):
 class AdminForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email', 'username', 'password', 'groups')
+        fields = ('first_name', 'last_name', 'email', 'username', 'password')
         widgets = {
             'first_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'last_name':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'username':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'email':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'password':forms.PasswordInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-          	'groups':forms.SelectMultiple(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-          
+          	
               }

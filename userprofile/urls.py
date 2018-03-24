@@ -12,10 +12,8 @@ urlpatterns = [
 	url(r'^staff/list/$', views.staff_list, name='staff_list'),
 	url(r'^contributor/list/$', views.contributor_list, name='contributor_list'),
 	
-	#url(r'^contributors/$', views.contributors, name='contributors'),
-	# url(r'^userprofile/publish/list/$', views.userprofile_publish_list, name='userprofile_publish_list'), 
-	# url(r'^userprofile/(?P<pk>[0-9]+)/publish/$', views.userprofile_publish, name='userprofile_publish'),
-	# url(r'^userprofile/(?P<pk>[0-9]+)/delete/$', views.userprofile_delete, name='userprofile_delete'),
-	# # url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
-	# url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
+	
+	url(r'^userprofile/(?P<pk>[0-9]+)/active/$', views.profile_active, name='userprofile_active'),
+	url(r'^userprofile/(?P<pk>[0-9]+)/delete/$', views.profile_delete, name='userprofile_delete'),
+	
 ]

@@ -1,0 +1,61 @@
+{% extends 'restaurant/restaurant_publish_list.html' %}   
+{% load staticfiles %}
+{% load i18n %}
+{% load thumbnail %}
+{% block content_restaurant %}
+
+
+                <div class="row">
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="row text-center">
+                            <h2 class="">{{restaurant.name}}</h2>
+                            <p class="post-author">Post by <a href="">{{restaurant.author}}</a></p>
+                          
+                        </div>
+                        <br> 
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="{{restaurant.image.url}}" class="img-responsive">
+                            </div> 
+                            <div class="col-md-5">
+                                <h4><strong>Description:</strong></h4>
+                                <p>{{restaurant.description|safe}}</p>
+                                <ul class="list-inline">
+                                {% if restaurant.tel %}
+                                    <li><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{restaurant.tel}}</li>
+                                    
+                                {% endif %}
+                                   
+                                {% if restaurant.address %} 
+                                    <li><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{restaurant.address}}</li>
+                                    
+                                {% endif %}
+                                   
+                                {% if restaurant.web_site %}  
+                                    <li><strong>Web site: </strong><a href="{{restaurant.web_site}}"> {{restaurant.web_site}}</a></li>
+                                {% endif %}   
+                                </ul>
+                            </div> 
+                        </div>
+                        
+                   
+                    
+                        <br>
+                    
+                        <div class="row text-center">
+                            <div class="col-sm-12">
+                                <a href="{% url 'restaurant_update' pk=restaurant.pk %}" class="btn btn-primary">Modifier</a>
+                                {% if not restaurant.published_at %}
+                                <a href="{% url 'restaurant_publish' pk=restaurant.pk %}" class="btn btn-primary">Publier</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                
+
+                </div>
+           
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+{% endblock %}
+

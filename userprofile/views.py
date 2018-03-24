@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from django.db import transaction
 from django.contrib.auth.models import User, Group
-from .models import Profile
+from .models import Profile, User
 from .forms import UserForm, ProfileForm, AdminForm
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
@@ -74,12 +74,6 @@ def contributors(request):
 	users = pagination(request, users)
 	return render(request,'userprofile/contributors.html', {'users':users})
 
-# @login_required
-# def profile_box(request):
-	
-# 	return render(request,'userprofile/staff_list.html', {'users':users})
-
-
 
 
 
@@ -87,7 +81,7 @@ def contributors(request):
 
 # Ajouter un membre au staff
 @login_required
-@staff_member_required
+@staff_required
 def profile_add(request):
     if request.method == 'POST':
         admin_form = AdminForm(request.POST)
@@ -106,23 +100,44 @@ def profile_add(request):
     })
 
 @login_required
-@group_required('staff')
+@staff_required
 def staff_list(request):
-	users = Group.objects.get(name="staff").user_set.all().order_by('username')
-	# users = User.objects.filter(groups__name='admistrator').order_by('username')
-	users = admin_pagination(request, users)
-	return render(request,'userprofile/staff_list.html', {'users':users})
+    users = User.objects.filter(is_staff_member=True)
+    users = admin_pagination(request, users)
+    return render(request,'userprofile/staff_list.html', {'users':users})
 
 
 @login_required
-@group_required('staff')
+@staff_required
 def contributor_list(request):	
-	users = User.objects.filter(groups = None).order_by('username')
+	users = User.objects.filter(is_contributor=True)
 	users = admin_pagination(request, users)
 	return render(request,'userprofile/contributor_list.html', {'users':users})
 
 @login_required
-@group_required('staff')
+@staff_required
 def profile_preview(request,pk):
 	user = get_object_or_404(User, pk=pk)
 	return render(request, 'userprofile/profile_preview.html',{'user':user})
+
+login_required
+@staff_member_required
+def profile_active(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if (user.is_active):
+        user.update(is_active=False)
+        messages.success(request, 'Compte désactivé!')
+    else:
+        user.update(is_active=True)
+        messages.success(request, 'Compte activé!')
+    
+   
+    return redirect(request.path)
+#Supprimer
+@login_required
+@staff_required
+def profile_delete(request,pk):
+    user = get_object_or_404(User, pk=pk)
+    user.delete()
+    user.success(request, 'Utilisateur supprimé') 
+    return redirect('')

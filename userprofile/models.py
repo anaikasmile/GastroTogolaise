@@ -1,11 +1,18 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from sorl.thumbnail import ImageField
 from django_countries.fields import CountryField
+from django.conf import settings
+
+
+class User(AbstractUser):
+	is_contributor = models.BooleanField(default=True)
+	is_staff_member = models.BooleanField(default=False)
+
 
 class Profile(models.Model):
 	SEXE = (
@@ -13,7 +20,7 @@ class Profile(models.Model):
         (u'M', _(u'Male')),
     )
 	sexe = models.CharField(max_length=10, choices= SEXE)
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
 	sexe = models.TextField(max_length=2, blank=True)
 	bio = models.TextField(max_length=500, blank=True, verbose_name="Biographie")
 	country = CountryField(blank_label=_(u'select country'),blank=True, null=True,verbose_name="Pays")
