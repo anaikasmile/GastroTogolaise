@@ -57,7 +57,6 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
 
 
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -287,3 +286,5 @@ MESSAGE_TAGS = {
 }
 
 AUTH_USER_MODEL = "userprofile.User" 
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
