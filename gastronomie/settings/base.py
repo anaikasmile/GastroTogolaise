@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('#l3#%g^k@g9wjtsnzkwce-7uy92_%1x=)gt%t_o_+fd!7%g($3')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
