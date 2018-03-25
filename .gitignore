@@ -1,8 +1,7 @@
 migrations
-.gitignore
 __pycache__
 static
 media
 staticfiles
-.ini
 *.pyc
+.env
