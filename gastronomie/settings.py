@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#l3#%g^k@g9wjtsnzkwce-7uy92_%1x=)gt%t_o_+fd!7%g($3'
 
 
-DATABASES = {'default': dj_database_url.config(default="postgresql-angular-86634")}
+DATABASES = {'default': dj_database_url.config(default="postgres://vgjwgtfucuikpl:633148bf9dd72b1c544bb64752b021d9ffa6a8b1f73b6650ae2d1241d34dc3e8@ec2-184-72-219-186.compute-1.amazonaws.com:5432/dfta5itndc3ijm")}
 
 ALLOWED_HOSTS = ['*']
 

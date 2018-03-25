@@ -1,6 +1,5 @@
 migrations
 .gitignore
-.env
 __pycache__
 static
 media
