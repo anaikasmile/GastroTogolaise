@@ -62,7 +62,7 @@
                                             <a href="javascript:;" data-toggle="collapse" data-target="#action_{{recipe.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                             <ul id="action_{{recipe.id}}" class="collapse">
                                                 <li>
-                                                    <a href="{% url 'recipe_publish' pk=recipe.pk %}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
+                                                    <a href="{% url 'recipe_preview' pk=recipe.pk %}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
                                                 </li>
                                                 <li>
                                                     <a href="{% url 'recipe_update' pk=recipe.pk %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
