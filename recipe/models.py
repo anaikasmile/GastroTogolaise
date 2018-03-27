@@ -29,15 +29,15 @@ class Origin(models.Model):
 		return self.ethnic
 
 class Recipe(models.Model):
-	category = models.ForeignKey(Category,related_name='recipes',verbose_name="Catégorie")
-	title = models.CharField(max_length=200,verbose_name="Nom de la recette")
+	category = models.ForeignKey(Category,related_name='recipes',verbose_name="Catégorie *")
+	title = models.CharField(max_length=200,verbose_name="Nom de la recette *")
 	description = models.TextField(blank=True, null=True,verbose_name="Description")
 	prepare_time = models.DurationField(null=True, blank=True,verbose_name="Temps de préparation")
 	cooking_time = models.DurationField(null=True, blank=True, verbose_name="Temps de cuisson")
 	total_time = models.DurationField(null=True, blank=True, verbose_name="Prêt dans")
-	ingredient = RichTextField(verbose_name="Ingrédients")
-	preparation = RichTextField(verbose_name="Instructions")
-	image = models.ImageField(upload_to="recipes",null=True, blank=True,verbose_name="Image")
+	ingredient = RichTextField(verbose_name="Ingrédients *")
+	preparation = RichTextField(verbose_name="Instructions *")
+	image = models.ImageField(upload_to="recipes",null=True, blank=True,verbose_name="Image *")
 	image_1 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Autre image")
 	image_2 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Autre image")
 	image_3 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Autre image")

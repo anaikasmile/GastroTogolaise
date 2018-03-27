@@ -62,7 +62,7 @@ def restaurant_new(request):
 		form = RestaurantForm(request.POST, request.FILES)
 		if form.is_valid():
 			restaurant.save()
-			messages.success(request, 'Saved!',extra_tags='alert')
+			messages.success(request, ('Enregistrement réussi'))
 			return redirect ('restaurant_preview',pk=restaurant.pk)
 
 	else:
@@ -79,7 +79,7 @@ def restaurant_update(request,pk):
 		form = RestaurantForm(request.POST,request.FILES, instance=restaurant)
 		if form.is_valid():
 			restaurant.save()
-			messages.success(request, 'updated',extra_tags='alert')
+			messages.success(request, ('Enregistrement réussi'))
 		return redirect('restaurant_preview', pk=restaurant.pk)
 	else:
 		form = RestaurantForm(instance=restaurant)
@@ -92,8 +92,8 @@ def restaurant_update(request,pk):
 def restaurant_delete(request,pk):
 	restaurant = get_object_or_404(Restaurant, pk=pk)
 	restaurant.delete()
-	messages.success(request, 'deleted',extra_tags='alert')	
-	return redirect('')
+	messages.success(request, 'Suppression réussie')	
+	return redirect('restaurant_publish_list')
 
 
 #Liste de tous les bons plans
@@ -117,5 +117,5 @@ def restaurant_preview(request,pk):
 def restaurant_publish(request,pk):
 	restaurant = get_object_or_404(Restaurant,pk=pk)
 	restaurant.publish()
-	messages.success(request, 'Restaurant publié')
+	messages.success(request, 'Action réussie')
 	return redirect('restaurant_publish_list')
