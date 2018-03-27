@@ -8,4 +8,7 @@ register = template.Library()
 def format_time(value):
     hours, rem = divmod(value.seconds, 3600)
     minutes, seconds = divmod(rem, 60)
-    return '{}h {}min'.format(hours, minutes)
+    if hours == 0:
+    	return '{}min'.format(minutes)
+    else:
+    	return '{}h {}min'.format(hours, minutes)
