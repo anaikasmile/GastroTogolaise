@@ -61,7 +61,7 @@ def restaurant_new(request):
 	if request.method == "POST":
 		form = RestaurantForm(request.POST, request.FILES)
 		if form.is_valid():
-			restaurant.save()
+			form.save()
 			messages.success(request, ('Enregistrement réussi'))
 			return redirect ('restaurant_preview',pk=restaurant.pk)
 
@@ -78,7 +78,7 @@ def restaurant_update(request,pk):
 	if request.method == "POST":
 		form = RestaurantForm(request.POST,request.FILES, instance=restaurant)
 		if form.is_valid():
-			restaurant.save()
+			form.save()
 			messages.success(request, ('Enregistrement réussi'))
 		return redirect('restaurant_preview', pk=restaurant.pk)
 	else:
