@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^recipe/$', views.recipe_list, name='recipe_list'),
     url(r'^recipe/category/(?P<pk>[0-9]+)/$', views.recipe_per_cat, name='recipe_per_cat'),
+    url(r'^recipe/tag/$', views.recipe_per_tag, name='recipe_tag'),
     url(r'^recipe/contributor/(?P<pk>[0-9]+)/$', views.recipe_per_contributor, name='recipe_per_contributor'),
     url(r'^recipe/detail/(?P<pk>[0-9]+)/$', views.recipe_detail, name='recipe_detail'),
     url(r'^recipe/like/$',views.like, name='recipe_like'),

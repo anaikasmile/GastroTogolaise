@@ -74,7 +74,13 @@
                    
                     <div class="single_mixi_portfolio_content">
                         <a href="{% url 'recipe_detail' pk=recipe.pk %}" class="title">{{recipe.title|truncatechars:20}}</a>
-                        <p>By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a></p>
+                        <p>
+                         {% if recipe.author.is_staff_member %}
+                            By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                        {% else %}
+                            By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a>
+                        {% endif %}
+                        </p>
                     </div>
                    
                 </div>
@@ -121,7 +127,7 @@
             </div>
             
         {% empty %}
-                <h2>No recipe for the moment.</h2>
+                <h2>Aucune recette disponible.</h2>
         {% endfor %}
 
         </div>

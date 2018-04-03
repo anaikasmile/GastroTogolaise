@@ -65,8 +65,10 @@ def post_detail(request,pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.view = post.view + 1 #Incrementer le nombre de vue a chaque clique sur les details de la recette
 	post.save()
+
+	post_related = Post.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(pk=post.pk)[:3]
 	post_author = Post.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=post.author).exclude(pk=post.pk)
-	return render(request, 'blog/post_detail.html',{'post':post})
+	return render(request, 'blog/post_detail.html',{'post':post,'post_author':post_author,'post_related':post_related})
 
 
 
@@ -96,6 +98,7 @@ def post_new(request):
 			post = form.save(commit=False)
 			post.author = request.user
 			post.save()
+			form.save_m2m()
 			return redirect ('post_preview',pk=post.pk)
 	else:
 		form = PostForm()
@@ -119,6 +122,7 @@ def post_edit(request,pk):
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.save()
+			form.save_m2m()
 			messages.success(request, 'Post updated',extra_tags='alert')
 		return redirect('post_preview', pk=post.pk)
 	else:

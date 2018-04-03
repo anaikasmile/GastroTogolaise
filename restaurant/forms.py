@@ -19,8 +19,7 @@ class RestaurantForm(forms.ModelForm):
             'insta_id':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'twit_id':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'lind_id':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'enabled':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-           
+            'enabled':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),      
             'image':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}), 
             
             }

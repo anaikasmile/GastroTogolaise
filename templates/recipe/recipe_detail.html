@@ -71,15 +71,20 @@
             <div class="rp-post-meta-info">
                 <ul class="list-inline">
                 
-                    <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
-                  
-                        By <a  data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}" class="rp-author">Admin</a></li>  
+                    <li>
+                    {% if recipe.author.is_staff_member %}
+                        <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
+                         By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                    {% else %}
+                        <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
+                        By <a  data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}" class="rp-author">Admin</a></li> 
+                    {% endif %}
                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ recipe.published_at|date:'F j, Y' }} </li> 
                     
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{recipe.view}}</li>
 
                     <li>
-                        <a hef="" class="like" data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                        <a class="like" data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
                     </li>
                     {% get_comment_count for recipe as comment_count %}
                     <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
@@ -253,7 +258,7 @@
                         <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
                         {% for tag in recipe.tags.all %}
 
-                         <li><a>{{tag.name}}</a></li>
+                         <li><a href="/recipe/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
 
                         {% endfor %}
                         </ul>
@@ -360,13 +365,13 @@
                         {{ form.security_hash }}
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-4">
-                                <label>{% trans 'Nom' %} <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                                <label>{% trans 'Nom' %} <span class="label-description">(ex: Jean) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
                             </div>
                             <div class="form-group col-xs-12 col-sm-4">
-                                <label>{% trans 'Email' %} <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                                <label>{% trans 'Email' %} <span class="label-description">(Non Publié) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
                             </div>
                             <div class="form-group col-xs-12 col-sm-4">
-                                <label>{% trans 'Website' %}<span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}}  
+                                <label>{% trans 'Website' %}<span class="label-description">(Optionnel)</span> </label> {{form.url|add_class:'form-control'}}  
                             </div>
                         </div>
                         
@@ -397,7 +402,23 @@
 
             <div class="tab-content">
                 <div id="posts" class="tab-pane fade in  active">
-                    Related posts
+                   <ul class="row list-unstyled" id="">
+                    {% for r in recipe_related %}
+                        <li class="col-md-4">    
+                        {% if r.image %}
+                            <a href="{% url 'recipe_detail' pk=r.pk %}">
+                            {% thumbnail r.image  "900x500" crop="center" as im %}
+                                <img src="{{im.url}}" class="img-responsive">       
+                            {% endthumbnail %}  
+                            </a>
+                        {% else %}
+                            <a href=""></a>
+                        {% endif %}
+
+                            <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
+                        </li>    
+                    {% endfor %} 
+                    </ul>
                 </div>
 
                 <div id="authors" id="content" class="defaults tab-pane fade in active">
@@ -415,7 +436,7 @@
                             <a href=""></a>
                         {% endif %}
 
-                            <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>     
+                            <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
                         </li>    
                     {% endfor %} 
                     </ul>

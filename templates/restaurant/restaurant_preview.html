@@ -9,8 +9,11 @@
                     <div class="col-lg-offset-1 col-lg-10">
                         <div class="row text-center">
                             <h2 class="">{{restaurant.name}}</h2>
-                            <p class="post-author">Post by <a href="">{{restaurant.author}}</a></p>
-                          
+                        <ul class="list-inline">
+                            <li><i class="fa fa-calendar" aria-hidden="true"></i>
+                                {{ restaurant.created_at|date:'F j, Y' }}</li>
+                            <li class="post-author">Post by <a href="">{{restaurant.author}}</a></li>
+                        </ul>
                         </div>
                         <br> 
                         <div class="row">

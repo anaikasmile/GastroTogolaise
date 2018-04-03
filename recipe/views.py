@@ -70,7 +70,9 @@ def recipe_add(request):
 		if form.is_valid():
 			recipe = form.save(commit=False)
 			recipe.author = request.user
+
 			recipe.save()
+			form.save_m2m()
 			recipe.readytime()
 			messages.success(request, ('Votre recette a été envoyée'))
 
@@ -86,7 +88,6 @@ def recipe_add(request):
 def recipe_list(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
 	recipes = pagination(request, recipes)
-
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
 
 
@@ -96,6 +97,18 @@ def recipe_per_cat(request,pk):
 	recipes = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
 	recipes = pagination(request, recipes)
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes, 'category':category})
+
+
+#Liste des recettes par tag
+def recipe_per_tag(request):
+	#category = get_object_or_404(Category, pk=pk)
+	if request.method == 'GET':
+		tag = request.GET.get('tag')
+		recipes =  Recipe.objects.filter(tags__name=tag)
+		recipes = pagination(request, recipes)
+	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
+
+
 
 #Liste des recettes par contributeur
 def recipe_per_contributor(request,pk):
@@ -110,19 +123,22 @@ def recipe_detail(request,pk):
 	recipe = get_object_or_404(Recipe,pk=pk)
 	recipe.view = recipe.view+1 #Incrementer le nombre de vue a chaque visaualisation d'une recette
 	recipe.save()
+	search_word = recipe.title
 	
 
-	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(pk=recipe.pk)
-	page = request.GET.get('page', 1)
-	paginator = Paginator(recipe_author, 3)
-	try:
-		recipe_author = paginator.page(page)
-	except PageNotAnInteger:
-		recipe_author = paginator.page(1)
-	except EmptyPage:
-		recipe_author = paginator.page(paginator.num_pages)
+	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(pk=recipe.pk)[:3]
+	recipe_related = Recipe.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(pk=recipe.pk)[:3]
+	
+	# page = request.GET.get('page', 1)
+	# paginator = Paginator(recipe_author, 3)
+	# try:
+	# 	recipe_author = paginator.page(page)
+	# except PageNotAnInteger:
+	# 	recipe_author = paginator.page(1)
+	# except EmptyPage:
+	# 	recipe_author = paginator.page(paginator.num_pages)
 
-	return render(request,'recipe/recipe_detail.html',{'recipe':recipe,'recipe_author':recipe_author})
+	return render(request,'recipe/recipe_detail.html',{'recipe':recipe,'recipe_author':recipe_author,'recipe_related':recipe_related})
 
 # Liker une recette
 def like(request):
@@ -256,6 +272,7 @@ def recipe_update(request,pk):
 		if form.is_valid():
 			recipe = form.save(commit=False)
 			recipe.save()
+			form.save_m2m()
 			recipe.readytime()
 			messages.success(request, 'Recipe updated')
 		return redirect('recipe_preview', pk=recipe.pk)
@@ -285,6 +302,7 @@ def video_new(request):
 			video = form.save(commit=False)
 			video.author = request.user
 			video.save()
+			form.save_m2m()
 			return redirect ('video_preview',pk=video.pk)
 	else:
 		form = VideoForm()
@@ -299,6 +317,7 @@ def video_edit(request,pk):
 		if form.is_valid():
 			video = form.save(commit=False)
 			video.save()
+			form.save_m2m()
 			messages.success(request, 'Video updated')
 		return redirect('video_preview', pk=video.pk)
 	else:

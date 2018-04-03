@@ -53,7 +53,13 @@
                     {% endvideo %}
                     <div class="single_mixi_portfolio_content">
                         <a href="{% url 'video_detail' pk=video.pk %}" class="title">{{video.title|truncatechars:20}}</a>
-                        <p>By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}">{{video.author}}</a></p>
+                        <p>
+                         {% if video.author.is_staff_member %}
+                            By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                        {% else %}
+                        By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}">{{video.author}}</a>
+                        {% endif %}
+                        </p>
                     </div>
                    
                 </div>

@@ -24,15 +24,25 @@ SECRET_KEY = '#l3#%g^k@g9wjtsnzkwce-7uy92_%1x=)gt%t_o_+fd!7%g($3'
 
 DEBUG = True
 
-DATABASES = {'default': dj_database_url.config(default="postgres://vgjwgtfucuikpl:633148bf9dd72b1c544bb64752b021d9ffa6a8b1f73b6650ae2d1241d34dc3e8@ec2-184-72-219-186.compute-1.amazonaws.com:5432/dfta5itndc3ijm")}
+#DATABASES = {'default': dj_database_url.config(default="postgres://vgjwgtfucuikpl:633148bf9dd72b1c544bb64752b021d9ffa6a8b1f73b6650ae2d1241d34dc3e8@ec2-184-72-219-186.compute-1.amazonaws.com:5432/dfta5itndc3ijm")}
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+        'NAME': 'cookit_db', 
+        'USER': 'cookit_user', 
+        'PASSWORD': 'cookit_user', 
+        'HOST': 'localhost', 
+        'PORT': '', 
+    }
+}
 
 
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-SITE_ID = 3
+SITE_ID = 2
 
 
 
@@ -245,24 +255,24 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 #Files storages
-AWS_STATIC_STORAGE_BUCKET_NAME = 'tgcook'
-AWS_STORAGE_BUCKET_NAME = 'tgcook'
+# AWS_STATIC_STORAGE_BUCKET_NAME = 'tgcook'
+# AWS_STORAGE_BUCKET_NAME = 'tgcook'
 
-AWS_ACCESS_KEY_ID = 'AKIAIOWSHLAWROUESPLQ'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_ACCESS_KEY_ID = 'AKIAIOWSHLAWROUESPLQ'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
 
-#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-#STATIC_URL = S3_URL
-MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+# #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+# #STATIC_URL = S3_URL
+# MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
 
 
 

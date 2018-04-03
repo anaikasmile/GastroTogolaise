@@ -47,85 +47,70 @@
                             </ul>   
 
                             <div class="tab-content rgba-grey-slight padding">
+                         
                                 
                                 <div id="menu1" class="tab-pane fade in active ">
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Feb 2018 </div>
+                                   {% for r in toprecipes %}
+                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
                                     <div class="media">
-
-                                        <a class="pull-left card" href="">
-                                            <img src="{% static 'assets/images/pf1.jpg' %}" class="media-object" width="70px;" height="50px;">    
-                                        </a>
+                                        {% if r.image %}
+                                            <a class="pull-left card" href="{% url 'recipe_detail' pk=r.pk %}">
+                                            {% thumbnail r.image  "70x50" crop="center" as im %}
+                                                <img src="{{im.url}}" class="media-object">       
+                                            {% endthumbnail %}  
+                                            </a>
+                                        {% else %}
+                                            <a href=""></a>
+                                        {% endif %}
+                                       
                                         <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color">Title</a></h5>
-                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>20</a> 
+                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>
+                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</a> 
                                         </div>
                                     </div>
                                     <hr>
-
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Feb 2018 </div>
-                                    <div class="media">
-
-                                        <a class="pull-left card" href="">
-                                            <img src="{% static 'assets/images/pf1.jpg' %}" class="media-object" width="70px;" height="50px;">    
-                                        </a>
-                                        <div class="media-body">
-                                           <h5 class="media-heading"><a class="cook-second-color">Title</a></h5>
-                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>10</a> 
-                                        </div>
-                                    </div>
-                                     
+                                    {% endfor %}
+                                
                                 </div>
 
                                 <div id="menu2" class="tab-pane fade">
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Feb 2018 </div>
+                                    {% for r in topvideos %}
+                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
                                     <div class="media">
-
-                                        <a class="pull-left card" href="">
-                                            <img src="{% static 'assets/images/pf1.jpg' %}" class="media-object" width="70px;" height="50px;">    
-                                        </a>
+                                        {% video video.video as video %}
+                                        {% video video "70x50"  %}
+                                        {% endvideo %}
+                                       
                                         <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color">Title</a></h5>
-                                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>110</a> 
+                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>
+                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</a> 
                                         </div>
                                     </div>
-                                     <hr>
-                                     <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Feb 2018 </div>
-                                    <div class="media">
-
-                                        <a class="pull-left card" href="">
-                                            <img src="{% static 'assets/images/pf1.jpg' %}" class="media-object" width="70px;" height="50px;">    
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color">Title</a></h5>
-                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i> 10</a>
-                                        </div>
-                                    </div>
+                                    <hr>
+                                    {% endfor %}
                                 </div>
 
                                 <div id="menu3" class="tab-pane fade">
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Feb 2018 </div>
-                                   <div class="media">
-
-                                        <a class="pull-left card" href="">
-                                            <img src="{% static 'assets/images/pf1.jpg' %}" class="media-object" width="70px;" height="50px;">    
-                                        </a>
-                                        <div class="media-body">
-                                           <h5 class="media-heading"><a class="cook-second-color">Title</a></h5>
-                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>10</a>
-                                        </div>
-                                    </div>
-                                     <hr>
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> 23 Feb 2018 </div>
+                                   {% for r in lastposts %}
+                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
                                     <div class="media">
-
-                                        <a class="pull-left card" href="">
-                                            <img src="{% static 'assets/images/pf1.jpg' %}" class="media-object" width="70px;" height="50px;">    
-                                        </a>
+                                        {% if r.image %}
+                                            <a class="pull-left card" href="{% url 'recipe_detail' pk=r.pk %}">
+                                            {% thumbnail r.image  "70x50" crop="center" as im %}
+                                                <img src="{{im.url}}" class="media-object">       
+                                            {% endthumbnail %}  
+                                            </a>
+                                        {% else %}
+                                            <a href=""></a>
+                                        {% endif %}
+                                       
                                         <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color">Title</a></h5>
-                                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>10</a> 
+                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>
+                                           <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</a> 
                                         </div>
                                     </div>
+                                    <hr>
+                                    {% endfor %}
                                 </div>
 
                             

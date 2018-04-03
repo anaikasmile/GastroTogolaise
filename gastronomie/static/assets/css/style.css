@@ -1826,13 +1826,18 @@ blockquote footer, blockquote small, blockquote .small {
 .rp-post-related .nav-tabs >li > a {
     color: #222;
 }
+
+.rp-post-related .nav-tabs>li>a:hover {
+    color: #fff;
+    background-color: #181f18;
+}
 .rp-post-related .nav-tabs > li.active > a,
 .rp-post-related .nav-tabs > li.active > a:hover,
 .rp-post-related .nav-tabs > li.active > a:focus{
 
   color: #f7f7f7;
   cursor: default;
-  background-color: #35a533;
+  background-color: #181f18;
 
 }
 
@@ -1840,8 +1845,8 @@ blockquote footer, blockquote small, blockquote .small {
     padding-top: 20px;
     
 }
-.rp-post-related h6{
-    margin-top: 10px;
+.rp-post-related h5{
+    font-size: 12px;
 }
 
 .rp-footer{

@@ -63,8 +63,11 @@
                 <ul class="list-inline">
                 
                     <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
-                  
-                        By <a href="" class="rp-author">Admin</a></li>  
+                   {% if video.author.is_staff_member %}
+                         By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                    {% else %}
+                        By <a href="" class="rp-author">Admin</a></li> 
+                    {% endif %} 
                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ video.published_at|date:'F j, Y' }} </li> 
                     
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
