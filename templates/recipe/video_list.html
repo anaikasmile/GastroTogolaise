@@ -52,7 +52,7 @@
                         {% video video '340 x 260'  %}
                     {% endvideo %}
                     <div class="single_mixi_portfolio_content">
-                        <a href="{% url 'video_detail' pk=video.pk %}" class="title">{{video.title|truncatechars:20}}</a>
+                        <a href="{% url 'video_detail' slug=video.slug %}" class="title">{{video.title|truncatechars:20}}</a>
                         <p>
                          {% if video.author.is_staff_member %}
                             By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>

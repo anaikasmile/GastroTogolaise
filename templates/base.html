@@ -165,7 +165,7 @@
                                     <ul class="dropdown-menu">
                                         {%for cat in categories %}
                                         <li>
-                                            <a href="{% url 'recipe_per_cat' pk=cat.pk %}">{{cat.name}}</a>
+                                            <a href="{% url 'recipe_per_cat' slug=cat.slug %}">{{cat.name}}</a>
                                             <hr>
                                         </li>
                                         {% endfor %}
@@ -193,7 +193,7 @@
                                     <ul class="dropdown-menu">
                                          {%for restaurant_cat in restaurant_categories %}
                                         <li>
-                                            <a href="{% url 'restaurant_per_cat' pk=restaurant_cat.pk %}">{{restaurant_cat.name}}</a>
+                                            <a href="{% url 'restaurant_per_cat' slug=restaurant_cat.slug %}">{{restaurant_cat.name}}</a>
                                             <hr>
                                         </li>
                                         {% endfor %}

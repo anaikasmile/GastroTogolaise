@@ -51,7 +51,7 @@
                     <div class="view hm-zoom">
            
                         {% if recipe.image %}
-                        <a href="{% url 'recipe_detail' pk=recipe.pk %}">
+                        <a href="{% url 'recipe_detail' slug=recipe.slug %}">
                         {% thumbnail recipe.image  "900x500" crop="center" as im %}
                             <img src="{{im.url}}" class="img-responsive">
                         {% endthumbnail %}  
@@ -73,7 +73,7 @@
                     </div>
                    
                     <div class="single_mixi_portfolio_content">
-                        <a href="{% url 'recipe_detail' pk=recipe.pk %}" class="title">{{recipe.title|truncatechars:20}}</a>
+                        <a href="{% url 'recipe_detail' slug=recipe.slug %}" class="title">{{recipe.title|truncatechars:20}}</a>
                         <p>
                          {% if recipe.author.is_staff_member %}
                             By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>

@@ -34,7 +34,7 @@ class Profile(models.Model):
 
 	created_at = models.DateTimeField(blank=True, auto_now_add=True, null=True)
 	update_at = models.DateTimeField(auto_now=True, blank=True, null=True)
-	slug = models.SlugField(null=False,unique=True)
+	slug = models.SlugField(null=True)
 
 	def __str__(self):
 		return self.user.username

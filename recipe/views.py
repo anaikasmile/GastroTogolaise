@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
+from django.utils.text import slugify
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
 from recipe.forms import RecipeForm, VideoForm
@@ -70,7 +71,7 @@ def recipe_add(request):
 		if form.is_valid():
 			recipe = form.save(commit=False)
 			recipe.author = request.user
-
+			recipe.slug = slugify(recipe.title)
 			recipe.save()
 			form.save_m2m()
 			recipe.readytime()
@@ -92,8 +93,8 @@ def recipe_list(request):
 
 
 #Liste des recettes par categorie
-def recipe_per_cat(request,pk):
-	category = get_object_or_404(Category, pk=pk)
+def recipe_per_cat(request,slug):
+	category = get_object_or_404(Category, slug=slug)
 	recipes = category.recipes.all().filter(published_at__isnull=False).order_by('-published_at')
 	recipes = pagination(request, recipes)
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes, 'category':category})
@@ -119,15 +120,15 @@ def recipe_per_contributor(request,pk):
 
 
 #Affiche les details d'une recette
-def recipe_detail(request,pk):
-	recipe = get_object_or_404(Recipe,pk=pk)
+def recipe_detail(request,slug):
+	recipe = get_object_or_404(Recipe,slug=slug)
 	recipe.view = recipe.view+1 #Incrementer le nombre de vue a chaque visaualisation d'une recette
 	recipe.save()
 	search_word = recipe.title
 	
 
-	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(pk=recipe.pk)[:3]
-	recipe_related = Recipe.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(pk=recipe.pk)[:3]
+	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(slug=recipe.slug)[:3]
+	recipe_related = Recipe.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(slug=recipe.slug)[:3]
 	
 	# page = request.GET.get('page', 1)
 	# paginator = Paginator(recipe_author, 3)
@@ -168,13 +169,13 @@ def video_per_tag(request):
 	return render(request,'recipe/video_list.html', {'videos':videos})
 
 
-def video_detail(request,pk):
-	video = get_object_or_404(Video,pk=pk)
+def video_detail(request,slug):
+	video = get_object_or_404(Video,slug=slug)
 	video.view = video.view+1 #Incrementer le nombre de vue a chaque visaualisation d'une recette
 	video.save()
 	
 
-	video_author = Video.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=video.author).exclude(pk=video.pk)
+	video_author = Video.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=video.author).exclude(slug=video.slug)
 	page = request.GET.get('page', 1)
 	paginator = Paginator(video_author, 3)
 	try:
@@ -260,6 +261,7 @@ def recipe_new(request):
 			recipe = form.save(commit=False)
 			recipe.author = request.user
 			#recipe.published_at = timezone.now()
+			recipe.slug = slugify(recipe.title)
 			recipe.save()
 			recipe.readytime()
 			messages.success(request, 'Votre recette a été enregistrée')
@@ -310,6 +312,7 @@ def video_new(request):
 		if form.is_valid():
 			video = form.save(commit=False)
 			video.author = request.user
+			video.slug = slugify(video.title)
 			video.save()
 			form.save_m2m()
 			return redirect ('video_preview',pk=video.pk)

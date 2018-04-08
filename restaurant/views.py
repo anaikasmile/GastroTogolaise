@@ -44,8 +44,8 @@ def traiteur_list(request):
 	return render(request,'restaurant/restaurant_list.html', {'restaurants':restaurants})
 
 #Liste des addresses par categorie
-def restaurant_per_cat(request,pk):
-	category = get_object_or_404(Category, pk=pk)
+def restaurant_per_cat(request,slug):
+	category = get_object_or_404(Category, slug=slug)
 	restaurants = category.addresses.all().filter(enabled='True')
 	restaurants = pagination(request, restaurants)
 	return render(request,'restaurant/restaurant_list.html', {'restaurants':restaurants, 'category_address':category})
@@ -63,6 +63,7 @@ def restaurant_new(request):
 		if form.is_valid():
 			restaurant = form.save(commit=False)
 			restaurant.author = request.user
+			restaurant.slug = slugify(restaurant.title)
 			restaurant.save()
 			messages.success(request, ('Enregistrement réussi'))
 			return redirect ('restaurant_preview',pk=restaurant.pk)

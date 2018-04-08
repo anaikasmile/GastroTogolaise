@@ -54,7 +54,7 @@
                                     <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
                                     <div class="media">
                                         {% if r.image %}
-                                            <a class="pull-left card" href="{% url 'recipe_detail' pk=r.pk %}">
+                                            <a class="pull-left card" href="{% url 'recipe_detail' slug=r.slug %}">
                                             {% thumbnail r.image  "70x50" crop="center" as im %}
                                                 <img src="{{im.url}}" class="media-object">       
                                             {% endthumbnail %}  
@@ -64,7 +64,7 @@
                                         {% endif %}
                                        
                                         <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>
+                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' slug=r.slug %}">{{r.title|truncatechars:30}}</a></h5>
                                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</a> 
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
                                         {% endvideo %}
                                        
                                         <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>
+                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' slug=r.slug %}">{{r.title|truncatechars:30}}</a></h5>
                                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</a> 
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@
                                     <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
                                     <div class="media">
                                         {% if r.image %}
-                                            <a class="pull-left card" href="{% url 'recipe_detail' pk=r.pk %}">
+                                            <a class="pull-left card" href="{% url 'recipe_detail' slug=r.slug %}">
                                             {% thumbnail r.image  "70x50" crop="center" as im %}
                                                 <img src="{{im.url}}" class="media-object">       
                                             {% endthumbnail %}  
@@ -105,7 +105,7 @@
                                         {% endif %}
                                        
                                         <div class="media-body">
-                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' pk=r.pk %}">{{r.title|truncatechars:30}}</a></h5>
+                                            <h5 class="media-heading"><a class="cook-second-color" href="{% url 'recipe_detail' slug=r.slug %}">{{r.title|truncatechars:30}}</a></h5>
                                            <a href="#" class="icon"><i class="fa fa-eye" aria-hidden="true"></i>{{r.view}}</a> 
                                         </div>
                                     </div>

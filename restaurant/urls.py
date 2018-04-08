@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.restaurant_list, name='restaurant_list'),
-    url(r'^category/(?P<pk>[0-9]+)/$', views.restaurant_per_cat, name='restaurant_per_cat'),
+    url(r'^category/(?P<slug>[-\w]+)/$', views.restaurant_per_cat, name='restaurant_per_cat'),
     url(r'^catering$', views.traiteur_list, name='catering_list'),
 
     url(r'^new/$', views.restaurant_new, name='restaurant_new'),

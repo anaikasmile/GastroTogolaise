@@ -351,7 +351,7 @@
                     {{ form.timestamp }}
                     {{ form.security_hash }}
                     <br>
-                    <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
+                    <input type="hidden" name="next" value="{% url 'recipe_detail' slug=recipe.slug %}" />
                     
                     <button class="btn btn-primary" type="submit" id="id_submit">{% trans 'Envoyer' %}</button>
                     </form>
@@ -387,7 +387,7 @@
                             {{form.comment|add_class:'form-control'}}
                             </div>
                         </div>
-                           <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.pk %}" />
+                           <input type="hidden" name="next" value="{% url 'recipe_detail' recipe.slug %}" />
                         <button class="btn btn-primary" type="submit">{% trans 'Envoyer' %}</button>
                         
                     </form> 
@@ -412,7 +412,7 @@
                     {% for r in recipe_related %}
                         <li class="col-md-4">    
                         {% if r.image %}
-                            <a href="{% url 'recipe_detail' pk=r.pk %}">
+                            <a href="{% url 'recipe_detail' slug=r.slug %}">
                             {% thumbnail r.image  "900x500" crop="center" as im %}
                                 <img src="{{im.url}}" class="img-responsive">       
                             {% endthumbnail %}  
@@ -421,7 +421,7 @@
                             <a href=""></a>
                         {% endif %}
 
-                            <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
+                            <h5 class=""><a href="{% url 'recipe_detail' slug=r.slug %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
                         </li>    
                     {% endfor %} 
                     </ul>
@@ -433,7 +433,7 @@
                     {% for r in recipe_author %}
                         <li class="col-md-4">    
                         {% if r.image %}
-                            <a href="{% url 'recipe_detail' pk=r.pk %}">
+                            <a href="{% url 'recipe_detail' slug=r.slug %}">
                             {% thumbnail r.image  "900x500" crop="center" as im %}
                                 <img src="{{im.url}}" class="img-responsive">       
                             {% endthumbnail %}  
@@ -442,7 +442,7 @@
                             <a href=""></a>
                         {% endif %}
 
-                            <h5 class=""><a href="{% url 'recipe_detail' pk=r.pk %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
+                            <h5 class=""><a href="{% url 'recipe_detail' slug=r.slug %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
                         </li>    
                     {% endfor %} 
                     </ul>
