@@ -214,20 +214,32 @@ $(document).on('click','.navbar-collapse.in',function(e) {
 
   // Ajouter  function like
 $(document).ready(function() {
-    $('.like').click(function() {
-    var pk;
-        pk = $(this).attr('data-recipe-pk');
-        $.get('/recipe/like/', {
-            recipe_pk: pk
-        }, function(data) {
-            $('#count-like-'+pk).html(data);
+    // $('.like').click(function() {
+    // var pk;
+    //     pk = $(this).attr('data-recipe-pk');
+    //     $.get('/recipe/like/', {
+    //         recipe_pk: pk
+    //     }, function(data) {
+    //         $('#count-like-'+pk).html(data);
             
-        });
-        return false;
-    });
+    //     });
+    //     return false;
+    // });
 
+    
 });
 
+$(document).ready(function() {
+
+    $('#likes').click(function(){
+        var projid;
+        projid = $(this).attr("data-projid");
+        $.get('/recipe/like/', {recipe_pk: projid}, function(data){
+                   $('#like_count').html(data);
+                   $('#likes').hide();
+        });
+    });
+});
 
 $(document).ready(function() {
     $('.likepost').click(function() {

@@ -14,6 +14,7 @@ class Category(models.Model):
 	name = models.CharField(max_length=50)
 	created_at = models.DateTimeField(auto_now_add=True)
 	update_at = models.DateTimeField(auto_now=True)
+	slug = models.SlugField(null=False,unique=True)
 
 	def __str__(self):
 		return self.name 
@@ -49,6 +50,7 @@ class Recipe(models.Model):
 	published_at = models.DateTimeField(blank=True, null=True)
 	author = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='recipe')
 	tags = TaggableManager()
+	slug = models.SlugField(null=False,unique=True)
 
 	# def view(self):
 	# 	self.view = self.view+1 
@@ -79,7 +81,8 @@ class Video(models.Model):
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null= True)
 	tags = TaggableManager()
-	#tags = TaggableManager(blank=True, null=True)
+	slug = models.SlugField(null=False,unique=True)
+	
 
 	def publish(self):
 		self.published_at = timezone.now()

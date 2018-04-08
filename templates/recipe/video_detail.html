@@ -127,7 +127,7 @@
                 <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
                 {% for tag in video.tags.all %}
 
-                 <li><a>{{tag.name}}</a></li>
+                 <li><a href="/video/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
 
                 {% endfor %}
                 </ul>

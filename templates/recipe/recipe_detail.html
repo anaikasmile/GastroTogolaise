@@ -84,11 +84,17 @@
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{recipe.view}}</li>
 
                     <li>
-                        <a class="like" data-recipe-pk="{{recipe.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                        <a type="button" id="like" name="recipe_like"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
                     </li>
+                    
                     {% get_comment_count for recipe as comment_count %}
                     <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
                 </ul>
+                <button id="likes" data-projid="{{recipe.pk}}" class="btn btn-danger-outline btn-sm" type="button"> <i class="fa fa-heart-o" aria-hidden="true"></i>
+
+                  like
+                  </button>
+                  {{recipe.like}}
             </div>
             <div class="rp-post-share">
                  <!--Facebook-->
@@ -258,7 +264,7 @@
                         <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
                         {% for tag in recipe.tags.all %}
 
-                         <li><a href="/recipe/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
+                        <li><a href="/recipe/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
 
                         {% endfor %}
                         </ul>
@@ -489,4 +495,7 @@
                     </div>
                 </div>
             </div>
+
+
+
 {% endblock content %}     

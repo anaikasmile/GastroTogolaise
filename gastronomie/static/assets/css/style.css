@@ -812,6 +812,7 @@ input::-ms-input-placeholder {
     border-top: 1px solid #dcd4d4;
     
 }
+
 .widget-left hr:last-child{
     display: none;
 }
@@ -1052,6 +1053,9 @@ ul.tags li a:hover {
     margin-bottom: 0px;
 }
 
+.mixcontent hr:last-child{
+    display: none;
+}
 
 .portfolio_btn_area{
     overflow: hidden;

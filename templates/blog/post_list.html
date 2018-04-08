@@ -61,7 +61,7 @@
                 
                     
                     {% if post.image %}
-                    <a href="{% url 'post_detail' pk=post.pk %}">
+                    <a href="{% url 'post_detail' slug=post.slug %}">
                     {% thumbnail post.image  "680x350" crop="center" as im %}
                         <img src="{{im.url}}" class="img-responsive">
                     {% endthumbnail %}  
@@ -71,7 +71,7 @@
                     {% endif %}
                    <br>
 
-                    <h5 class="padding"><a href="{% url 'post_detail' pk=post.pk %}" class="blog_title " >{{post.title}}</a></h5>
+                    <h5 class="padding"><a href="{% url 'post_detail' slug=post.slug %}" class="blog_title " >{{post.title}}</a></h5>
 			        <!-- By <a href="" class="rp-author">Admin</a> -->
 			        <div class="rp-post-meta-info "  style="padding-left: 15px;">
 			            <ul class="list-inline">
@@ -104,7 +104,7 @@
 
                     	<hr>
                     	<div class="pull-left ">
-                    		<strong><a href="{% url 'post_detail' pk=post.pk %}" class="cook-first-color">{% trans 'READ MORE' %}</a></strong>
+                    		<strong><a href="{% url 'post_detail' slug=post.slug %}" class="cook-first-color">{% trans 'READ MORE' %}</a></strong>
                     	</div>
                     	<div class="share pull-right clearfix">
                     		

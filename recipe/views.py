@@ -158,6 +158,15 @@ def video_list(request):
  	videos = pagination(request, videos)
  	return render(request,'recipe/video_list.html',{'videos':videos})
 
+#Liste des recettes video par tag
+def video_per_tag(request):
+	#category = get_object_or_404(Category, pk=pk)
+	if request.method == 'GET':
+		tag = request.GET.get('tag')
+		videos =  Video.objects.filter(tags__name=tag)
+		videos = pagination(request, videos)
+	return render(request,'recipe/video_list.html', {'videos':videos})
+
 
 def video_detail(request,pk):
 	video = get_object_or_404(Video,pk=pk)
