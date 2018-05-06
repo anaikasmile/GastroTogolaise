@@ -83,9 +83,9 @@
                 
                     <div class="row text-center">
                         <div class="col-sm-12">
-                            <a href="{% url 'recipe_update' pk=recipe.pk %}" class="btn btn-primary">Modifier</a>
+                            <a href="{% url 'recipe_update' slug=recipe.slug %}" class="btn btn-primary">Modifier</a>
                             {% if not recipe.published_at %}
-                            <a href="{% url 'recipe_publish' pk=recipe.pk %}" class="btn btn-primary">Publier</a>
+                            <a href="{% url 'recipe_publish' slug=recipe.slug %}" class="btn btn-primary">Publier</a>
                             {% endif %}
                         </div>
                     </div>

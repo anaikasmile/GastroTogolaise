@@ -73,7 +73,7 @@
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
 
                     <li>
-                        <a class="video-like " data-video-pk="{{video.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span>
+                        <a class="video-like " data-video-slug="{{video.slug}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{video.slug}}"> {{video.like}}</span>
                     </li>
                     {% get_comment_count for video as comment_count %}
                     <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>

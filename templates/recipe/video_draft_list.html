@@ -25,14 +25,14 @@
                          <tr>
                             <td>{{video.created_at|date:'F j, Y'}}</td>
                             </td>
-                            <td><a href="{% url 'video_preview' pk=video.pk %}">{{video.title}}</a></td>
+                            <td><a href="{% url 'video_preview' slug=video.slug %}">{{video.title}}</a></td>
                             <td></td>
                             <td><a href="">{{video.author}}</a></td>
                             <td>
                             <a href="javascript:;" data-toggle="collapse" data-target="#publish_{{video.id}}"><i class="fa fa-fw fa-arrows-v"></i> Publish <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="publish_{{video.id}}" class="collapse">
                                     <li>
-                                        <a href="{% url 'video_publish' pk=video.pk %}">Yes</a>
+                                        <a href="{% url 'video_publish' slug=video.slug %}">Yes</a>
                                     </li>
                                     <li>
                                         <a href="#">No</a>

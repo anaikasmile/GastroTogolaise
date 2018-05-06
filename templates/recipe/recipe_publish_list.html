@@ -54,7 +54,7 @@
                                         <td>{{forloop.counter}}</td>
                                         <td>{{recipe.published_at|date:'F j, Y'}}</td>
                                         <td><a href="">{{recipe.category.name}}</a></td>
-                                        <td><a href="{% url 'recipe_preview' pk=recipe.pk %}">{{recipe.title}}</a></td>
+                                        <td><a href="{% url 'recipe_preview' slug=recipe.slug %}">{{recipe.title}}</a></td>
                                         <td><a href="">{{recipe.view}}</a></td>
                                         <td><a href="">{{recipe.like}}</a></td>
                                         <td><a href="">{{recipe.author}}</a></td>
@@ -62,10 +62,10 @@
                                             <a href="javascript:;" data-toggle="collapse" data-target="#action_{{recipe.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                             <ul id="action_{{recipe.id}}" class="collapse">
                                                 <li>
-                                                    <a href="{% url 'recipe_preview' pk=recipe.pk %}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
+                                                    <a href="{% url 'recipe_preview' slug=recipe.slug %}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{% url 'recipe_update' pk=recipe.pk %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
+                                                    <a href="{% url 'recipe_update' slug=recipe.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
                                                 </li>
                                                 <li>
                                                     <a data-toggle="modal" data-target="#deleteRecipe{{recipe.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Supprimer</a>
@@ -88,7 +88,7 @@
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href="{% url 'recipe_delete' pk=recipe.pk %}" type="submit" class="btn btn-danger">{ trans 'Supprimer' }</a>
+                                                <a href="{% url 'recipe_delete' slug=recipe.slug %}" type="submit" class="btn btn-danger">{ trans 'Supprimer' }</a>
                                               </div>
                                             </div>
                                           </div>

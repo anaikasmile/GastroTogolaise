@@ -31,7 +31,7 @@
                 <hr>
                 {% if not video.published_at %}
                 <div class="video-share">
-                    <a href="{% url 'video_publish' pk=video.pk %}" class="btn btn-default">Publier</a>
+                    <a href="{% url 'video_publish' slug=video.slug %}" class="btn btn-default">Publier</a>
                     
                 </div>
                 {% endif %}

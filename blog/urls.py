@@ -12,8 +12,8 @@ urlpatterns = [
 	url(r'^like/$',views.like, name='post_like'),
 
 	url(r'^new/$', views.post_new, name='post_new'),
-	url(r'^preview/(?P<pk>[0-9]+)/$', views.post_preview, name='post_preview'),
-	url(r'^(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_update'),
+	url(r'^preview/(?P<slug>[-\w]+)/$', views.post_preview, name='post_preview'),
+	url(r'^(?P<slug>[-\w]+)/edit/$', views.post_edit, name='post_update'),
 	url(r'^draft/list/$', views.post_draft_list, name='post_draft_list'),
 	url(r'^publish/list/$', views.post_publish_list, name='post_publish_list'), 
 	url(r'^(?P<pk>[0-9]+)/publish/$', views.post_publish, name='post_publish'),

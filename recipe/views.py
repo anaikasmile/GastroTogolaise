@@ -238,15 +238,15 @@ def recipe_publish_list(request):
 #Affiche les details d'une recette
 @login_required
 @staff_required
-def recipe_preview(request,pk):
-	recipe = get_object_or_404(Recipe,pk=pk)
+def recipe_preview(request,slug):
+	recipe = get_object_or_404(Recipe,slug=slug)
 	return render(request,'recipe/recipe_preview.html',{'recipe':recipe})
 
 #Approuver une recette
 @login_required
 @staff_required
-def recipe_publish(request,pk):
-	recipe = get_object_or_404(Recipe,pk=pk)
+def recipe_publish(request,slug):
+	recipe = get_object_or_404(Recipe,slug=slug)
 	recipe.publish()
 	messages.success(request, 'Votre recette a été publiée')
 	return redirect('recipe_draft_list')
@@ -266,7 +266,7 @@ def recipe_new(request):
 			recipe.readytime()
 			messages.success(request, 'Votre recette a été enregistrée')
 			return redirect("recipe_new")
-			return redirect ('recipe_preview',pk=recipe.pk)
+			return redirect ('recipe_preview',slug=recipe.slug)
 
 	else:
 		form = RecipeForm()
@@ -276,8 +276,8 @@ def recipe_new(request):
 #Modifier une recette
 @login_required
 @staff_required
-def recipe_update(request,pk):
-	recipe = get_object_or_404(Recipe, pk=pk)
+def recipe_update(request,slug):
+	recipe = get_object_or_404(Recipe, slug=slug)
 	if request.method == "POST":
 		form = RecipeForm(request.POST,request.FILES, instance=recipe)
 		if form.is_valid():
@@ -286,7 +286,7 @@ def recipe_update(request,pk):
 			form.save_m2m()
 			recipe.readytime()
 			messages.success(request, 'Recipe updated')
-		return redirect('recipe_preview', pk=recipe.pk)
+		return redirect('recipe_preview', slug=recipe.slug)
 	else:
 		form = RecipeForm(instance=recipe)
 	return render(request, 'recipe/recipe_update.html', {'form': form})
@@ -296,8 +296,8 @@ def recipe_update(request,pk):
 #Supprimer une recette
 @login_required
 @staff_required
-def recipe_delete(request,pk):
-	recipe = get_object_or_404(Recipe, pk=pk)
+def recipe_delete(request,slug):
+	recipe = get_object_or_404(Recipe, slug=slug)
 	recipe.delete()
 	messages.success(request, 'Your recipe deleted')	
 	return redirect('recipe_publish_list')
@@ -315,15 +315,15 @@ def video_new(request):
 			video.slug = slugify(video.title)
 			video.save()
 			form.save_m2m()
-			return redirect ('video_preview',pk=video.pk)
+			return redirect ('video_preview',slug=video.slug)
 	else:
 		form = VideoForm()
 	return render(request, 'recipe/video_new.html',{'form':form})
 
 @login_required
 @staff_required
-def video_edit(request,pk):
-	video = get_object_or_404(Video, pk=pk)
+def video_edit(request,slug):
+	video = get_object_or_404(Video, slug=slug)
 	if request.method == "POST":
 		form = VideoForm(request.POST, instance=video)
 		if form.is_valid():
@@ -331,7 +331,7 @@ def video_edit(request,pk):
 			video.save()
 			form.save_m2m()
 			messages.success(request, 'Video updated')
-		return redirect('video_preview', pk=video.pk)
+		return redirect('video_preview', slug=video.slug)
 	else:
 		form = VideoForm(instance=video)
 	return render(request, 'recipe/video_new.html', {'form': form})
@@ -340,8 +340,8 @@ def video_edit(request,pk):
 # Apercu
 @login_required
 @staff_required
-def video_preview(request,pk):
-	video = get_object_or_404(Video, pk=pk)
+def video_preview(request,slug):
+	video = get_object_or_404(Video, slug=slug)
 	return render(request, 'recipe/video_preview.html',{'video':video})
 
 
@@ -361,16 +361,16 @@ def video_publish_list(request):
 
 @login_required
 @staff_required
-def video_publish(request, pk):
-    video = get_object_or_404(Video, pk=pk)
+def video_publish(request, slug):
+    video = get_object_or_404(Video, slug=slug)
     video.publish()
     messages.success(request, 'Your video was published!')
     return redirect('video_draft_list')
 
 @login_required
 @staff_required
-def video_delete(request,pk):
-	video = get_object_or_404(Video, pk=pk)
+def video_delete(request,slug):
+	video = get_object_or_404(Video, slug=slug)
 	video.delete()
 	messages.success(request, 'Video deleted')
 	return redirect('video_publish_list')

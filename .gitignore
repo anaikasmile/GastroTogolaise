@@ -1,6 +1,5 @@
 migrations
 __pycache__
-static
 media
 staticfiles
 *.pyc

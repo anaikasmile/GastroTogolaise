@@ -120,7 +120,7 @@
                                     <tr>
                                         <td>{{recipe.published_at|date:'F j, Y'}}</td>
                                         <td><a href="">{{recipe.category.name}}</a></td>
-                                        <td><a href="{% url 'recipe_detail' pk=recipe.pk %}">{{recipe.title}}</a></td>
+                                        <td><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{recipe.title}}</a></td>
                                         <td><a href="">{{recipe.view}}</a></td>
                                         <td><a href="">{{recipe.like}}</a></td>
                                         

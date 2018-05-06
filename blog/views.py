@@ -104,14 +104,14 @@ def like(request):
 def post_new(request):
 	if request.method == "POST":
 
-		form = PostForm(request.POST)
+		form = PostForm(request.POST, request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.author = request.user
 			post.slug = slugify(post.title)
 			post.save()
 			form.save_m2m()
-			return redirect ('post_preview',pk=post.pk)
+			return redirect ('post_preview',slug=post.slug)
 	else:
 		form = PostForm()
 	return render(request, 'blog/post_new.html',{'form':form})
@@ -119,8 +119,8 @@ def post_new(request):
 # Apercu
 @login_required
 @staff_required
-def post_preview(request,pk):
-	post = get_object_or_404(Post, pk=pk)
+def post_preview(request,slug):
+	post = get_object_or_404(Post, slug=slug)
 	return render(request, 'blog/post_preview.html',{'post':post})
 
 
@@ -128,7 +128,7 @@ def post_preview(request,pk):
 @login_required
 @staff_required
 def post_edit(request,pk):
-	post = get_object_or_404(Post, pk=pk)
+	post = get_object_or_404(Post, slug=slug)
 	if request.method == "POST":
 		form = PostForm(request.POST,request.FILES, instance=post)
 		if form.is_valid():

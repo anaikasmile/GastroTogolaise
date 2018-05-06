@@ -19,6 +19,7 @@ from django.contrib.auth import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles import views
+from django_filters.views import FilterView
 
 
 urlpatterns = [
@@ -34,7 +35,8 @@ urlpatterns = [
     url(r'', include('recipe.urls')),
     url(r'^blog/', include('blog.urls')),
     url(r'^datetimepicker/', include('datetimepicker.urls')),
-  
+    url(r'^search/', include('search.urls')),
+   
 ]+ static(
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT

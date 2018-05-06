@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'taggit',
     'dm2bn',
     'datetimepicker',
+    'django_social_share',
     #'ckeditor_uploader',
     #'secretballot',
     # 'likes',
@@ -81,6 +82,7 @@ INSTALLED_APPS = [
     'blog',
     'userprofile',
     'restaurant',
+    'search',
     
 ]
 

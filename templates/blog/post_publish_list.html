@@ -53,7 +53,7 @@
                                     <tr>
                                         <td>{{post.published_at|date:'F j, Y'}}</td>
 
-                                        <td><a href="{% url 'post_preview' pk=post.pk %}">{{post.title}}</a></td>
+                                        <td><a href="{% url 'post_preview' slug=post.slug %}">{{post.title}}</a></td>
                                         <td><a href="">{{post.view}}</a></td>
                                         <td><a href="">{{post.like}}</a></td>
                                         <td><a href="">{{post.author}}</a></td>
@@ -61,7 +61,7 @@
                                             <a href="javascript:;" data-toggle="collapse" data-target="#action_{{post.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                             <ul id="action_{{post.id}}" class="collapse">
                                                 <li>
-                                                    <a href="{% url 'post_preview' pk=post.pk %}"><i class="fa fa-eye" aria-hidden="true"></i> {% trans 'Voir' %}</a>
+                                                    <a href="{% url 'post_preview' slug=post.slug %}"><i class="fa fa-eye" aria-hidden="true"></i> {% trans 'Voir' %}</a>
                                                 </li>
                                                 <li>
                                                     <a href="{% url 'post_update' pk=post.pk %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{% trans 'Modifier' %}</a>
