@@ -40,10 +40,10 @@ jQuery(document).ready(function ($) {
      * WOW
      ---------------------------------------------*/
 
-    var wow = new WOW({
-        mobile: false // trigger animations on mobile devices (default is true)
-    });
-    wow.init();
+    // var wow = new WOW({
+    //     mobile: false // trigger animations on mobile devices (default is true)
+    // });
+    // wow.init();
 
 
     /*---------------------------------------------*
@@ -213,51 +213,37 @@ $(document).on('click','.navbar-collapse.in',function(e) {
 
 
   // Ajouter  function like
-$(document).ready(function() {
-    // $('.like').click(function() {
-    // var pk;
-    //     pk = $(this).attr('data-recipe-pk');
-    //     $.get('/recipe/like/', {
-    //         recipe_pk: pk
-    //     }, function(data) {
-    //         $('#count-like-'+pk).html(data);
-            
-    //     });
-    //     return false;
-    // });
-
+$(document).on('click','.like', function(e){
     
-});
-
-$(document).ready(function() {
-
-    $('#likes').click(function(){
-        var projid;
-        projid = $(this).attr("data-projid");
-        $.get('/recipe/like/', {recipe_pk: projid}, function(data){
-                   $('#like_count').html(data);
-                   $('#likes').hide();
-        });
-    });
-});
-
-$(document).ready(function() {
-    $('.likepost').click(function() {
     var pk;
-        pk = $(this).attr('data-post-pk');
-        $.get('/blog/like/', {
-            post_pk: pk
+        pk = $(this).attr('data-like-pk');
+        $.get('/recipe/like/', {
+            recipe_pk: pk
         }, function(data) {
             $('#count-like-'+pk).html(data);
             
         });
         return false;
-    });
+
+    
+});
+
+
+$(document).on('click','.likepost',function(e) {
+    var pk;
+        pk = $(this).attr('data-post-pk');
+        $.get('/blog/like/', {
+            post_pk: pk
+        }, function(data) {
+            $('.count-like-'+pk).html(data);
+            
+        });
+        return false;
 
 });
 
-$(document).ready(function() {
-    $('.likevideo').click(function() {
+$(document).ready('click','.likevideo',function(e) {
+   
     var pk;
         pk = $(this).attr('data-video-pk');
         $.get('/video/like/', {
@@ -267,7 +253,7 @@ $(document).ready(function() {
             
         });
         return false;
-    });
+  
 
 });
   

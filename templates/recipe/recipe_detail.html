@@ -84,7 +84,7 @@
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{recipe.view}}</li>
 
                     <li>
-                        <a type="button" id="like" name="recipe_like"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                        <a type="button" class="like" data-like-pk="{{recipe.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
                     </li>
                     
                     {% get_comment_count for recipe as comment_count %}
