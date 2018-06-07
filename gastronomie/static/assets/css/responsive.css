@@ -8,7 +8,7 @@ Author URI: http://www.bootstrapthemes.co
 /* Portrait tablets and medium desktops */
 @media (max-width: 1199px) {
     body {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     h1 {
@@ -66,7 +66,7 @@ Author URI: http://www.bootstrapthemes.co
 /* Landscape phones and portrait tablets */
 @media  (max-width: 768px) {
     html {
-        font-size: 80%;
+        font-size: 95%;
     }
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
 		border-color: transparent;
@@ -99,6 +99,10 @@ Author URI: http://www.bootstrapthemes.co
     .single_message_right{
         margin:50px 0px;
     }
+    .rp-post-instruction h5 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
 
 }
 
@@ -107,7 +111,7 @@ Author URI: http://www.bootstrapthemes.co
 /* Landscape phones and smaller */
 @media (max-width: 479px) {
     html {
-        font-size: 65%;
+        font-size: 95%;
     }
     .form-control {
         margin-bottom: 10px;
@@ -117,6 +121,16 @@ Author URI: http://www.bootstrapthemes.co
     }
     .team .single_item .single_team_overlay {
         padding: 40px 0px 10px 0px;
+    }
+    .rp-post-instruction h5 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .footer_logo, .footer_title{
+        text-align: center;
+    }
+    .separator4{
+       display: none;
     }
 
 }
@@ -129,7 +143,7 @@ Author URI: http://www.bootstrapthemes.co
 
 
     html {
-        font-size: 60.5%;
+        font-size: 80%;
     }
     .form-control {
         margin-bottom: 10px;
@@ -142,8 +156,17 @@ Author URI: http://www.bootstrapthemes.co
         padding: 10px 0px 0px 0px;
     }
 
+    .rp-post-instruction h5 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
 
-
+    .footer_logo, .footer_title{
+        text-align: center;
+    }
+    .separator4{
+       display: none;
+    }
 
 
 
