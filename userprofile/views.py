@@ -7,8 +7,14 @@ from django.db import transaction
 from django.contrib.auth.models import User, Group
 from .models import Profile, User
 from .forms import UserForm, ProfileForm, AdminForm
+#ajout 07/06/18
 from django.contrib.admin.views.decorators import staff_member_required
+
+from django.contrib.auth.decorators import login_required
 from gastronomie.decorators import *
+from django_extras.contrib.auth.decorators import staff_required
+from django.contrib.auth.forms import PasswordChangeForm
+#fin ajout
 
 # Create your views here.
 
@@ -121,19 +127,23 @@ def profile_preview(request,pk):
 	user = get_object_or_404(User, pk=pk)
 	return render(request, 'userprofile/profile_preview.html',{'user':user})
 
-login_required
+@login_required
 @staff_member_required
 def profile_active(request, pk):
     user = get_object_or_404(User, pk=pk)
     if (user.is_active):
-        user.update(is_active=False)
+        user.is_active=False
+        user.save()
         messages.success(request, 'Compte désactivé!')
+        return redirect('contributor/list/')
     else:
-        user.update(is_active=True)
+        user.is_active=True
+        user.save()
         messages.success(request, 'Compte activé!')
-    
-   
+        return redirect('contributor/list/')
     return redirect(request.path)
+
+
 #Supprimer
 @login_required
 @staff_required

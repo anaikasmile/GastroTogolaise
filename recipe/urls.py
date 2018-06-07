@@ -37,8 +37,10 @@ urlpatterns = [
     url(r'^video/detail/(?P<slug>[-\w]+)/$', views.video_detail, name='video_detail'),
     url(r'^video/like/$',views.likevideo, name='video_like'),
    
-    
-    url(r'^dashboard/$', views.stats, name='stats'),
+	#ajout du 06/06/18
+    url(r'^dashboard/login$', views.dashLogin, name='dashLogin'),
+	# fin ajout
+    url(r'^dashboard/accueil$', views.stats, name='stats'),
     url(r'^recipe/draft/list/$', views.recipe_draft_list, name='recipe_draft_list'),
     url(r'^recipe/publish/list/$', views.recipe_publish_list, name='recipe_publish_list'),
     url(r'^recipe/preview/(?P<slug>[-\w]+)/$', views.recipe_preview, name='recipe_preview'),
@@ -46,6 +48,11 @@ urlpatterns = [
     url(r'^recipe/(?P<slug>[-\w]+)/delete/$', views.recipe_delete, name='recipe_delete'),
     url(r'^recipe/(?P<slug>[-\w]+)/update/$', views.recipe_update, name='recipe_update'),
     url(r'^recipe/new/$', views.recipe_new, name='recipe_new'),
+	#ajout du 06/06/18
+    url(r'^recipe/new/category$', views.recipe_new_category, name='recipe_new_categ'),
+    url(r'^recipe/category/(?P<slug>[-\w]+)/delete/$', views.recipe_category_delete, name='recipe_category_delete'),
+    url(r'^recipe/category/(?P<slug>[-\w]+)/update/$', views.recipe_category_update, name='recipe_category_update'),
+	#fin ajout
 
     url(r'^video/new/$', views.video_new, name='video_new'),
     url(r'^video/preview/(?P<slug>[-\w]+)/$', views.video_preview, name='video_preview'),   

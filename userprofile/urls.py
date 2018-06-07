@@ -1,5 +1,8 @@
 from django.conf.urls import include, url
+from django.contrib.auth import views
+from django.contrib.auth import views as auth_views
 from . import views
+
 
 urlpatterns = [
 	url(r'^$', views.contributors, name='contributors'),
@@ -15,5 +18,9 @@ urlpatterns = [
 	
 	url(r'^userprofile/(?P<pk>[0-9]+)/active/$', views.profile_active, name='userprofile_active'),
 	url(r'^userprofile/(?P<pk>[0-9]+)/delete/$', views.profile_delete, name='userprofile_delete'),
+
+
+	url(r'^account/update/', auth_views.PasswordChangeView.as_view(template_name='myprofile_preview',success_url='/dashboard/accueil'), name='myprofile_preview'),
+
 	
 ]
