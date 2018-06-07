@@ -26,23 +26,30 @@ DEBUG = True
 
 #DATABASES = {'default': dj_database_url.config(default="postgres://vgjwgtfucuikpl:633148bf9dd72b1c544bb64752b021d9ffa6a8b1f73b6650ae2d1241d34dc3e8@ec2-184-72-219-186.compute-1.amazonaws.com:5432/dfta5itndc3ijm")}
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+#         'NAME': 'cookit_db', 
+#         'USER': 'cookit_user', 
+#         'PASSWORD': 'cookit_user', 
+#         'HOST': 'localhost', 
+#         'PORT': '', 
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'cookit_db', 
-        'USER': 'cookit_user', 
-        'PASSWORD': 'cookit_user', 
-        'HOST': 'localhost', 
-        'PORT': '', 
+        'ENGINE': 'django.db.backends.sqlite3', 
+        'NAME': 'azerty', 
     }
 }
 
+ALLOWED_HOSTS = ['127.0.0.1','*']
 
-ALLOWED_HOSTS = ['*']
 
-
-# Application definition
-SITE_ID = 2
+# Application definition // pour Mr
+#SITE_ID = 2
+SITE_ID = 3
 
 
 
@@ -102,6 +109,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'likes.middleware.SecretBallotUserIpUseragentMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`

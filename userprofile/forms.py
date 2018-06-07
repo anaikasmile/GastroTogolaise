@@ -43,3 +43,17 @@ class AdminForm(forms.ModelForm):
             'password':forms.PasswordInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
           	
               }
+
+
+#ajout 06/06/18
+
+class ConnexionAdminForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+            'password': forms.TextInput(attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+        }
+
+# fin ajout

@@ -10,8 +10,14 @@ from django.utils.text import slugify
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
 from recipe.forms import RecipeForm, VideoForm
+from blog.forms import CategoryForm
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
+# ajout du 06/6/18
+from django.contrib.auth import login,authenticate
+from django_extras.contrib.auth.decorators import staff_required
+from userprofile.forms import ConnexionAdminForm
+# fin ajout
 
 
 # Create your views here.
@@ -212,6 +218,19 @@ def recipe_box_user(request):
 
 
 #Page accueil administration
+def dashLogin(request):
+	if request.method == "POST":
+		username = request.POST["username"]
+		password = request.POST["password"]
+		user = authenticate(request, username=username, password=password)
+		if user:
+			login(request, user)
+			return HttpResponseRedirect("/dashboard/accueil")
+		else:
+			messages.error(request, "Nom d'utilisateur ou mot de passe incorrect!")
+	return render(request, "dashLogin.html", locals())
+
+
 @login_required
 @staff_required
 def stats(request):
@@ -250,6 +269,57 @@ def recipe_publish(request,slug):
 	recipe.publish()
 	messages.success(request, 'Votre recette a été publiée')
 	return redirect('recipe_draft_list')
+
+#ajout du 06/06/18
+
+#Ajouter une cattegorie de recette
+@login_required
+@staff_required
+def recipe_new_category(request):
+	if request.method == "POST":
+		form = CategoryForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Votre catégorie de recette a été enregistrée')
+			return HttpResponseRedirect("/recipe/new/category")
+		else:
+			pass
+	else:
+		form = CategoryForm()
+
+	categRecipe = Category.objects.all()
+	contextRecipe = {
+		'form':form,
+		'categRecipe':categRecipe
+	}
+	return render(request,'recipe/recipe_new_category.html', contextRecipe)
+
+#Modifier la categorie
+@login_required
+@staff_required
+def recipe_category_update(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	if request.method == "POST":
+		form = CategoryForm(request.POST,request.FILES, instance=category)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Category updated')
+		return redirect('recipe_new_categ')
+	else:
+		form = CategoryForm(instance=category)
+	return render(request, 'recipe/recipe_category_update.html', {'form': form})
+
+
+#Supprimer une categorie
+@login_required
+@staff_required
+def recipe_category_delete(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	category.delete()
+	messages.success(request, 'Your category deleted')
+	return redirect('recipe_publish_list')
+
+#fin ajout
 
 #Ajouter une recette
 @login_required
