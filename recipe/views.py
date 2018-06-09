@@ -10,9 +10,11 @@ from django.utils.text import slugify
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
 from recipe.forms import RecipeForm, VideoForm, CategoryForm
+from userprofile.models import Profile
+from blog.models import Post
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
-
+from django.conf import settings
 
 # Create your views here.
 
@@ -202,7 +204,7 @@ def likevideo(request):
 @login_required
 def recipe_box_user(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=request.user)
-	nb = recipes.count()
+	
 	recipes = admin_pagination(request, recipes)
 	return render(request,'recipe/recipe_box_user.html',{'recipes':recipes, 'nb':nb})
 
@@ -211,11 +213,25 @@ def recipe_box_user(request):
 
 
 
-#Page accueil administration
+#Page accueil administration(Tableau de board)
 @login_required
 @staff_required
 def stats(request):
-	return render(request,'stats.html',{})
+	nb_recipes = Recipe.objects.filter(published_at__isnull=False).count()
+	nb_posts = Post.objects.filter(published_at__isnull=False).count()
+	nb_users = Profile.objects.count()
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')[:10]
+	
+
+
+	contextStats = {
+		'nb_recipes':nb_recipes,
+		'nb_posts':nb_posts,
+		'nb_users':nb_users,
+		'recipes': recipes
+	}
+
+	return render(request,'stats.html',contextStats)
 
 
 #Liste des recettes en attente de publication

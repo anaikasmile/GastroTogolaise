@@ -27,8 +27,6 @@ class RecipeForm(forms.ModelForm):
             'image_2':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
             'image_3':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
             'tags':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-           
-            
             
             }
         
@@ -65,3 +63,4 @@ class CategoryForm(forms.ModelForm):
         }
 
 # fin ajout
+
