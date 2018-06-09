@@ -168,6 +168,9 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#recipe"><i class="fa fa-cutlery" aria-hidden="true"></i> {% trans 'Recettes' %} <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="recipe" class="list-unstyled collapse">
                             <li>
+                                <a href="{% url 'recipe_new_categ' %}">{% trans 'Catégorie' %}</a>
+                            </li>
+                            <li>
                                 <a href="{% url 'recipe_new' %}">{% trans 'Ajouter' %}</a>
                             </li>
                             <li>
@@ -182,6 +185,9 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#blog"><i class="fa fa-book" aria-hidden="true"></i>
                         Blog <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="blog" class="list-unstyled collapse">
+                            <li>
+                                <a href="{% url 'post_new_categ' %}">{% trans 'Catégorie' %}</a>
+                            </li>
                             <li>
                                 <a href="{% url 'post_new' %}">{% trans 'Ajouter' %}</a>
                             </li>

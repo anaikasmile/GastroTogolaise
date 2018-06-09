@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Category
 from django.forms import SelectDateWidget, SplitDateTimeField
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
@@ -26,3 +26,17 @@ class PostForm(forms.ModelForm):
 # 	class Meta:
 # 		model = Comment
 # 		fields = ('text','author',)
+
+#ajout 07/06/18
+class CategoryForm(forms.ModelForm):
+	class Meta:
+		model = Category
+		fields = ('name', 'slug')
+		widgets = {
+			'name': forms.TextInput(
+				attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+			'slug': forms.TextInput(
+				attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+		}
+
+# fin ajout

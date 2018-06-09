@@ -31,6 +31,14 @@ urlpatterns = [
 
     url(r'^recipe/user/box/$', views.recipe_box_user, name='recipe_box_user'),
 
+    
+  
+    #ajout du 06/06/18
+    url(r'^recipe/new/category$', views.recipe_new_category, name='recipe_new_categ'),
+    url(r'^recipe/category/(?P<slug>[-\w]+)/delete/$', views.recipe_category_delete, name='recipe_category_delete'),
+    url(r'^recipe/category/(?P<slug>[-\w]+)/update/$', views.recipe_category_update, name='recipe_category_update'),
+    #fin ajout
+
 
     url(r'^recipe/video', views.video_list, name='video_list'),
     url(r'^video/tag/$', views.video_per_tag, name='video_tag'),

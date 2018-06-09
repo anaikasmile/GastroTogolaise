@@ -11,6 +11,12 @@ urlpatterns = [
 	url(r'^detail/(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
 	url(r'^like/$',views.like, name='post_like'),
 
+	  #ajout 07/06/18
+    url(r'^new/category$', views.post_new_category, name='post_new_categ'),
+    url(r'^(?P<slug>[-\w]+)/edit/$', views.post_category_update, name='post_category_update'),
+    url(r'^(?P<slug>[-\w]+)/delete/$', views.post_category_delete, name='post_category_delete'),
+    #fin ajout
+
 	url(r'^new/$', views.post_new, name='post_new'),
 	url(r'^preview/(?P<slug>[-\w]+)/$', views.post_preview, name='post_preview'),
 	url(r'^(?P<slug>[-\w]+)/edit/$', views.post_edit, name='post_update'),

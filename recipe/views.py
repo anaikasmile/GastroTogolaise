@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
-from recipe.forms import RecipeForm, VideoForm
+from recipe.forms import RecipeForm, VideoForm, CategoryForm
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
 
@@ -374,3 +374,62 @@ def video_delete(request,slug):
 	video.delete()
 	messages.success(request, 'Video deleted')
 	return redirect('video_publish_list')
+
+
+
+#Ajouter une cattegorie de recette
+@login_required
+@staff_required
+def recipe_new_category(request):
+	if request.method == "POST":
+		form = CategoryForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie ajoutée')
+			return HttpResponseRedirect("/recipe/new/category")
+		else:
+			pass
+	else:
+		form = CategoryForm()
+
+	categRecipe = Category.objects.all()
+	contextRecipe = {
+		'form':form,
+		'categRecipe':categRecipe
+	}
+	return render(request,'recipe/recipe_new_category.html', contextRecipe)
+
+
+#Modifier la categorie
+@login_required
+@staff_required
+def recipe_category_update(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	if request.method == "POST":
+		form = CategoryForm(request.POST,request.FILES, instance=category)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie mis à jour')
+		return redirect('recipe_new_categ')
+	else:
+		form = CategoryForm(instance=category)
+
+	categRecipe = Category.objects.all()
+	contextRecipe = {
+		'form':form,
+		'categRecipe':categRecipe
+	}
+	return render(request, 'recipe/recipe_new_category.html', contextRecipe)
+
+
+
+#Supprimer une categorie
+@login_required
+@staff_required
+def recipe_category_delete(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	category.delete()
+	messages.success(request, 'Catégorie supprimée')
+	return redirect('recipe_publish_list')
+
+#fin ajout
