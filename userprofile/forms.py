@@ -9,9 +9,9 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'email')
         widgets = {
-            'first_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'last_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'email':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'first_name':forms.TextInput(attrs={'placeholder':_(u'Prénoms'),'name':'','id':'','class':'form-control'}),
+            'last_name':forms.TextInput(attrs={'placeholder':_(u'Nom'),'name':'','id':'','class':'form-control'}),
+            'email':forms.TextInput(attrs={'placeholder':_(u'Email'),'name':'','id':'','class':'form-control'}),
               }
 
 class ProfileForm(forms.ModelForm):
@@ -36,10 +36,10 @@ class AdminForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'email', 'username', 'password')
         widgets = {
-            'first_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'last_name':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'username':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'email':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'password':forms.PasswordInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'first_name':forms.TextInput(attrs={'placeholder':_(u'Prénoms'),'name':'','id':'','class':'form-control'}),
+            'last_name':forms.Textarea(attrs={'placeholder':_(u'Nom'),'name':'','id':'','class':'form-control'}),
+            'username':forms.TextInput(attrs={'placeholder':_(u'Username'),'name':'','id':'','class':'form-control'}),
+            'email':forms.TextInput(attrs={'placeholder':_(u'Email'),'name':'','id':'','class':'form-control'}),
+            'password':forms.PasswordInput(attrs={'placeholder':_(u'Mot de passe'),'name':'','id':'','class':'form-control'}),
           	
               }

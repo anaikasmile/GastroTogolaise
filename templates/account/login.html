@@ -96,7 +96,7 @@
 
             <div class="col-md-offset-4 col-md-4">
                 <div class="login">
-                    <h4 class="text-center">Login with</h4>
+                    <h4 class="text-center">{% trans 'Se connecter' %}</h4>
                             
                       <div class="box">
                            <div class="content">
@@ -111,9 +111,8 @@
 
                             <div class="division">
                                 <div class="line l"></div>
-                                    <span>or</span>
+                                    <span>{% trans 'Ou' %}</span>
                                 <div class="line r"></div>
-                                <h4 class="text-center">Use your email </h4>
                             </div>
                               
                             <div class="form loginBox">
@@ -162,9 +161,12 @@
                             </div>
 
                             <div class="forgot login-footer">
-                                <span>Looking to 
-                                     <a href="{% url 'account_signup' %}">{% trans 'create an account' %}</a>
-                                ?</span>
+                                <small>Mot de passe oublié? 
+                                     <a href="{% url 'account_reset_password' %}">{% trans 'Cliquez ici' %}</a>
+                                </small><br>
+                                <small>Vous n'avez pas de compte?
+                                     <a href="{% url 'account_signup' %}">{% trans 'Créer un compte' %}</a>
+                                </small>
                             </div>
                         </div>
                     </div>
