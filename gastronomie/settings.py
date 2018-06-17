@@ -24,7 +24,8 @@ SECRET_KEY = '#l3#%g^k@g9wjtsnzkwce-7uy92_%1x=)gt%t_o_+fd!7%g($3'
 
 DEBUG = True
 
-#DATABASES = {'default': dj_database_url.config(default="postgres://vgjwgtfucuikpl:633148bf9dd72b1c544bb64752b021d9ffa6a8b1f73b6650ae2d1241d34dc3e8@ec2-184-72-219-186.compute-1.amazonaws.com:5432/dfta5itndc3ijm")}
+ALLOWED_HOSTS = ['*']
+
 
 DATABASES = {
     'default': {
@@ -36,15 +37,15 @@ DATABASES = {
         'PORT': '', 
     }
 }
-
-
-ALLOWED_HOSTS = ['*']
-
-
 # Application definition
 SITE_ID = 2
 
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'gastronomie.togolaise@gmail.com'
+EMAIL_HOST_PASSWORD = 'gastronomie.togolaise_2017'
+EMAIL_PORT = 587
 
 
 INSTALLED_APPS = [
@@ -64,12 +65,8 @@ INSTALLED_APPS = [
     'threadedcomments',
     'django_comments',
     'taggit',
-    'dm2bn',
     'datetimepicker',
     'django_social_share',
-    #'ckeditor_uploader',
-    #'secretballot',
-    # 'likes',
     'star_ratings',
     'embed_video',
     'allauth',  
@@ -86,8 +83,10 @@ INSTALLED_APPS = [
     
 ]
 
+#For comments
 COMMENTS_APP = 'threadedcomments'
 
+""" Parametres de confi pour les likes au niveau des restaurants"""
 STAR_RATINGS_ANONYMOUS = True
 STAR_RATINGS_RANGE = 5
 STAR_RATINGS_STAR_HEIGHT = 20
@@ -209,11 +208,8 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 EMAIL_CONFIRMATION_SIGNUP = True
 
 SOCIALACCOUNT_QUERY_EMAIL = True
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'gastronomie.togolaise@gmail.com'
-EMAIL_HOST_PASSWORD = 'gastronomie.togolaise_2017'
-EMAIL_PORT = 587
+
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 LOGIN_REDIRECT_URL = "/"
@@ -254,29 +250,6 @@ CKEDITOR_CONFIGS = {
 }
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'   
-
-
-#Files storages
-# AWS_STATIC_STORAGE_BUCKET_NAME = 'tgcook'
-# AWS_STORAGE_BUCKET_NAME = 'tgcook'
-
-# AWS_ACCESS_KEY_ID = 'AKIAIOWSHLAWROUESPLQ'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
-# }
-
-# #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-# #STATIC_URL = S3_URL
-# MEDIA_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-
-# DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
-
-
 
 
 

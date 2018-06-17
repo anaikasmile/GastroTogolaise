@@ -6,10 +6,6 @@
 {% load i18n %}
 
 
-<!-- {% load dm2bn_tags %}
-
-{% include "dm2bn/includes/dm2bn_static.html" %} -->
-
 {% block extrahead %}
 <script>window.CKEDITOR_BASEPATH = '{% static "ckeditor/ckeditor/" %}';</script>
 {{ block.super }}
@@ -159,10 +155,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Analytics</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#recipe"><i class="fa fa-cutlery" aria-hidden="true"></i> {% trans 'Recettes' %} <i class="fa fa-fw fa-caret-down"></i></a>

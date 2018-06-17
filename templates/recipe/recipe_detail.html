@@ -55,11 +55,11 @@
                 
                 <ul class="list-inline">
 
-                    <li><a href="">{{recipe.category.name}}</a></li>   
+                    <li><a href="{% url 'recipe_per_cat' slug=recipe.category.slug %}">{{recipe.category.name}}</a></li>   
                   
                     {% for origin in recipe.origin.all %}
 
-                    <li><a href="">{{origin.ethnic}}</a></li>
+                    <li><a href="/recipe/origin/?origin={{ origin.ethnic }}">{{origin.ethnic}}</a></li>
 
                     {% endfor %}
                 
@@ -77,7 +77,7 @@
                          By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                     {% else %}
                         <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
-                        By <a  data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}" class="rp-author">Admin</a></li> 
+                        By <a  class="rp-author" data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a>
                     {% endif %}
                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ recipe.published_at|date:'F j, Y' }} </li> 
                     

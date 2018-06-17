@@ -20,11 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles import views
 from django_filters.views import FilterView
-
+from django.contrib.flatpages import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^pages/', include('django.contrib.flatpages.urls')),
+    #url(r'^pages/', include('django.contrib.flatpages.urls')),
+    url('about/', views.flatpage, {'url': '/about/'}, name='about'),
+    #url('license/', views.flatpage, {'url': '/license/'}, name='license'),
+
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),

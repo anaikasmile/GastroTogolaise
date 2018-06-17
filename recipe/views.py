@@ -102,12 +102,20 @@ def recipe_per_cat(request,slug):
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes, 'category':category})
 
 
+#Liste des recettes par ethnie
+def recipe_per_origin(request):
+	if request.method == 'GET':
+		origin = request.GET.get('origin')
+		recipes =  Recipe.objects.filter(origin__ethnic=origin).filter(published_at__isnull=False).order_by('-published_at')
+		recipes = pagination(request, recipes)
+	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
+
 #Liste des recettes par tag
 def recipe_per_tag(request):
 	#category = get_object_or_404(Category, pk=pk)
 	if request.method == 'GET':
 		tag = request.GET.get('tag')
-		recipes =  Recipe.objects.filter(tags__name=tag)
+		recipes =  Recipe.objects.filter(tags__name=tag).filter(published_at__isnull=False).order_by('-published_at')
 		recipes = pagination(request, recipes)
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
 
@@ -204,7 +212,7 @@ def likevideo(request):
 @login_required
 def recipe_box_user(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=request.user)
-	
+	nb = recipes.count()
 	recipes = admin_pagination(request, recipes)
 	return render(request,'recipe/recipe_box_user.html',{'recipes':recipes, 'nb':nb})
 

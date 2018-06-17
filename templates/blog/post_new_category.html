@@ -12,6 +12,7 @@
                 <!-- Ajout de  catégorie -->
 
                 <div class="col-md-4">
+                    <h4>{% trans 'Ajouter/Modifier une catégorie' %}</h4>
 	                <form method="POST"  name="form" action=""  class="" enctype="multipart/form-data">
 		                {% csrf_token %}
 		                  {{ form.as_p }}
@@ -24,6 +25,7 @@
     
             
                 <div class="col-md-offset-1 col-md-7">
+                <h4>{% trans 'Liste des catégories' %}</h4>
                     <table class="table table-border">
                         <thead>
                             <tr>

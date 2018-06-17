@@ -57,7 +57,7 @@
                          {% if video.author.is_staff_member %}
                             By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                         {% else %}
-                        By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}">{{video.author}}</a>
+                        By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}" class="rp-author">{{video.author}}</a>
                         {% endif %}
                         </p>
                     </div>

@@ -5,13 +5,13 @@ Author: Bootstrapthemes
 Author URI: http://bootstrapthemes.co
 */
 /* ==========================================================================
-   Author's custom styles
+   A.S's custom styles
    ========================================================================== */
 html,
 body {
     background-color: #fff;
     font-size: 1rem;
-    color: #797979;
+    color: #525658;
     width: 100%;
     padding: 0;
     margin-left: 0;
@@ -61,6 +61,7 @@ a:active,
 a:focus {
     text-decoration: none;
     outline: none;
+    color: #f3b81f;
 }
 a,
 button,
@@ -164,7 +165,7 @@ h1 {
     color:#fff;
 }
 h2 {
-    font-size:2.5rem;
+    font-size:2.1rem;
     line-height: 3rem;
     margin-bottom: 35px;
     font-family: 'robotobold';
@@ -1199,8 +1200,6 @@ ul.tags li a:hover {
 
 
 
-
-
 /*testimonia section css*/
 .testimonial{
     color:#fff;
@@ -1223,10 +1222,6 @@ blockquote footer, blockquote small, blockquote .small {
     font-weight: 900;
     letter-spacing: 2px;
 }
-
-
-
-
 
 
 /*counter section css*/
@@ -1434,14 +1429,6 @@ blockquote footer, blockquote small, blockquote .small {
 
 
 
-
-
-
-
-
-
-
-
 /*Home Pages Style tow*/
 
 .video{
@@ -1531,49 +1518,6 @@ blockquote footer, blockquote small, blockquote .small {
     padding: 0px 5px;
 }
 
-
-
-
-
-/*gellary section css*/
-.gellary{}
-.gellary .single_gellary_item{
-    position: relative;  
-    max-width:100%; 
-    margin-bottom:30px;
-}
-.gellary .single_gellary_item img{
-
-}
-.gellary .single_gellary_item:hover .gellary_overlay{
-    opacity: 1; 
-}
-.gellary .single_gellary_item .gellary_overlay{
-    background: rgba(94, 154, 40, 0.55);
-    text-align: center;
-    position: absolute;
-    left: 0px;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 70px 0px 0px 0px;
-    opacity: 0;
-    transition: .6s;
-
-}
-
-.gellary .gellary_overlay i{
-    color:#fff;
-    font-size: 2.5rem;
-}
-.gellary .gellary_overlay h4{
-    color:#223d61;
-    margin-bottom: 10px;
-}
-.gellary .gellary_overlay p{
-    color:#fff;
-}
-
 /*contact section css*/
 .contact{}
 .contact .head_title h2{
@@ -1626,16 +1570,6 @@ blockquote footer, blockquote small, blockquote .small {
 .single_message_right_info li a i{
     padding-right: 5px;
 }
-
-/*maps section css*/
-
-.map{}
-.ourmaps{
-    width:100%;
-    height: 440px;
-
-}
-
 
 
 /*RECIPE DETAIL*/
@@ -1896,7 +1830,7 @@ blockquote footer, blockquote small, blockquote .small {
 }
 
 
-
+/*
 
 #login-dp{
     margin-top:10px;
@@ -1927,7 +1861,9 @@ blockquote footer, blockquote small, blockquote .small {
 }
 #login-dp .form-group {
     margin-bottom: 10px;
-}
+}*/
+
+/*Liens réseaux sociaux*/
 .btn-fb{
     color: #fff;
     background-color:#3b5998;
