@@ -1,0 +1,103 @@
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% load comments %}
+{% load i18n %}
+
+    <div class="mixcontent row">
+                        
+            <div class="margin-bottom-20">
+                         
+                <div class="col-sm-4">
+                    <br>
+                    <!-- 
+                    {% if recîpe.image %}
+                        
+                        <a href="{% url 'recipe_detail' slug=recipe.slug %}">
+                        {% thumbnail recipe.image  "900x500" crop="center" as im %}
+                            <img src="{{im.url}}" class="img-responsive">
+                        {% endthumbnail %} 
+                    
+                    {% else %}
+                        <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                    {% endif %} -->
+                        
+                    {% video video.video as video %}
+                        {% video video '340 x 260'  %}
+                    {% endvideo %}
+
+                </div>
+                <div class="col-sm-8">
+                   
+                    <h4 class="rp-post-title"><a href="{% url 'video_detail' slug=video.slug %}">{{video.title}}</a></h4>
+
+                    <div class="rp-post-meta-info">
+                       <ul class="list-inline">
+                
+                            <li>
+                            {% if video.author.is_staff_member %}
+                                By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                            {% else %}
+                                By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}" class="rp-author">{{video.author}}</a>
+                            {% endif %}
+                            </li>
+                            <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ video.published_at|date:'F j, Y' }} </li> 
+                            
+                            <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
+
+                            <li>
+                                <a type="button" class="like" data-like-pk="{{video.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{video.pk}}"> {{video.like}}</span>
+                            </li>
+                            
+                            {% get_comment_count for video as comment_count %}
+                            <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                        </ul>
+                    </div>
+
+                    <p>{{ video.description|safe|truncatechars:150 }}</p>
+                    <a href="{% url 'video_detail' slug=video.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
+                   
+
+                </div> 
+
+            </div>
+              
+        </div>
+
+    <hr>
+
+     <!-- Modal -->
+   <div class="modal fade" id="modalAvatar{{video.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{video.id}}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-md-4">
+                    
+                    {% if video.author.profile.photo %}
+                        <span class="author-inner">
+                        <img src="{{video.author.profile.photo.url}}" class="img-responsive img-circle">
+                        </span>
+                        
+                    {% else %}
+                    
+                    <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                    
+                    {% endif %}
+                    <h5 class="">{{video.author.first_name}} {{video.author.last_name}}</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{video.author.profile.bio}}</p>
+                    </div>
+                </div>
+              
+                <ul class="social-link list-inline text-center">
+                    <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        

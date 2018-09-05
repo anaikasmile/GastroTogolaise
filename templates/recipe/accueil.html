@@ -8,7 +8,7 @@
 
 {% block slide %}
 
-<section id="home" class="home">
+<!-- <section id="home" class="home">
         <div class="overlay">
             <div class="container">
                 <div class="row">
@@ -23,7 +23,7 @@
 
                                 </div>
                             </div>
-                           <!--  <div class="single_home_slider">
+                            <div class="single_home_slider">
                                 <div class="main_home wow fadeInUp" data-wow-duration="700ms">
                                     <h1>Cook' iT</h1>
                                     <p class="subtitle">Cuisiner</p>
@@ -40,14 +40,53 @@
                                   
 
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+ -->
+ <div class="container-fluid">
+    <div class="row">
+        <div id="sg-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1" class=""></li>
+                <li data-target="#carousel" data-slide-to="2" class=""></li>
+                <li data-target="#carousel" data-slide-to="3" class=""></li>
+            </ol>
+            <!-- Carousel items -->
+            <div class="carousel-inner carousel-zoom">
+                <div class="item active"><img class="img-responsive" src="{% static 'assets/images/slide-1.jpg' %}" alt="">
+                  <div class="carousel-caption">
+                    <h1  data-animation="animated zoomInLeft" class="cap-txt ">Découvrir</h1>
+                    <p data-animation="animated bounceInDown"></p>
+                   
+                  </div>
+                </div>
+               <div class="item"><img class="img-responsive" src="{% static 'assets/images/slide-2.jpg' %}" alt="">
+                  <div class="carousel-caption">
+                    <h1 data-animation="animated zoomInLeft" class="cap-txt">Cuisiner</h1>
+                    <p data-animation="animated bounceInDown"></p>
+                    
+                  </div>
+                </div>
+                <div class="item"><img class="img-responsive" src="{% static 'assets/images/slide-3.jpg' %}" alt="">
+                  <div class="carousel-caption animated slideInLeft">
+                    <h1 data-animation="animated zoomInLeft" class="cap-txt">Savourer</h1>
+                    <p data-animation="animated bounceInDown"></p>
+                    
+                  </div>
+                </div>
+            <!-- Carousel nav -->
+                <a class="carousel-control left" href="#sg-carousel" data-slide="prev">‹</a>
+                <a class="carousel-control right" href="#sg-carousel" data-slide="next">›</a>
+            </div> 
+        </div>
+    </div>
+</div>
 {% endblock slide %}
 
 
@@ -122,17 +161,12 @@
                                 <p>{{recipe.author.profile.bio}}</p>
                             </div>
                         </div>
-                        <!-- <div class="modal-body">
-                        </div> -->
-                        <div class="modal-footer">
-                            <a class="btn-floating btn-sm-full facebook"><i class="fa fa-facebook"> </i></a>
-                            <a class="btn-floating btn-sm-full tw-bg"><i class="fa fa-twitter"> </i></a>
-                            <a class="btn-floating btn-sm-full in-bg"><i class="fa fa-instagram"> </i></a>
-                            <a class="btn-floating btn-sm-full gplus-bg"><i class="fa fa-google-plus"> </i></a>
-                            <a class="btn-floating btn-sm-full li-bg"><i class="fa fa-linkedin"> </i></a>
-                            
-                            
-                        </div>
+                        
+                            <ul class="social-link list-inline text-center">
+                                <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -167,7 +201,14 @@
             </ul>
         {% endif %}
     </div>
+    <!-- Lisste des partenaires -->
+    <section class="rp-parteners">
+ 
+        <!-- Card -->
 
-                <!-- End   -->
+
+        
+    </section>
+    <!-- End   -->
 
 {% endblock content %}

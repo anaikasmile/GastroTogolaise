@@ -94,17 +94,20 @@
             </div>
             <div class="rp-post-share">
                  <!--Facebook-->
-                <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs">  | Share on Facebook</span></a>
+                <a class="btn fb-bg waves-effect waves-light" href="#"><i class="fa fa-facebook left"></i><span class="hidden-xs">  | Share on Facebook</span></a>
                     
                 <!--Twitter-->
-                <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs">  | Tweet on Twitter</span></a>
+                <a class="btn tw-bg waves-effect waves-light" href="#"><i class="fa fa-twitter left"></i><span class="hidden-xs">  | Tweet on Twitter</span></a>
                 <!--Gplus-->
-                <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+                <a class="btn gplus-bg waves-effect waves-light" href="#"><i class="fa fa-google-plus"></i></a>
                 <!--Pinterest-->
-                <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+                <a class="btn pin-bg waves-effect waves-light" href="#"><i class="fa fa-pinterest"></i></a>
                 
             </div>
             
+            <!-- Include author modal -->
+            {% include 'recipe/modal_user.html' %}
+
            
         </section>
 
@@ -113,15 +116,18 @@
 {% block content %}
  
 
-    <section class="rp-post-detail">
+    <section class="main_mix_content single_mixi rp-post-detail">
      
         <div class="rp-post-image">
-            <div id="carousel-thum" class="carousel slide carousel-fade carousel-thumbnails">
 
+
+            <div id="sg-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+           
             
+            <div class="carousel-inner carousel-zoom">
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner card" role="listbox">
-
+               <!--  <div class="carousel-inner card" role="listbox">
+ -->
                     <!-- First slide -->
                     <div class="item active">
 
@@ -166,19 +172,14 @@
                 </div>
                 <!-- /.carousel-inner -->
 
-                <!-- Controls -->
-                <a class="owl left carousel-control new-control" href="#carousel-thum" role="button" data-slide="prev">
-                    <span class="fa fa fa-angle-left waves-effect waves-light"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="owl right carousel-control new-control" href="#carousel-thum" role="button" data-slide="next">
-                    <span class="fa fa fa-angle-right waves-effect waves-light"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-
-            </div>
+                 <!-- Carousel nav -->
+                <a class="carousel-control left" href="#sg-carousel" data-slide="prev">‹</a>
+                <a class="carousel-control right" href="#sg-carousel" data-slide="next">›</a>
+            </div> 
             <!-- /.carousel -->
         </div>
+
+        <div class="padding-20">
 
         <div class="rp-post-time">  
             <div class="row">
@@ -211,8 +212,8 @@
           
         </div>
             
-        <div class="row  margin-top-40">
-            <div class="col-md-4 rp-post-instruction  margin-top-40">
+        <div class="row margin-top-40">
+            <div class="col-md-3 rp-post-instruction  margin-top-40">
                        
                 <h5 class=""> Ingrédients</h5>
                 
@@ -223,7 +224,7 @@
                 </div>
             </div>
             
-            <div class="col-md-8 rp-post-instruction"> 
+            <div class="col-md-9 rp-post-instruction"> 
                  
                 <h5 class="text-center">Instructions</h5>
                 
@@ -238,24 +239,33 @@
             </div>
         </div>
 
-        <div class="rp-post-share border margin-bottom-20">
+        <div class="rp-post-share margin-bottom-20">
             <strong> SHARE &nbsp;&nbsp;  </strong>
              <!--Facebook-->
-            <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
+            <a class="btn fb-bg waves-effect waves-light" href=""><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
             <!--Twitter-->
-            <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
+            <a class="btn tw-bg waves-effect waves-light" href="" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
             <!--Gplus-->
-            <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+            <a class="btn gplus-bg waves-effect waves-light" href=""><i class="fa fa-google-plus"></i></a>
             <!--Pinterest-->
-            <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+            <a class="btn pin-bg waves-effect waves-light" href=""><i class="fa fa-pinterest"></i></a>
         </div> 
 
+        </div> 
+
+
+    </section>
+
+    
+    <!-- Tag section -->
+    <section class="main_mix_content single_mixi margin-top-40 padding-20">
+        
         <div class="row"> 
             <div class="col-md-12">
 
                 <div class="pull-left">
                       
-                        <ul class="list-inline tags">
+                        <ul class="list-inline">
 
                         <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
                         {% for tag in recipe.tags.all %}
@@ -267,21 +277,20 @@
                 </div>
             </div>
        
-        </div>      
-           
-
+        </div>   
     </section>
+    
 
     <!-- Section comments -->
-    <section class="margin-top-40">
+    <section class="main_mix_content single_mixi padding-20 margin-top-40">
 
         <div class="row" id="comment">
            {% get_comment_count for recipe as comment_count %}
-            <h3 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaires' %} </h3>              
+            <h5 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaires' %} </h5>              
 
             <div id="collapse1" class="panel-collapse collapse">
              
-                <div id="comment-list">
+                <div id="comment-list" class="padding-20">
 
                     <ul class="list">
                         {% get_comment_list for recipe as comment_list %}
@@ -292,7 +301,7 @@
                             <div class="media">
                                 <a class="pull-left" href="#"> 
                                   
-                                    <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="50px;" alt="">
+                                    <img src="{% static 'assets/images/chef2.jpg' %}" class="img-rounded" width="50px;" alt="">
                                 </a> 
                                 <div class="media-body rp-comment">
                                     <span class="rp-arrow">
@@ -303,8 +312,8 @@
 
                                     {{comment.user_name}}</a> <span class="text-right">{{comment.submit_date|naturaltime}}</span></h6>
                                    
-                                    <hr>
-                                    <p>{{comment.comment}}</p>
+                                    
+                                    <p style="padding-left: 10px;">{{comment.comment}}</p>
                                     
                                 </div>
 
@@ -327,9 +336,10 @@
 
             <!-- Comment form -->
             <div class="form-block col-xs-12">
-                <div class="text-center">
+                <div class="">
                     <h4>{% trans 'Laisser un commentaire' %}</h4>
-                    <p class="text-center">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
+                    <div class="separator4"></div>
+                    <p class="">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
                     <br>
                 </div>
             
@@ -354,8 +364,8 @@
                 </div>
                 {% else %}
 
-                <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
-                
+                <p class="">{% trans 'Veuillez vous' %} <a href="{% url 'account_login' %}">{% trans 'connecter' %}</a>{% trans ' si vous êtes déjà membre. Sinon, remplissez juste ces champs' %} . 
+                </p>
                 {% get_comment_form for recipe as form %}
                 
                <!--  <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %}style="display:none;"{% endif %}> -->
@@ -394,8 +404,10 @@
 
     </section>
 
+
+
     <!-- Related post -->
-        <section class="rp-post-related">
+   <!--  <section class="rp-post-related">
             <ul class="nav nav-tabs tabs-4">
                 <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
                 <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
@@ -444,54 +456,15 @@
                     </ul>
                 
                         
-                    <!-- pagination -->
+                  
                 {% if recipe_author.has_other_pages %}
                     <div class="rp-related-pagination"></div>
                 {% endif %}         
                 </div>
             </div>
 
-        </section>
+        </section> -->
 
-             <!-- Modal -->
-           <div class="modal fade" id="modalAvatar{{recipe.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <div class="col-md-4">
-                            
-                            {% if recipe.author.profile.photo %}
-                                <span class="author-inner">
-                                <img src="{{recipe.author.profile.photo.url}}" class="img-responsive img-circle">
-                                </span>
-                                
-                            {% else %}
-                            
-                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
-                            
-                            {% endif %}
-                            <h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
-                            </div>
-                            <div class="col-md-8">
-                                <p>{{recipe.author.profile.bio}}</p>
-                            </div>
-                        </div>
-                        <!-- <div class="modal-body">
-                        </div> -->
-                        <div class="modal-footer">
-                            <ul class="social-link list-inline">
-                                <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                           </ul>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
+   
+<br>
 {% endblock content %}     

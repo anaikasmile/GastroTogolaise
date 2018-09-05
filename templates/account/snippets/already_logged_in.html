@@ -2,4 +2,4 @@
 {% load account %}
 
 {% user_display user as user_display %}
-<p><strong>{% trans "Note" %}:</strong> {% blocktrans %}Vous êtes déjà connectés en tant que {{ user_display }}.{% endblocktrans %}</p>
+<p>{% blocktrans %}Vous êtes déjà connectés en tant que {{ user_display }}.{% endblocktrans %}</p>

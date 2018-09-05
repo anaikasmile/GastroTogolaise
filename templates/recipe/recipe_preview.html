@@ -5,96 +5,96 @@
 {% block content_recipe %}
 
 
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-10">
-                        <div class="row text-center">
-                            <h2 class="">{{recipe.title}}</h2>
-                            <p class="post-author">Post by <a href="">{{recipe.author}}</a></p>
-                            <label>Origine:</label>{{recipe.locality}}  &nbsp; &nbsp;
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            {{ recipe.published_at|date:'F j, Y' }}  &nbsp; &nbsp;
-                            <i class="fa fa-comments" aria-hidden="true"></i>0  &nbsp; &nbsp;
-                            <i class="fa fa-eye" aria-hidden="true"></i> {{recipe.view}}  &nbsp; &nbsp;
-                            <i class="fa fa-heart-o" aria-hidden="true"></i> {{recipe.like}}
-                        </div>
-                        <br> <br>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <img src="{{recipe.image.url}}" class="img-responsive">
-                                <br>
-                                <div class="row">
-                                    {% if recipe.image_1 %}
-                                    <div class="col-sm-4">
-                                        
-                                        <img src="{{recipe.image_1.url}}" class="img-responsive">
-                                         
-                                    </div>
-                                    {% endif %}
-                                    {% if recipe.image_2 %}
-                                    <div class="col-sm-4">
-                                        
-                                        <img src="{{recipe.image_2.url}}" class="img-responsive">
-                                       
-                                    </div>
-                                     {% endif %}
-                                     {% if recipe.image_3 %}
-                                    <div class="col-sm-4">
-                                        
-                                        <img src="{{recipe.image_3.url}}" class="img-responsive">
-                                         
-                                    </div>
-                                     {% endif %}
-                                 </div>  
-                            </div> 
-                            <div class="col-md-5">
-                                 <h4><strong>Description:</strong></h4>
-                                 <p>{{recipe.description|safe}}</p>
-
-                                    <strong>Prepare time:</strong>  {{recipe.prepare_time}}
-                                    <strong>Cooking time:</strong> 
-                                    {{recipe.cooking_time}} 
-                                   <strong>Ready in:</strong> {{recipe.total_time}}
-                                       
-                            </div> 
-                        </div>
-                        <br>
-                        
-                    
-                    <div class="row">
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th><h4><strong>Ingrédients</strong></h4></th>
-                                        <th><h4><strong>Instructions</strong></h4></th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><p>{{recipe.ingredient|safe}}</p></td>
-                                        <td><p> {{recipe.preparation|safe}}</p></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-10">
                     <div class="row text-center">
-                        <div class="col-sm-12">
-                            <a href="{% url 'recipe_update' slug=recipe.slug %}" class="btn btn-primary">Modifier</a>
-                            {% if not recipe.published_at %}
-                            <a href="{% url 'recipe_publish' slug=recipe.slug %}" class="btn btn-primary">Publier</a>
-                            {% endif %}
-                        </div>
+                        <h2 class="">{{recipe.title}}</h2>
+                        <p class="post-author">Post by <a href="">{{recipe.author}}</a></p>
+                        <label>Origine:</label>{{recipe.locality}}  &nbsp; &nbsp;
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        {{ recipe.published_at|date:'F j, Y' }}  &nbsp; &nbsp;
+                        <i class="fa fa-comments" aria-hidden="true"></i>0  &nbsp; &nbsp;
+                        <i class="fa fa-eye" aria-hidden="true"></i> {{recipe.view}}  &nbsp; &nbsp;
+                        <i class="fa fa-heart-o" aria-hidden="true"></i> {{recipe.like}}
                     </div>
-                
+                    <br> <br>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <img src="{{recipe.image.url}}" class="img-responsive">
+                            <br>
+                            <div class="row">
+                                {% if recipe.image_1 %}
+                                <div class="col-sm-4">
+                                    
+                                    <img src="{{recipe.image_1.url}}" class="img-responsive">
+                                     
+                                </div>
+                                {% endif %}
+                                {% if recipe.image_2 %}
+                                <div class="col-sm-4">
+                                    
+                                    <img src="{{recipe.image_2.url}}" class="img-responsive">
+                                   
+                                </div>
+                                 {% endif %}
+                                 {% if recipe.image_3 %}
+                                <div class="col-sm-4">
+                                    
+                                    <img src="{{recipe.image_3.url}}" class="img-responsive">
+                                     
+                                </div>
+                                 {% endif %}
+                             </div>  
+                        </div> 
+                        <div class="col-md-5">
+                             <h4><strong>Description:</strong></h4>
+                             <p>{{recipe.description|safe}}</p>
 
+                                <strong>Prepare time:</strong>  {{recipe.prepare_time}}
+                                <strong>Cooking time:</strong> 
+                                {{recipe.cooking_time}} 
+                               <strong>Ready in:</strong> {{recipe.total_time}}
+                                   
+                        </div> 
+                    </div>
+                    <br>
+                    
+                
+                <div class="row">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th><h4><strong>Ingrédients</strong></h4></th>
+                                    <th><h4><strong>Instructions</strong></h4></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p>{{recipe.ingredient|safe}}</p></td>
+                                    <td><p> {{recipe.preparation|safe}}</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-           
+            
+                <div class="row text-center">
+                    <div class="col-sm-12">
+                        <a href="{% url 'recipe_update' slug=recipe.slug %}" class="btn btn-primary">Modifier</a>
+                        {% if not recipe.published_at %}
+                        <a href="{% url 'recipe_publish' slug=recipe.slug %}" class="btn btn-primary">Publier</a>
+                        {% endif %}
+                    </div>
+                </div>
+            
+
+            </div>
+       
         </div>
-        <!-- /#page-wrapper -->
+    <!-- /#page-wrapper -->
     </div>
 {% endblock %}
 

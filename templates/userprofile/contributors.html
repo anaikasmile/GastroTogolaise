@@ -1,4 +1,4 @@
-{% extends 'base_principal.html' %}	
+{% extends 'base.html' %}	
 {% load staticfiles %}
 
 {% load i18n %}
@@ -7,7 +7,6 @@
 
 
 {% block slide %}
-	
 	<section id="home" class="home">
     
       <!--<div class="overlay">
@@ -18,7 +17,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/team.jpg' %}">
+                                    <img src="{% static 'assets/images/top-contributor.jpg' %}" width="100%">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -48,69 +47,114 @@
 
 {% endblock header %}
 
-{% block content %}
+{% block content_base %}
 
 
-<div class="mixcontent">
-	{% for user in users %}
-    <div class="col-md-6  card-user padding">
-        <div class="single_mixi_portfolio margin-bottom-20">
-    	{% if user.profile.photo %}
-	          	<img class="panel-profile-img" src="{{user.profile.photo.url}}" width="100%" alt="" class="img-responsive" >
-    		{% else %}
-    			<img src="{% static 'img/user-logo.jpg' %}" class="panel-profile-img" width="100%" alt="" class="img-responsive" >
-			{% endif %}
-        
-            <div class="mixi_portfolio_overlay">
-                <div class="overflow_hover_text">
-                   <ul class="social-link list-inline text-center">
-                        <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                   </ul>
+<!-- Team -->
+<section id="team" class="pb-5">
+   
+    <div class="container">
+        <div class="row">
+            <!-- Team member -->
+            {% for user in users %}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p>
+                                        {% if user.profile.photo %}
+                                        <img class="img-fluid" src="{{user.profile.photo.url}}" width="" alt="contributor image">
+                                        {% else %}
+                                        <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                                        {% endif %}
+
+                                    </p>
+                                    <h5 class="cook-first-color">{% if user.last_name %}{{user.first_name}} {{user.last_name}} 
+                                    {% else %} {{user.username}} {% endif %}</h5>
+                                    <small></small>
+                                    <p class="card-text">{{user.profile.bio|truncatewords:15}}</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h5 class="cook-first-color">{% if user.last_name %}{{user.first_name}} {{user.last_name}} 
+                                    {% else %} {{user.username}} {% endif %}</h5>
+                                    <p class="card-text">{{user.profile.bio}}</p>                                    
+                                    <ul class="social-link list-inline">
+                                        <li><a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a></li>
+                                     </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="description text-left">
-            <h4 class="cook-first-color">{% if user.last_name %}{{user.first_name}} {{user.last_name}} 
-		         		{% else %} {{user.username}} {% endif %}</h4>
-            <small></small>
+            <!-- ./Team member -->
+        {% endfor %}
 
-           <!--  <p class="margin-top-20">{{user.profile.bio}}
-            
-            </p> -->
-        </div>
     </div>
-  
-   {% endfor %}
-   
+
     <div class="text-center">
-	{% if users.has_other_pages %}
-		<ul class="pagination">
-			{% if users.has_previous %}
-		      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
-		    {% else %}
-			<li class="disabled"><span>&laquo;</span></li>
-		    {% endif %}
-		    {% for i in users.paginator.page_range %}
-		      {% if users.number == i %}
-		        <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-		      {% else %}
-		        <li><a href="?page={{ i }}">{{ i }}</a></li>
-		      {% endif %}
-		    {% endfor %}
-		    {% if users.has_next %}
-		      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
-		    {% else %}
-		      <li class="disabled"><span>&raquo;</span></li>
-		    {% endif %}
-		</ul>
-	{% endif %}
-	</div>
+    {% if users.has_other_pages %}
+        <ul class="pagination">
+            {% if users.has_previous %}
+              <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in users.paginator.page_range %}
+              {% if users.number == i %}
+                <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if users.has_next %}
+              <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    </div>
 
-	
+    </div>
+   
+</section>
+<!-- Team -->
 
-</div>
+
+
+<script type="text/javascript">
+    // Instantiate the Bootstrap carousel
+$('.multi-item-carousel').carousel({
+  interval: false
+});
+
+// for every slide in carousel, copy the next slide's item in the slide.
+// Do the same for the next, next item.
+$('.multi-item-carousel .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+  
+  if (next.next().length>0) {
+    next.next().children(':first-child').clone().appendTo($(this));
+  } else {
+    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+  }
+});
+</script>
 	
-	
-{% endblock content %}
+{% endblock content_base %}

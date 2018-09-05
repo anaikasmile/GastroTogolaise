@@ -20,6 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+app_name = 'search'
+
 urlpatterns = [
-    url(r'^$', views.search, name='search'),
-]
+    url(r'^$', views.SearchListView.as_view(), name='results'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

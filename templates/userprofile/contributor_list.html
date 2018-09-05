@@ -75,9 +75,9 @@
                                             {% if request.user.is_staff %}
                                                 <li>
                                                 {% if user.is_active %}
-                                                    <a href="{% url 'userprofile_activate' pk=user.pk%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Desactiver</a>
+                                                    <a href="{% url 'userprofile_active' pk=user.pk%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Desactiver</a>
                                                 {% else %}
-                                                    <a href="{% url 'userprofile_activate' pk=user.pk%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Activer</a>
+                                                    <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Activer</a>
                                                 {% endif %}
                                                 </li>
                                                 

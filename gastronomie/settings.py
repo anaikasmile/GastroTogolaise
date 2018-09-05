@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.flatpages',
+    'django.contrib.redirects',
     'widget_tweaks',
     'sorl.thumbnail',
     'storages',
@@ -80,6 +81,7 @@ INSTALLED_APPS = [
     'userprofile',
     'restaurant',
     'search',
+    'notify',
     
 ]
 
@@ -100,6 +102,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     #'likes.middleware.SecretBallotUserIpUseragentMiddleware',
 ]
 AUTHENTICATION_BACKENDS = [
@@ -147,6 +150,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'recipe.context_processors.categories',
                 'recipe.context_processors.toprecipes',
+                'recipe.context_processors.topcontributors',
                 'blog.context_processors.post_lasted',
                 'blog.context_processors.post_category',
                 'restaurant.context_processors.restaurant_category',

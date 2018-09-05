@@ -256,5 +256,6 @@ $(document).ready('click','.likevideo',function(e) {
   
 
 });
-  
 
+// document.getElementById("settime").value = "00:00:00";
+// document.getElementById("settime2").value = "00:00:00";

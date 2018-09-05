@@ -49,7 +49,7 @@ class Recipe(models.Model):
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null=True)
 	author = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='recipe')
-	tags = TaggableManager()
+	tags = TaggableManager(verbose_name="Tags *")
 	slug = models.SlugField(null=False,unique=True)
 
 	# def view(self):
@@ -80,7 +80,7 @@ class Video(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	update_at = models.DateTimeField(auto_now=True)
 	published_at = models.DateTimeField(blank=True, null= True)
-	tags = TaggableManager()
+	tags = TaggableManager(verbose_name="Tags *")
 	slug = models.SlugField(null=False,unique=True)
 	
 

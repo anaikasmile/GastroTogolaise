@@ -9,12 +9,14 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
-from recipe.forms import RecipeForm, VideoForm, CategoryForm
-from userprofile.models import Profile
+from recipe.forms import RecipeForm, VideoForm, CategoryForm, OriginFormset, OriginForm
+from userprofile.models import Profile, User
 from blog.models import Post
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
 from django.conf import settings
+from django.db.models import Count, F
+from notify.signals import notify
 
 # Create your views here.
 
@@ -58,9 +60,8 @@ def admin_pagination(request,fichier):
 def home(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')	
 	recipes = pagination(request, recipes)
-
+	
 	return render(request,'recipe/accueil.html',{'recipes':recipes})
-
 
 
 
@@ -68,18 +69,25 @@ def home(request):
 @login_required
 def recipe_add(request):
 	if request.method == "POST":
-
 		form = RecipeForm(request.POST, request.FILES)
+		user = User.objects.get(username='root')
+
 		if form.is_valid():
 			recipe = form.save(commit=False)
 			recipe.author = request.user
 			recipe.slug = slugify(recipe.title)
+		
 			recipe.save()
+			
 			form.save_m2m()
 			recipe.readytime()
+			
 			messages.success(request, ('Votre recette a été envoyée'))
 
+			notify.send(request.user, recipient=user, actor=request.user, verb='Une nouvelle recette en attente.', nf_type='followed_by_one_user')
+
 			return redirect("recipe_add")
+	
 	else:
 		form = RecipeForm()
 	return render(request,'recipe/recipe_add.html', {'form':form})
@@ -289,7 +297,6 @@ def recipe_new(request):
 			recipe.save()
 			recipe.readytime()
 			messages.success(request, 'Votre recette a été enregistrée')
-			return redirect("recipe_new")
 			return redirect ('recipe_preview',slug=recipe.slug)
 
 	else:

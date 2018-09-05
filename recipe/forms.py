@@ -1,12 +1,12 @@
 from django import forms
+from django.forms import modelformset_factory
 from .models import Recipe, Video, Origin, Category
 from django.forms import SelectDateWidget, SplitDateTimeField
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.models import User
-from datetimewidget.widgets import DateTimeWidget
 from datetimepicker.widgets import DateTimePicker
-from datetimepicker.helpers import js_loader_url
+from taggit.forms import TagWidget
 
 class RecipeForm(forms.ModelForm):
     class Meta:
@@ -14,11 +14,11 @@ class RecipeForm(forms.ModelForm):
         fields = ['category','title','origin','description','prepare_time','cooking_time','ingredient','preparation','image','image_1','image_2','image_3','tags']
         widgets = {
             'category':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'origin':forms.SelectMultiple(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'origin': forms.SelectMultiple(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'title':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'description':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
-            'cooking_time':forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control','size':'24'}),
-            'prepare_time': forms.TimeInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control','size':'24'}),
+            'cooking_time': forms.TimeInput(attrs={'type':'time','placeholder':_(u''),'name':'','id':'settime','class':'form-control'}),
+            'prepare_time': forms.TimeInput(attrs={'type':'time','placeholder':_(u''),'name':'','id':'settime2','class':'form-control'}),
             'ingredient':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'preparation':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             
@@ -26,14 +26,35 @@ class RecipeForm(forms.ModelForm):
             'image_1':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
             'image_2':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
             'image_3':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
-            'tags':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            
+            'tags': TagWidget(attrs={'class':'form-control'})
             }
-        
+
+class OriginForm(forms.ModelForm):
+    class Meta:
+        model = Origin
+        fields = ['ethnic','country']
+        widgets = {
+            'country':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'ethnic':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            
+            }   
 
 # RecipeFormSet = inlineformset_factory(Origin, Recipe,
 #                                             form=RecipeForm, extra=1)
-
+OriginFormset = modelformset_factory(
+    Origin,
+    fields=('ethnic', 'country'),
+    extra=2,
+    widgets={
+        'ethnic': forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Une autre ethnie'
+            }
+        ),
+        'country' :forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+    }
+)
 
 class VideoForm(forms.ModelForm):
 
@@ -42,12 +63,11 @@ class VideoForm(forms.ModelForm):
         fields = ('title', 'video','description','category','origin','tags')
         widgets = {
             'category':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'origin':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'origin':forms.SelectMultiple(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'title':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'description':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
             'video':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-            'tags':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-           
+            'tags': TagWidget(attrs={'class':'form-control'})
             }
 
 #ajout 07/06/18

@@ -38,7 +38,7 @@
                     <!-- right menu -->
                     <div class="col-md-4">
                         
-                        <div class="widget-left">
+                       <div class="widget-left">
                             <ul class="nav nav-tabs tabs-4">
                                 <li class="active"><a data-toggle="tab" href="#menu1">Top Recipes</a></li>
                                 
@@ -46,7 +46,7 @@
                                 <li><a data-toggle="tab" href="#menu3">Recent Posts</a></li>
                             </ul>   
 
-                            <div class="tab-content rgba-grey-slight padding">
+                            <div class="tab-content padding">
                          
                                 
                                 <div id="menu1" class="tab-pane fade in active ">
@@ -115,13 +115,12 @@
 
                             
                             </div>
-                        </div>
+                        </div> 
 
                     
 
                         <div class="widget-left">
 
-                            <h3>Advertisment</h3>
                             <div class="separator4"></div>
                             <div class="single_video">
                                 <div class="embed-responsive embed-responsive-16by9">
@@ -131,8 +130,52 @@
                             
                         </div>
 
+                       <!-- widget -->
+
                         <div class="widget-left">
-                            <h3>Tags</h3>
+
+                            <h4>Top contributors</h4>
+                            <div class="separator4"></div>
+                            <div class="card">
+                                
+                                {% for tp in top_contributors %}
+
+                                        
+                                    
+                                    <div class="media" style="padding: 10px;">
+                                            
+                                            <a class="pull-left" href="">
+                                                
+                                            {% if tp.author__profile__photo %}
+                                                {% thumbnail tp.author__profile__photo  "70x70" crop="center" as im %}
+                                                    <img src="{{im.url}}" class="media-object">     
+                                                {% endthumbnail %}        
+
+                                            {% else %}
+                                                <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="70" height="70" alt="contributor image">
+                                            {% endif %}
+                                             
+                                              
+                                            </a>
+                                        
+                                            
+                                       
+                                        <div class="media-body" style="font-size: 14px;">
+                                            <h5 class="media-heading" style="font-size: 14px;">
+                                            <a class="cook-second-color" href=" ">
+                                                {{tp.author__username}}
+                                            </a></h5>
+                                            &nbsp;&nbsp; {{tp.total}} Posts
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Widget -->
+
+                        <div class="widget-left">
+                            <h4>Tags</h4>
                             <div class="separator4"></div>
 
                                 <ul class="tags list-inline">

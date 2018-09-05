@@ -3,7 +3,12 @@
 {% load thumbnail %}
 {% load humanize %}
 {% load embed_video_tags %}
+<!-- {% load comments %} -->
+{% load apps_filters %}
+{% load widget_tweaks %}
 {% load comments %}
+{% load threadedcomments_tags %}
+
 {% load i18n %}
 
 {% block slide %}
@@ -100,29 +105,51 @@
 {% block content %}
  
 
-    <section class="rp-post-detail">
+    <div class="main_mix_content single_mixi rp-post-detail">
      
         <div class="rp-post-image">
             
            {% video video.video as video %}
-            {% video video '700 x 400'  %}
+            {% video video '750 x 500'  %}
             {% endvideo %}
         </div>
 
         
-        
-        <div class="rp-post-description">
-            
+        <div class="padding-20">
+            {% if video.description %}
+            <div class="rp-post-description">
+                
                 <p>
-                {{video.description}}
+                    {{video.description}}
                 </p>
-          
-        </div>
-        
+              
+            </div>
+            {% endif %}
+              
+            <div class="rp-post-share" >
+                <strong> SHARE &nbsp;&nbsp;  </strong>
+                 <!--Facebook-->
+                <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
+                <!--Twitter-->
+                <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
+                <!--Gplus-->
+                <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
+                <!--Pinterest-->
+                <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+            </div> 
+        </div>   
+        <!-- Modal Author -->
+        {% include 'recipe/modal_user.html' %}
 
+
+    </div>
+
+    <!-- Section Tags -->
+
+    <section class="main_mix_content single_mixi padding-20 margin-top-40">
         <div class="pull-left">
               
-                <ul class="list-inline tags">
+                <ul class="list-inline">
 
                 <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
                 {% for tag in video.tags.all %}
@@ -132,22 +159,133 @@
                 {% endfor %}
                 </ul>
         </div>
-        <br><br>
+        <br>
+    </section>
+
+
+      <!-- Section comments -->
+    <section class="main_mix_content single_mixi padding-20 margin-top-40">
+
+        <div class="row" id="comment">
+           {% get_comment_count for video as comment_count %}
+            <h5 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaires' %} </h5>              
+
+            <div id="collapse1" class="panel-collapse collapse">
+             
+                <div id="comment-list" class="padding-20">
+
+                    <ul class="list">
+                        {% get_comment_list for video as comment_list %}
+
+                        {% for comment in comment_list|fill_tree reversed %}
+                        <div {% if request.REQUEST.c|add:"0" == node.id %}id="newly_posted_comment"{% endif %}>
+                        <div class="name">
+                            <div class="media">
+                                <a class="pull-left" href="#"> 
+                                  
+                                    <img src="{% static 'assets/images/chef2.jpg' %}" class="img-rounded" width="50px;" alt="">
+                                </a> 
+                                <div class="media-body rp-comment">
+                                    <span class="rp-arrow">
+                                    </span>
+                                   
+                                    <h6 class="media-heading"><a href="" class="cook-second-color">
+                            
+
+                                    {{comment.user_name}}</a> <span class="text-right">{{comment.submit_date|naturaltime}}</span></h6>
+                                   
+                                    
+                                    <p style="padding-left: 10px;">{{comment.comment}}</p>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                      
+                    </ul>
+                   
+                    <!-- Pagination comments -->
+
+                    <div class="comment-pagination">
+                        <ul class="pagination"></ul>
+                    </div>
+                    
+                </div>
+            </div> 
+
+            <!-- Comment form -->
+            <div class="form-block col-xs-12">
+                <div class="">
+                    <h4>{% trans 'Laisser un commentaire' %}</h4>
+                    <div class="separator4"></div>
+                    <p class="">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
+                    <br>
+                </div>
+            
+               
+               {% if user.is_authenticated %}
+                {% get_comment_form for video as form %}
+                 <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %}style="display:none;"{% endif %}>
+                    <form action="{% comment_form_target %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.comment|add_class:'form-control' }}
+                    
+                    
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <br>
+                    <input type="hidden" name="next" value="{% url 'video_detail' video.pk %}" />
+                    
+                    <button class="btn btn-primary" type="submit" id="id_submit">{% trans 'Envoyer' %}</button>
+                    </form>
+                </div>
+                {% else %}
+
+                <p class="">{% trans 'Veuillez vous' %} <a href="{% url 'account_login' %}">{% trans 'connecter' %}</a>{% trans ' si vous êtes déjà membre. Sinon, remplissez juste ces champs' %} . 
+                </p>
+                {% get_comment_form for video as form %}
                 
-        <div class="rp-post-share border" >
-            <strong> SHARE &nbsp;&nbsp;  </strong>
-             <!--Facebook-->
-            <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
-            <!--Twitter-->
-            <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
-            <!--Gplus-->
-            <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
-            <!--Pinterest-->
-            <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
-        </div>    
+               <!--  <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %}style="display:none;"{% endif %}> -->
+                    <form action="{% comment_form_target %}" method="post">
+                        {% csrf_token %}
+                        {{ form.content_type }}
+                        {{ form.object_pk }}
+                        {{ form.timestamp }}
+                        {{ form.security_hash }}
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>{% trans 'Nom' %} <span class="label-description">(ex: Jean) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>{% trans 'Email' %} <span class="label-description">(Non Publié) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-4">
+                                <label>{% trans 'Website' %}<span class="label-description">(Optionnel)</span> </label> {{form.url|add_class:'form-control'}}  
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                            <label>{% trans 'Commentaire' %}<sup>*</sup></label></span><br> 
+                            {{form.comment|add_class:'form-control'}}
+                            </div>
+                        </div>
+                           <input type="hidden" name="next" value="{% url 'video_detail' video.slug %}" />
+                        <button class="btn btn-primary" type="submit">{% trans 'Envoyer' %}</button>
+                        
+                    </form> 
+                <!-- </div> -->
+
+            {% endif %}
+            </div>     
 
     </section>
 
-  
+  <br>
 
 {% endblock content %}    

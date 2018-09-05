@@ -1,85 +1,76 @@
-{% extends 'base_principal.html' %}
+  {% extends 'base_principal.html' %}
 
-{% load staticfiles %}
-{% load i18n %}
-{% load thumbnail %}
-{% load comments %}
-{% load ratings %}
+  {% load staticfiles %}
+  {% load i18n %}
+  {% load thumbnail %}
+  {% load comments %}
+  {% load ratings %}
 
-{% block slide %}
+  {% block slide %}
 
-    <section id="home" class="home">
+      <section id="home" class="home">
 
-      <!--   <div class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="main_home_slider">
-                            <div class="single_home_slider">
-                                <div class="main_home wow"> -->
-                                    <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
-                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+        <!--   <div class="overlay">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-12 ">
+                          <div class="main_home_slider">
+                              <div class="single_home_slider">
+                                  <div class="main_home wow"> -->
+                                      <!-- <h1>Cook' iT</h1> -->
+                                      <img src="{% static 'assets/images/food_1.jpg' %}">
+                                      <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div> -->
-<!-- 
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </section>
-{% endblock slide %}
+                                      <div class="home_btn">
+                                          <a href="" class="btn btn-primary">LEARN MORE</a>
+                                      </div> -->
+  <!-- 
+                                  </div>
+                              </div>
+                              
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+      </section>
+  {% endblock slide %}
 
-{% block header %}
+  {% block header %}
 
+      
+  {% endblock header %}
+
+
+  {% block content %}
+
+
+  <div class="main_mix_content ">
+
+  <hr>
+    {{total_results}} results for: {{word}}  
+  <hr>
+
+   {% for recipe in recipes %}                
+                      
+      {% include 'recipe/recipe_partial.html' %}
+
+    {% endfor %}
+
+
+    {% for video in videos %}
+
+        {% include 'recipe/video_partial.html' %}
+
+    {% endfor %}
+
+    {% for post in posts %}
+
+        {% include 'blog/post_partial.html' %}
+
+    {% endfor %}
     
-{% endblock header %}
-
-{% block content %}
-
-
-<div class="main_mix_content ">
-
-   <div class="mixcontent row">
-                        
-           
-            <div class="margin-bottom-80">
-            
-  <form method="get">
-    {{ filter.form.as_p }}
-    <button type="submit">Search</button>
-  </form>
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>name</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      {% for cat in filter.qs %}
-        <tr>
-          <td>{{ cat.title}}</td>
-        
-          
-        </tr>
-      {% empty %}
-        <tr>
-          <td colspan="5">No data</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  </div>
-  </div>
-
 </div>
-{% endblock %}
+
+  {% endblock content %}

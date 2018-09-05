@@ -39,6 +39,8 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^datetimepicker/', include('datetimepicker.urls')),
     url(r'^search/', include('search.urls')),
+    url(r'^notifications/', include('notify.urls', 'notifications')),
+
    
 ]+ static(
         settings.STATIC_URL,

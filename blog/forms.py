@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.models import User
 from ckeditor.widgets import CKEditorWidget
+from taggit.forms import TagWidget
 
 class PostForm(forms.ModelForm):
 
@@ -17,8 +18,7 @@ class PostForm(forms.ModelForm):
 			'text':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textarea','class':'form-control'}),    
 			'image':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
 			'video':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-        	'tags':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-           
+        	'tags': TagWidget()
             }
 
 # class CommentForm(forms.ModelForm):

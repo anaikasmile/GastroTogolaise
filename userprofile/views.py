@@ -126,10 +126,12 @@ login_required
 def profile_active(request, pk):
     user = get_object_or_404(User, pk=pk)
     if (user.is_active):
-        user.update(is_active=False)
+        user.is_active=False
+        user.save()
         messages.success(request, 'Compte désactivé!')
     else:
-        user.update(is_active=True)
+        user.is_active=True
+        user.save()
         messages.success(request, 'Compte activé!')
     
    

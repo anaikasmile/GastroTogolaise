@@ -13,7 +13,7 @@ urlpatterns = [
 	url(r'^contributor/list/$', views.contributor_list, name='contributor_list'),
 	
 	
-	url(r'^userprofile/(?P<pk>[0-9]+)/active/$', views.profile_active, name='userprofile_active'),
+	url(r'^active/(?P<pk>[0-9]+)/$', views.profile_active, name='userprofile_active'),
 	url(r'^userprofile/(?P<pk>[0-9]+)/delete/$', views.profile_delete, name='userprofile_delete'),
 	
 ]

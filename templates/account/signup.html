@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% load widget_tweaks %}
 {% load thumbnail %}
+{% load widget_tweaks %}
 {% load i18n %}
+
 {% load account socialaccount %}
 {% load socialaccount %}
 {% providers_media_js %}
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Sign up" %}{% endblock %}
 
 {% block slide %}
    
@@ -53,7 +54,7 @@
 
 		    <div class="col-md-offset-4 col-md-4">
 		        <div class="login">
-		            <h4 class="text-center">Register with</h4>
+		            <h4 class="text-center">{% trans 'S enregistrer via' %}</h4>
 		                    
 		              <div class="box">
 		                   <div class="content">
@@ -68,10 +69,10 @@
 
 		                    <div class="division">
 		                        <div class="line l"></div>
-		                            <span>or</span>
+		                            <span>ou</span>
 		                        <div class="line r"></div>
 		                    </div>
-		                    <h4 class="text-center">Use your email </h4>
+		                   <!--  <h4 class="text-center">Use your email </h4> -->
 
 		                    <div class="form loginBox">
 		                        <form method="POST" action="{% url 'account_signup' %}">
@@ -103,12 +104,10 @@
 		                             	
 		                            </div>
 		                            <div class="form-group">
-		                             
 		                                {{ form.password1 |add_class:'form-control'}} 
 		                                <span class="help-block">{{ form.password1.error }}</span>
 		                            </div>
 		                            <div class="form-group">
-		                             
 		                                {{ form.password2 |add_class:'form-control'}} 
 		                                <span class="help-block">{{ form.password2.error }}</span>
 		                            </div>
@@ -118,13 +117,13 @@
 		                           {% if redirect_field_value %}
 										<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 									{% endif %}
-		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Create account" %}</button>
+		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Créer un compte" %}</button>
 
 		                        </form>
 		                    </div>
 
 		                    <div class="forgot login-footer">
-		                        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+		                        <p>{% blocktrans %} Avez-vous déjà un compte? Si oui<a href="{{ login_url }}"> Connectez-vous </a>.{% endblocktrans %}
 		                  		</p>
 		                    </div>
 		                </div>

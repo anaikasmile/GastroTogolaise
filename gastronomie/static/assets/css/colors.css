@@ -208,6 +208,15 @@ Colors
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.rgba-grey-slight,
+.rgba-grey-slight:after {
+  background-color: rgba(158, 158, 158, 0.1); }
+
+.rgba-grey-light,
+.rgba-grey-light:after {
+  background-color: rgba(158, 158, 158, 0.3); }
+
+
 .cook-first-color-bg{
   background-color: #5e9a28;
 }
