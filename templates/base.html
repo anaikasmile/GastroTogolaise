@@ -136,6 +136,9 @@
                         <li>
                             <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>{% trans 'Edit profile' %}</a>
                         </li>
+                        <li>
+                            <a href="{% url 'account_change_password' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>{% trans 'Mot de passe' %}</a>
+                        </li>
                         {% if user.is_staff_member or user.is_staff %}
                         
                         <li>
