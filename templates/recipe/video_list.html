@@ -17,7 +17,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -49,7 +49,7 @@
             <div class="col-md-6">
                 <div class="single_mixi_portfolio margin-bottom-40">
                     {% video video.video as video %}
-                        {% video video '340 x 260'  %}
+                        {% video video  %}
                     {% endvideo %}
                     <div class="single_mixi_portfolio_content">
                         <a href="{% url 'video_detail' slug=video.slug %}" class="title">{{video.title|truncatechars:20}}</a>
@@ -70,7 +70,7 @@
             {% include 'recipe/modal_user.html' %}
 
         {% empty %}
-                <h2>Aucune vidéo pour le moment.</h2>
+                <h2>Aucune vidéo disponible.</h2>
         {% endfor %}
 
         </div>

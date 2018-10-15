@@ -1,0 +1,21 @@
+{% extends 'layout/layout.html' %}  
+
+{% load staticfiles %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% load humanize %}
+{% load flatpages %}
+{% load i18n %}
+
+{% block content %}
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>5<span>0</span>0</h1>
+			</div>
+			<h2>Une erreur est survenue sur le serveur</h2>
+			<a href="/" class="btn btn-primary">Accueil</a>
+			
+		</div>
+	</div>
+{% endblock content %}

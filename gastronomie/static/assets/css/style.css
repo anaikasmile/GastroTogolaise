@@ -263,7 +263,20 @@ p:last-child {
     font-size: 0.8rem;
 }
 
+.top-bar .social-link{
+    font-size: 0.8rem;
+    color: #aaa79e;
+    padding: 0px 10px;
+}
 
+
+}
+
+.notification-box-list{
+    width: 250px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
 .top-image{
     height: 350px;
 }
@@ -508,6 +521,9 @@ Extra height css
 }
 .padding{
     padding: 10px 10px 15px 10px;
+}
+.padding-5{
+    padding: 0px 10px 15px 10px;
 }
 
 .padding-20{
@@ -1941,6 +1957,10 @@ blockquote footer, blockquote small, blockquote .small {
     color: #fff;
     background-color: #2e5e86;
 }
+.btn-li {
+    background-color: #0082ca!important;
+    color: #fff!important;
+}
 .social-link{
     margin: 10px 0 10px 0;
 }
@@ -1974,7 +1994,11 @@ blockquote footer, blockquote small, blockquote .small {
     border-style: solid;
     }
 
-
+.social-link .li: hover {
+    background-color: #0082ca;
+    order-width: 1px;
+    border-style: solid;
+}
 /* CROUSAL-STARTS */
 #sg-carousel {
     position: relative;
@@ -2354,3 +2378,29 @@ section .section-title {
   }
 }
 
+iframe{
+   display:block;
+   width:100%;
+   max-height: 100%;
+}
+
+.helptext{
+    color: #5e9a28;
+    font-size: 0.8rem;
+}
+
+
+
+.single .form-control {
+height: 50px;
+background: rgba(255, 255, 255, 0.6);
+border-color: transparent;
+border-radius: 20px 0 0 20px; }
+ .single .form-control:focus {
+box-shadow: none;
+border-color: #243c4f; }
+ .single .btn {
+min-height: 50px; 
+border-radius: 0 20px 20px 0;
+color: #fff;
+}

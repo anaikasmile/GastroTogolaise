@@ -4,12 +4,17 @@ class="notification list-group-item {{ notification.read|yesno:'read,unread' }}"
     <a href="{{ notification.actor_url }}">{{ notification.actor }}</a> {{ notification.verb }}
     <span class="timesince">{{ notification.created|timesince }} ago</span>
 
-    <button data-id="{{ notification.id }}" class="mark-notification"
-        data-mark-action="{{ notification.read|yesno:'unread,read' }}"
-        data-toggle-text="Mark as {{ notification.read|yesno:_('read,unread') }}">
+   
+    {% if notification.read == 0 %}
+    	<a data-id="{{ notification.id }}" class="mark-notification"
+        data-mark-action="read" title="Marqué comme lu"><span class=""><i class="fa fa-check" aria-hidden="true"></i></span></a>
+        
+    {% else %}
+    	<a href="#" title="Déjà lu"><span class="">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <i class="fa fa-check" aria-hidden="true"></i>
 
-        Mark as {{ notification.read|yesno:'unread,read' }}
-
-    </button>
-    <button class="delete-notification" data-id="{{ notification.id }}">X</button>
+        </span></a>
+    {% endif %}
+    <!-- <button class="delete-notification" data-id="{{ notification.id }}">X</button> -->
 </li>

@@ -82,6 +82,8 @@ INSTALLED_APPS = [
     'restaurant',
     'search',
     'notify',
+    'django_select2',
+    'django_addanother'
     
 ]
 

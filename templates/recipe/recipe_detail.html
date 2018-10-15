@@ -5,6 +5,9 @@
 {% load humanize %}
 {% load apps_filters %}
 {% load widget_tweaks %}
+{% load social_share %}
+
+
 <!-- {% load comments %} -->
 {% load threadedcomments_tags %}
 {% block extrahead %}
@@ -28,7 +31,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -73,10 +76,14 @@
                 
                     <li>
                     {% if recipe.author.is_staff_member %}
-                        <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
-                         By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                        <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 26px; height: 26px;" alt="">
+                        By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                     {% else %}
-                        <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
+                        {% if recipe.author.photo %}
+                            <img src="{{recipe.author.photo.url}}" class="img-circle" width="20px;" alt="">
+                        {% else %}
+                            <img src="{% static 'assets/images/user_icon.png' %}" class="img-circle" width="20px;" alt="">
+                        {% endif %}
                         By <a  class="rp-author" data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a>
                     {% endif %}
                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ recipe.published_at|date:'F j, Y' }} </li> 
@@ -93,16 +100,23 @@
                 
             </div>
             <div class="rp-post-share">
+
+
                  <!--Facebook-->
-                <a class="btn fb-bg waves-effect waves-light" href="#"><i class="fa fa-facebook left"></i><span class="hidden-xs">  | Share on Facebook</span></a>
-                    
-                <!--Twitter-->
-                <a class="btn tw-bg waves-effect waves-light" href="#"><i class="fa fa-twitter left"></i><span class="hidden-xs">  | Tweet on Twitter</span></a>
-                <!--Gplus-->
-                <a class="btn gplus-bg waves-effect waves-light" href="#"><i class="fa fa-google-plus"></i></a>
-                <!--Pinterest-->
-                <a class="btn pin-bg waves-effect waves-light" href="#"><i class="fa fa-pinterest"></i></a>
+                {% post_to_facebook %}
+
                 
+                <!--Twitter-->
+               <!--Twitter-->
+                {% post_to_twitter "{{recipe.title}}"  "" %}
+
+                <!--Gplus-->
+                {% post_to_gplus ""  %}
+
+                <!--linkedin-->
+               
+
+                 
             </div>
             
             <!-- Include author modal -->
@@ -242,14 +256,18 @@
         <div class="rp-post-share margin-bottom-20">
             <strong> SHARE &nbsp;&nbsp;  </strong>
              <!--Facebook-->
-            <a class="btn fb-bg waves-effect waves-light" href=""><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
-            <!--Twitter-->
-            <a class="btn tw-bg waves-effect waves-light" href="" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
-            <!--Gplus-->
-            <a class="btn gplus-bg waves-effect waves-light" href=""><i class="fa fa-google-plus"></i></a>
+              
+                {% post_to_facebook %}
+
+                
+                <!--Twitter-->
+                {% post_to_twitter "{{recipe.title}}"  "" %}
+
+                <!--Gplus-->
+                {% post_to_gplus  "" %}
             <!--Pinterest-->
-            <a class="btn pin-bg waves-effect waves-light" href=""><i class="fa fa-pinterest"></i></a>
-        </div> 
+<!--             <a class="btn pin-bg waves-effect waves-light" href=""><i class="fa fa-pinterest"></i></a>
+ -->        </div> 
 
         </div> 
 
@@ -295,7 +313,8 @@
                     <ul class="list">
                         {% get_comment_list for recipe as comment_list %}
 
-                        {% for comment in comment_list|fill_tree reversed %}
+
+                        {% for comment in comment_list|fill_tree|annotate_tree %}
                         <div {% if request.REQUEST.c|add:"0" == node.id %}id="newly_posted_comment"{% endif %}>
                         <div class="name">
                             <div class="media">

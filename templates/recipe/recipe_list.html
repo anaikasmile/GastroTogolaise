@@ -17,7 +17,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -76,8 +76,10 @@
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}" class="title">{{recipe.title|truncatechars:20}}</a>
                         <p>
                          {% if recipe.author.is_staff_member %}
-                            By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                             <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 20px; height: 20px;" alt=""> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                         {% else %}
+                            
+
                             By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}" class="rp-author">{{recipe.author}}</a>
                         {% endif %}
                         </p>

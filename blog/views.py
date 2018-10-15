@@ -67,7 +67,7 @@ def post_per_tag(request):
 	#category = get_object_or_404(Category, pk=pk)
 	if request.method == 'GET':
 		tag = request.GET.get('tag')
-		posts =  Post.objects.filter(tags__name=tag)
+		posts =  Post.objects.filter(tags__name=tag).filter(published_at__isnull=False).order_by('-published_at')
 		posts = pagination(request, posts)
 	return render(request,'blog/post_list.html', {'posts':posts})
 

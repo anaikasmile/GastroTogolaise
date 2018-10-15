@@ -52,19 +52,19 @@
             <div class="col-md-12">    
                 <section class="paper padding-20">
                     <h3 class="h3-responsive text-center">Proposer votre recette</h3>
-                     <p>Populate fields below and after review you will receive response</p>
+                     <p>Remplissez les champs suivants, après une étude vous recevrez une notification</p>
                     
                     <hr>
                    
                             
-                    <form method="POST"  name="add-form" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
+                    <form method="POST"  name="add-form" id="add_origin" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
                         {% csrf_token %}
                          {{ form.media }}
                          {{ form.as_p }}
                          
                        
 
-                        <button type="submit" class="btn btn-primary">{% trans 'Envoyer' %}</button>
+                        <button type="submit" class="btn btn-primary" id="submit_origin">{% trans 'Envoyer' %}</button>
                     </form>
                         
                 </section>
@@ -76,13 +76,19 @@
     </div>
 
     <br>
-    
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#add_id_origin").attr("title", "Ajouter une nouvelle ethnie");
+        $( "#submit_origin" ).click(function() {
+            window.close();
+        });
+
+    });
+    </script>
         
 {% endblock content %}
-
-
-
-
 
 
 

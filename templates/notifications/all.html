@@ -39,27 +39,41 @@
     </section>
 {% endblock slide %}
 
+{% block header %}
+
+   <section class="rp-post-header margin-top-40">
+        <h4 class="rp-post-title h4-responsive">{% trans 'Notifications' %}</h4> 
+            <hr>
+
+    </section>
+
+ 
+{% endblock header %}
 
 {% block content_base %}
- <div class="main_mix_content text-center padding">
+<div class="container">
+        <div class="row">
+<!--  <div class="main_mix_content text-center padding">
 
         <div class="mixcontent row">
-            <div class="col-lg-offset-2 col-lg-8">
-          
+            <div class="col-lg-offset-2 col-lg-8"> -->
+            <div class="col-md-offset-2 col-md-8">
+  
             	{% block content %}
-				    <hr>
-				    <button class="mark-all-notifications" data-mark-action="read">{% trans "Mark all as read" %}</button>
-				    <button class="mark-all-notifications" data-mark-action="unread">{% trans "Mark all as unread" %}</button>
+				     <button class="btn btn-primary mark-all-notifications" data-mark-action="read">
+				    {% trans "Marquer tous comme lu" %}</button>
+				    <!-- <button class="btn btn-primary mark-all-notifications" data-mark-action="unread">{% trans "Marquer tous comme non lu" %}</button>  -->
+				    <br><br>
 				    <ul class="notifications list-group">
 				    {% if notifications %}
-				    {% render_notifications using notifications %}
+				    {% render_notifications using request.user.notifications.active.unread %}
 				    {% endif %}
 				    </ul>
 				{% endblock %}
 
-            </div>
+           </div>
         </div>
-    </div>
+    </div> 
 
     
 

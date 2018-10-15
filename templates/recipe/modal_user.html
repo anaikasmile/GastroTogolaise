@@ -19,16 +19,22 @@
 
                                 <p>{{recipe.author.profile.bio}}</p>
                                 <ul class="social-link list-inline text-right">
-                                    <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a></li>
+                                     <li><a href="{{recipe.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{recipe.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{{recipe.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                                    
+                                    <li><a href="{{recipe.author.profile.instagram}}" class="btn-floating insta"><i class="fa fa-instagram"></i></a></li>
+
+                                    <li><a href="{{recipe.author.profile.linkedin}}" class="btn-floating li"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                      </div>
                 </div>
             </div>
+
+
+
 
             <div class="modal fade" id="modalAvatar{{video.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{video.id}}">
                 <div class="modal-dialog" role="document">
@@ -55,9 +61,10 @@
                         </div>
                       
                         <ul class="social-link list-inline text-center">
-                            <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="{{video.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{video.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{video.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+
                         </ul>
                     </div>
                 </div>

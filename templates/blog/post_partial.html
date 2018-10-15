@@ -30,7 +30,7 @@
                 
                             <li>
                             {% if post.author.is_staff_member %}
-                                By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                                <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 16px; height: 16px;" alt=""> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                             {% else %}
                                 By <a data-toggle="modal" data-target="#modalAvatar{{post.author.id}}" class="rp-author">{{post.author}}</a>
                             {% endif %}
@@ -49,7 +49,7 @@
                     </div>
 
                     <p>{{ post.text|safe|truncatechars:150 }}</p>
-                    <a href="" class="rp-post-btn"><em> Lire la suite → </em></a>
+                    <a href="{% url 'post_detail' slug=post.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
                    
 
                 </div> 

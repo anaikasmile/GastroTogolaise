@@ -8,6 +8,8 @@
 {% load widget_tweaks %}
 {% load comments %}
 {% load threadedcomments_tags %}
+{% load social_share %}
+
 
 {% load i18n %}
 
@@ -22,7 +24,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -67,10 +69,16 @@
             <div class="rp-post-meta-info">
                 <ul class="list-inline">
                 
-                    <li><img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt="">
+                    <li>
                    {% if video.author.is_staff_member %}
-                         By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                          <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 26px; height: 26px;" alt="">
+                          By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                     {% else %}
+                        {% if video.author.photo %}
+                            <img src="{{video.author.photo.url}}" class="img-circle" width="20px;" alt="">
+                        {% else %}
+                            <img src="{% static 'assets/images/user_icon.png' %}" class="img-circle" width="20px;" alt="">
+                        {% endif %}
                         By <a href="" class="rp-author">{{video.author}}</a></li> 
                     {% endif %} 
                     <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ video.published_at|date:'F j, Y' }} </li> 
@@ -86,14 +94,14 @@
             </div>
             <div class="rp-post-share">
                  <!--Facebook-->
-                <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs">  | Share on Facebook</span></a>
-                    
+                {% post_to_facebook %}
+
+                
                 <!--Twitter-->
-                <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs">  | Tweet on Twitter</span></a>
+                {% post_to_twitter "{{recipe.title}}"  "" %}
+
                 <!--Gplus-->
-                <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
-                <!--Pinterest-->
-                <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+                {% post_to_gplus  "" %}
                 
             </div>
             
@@ -107,15 +115,15 @@
 
     <div class="main_mix_content single_mixi rp-post-detail">
      
-        <div class="rp-post-image">
+        <div class="rp-post-image" style="height: 350px;">
             
            {% video video.video as video %}
-            {% video video '750 x 500'  %}
+            {% video video  %}
             {% endvideo %}
         </div>
 
         
-        <div class="padding-20">
+        <div class="padding-5">
             {% if video.description %}
             <div class="rp-post-description">
                 
@@ -127,15 +135,15 @@
             {% endif %}
               
             <div class="rp-post-share" >
-                <strong> SHARE &nbsp;&nbsp;  </strong>
-                 <!--Facebook-->
-                <a class="btn fb-bg waves-effect waves-light"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
+            <strong> SHARE &nbsp;&nbsp;  </strong>
+                {% post_to_facebook %}
+
                 <!--Twitter-->
-                <a class="btn tw-bg waves-effect waves-light" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
+                {% post_to_twitter "{{recipe.title}}"  "" %}
+
                 <!--Gplus-->
-                <a class="btn gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"></i></a>
-                <!--Pinterest-->
-                <a class="btn pin-bg waves-effect waves-light"><i class="fa fa-pinterest"></i></a>
+                {% post_to_gplus  "" %}
+
             </div> 
         </div>   
         <!-- Modal Author -->

@@ -28,15 +28,12 @@ class SearchListView(ListView):
         #context["hide_search"] = True
         context["tags_list"] = Tag.objects.filter(name=query)
         context["recipes"] = Recipe.objects.filter(Q(
-            title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query) | Q(
-                tags__name__icontains=query), published_at__isnull=False)
+            title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
         context["videos"] = Video.objects.filter(Q(
-            title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query)  | Q(
-                tags__name__icontains=query), published_at__isnull=False)
+            title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
 
         context["posts"] = Post.objects.filter(Q(
-            title__icontains=query) | Q(text__icontains=query) | Q(category__name__icontains=query) | Q(
-                tags__name__icontains=query), published_at__isnull=False)
+            title__icontains=query) | Q(text__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
         #context["users_list"] = get_user_model().objects.filter(
            # Q(username__icontains=query) | Q(
             #    name__icontains=query))

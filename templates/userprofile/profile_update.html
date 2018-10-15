@@ -35,11 +35,11 @@
 
 {% block content %}
  <!-- Post -->
- <div class="row single_mixi_portfolio">
+<div class="row single_mixi">
  
     
     <section class="rp-profile">
-            <h3 class="h3-responsive text-center">Edit profil</h3>
+            <h3 class="h3-responsive text-center">Modifier votre profil</h3>
             <hr>
     
             <form method="post"  class="form-block" action="." enctype="multipart/form-data">
@@ -71,35 +71,49 @@
                         <div class="form-group">
                             <label>Tél</label>
                            {{ profile_form.tel }}
+                           <span class="helptext">{{profile_form.tel.help_text}}</span>
+
                         </div>
+
                     </div>
                 </div>
             
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Facebook Link</label>
+                            <label>Facebook Url</label>
                             {{ profile_form.facebook }}
+                            <span class="helptext">{{profile_form.facebook.help_text}}</span>
+
                         </div>
+
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Twitter Link</label>
+                            <label>Twitter Url</label>
                            {{ profile_form.twitter }}
+                           <span class="helptext">{{profile_form.twitter.help_text}}</span> 
+
                         </div>
+
                     </div>
                 </div>
                  <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Linkedin Link</label>
+                            <label>Linkedin Url</label>
                             {{ profile_form.linkedin }}
+                            <span class="helptext">{{profile_form.linkedin.help_text}}</span>
+
                         </div>
+
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Google + Link</label>
+                            <label>Google + Url</label>
                            {{ profile_form.gplus }}
+                           <span class="helptext">{{profile_form.gplus.help_text}}</span>
+
                         </div>
                     </div>
                 </div>
@@ -109,6 +123,8 @@
                         <div class="form-group">
                             <label>Instagram Link</label>
                             {{ profile_form.instagram }}
+                            <span class="helptext">{{profile_form.instagram.help_text}}</span>
+
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -117,8 +133,6 @@
                              {{ profile_form.photo }}
                               {{ user.profile.photo.url }}
                             <!-- <img src="{{ user.profile.photo.url }}" class="img-responsive"> -->
-
-                            
 
                         </div>
                     </div>

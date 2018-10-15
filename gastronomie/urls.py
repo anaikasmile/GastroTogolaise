@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^datetimepicker/', include('datetimepicker.urls')),
     url(r'^search/', include('search.urls')),
     url(r'^notifications/', include('notify.urls', 'notifications')),
+    url(r'^select2/', include('django_select2.urls')),
 
    
 ]+ static(

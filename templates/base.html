@@ -39,6 +39,8 @@
         <link rel="stylesheet" href="{% static 'assets/fonts/stylesheet.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
+
         <link rel="stylesheet" href="{% static 'assets/css/colors.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/mdb.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/toastr.scss' %}">
@@ -58,7 +60,13 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'assets/css/error.css' %}">
+        <link href="/static/django_addanother/addanother.css" type="text/css" media="all" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
         
+
+
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -69,75 +77,50 @@
     <div class="top-bar">
         <div class="container">
             <div class="col-md-12">
-                <a class=""><i class="fa fa-facebook"> </i></a>
-                <a class=""><i class="fa fa-twitter"> </i></a>
-                <a class=""><i class="fa fa-google-plus"> </i></a>
-                <a class=""><i class="fa fa-instagram"> </i></a>
-                <a class=""><i class="fa fa-pinterest"> </i></a>
-                <a class=""><i class="fa fa-youtube"> </i></a>
-            
-            
+                
+                <a href="" class="social-link"><i class="fa fa-facebook"></i></a>
+                <a href="" class="social-link"><i class="fa fa-twitter"></i></a>
+                <a href="" class="social-link"><i class="fa fa-google-plus"></i></a>
+                <a href="" class="social-link"><i class="fa fa-instagram"></i></a>
+                <a href="" class="social-link"><i class="fa fa-youtube"></i></a>
+        
+      
                    
             <ul class="list-inline navbar-right">             
                 {% if user.is_authenticated %}
                     
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            {{ user.notifications.unread.count }}
+                        <span class="nf-count"></span>
                         <i class="fa fa-bell"></i> <b class="caret"></b>
                     </a>
-                    <ul class="dropdown-menu">
-                       
-                        
-                        {% render_notifications using request.user.notifications.active for box %}
-                        <li><a href="" class="text-center">View all</li>
+                    <ul class="dropdown-menu notification-box-list">
+                    
+                        {% render_notifications using notifications.unread for box %}
+                        <li><a href="/notifications/all" class="text-center">View all</li>
+
                     </ul>
                 </li>
 
-
-                  <!--  <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                    -->
-                
                 <li class="dropdown">   
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ request.user.username }} <b class="caret"></b></a>
                     
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-user"></i> {% trans 'Profil' %}</a>
-                        </li>
+                        
                         
                         <li>
                             <a href="{% url 'recipe_add' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> {% trans 'Ajouter une recette' %}</a>
                         </li>
-                        
+
                         <li>
-                            <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>{% trans 'Edit profile' %}</a>
+                            <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-gear"></i> {% trans 'Paramètres' %}</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-user" ia-hidden="true"></i>{% trans 'Modifier votre profil' %}</a>
                         </li>
                         <li>
-                            <a href="{% url 'account_change_password' %}"><i class="fa fa-fw fa-gear" ia-hidden="true"></i>{% trans 'Mot de passe' %}</a>
+                            <a href="{% url 'account_change_password' %}"><i class="fa fa-fw fa-lock" ia-hidden="true"></i>{% trans 'Mot de passe' %}</a>
                         </li>
                         {% if user.is_staff_member or user.is_staff %}
                         
@@ -180,7 +163,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="/">
-                                <img src="{% static 'assets/images/finalTK2.png' %}">
+                                <img src="{% static 'assets/images/tk-small.png' %}">
 
                                <!--  <img src="{% static 'assets/images/finalTK2.png' %}"> -->
                             </a>
@@ -221,7 +204,7 @@
                                 </li>
                                
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bons Plans</a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses</a>
                                     <ul class="dropdown-menu">
                                          {%for restaurant_cat in restaurant_categories %}
                                         <li>
@@ -318,7 +301,7 @@
                                     <div class="footer_logo">
                                         <!-- <h2>TogoKuizine</h2> -->
 
-                                        <img src="{% static 'assets/images/finalTK2.png' %}"> 
+                                        <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%"> 
 
                                     </div>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in egestas lectus. 
@@ -348,7 +331,7 @@
                                     <h4 class="footer_title">CONTACT</h4>
                                     <div class="separator4"></div>
                                     <ul>
-                                        <li><a href=""><i class="fa fa-envelope"></i> admin@cookit.com</a></li>
+                                        <li><a href=""><i class="fa fa-envelope"></i> admin@togokuizine.com</a></li>
                                         <li><a href=""><i class="fa fa-phone"></i>000 000 00</a></li>
                                         <li><a href=""><i class="fa fa-map-marker"></i> Lome, Togo</a></li>
                                         
@@ -437,6 +420,9 @@
         <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
         <script  type="text/javascript" src="{% static 'assets/js/main.js' %}"></script> 
+        <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+
+        <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script> 
 
 
     <!--<script src="{% static 'assets/js/jquery.easypiechart.min.js' %}"></script>
@@ -451,11 +437,13 @@
         <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
         <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script> 
         {% include_notify_js_variables %}
-        <script src="{% static 'notify/notifyX.min.js' %}"></script>
+        <script src="{% static 'notify/notifyX.js' %}"></script>
+
     
         <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script> 
+        {{ form.media.js }}
         <script type="text/javascript">
-          $(document).ready(function() { 
+            $(document).ready(function() { 
                 
                 toastr.options = {
                   "closeButton": false,
@@ -475,7 +463,7 @@
                   "hideMethod": "fadeOut"
                  }
 
-           
+                
 
             });
         </script>
