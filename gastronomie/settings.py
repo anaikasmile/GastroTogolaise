@@ -30,9 +30,9 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-        'NAME': 'cookit_db', 
-        'USER': 'cookit_user', 
-        'PASSWORD': 'cookit_user', 
+        'NAME': 'togokuizine_db', 
+        'USER': 'togokuizine_user', 
+        'PASSWORD': 'togokuizine@n4n85fgh', 
         'HOST': 'localhost', 
         'PORT': '', 
     }
