@@ -8,7 +8,7 @@ Author URI: http://www.bootstrapthemes.co
 /* Portrait tablets and medium desktops */
 @media (max-width: 1199px) {
     body {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     h1 {
@@ -104,6 +104,10 @@ Author URI: http://www.bootstrapthemes.co
         padding-bottom: 10px;
     }
 
+    .carousel-caption h1 {
+        font-size: 18px;
+    }
+
 }
 
 
@@ -134,9 +138,6 @@ Author URI: http://www.bootstrapthemes.co
     }
 
 }
-
-
-
 
 
 @media (max-width: 320px) {
@@ -172,3 +173,28 @@ Author URI: http://www.bootstrapthemes.co
 
 }
 
+@media only screen and (max-width: 767px) {
+  #slide-navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 15px;
+    z-index: 99;
+    width: 280px;
+    height: 100%;
+    background-color: #ddd;
+    overflow: auto;
+  }
+  .menu-overlay {
+    display: none;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    /* IE7 & 8 */
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 49;
+  }
+}

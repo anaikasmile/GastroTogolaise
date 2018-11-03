@@ -1,0 +1,96 @@
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load comments %}
+{% load i18n %}
+
+    <div class="mixcontent row">
+                        
+            <div class="margin-bottom-20">
+                         
+                <div class="col-sm-4">
+                    
+                    {% if post.image %}
+                        <br>
+                        <a href="{% url 'post_detail' slug=post.slug %}">
+                            <img src="{{post.image.url}}" class="img-responsive">
+                        
+                    {% else %}
+                        <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                    {% endif %} 
+                        
+                        </a>
+                </div>
+                <div class="col-sm-8">
+                   
+                    <h4 class="rp-post-title"><a href="">{{post.title}}</a></h4>
+
+                    <div class="rp-post-meta-info">
+                       <ul class="list-inline">
+                
+                            <li>
+                            {% if post.author.is_staff_member %}
+                                <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 16px; height: 16px;" alt=""> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                            {% else %}
+                                By <a data-toggle="modal" data-target="#modalAvatar{{post.author.id}}" class="rp-author">{{post.author}}</a>
+                            {% endif %}
+                            </li>
+                            <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_at|date:'F j, Y' }} </li> 
+                            
+                            <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
+
+                            <li>
+                                <a type="button" class="like" data-like-pk="{{post.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{post.pk}}"> {{post.like}}</span>
+                            </li>
+                            
+                            {% get_comment_count for post as comment_count %}
+                            <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                        </ul>
+                    </div>
+
+                    <p>{{ post.text|safe|truncatechars:150 }}</p>
+                    <a href="{% url 'post_detail' slug=post.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
+                   
+
+                </div> 
+
+            </div>
+              
+        </div>
+
+    <hr>
+
+     <!-- Modal -->
+   <div class="modal fade" id="modalAvatar{{post.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{post.id}}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-md-4">
+                    
+                    {% if post.author.profile.photo %}
+                        <span class="author-inner">
+                        <img src="{{post.author.profile.photo.url}}" class="img-responsive img-circle">
+                        </span>
+                        
+                    {% else %}
+                    
+                    <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                    
+                    {% endif %}
+                    <h5 class="">{{post.author.first_name}} {{post.author.last_name}}</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{post.author.profile.bio}}</p>
+                    </div>
+                </div>
+              
+                <ul class="social-link list-inline text-center">
+                    <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        

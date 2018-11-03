@@ -1,4 +1,3 @@
-
 from .base import *
  
 
@@ -10,6 +9,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 SITE_ID = 3
+
+DEBUG = False
 
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'   

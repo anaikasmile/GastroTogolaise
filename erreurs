@@ -5,3 +5,7 @@ migrate thumbnail
 
 
 https://www.webforefront.com/django/setupdjangosocialauthentication.html#figure-10-15
+
+
+Pour avoir accès au dashboard du site il faut faire partie du groupe is staff member.
+

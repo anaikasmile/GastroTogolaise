@@ -9,10 +9,9 @@ from django.contrib import messages
 from django.utils.text import slugify
 
 from .models import Post, Category
-from .forms import PostForm,CategoryForm
+from .forms import PostForm, CategoryForm
 # Create your views here.
 from gastronomie.decorators import *
-from django_extras.contrib.auth.decorators import staff_required
 
 
 
@@ -68,7 +67,7 @@ def post_per_tag(request):
 	#category = get_object_or_404(Category, pk=pk)
 	if request.method == 'GET':
 		tag = request.GET.get('tag')
-		posts =  Post.objects.filter(tags__name=tag)
+		posts =  Post.objects.filter(tags__name=tag).filter(published_at__isnull=False).order_by('-published_at')
 		posts = pagination(request, posts)
 	return render(request,'blog/post_list.html', {'posts':posts})
 
@@ -84,7 +83,7 @@ def post_detail(request,slug):
 
 
 
-# Liker 
+# Liker
 def like(request):
 	if request.method =='GET':
 		post_pk  = request.GET['post_pk']
@@ -97,55 +96,6 @@ def like(request):
 
 ''' Administration '''
 
-#ajout du 07/6/18
-
-# Ajout de la catégorie de poste
-@login_required
-@staff_required
-def post_new_category(request):
-	if request.method == "POST":
-		form = CategoryForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect('/blog/new/')
-		else:
-			pass
-	else:
-		form = CategoryForm()
-
-	categBlog = Category.objects.all()
-	contextBlog = {
-		'form': form,
-		'categBlog': categBlog
-	}
-	return render(request, 'blog/post_new_category.html',contextBlog)
-
-#Modifier la categorie
-@login_required
-@staff_required
-def post_category_update(request,slug):
-	category = get_object_or_404(Category, slug=slug)
-	if request.method == "POST":
-		form = CategoryForm(request.POST,request.FILES, instance=category)
-		if form.is_valid():
-			form.save()
-			messages.success(request, 'Category updated')
-		return redirect('post_new_categ')
-	else:
-		form = CategoryForm(instance=category)
-	return render(request, 'blog/post_category_update.html', {'form': form})
-
-
-#Supprimer une categorie
-@login_required
-@staff_required
-def post_category_delete(request,slug):
-	category = get_object_or_404(Category, slug=slug)
-	category.delete()
-	messages.success(request, 'Your category deleted')
-	return redirect('post_publish_list')
-
-#fin ajout
 
 
 # @login_required
@@ -227,6 +177,61 @@ def post_delete(request,pk):
 	post.delete()
 	messages.success(request, 'Post deleted',extra_tags='alert')
 	return redirect('post_publish_list')
+
+
+
+# Ajout de la catégorie de post
+@login_required
+@staff_required
+def post_new_category(request):
+	if request.method == "POST":
+		form = CategoryForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/blog/new/')
+		else:
+			pass
+	else:
+		form = CategoryForm()
+
+	categBlog = Category.objects.all()
+	contextBlog = {
+		'form': form,
+		'categBlog': categBlog
+	}
+	return render(request, 'blog/post_new_category.html',contextBlog)
+
+#Modifier la categorie
+@login_required
+@staff_required
+def post_category_update(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	if request.method == "POST":
+		form = CategoryForm(request.POST,request.FILES, instance=category)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie modifiée')
+		return redirect('post_new_categ')
+	else:
+		form = CategoryForm(instance=category)
+	categBlog = Category.objects.all()
+	contextBlog = {
+		'form': form,
+		'categBlog': categBlog
+	}
+	return render(request, 'blog/post_new_category.html', contextBlog)
+
+
+#Supprimer une categorie
+@login_required
+@staff_required
+def post_category_delete(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	category.delete()
+	messages.success(request, 'Catégorie supprimée')
+	return redirect('post_publish_list')
+
+#fin ajout
 
 
 

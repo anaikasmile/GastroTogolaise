@@ -17,9 +17,11 @@ django-datetimepicker==3.14
 django-embed-video==1.1.2
 django-filter==1.1.0
 django-form-utils==1.0.3
+django-jsonfield==1.0.1
 django-likes==1.11
 django-messages-to-bootstrap-notify==0.2.6
 django-model-utils==3.0.0
+django-notify-x==0.1.9
 django-registration==2.2
 django-secretballot==0.7.0
 django-social-share==1.1.2

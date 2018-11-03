@@ -7,29 +7,30 @@
 
 {% block content_blog %}
 
+        <br>
         <!-- Page Heading -->
         <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-offset-2 col-lg-8">
+                <!-- Ajout de  catégorie -->
+
+                <div class="col-md-4">
+                    <h4>{% trans 'Ajouter/Modifier une catégorie' %}</h4>
+
 	                <form method="POST"  name="form" action=""  class="" enctype="multipart/form-data">
 		                {% csrf_token %}
 		                  {{ form.as_p }}
                         
-	                	<button type="submit" class="save btn btn-default">{% trans 'Envoyer' %}</button>
+
+	                	<button type="submit" class="save btn btn-default">{% trans 'Save' %}</button>
 	                </form>
                 </div>
-                
-            </div>
-        </div>
-        <!-- /.row -->
+                  <!-- Liste de catégorie de blog -->
+            {% if categBlog %}
+    
+            
+                <div class="col-md-offset-1 col-md-7">
+                <h4>{% trans 'Liste des catégories' %}</h4>
+                    <table class="table table-border">
 
-    <div class="division"> <hr/></div>
-    <!-- Liste de catégorie de blog -->
-    {% if categBlog %}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-offset-2 col-lg-8">
-	                <table class="table table-border">
                         <thead>
                             <tr>
                                 <th> Name</th>
@@ -74,16 +75,21 @@
                                           </div>
                                         </div>
                             {% empty %}
-                            Aucune information sur la catégorie encore enrégistrée
+
+                                Aucune information sur la catégorie encore enrégistrée
+
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
 
-            </div>
+
+            {% endif %}
+                
+            
         </div>
         <!-- /.row -->
 
-    {% endif %}
+
         
 {% endblock %}

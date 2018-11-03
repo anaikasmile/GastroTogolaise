@@ -10,3 +10,9 @@ class CategoryFilter(django_filters.FilterSet):
     class Meta:
          model = Category
          fields = ['name','slug']
+
+
+class RecipeFilter(django_filters.FilterSet):
+    class Meta:
+        model = Recipe
+        fields = ['title','description']

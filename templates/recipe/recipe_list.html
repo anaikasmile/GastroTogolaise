@@ -17,7 +17,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -76,9 +76,11 @@
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}" class="title">{{recipe.title|truncatechars:20}}</a>
                         <p>
                          {% if recipe.author.is_staff_member %}
-                            By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                             <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 20px; height: 20px;" alt=""> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                         {% else %}
-                            By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a>
+                            
+
+                            By <a data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}" class="rp-author">{{recipe.author}}</a>
                         {% endif %}
                         </p>
                     </div>
@@ -86,45 +88,11 @@
                 </div>
             </div>
 
-
+            
              <!-- Modal -->
-           <div class="modal fade" id="modalAvatar{{recipe.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <div class="col-md-4">
-                            
-                            {% if recipe.author.profile.photo %}
-                                <span class="author-inner">
-                                <img src="{{recipe.author.profile.photo.url}}" class="img-responsive img-circle">
-                                </span>
-                                
-                            {% else %}
-                            
-                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
-                            
-                            {% endif %}
-                            <h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
-                            </div>
-                            <div class="col-md-8">
-                                <p>{{recipe.author.profile.bio}}</p>
-                            </div>
-                        </div>
-                        <!-- <div class="modal-body">
-                        </div> -->
-                        <div class="modal-footer">
-                            <ul class="social-link list-inline">
-                                <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                           </ul>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+   
+             {% include 'recipe/modal_user.html' %}
+                        
             
         {% empty %}
                 <h2>Aucune recette disponible.</h2>
@@ -158,6 +126,8 @@
     </div>
 
                 <!-- End   -->
+
+    
 
 
 {% endblock content %}

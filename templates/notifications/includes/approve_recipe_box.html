@@ -1,0 +1,33 @@
+{% load i18n %}
+{% load notification_tags %}
+
+<li data-nf-id="{{ notification.id }}" id="nf-{{ notification.id }}" class="notification list-group-item {{ notification.read|yesno:'read,unread' }}">
+{% block notification %}
+    {% if notification.target %}
+        {% blocktrans with actor_url=notification.actor_url actor=notification.actor verb=notification.verb target=notification.target target_url=notification.target_url%}
+
+         
+        {% endblocktrans %}
+
+            <p class="">
+                Votre recette <a href="{{ target_url}}" style="color:#000;">{{target }}</a> {{ verb }}<br>
+                <i class="fa fa-clock-o"></i> 
+                {% blocktrans with created=notification.created|timesince %}{{created}} ago{% endblocktrans %}
+            </p>
+
+    {% else %}
+         
+            <p class="">
+                Votre recette <a href="{{ target_url}}" style="color: #000;">{{target }}</a> a été {{ verb }}<br>
+                <i class="fa fa-clock-o"></i> 
+                {% blocktrans with created=notification.created|timesince %}{{created}} ago{% endblocktrans %}
+            </p>
+    {% endif %}
+    
+{% endblock notification %}
+
+
+   
+
+
+

@@ -6,6 +6,8 @@
 {% load humanize %}
 {% load comments %}
 {% load threadedcomments_tags %}
+{% load social_share %}
+
 
 {% block slide %}
 	
@@ -19,7 +21,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                 <img src="{% static 'assets/images/top-blog.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -45,7 +47,7 @@
 
 {% block content %}	
 
-<div class="main_mix_content padding">
+<div class="main_mix_content single_mixi">
     
   
     <div class="mixcontent row">
@@ -53,7 +55,7 @@
       
        
         <div class="col-md-12">
-            <div class="margin-bottom-20">
+
                 {% if post.image %}
                     {% thumbnail post.image  "900x500" crop="center" as im %}
                         <img src="{{im.url}}" class="img-responsive">
@@ -64,14 +66,14 @@
                 {% endif %}
 
                 <br>
-                <h5><a href="#" class="blog_title padding" >{{post.title}}</a></h5>
+                <h5 class="blog_title padding"> {{post.title}}</h5>
                 <!-- By <a href="" class="rp-author">Admin</a> -->
                 <div class="rp-post-meta-info padding-20">
                     <ul class="list-inline">
                     
                         <li><!-- <img src="{% static 'assets/images/chef2.jpg' %}" class="img-circle" width="30px;" alt=""> -->
-                             {% if post.author.is_staff_member %}
-                                 By <a href="#" class="rp-author">{% trans 'L équipe' %}</a> 
+                            {% if post.author.is_staff_member %}
+                               <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 20px; height: 20px;" alt="">  By <a href="#" class="rp-author">{% trans 'L équipe' %}</a> 
                             {% else %}
                             By <a href="" class="rp-author">{% trans 'L équipe' %}</a>
                             {% endif %}
@@ -91,47 +93,55 @@
 
                 </div>
 
-                <div class="rp-footer">
-                    <div class="pull-left">
-                      
-                            <ul class="list-inline tags">
-
-                            <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
-                            {% for tag in post.tags.all %}
-
-                            <li><a href="/blog/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
-
-                    
-                            {% endfor %}
-                            </ul>
-                    </div>   
-                    
-                </div>                                      
-            </div>
+            
         
            
         </div>
 
     </div>
 
-    <div class="rp-post-share border" >
+    <div class="rp-post-share" style="padding: 0px 20px 15px 20px;">
             <strong> SHARE &nbsp;&nbsp;  </strong>
              <!--Facebook-->
-            <a class="btn fb-bg"><i class="fa fa-facebook left"></i><span class="hidden-xs"> | Facebook</span></a>
-            <!--Twitter-->
-            <a class="btn tw-bg" ><i class="fa fa-twitter left"></i><span class="hidden-xs"> | Twitter</span></a>
-            <!--Gplus-->
-            <a class="btn gplus-bg"><i class="fa fa-google-plus"></i></a>
-            <!--Pinterest-->
-            <a class="btn pin-bg"><i class="fa fa-pinterest"></i></a>
-        </div>    
+                {% post_to_facebook %}
+   
+                <!--Twitter-->
+                {% post_to_twitter "{{recipe.title}}"  "" %}
+
+                <!--Gplus-->
+                {% post_to_gplus  "" %}
+    </div>    
 
 
-    <!-- Section comment -->
-    <section class="margin-top-20">
+</div>
+
+    <!-- Tag section -->
+    <section class="main_mix_content single_mixi margin-top-40 padding-20">
+
+       
+        <div class="pull-left">
+          
+                <ul class="list-inline">
+
+                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                {% for tag in post.tags.all %}
+
+                <li><a href="/blog/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
+
+        
+                {% endfor %}
+                </ul>
+        </div>   
+            
+        <br>
+    </section>   
+
+<!-- Section comment -->
+    <section class="main_mix_content single_mixi padding-20 margin-top-40">
+
         <div class="row" id="commentaire">
         {% get_comment_count for post as comment_count %}
-        <h3 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaire' %} </h3>
+        <h5 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaires' %} </h5>
         
 
         <div id="collapse1" class="panel-collapse collapse">
@@ -181,65 +191,67 @@
             
         </div> 
         <div class="form-block col-xs-12">
-            <div class="text-center">
+            <div class="">
                  <h4>{% trans 'Laisser un commentaire' %}</h4>
-                    <p class="text-center">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
+                 <div class="separator4"></div>
+                    <p class="">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
                 <br>
             </div>
         
         {% if user.is_authenticated %}
         {% get_comment_form for post as form %}
             <form action="{% comment_form_target %}" method="POST">
-            {% csrf_token %}
-            {{ form.comment|add_class:'form-control' }}
-            
-            <!-- {{ form.honeypot }} -->
-            {{ form.content_type }}
-            {{ form.object_pk }}
-            {{ form.timestamp }}
-            {{ form.security_hash }}
-            <br>
-            <input type="hidden" name="next" value="{% url 'post_detail' post.pk %}" />
-            
-            <button class="btn btn-primary" type="submit" id="id_submit" value="Post">Submit</button>
-            </form>
-        {% else %}
-
-            <p class="text-center">Please <a href="{% url 'account_login' %}">log in</a> to leave a comment if you are a member. If not just fill this fields</p>
-            {% get_comment_form for post as form %}
-                <form action="{% comment_form_target %}" method="post">
                 {% csrf_token %}
+                {{ form.comment|add_class:'form-control' }}
+                
+                <!-- {{ form.honeypot }} -->
                 {{ form.content_type }}
                 {{ form.object_pk }}
                 {{ form.timestamp }}
                 {{ form.security_hash }}
-                <div class="row">
-                    <div class="form-group col-xs-12 col-sm-4">
-                        <label>Name <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                <br>
+                <input type="hidden" name="next" value="{% url 'post_detail' slug=post.slug %}" " />
+            
+                    <button class="btn btn-primary" type="submit" id="id_submit">Envoyer</button>
+            </form>
+        {% else %}
+
+            <p class="">{% trans 'Veuillez vous' %} <a href="{% url 'account_login' %}">{% trans 'connecter' %}</a>{% trans ' si vous êtes déjà membre. Sinon, remplissez juste ces champs' %} . </p>
+            {% get_comment_form for post as form %}
+                <form action="{% comment_form_target %}" method="post">
+                    {% csrf_token %}
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Nom <span class="label-description">(ex: William) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-4">
+                            <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}} 
+                        </div>
                     </div>
-                    <div class="form-group col-xs-12 col-sm-4">
-                        <label>Email <span class="label-description">(Not published) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                    
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                        <label>Commentaire <sup>*</sup></label></span><br> {{ form.comment|add_class:'form-control'}}
+                        </div>
                     </div>
-                    <div class="form-group col-xs-12 col-sm-4">
-                        <label>Website <span class="label-description">(Optional)</span> </label> {{form.url|add_class:'form-control'}} 
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="form-group col-xs-12">
-                    <label>Comment <sup>*</sup></label></span><br> {{ form.comment|add_class:'form-control'}}
-                    </div>
-                </div>
-                   <input type="hidden" name="next" value="{% url 'post_detail' post.pk %}" />
-                <button class="btn btn-primary" type="submit">Submit</button>   
+                       <input type="hidden" name="next" value="{% url 'post_detail' slug=post.slug %}" />
+                    <button class="btn btn-primary" type="submit">Envoyer</button>   
              </form> 
             {% endif %}
             </div>
     </section> 
 
 
+
     <!-- Related post -->
-        <section class="rp-post-related">
+      <!--   <section class="rp-post-related">
             <ul class="nav nav-tabs tabs-4">
                 <li class="active"><a data-toggle="tab" href="#posts">RELATED POSTS</a></li>   
                 <li><a data-toggle="tab" href="#authors">MORE FROM AUTHOR</a></li>  
@@ -261,7 +273,7 @@
                             <a href=""></a>
                         {% endif %}
 
-                            <h5 class=""><a href="{% url 'post_detail' pk=r.pk %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
+                            <h5 class=""><a href="{% url 'post_detail' slug=r.slug %}" class="cook-second-color">{{r.title|truncatechars:30}}</a></h5>     
                         </li>    
                     {% endfor %} 
                     </ul>
@@ -288,16 +300,13 @@
                     </ul>
                 
                         
-                    <!-- pagination -->
+                   
                 {% if post_author.has_other_pages %}
                     <div class="rp-related-pagination"></div>
                 {% endif %}         
                 </div>
             </div>
 
-        </section>
-
-
-
-</div>
+        </section> -->
+<br>
 {% endblock content %}

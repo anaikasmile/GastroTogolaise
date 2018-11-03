@@ -6,83 +6,80 @@
 
 {% block content_recipe %}
 
+    <hr>
+    <!-- Page Heading -->
+    <div class="row">
+        
+         <!-- Ajouter/Modifier une cat. de recettes -->
+        <div class="col-md-4">
+            <h4>{% trans 'Ajouter/Modifier une catégorie' %}</h4>
+            <form method="POST" action=""  name="add-form" class="form-block" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">{% trans 'Save' %}</button>
+            </form>
+        </div>
+        <!-- Liste de catégorie de blog -->
+        {% if categRecipe %}
+        <div class="col-md-offset-1 col-md-7">
+            <h4>{% trans 'Liste des catégories' %}</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th> {% trans 'Nom' %}</th>
+                            <th>{% trans 'Slug' %}</th>
+                            <th>{% trans 'Actions' %}</th>
 
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                       
-                        <div class="col-lg-offset-2 col-lg-8">
-                            <form method="POST" action=""  name="add-form" class="form-block" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                            <button type="submit" class="save btn btn-default">{% trans 'Envoyer' %}</button>
-                            </form>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for list in categRecipe %}
+                        <tr>
+                            <td>{{ list.name }}</td>
+                            <td>{{ list.slug }}</td>
+                            <td>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#action_{{list.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="action_{{list.id}}" class="collapse">
+                                    <li>
+                                        <a href="{% url 'recipe_category_update' slug=list.slug%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{% trans 'Modifier' %}</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="modal" data-target="#deletecategory{{list.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>{% trans 'Supprimer' %}</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- Modal Pour les actions-->
+                        <div class="modal fade" id="deletecategory{{list.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{list.id}}">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel{{list.id}}">{% trans 'Confirmer votre action' %}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette catégorie' %}<strong>{{ list.title}}</strong>?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <a href="{% url 'recipe_category_delete' slug=list.slug %}" type="submit" class="btn btn-danger">{% trans 'Supprimer' %}</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                    </div>
-                </div>
-                <!-- /.row -->
-    <div class="division"> <hr/></div>
-    <!-- Liste de catégorie de blog -->
-    {% if categRecipe %}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th> Name</th>
-                                <th>Slug</th>
-                                <th>Action</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for list in categRecipe %}
-                            <tr>
-                                <td>{{ list.name }}</td>
-                                <td>{{ list.slug }}</td>
-                                <td>
-                                <a href="javascript:;" data-toggle="collapse" data-target="#action_{{list.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
-                                    <ul id="action_{{list.id}}" class="collapse">
-                                        <li>
-                                            <a href="{% url 'recipe_category_update' slug=list.slug%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="modal" data-target="#deletecategory{{list.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Supprimer</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <!-- Modal -->
-                                        <div class="modal fade" id="deletecategory{{list.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{list.id}}">
-                                          <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel{{list.id}}">Confirmer votre action</h4>
-                                              </div>
-                                              <div class="modal-body">
-                                                <p class="lead">Etes-vous sûrs de vouloir supprimer cette catégorie<strong>{{ list.title}}</strong>?</p>
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href="{% url 'recipe_category_delete' slug=list.slug %}" type="submit" class="btn btn-danger"> Supprimer</a>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- /.row -->
-               
-{% endif %}
+        {% endif %}
+            
+        
+    </div>
+            
+    
+
    
 
 {% endblock %}

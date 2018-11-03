@@ -38,15 +38,15 @@
                     <!-- right menu -->
                     <div class="col-md-4">
                         
-                        <div class="widget-left">
+                       <div class="widget-left">
                             <ul class="nav nav-tabs tabs-4">
-                                <li class="active"><a data-toggle="tab" href="#menu1">Top Recipes</a></li>
+                                <li class="active"><a data-toggle="tab" href="#menu1">Top Recettes</a></li>
                                 
                                 <li><a data-toggle="tab" href="#menu2">Top Videos</a></li>
-                                <li><a data-toggle="tab" href="#menu3">Recent Posts</a></li>
+                                <li><a data-toggle="tab" href="#menu3">Articles récents</a></li>
                             </ul>   
 
-                            <div class="tab-content rgba-grey-slight padding">
+                            <div class="tab-content padding">
                          
                                 
                                 <div id="menu1" class="tab-pane fade in active ">
@@ -115,13 +115,12 @@
 
                             
                             </div>
-                        </div>
+                        </div> 
 
                     
 
                         <div class="widget-left">
 
-                            <h3>Advertisment</h3>
                             <div class="separator4"></div>
                             <div class="single_video">
                                 <div class="embed-responsive embed-responsive-16by9">
@@ -131,15 +130,69 @@
                             
                         </div>
 
-                        <div class="widget-left">
-                            <h3>Tags</h3>
-                            <div class="separator4"></div>
+                       <!-- widget -->
 
-                                <ul class="tags list-inline">
-                                    <li class=""><a href="#">Lorem</a></li>
-                                    <li class=""><a href="#">ipsum</a></li>
-                                    <li class=""><a href="#">It dse</a></li>
-                                </ul>
+                        <div class="widget-left">
+
+                            <h4>Top contributors</h4>
+                            <div class="separator4"></div>
+                            <div class="card">
+                                
+                                {% for tp in top_contributors %}
+
+                                        
+                                    
+                                    <div class="media" style="padding: 10px;">
+                                            
+                                            <a class="pull-left" data-toggle="modal" data-target="#modalAvatar{{tp.author__id}}">
+                                                
+                                            {% if tp.author__profile__photo %}
+                                                {% thumbnail tp.author__profile__photo  "70x70" crop="center" as im %}
+                                                    <img src="{{im.url}}" class="media-object">     
+                                                {% endthumbnail %}        
+
+                                            {% else %}
+                                                <img src="{% static 'assets/images/user_icon_g.png' %}" class="img-fluid" width="70" height="70" alt="contributor image">
+                                            {% endif %}
+                                             
+                                              
+                                            </a>
+                                        
+                                            
+                                       
+                                        <div class="media-body" style="font-size: 14px;">
+                                            <h5 class="media-heading" style="font-size: 14px;">
+                                            <a class="cook-second-color" href=" ">
+                                                {{tp.author__username}}
+                                            </a></h5>
+                                            &nbsp;&nbsp; {{tp.total}} Posts
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                   
+
+                                    {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Widget -->
+
+                        <div class="widget-left">
+                            <h4>Newsletter</h4>
+                            <div class="separator4"></div>
+                       
+                            <div class="single">
+                                
+                                <form action="#">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Email">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="submit">{% trans 'Souscrire' %}</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        
                         </div>
 
 
@@ -152,5 +205,34 @@
 
         </section> <!-- End of portfolio two Section -->        
 
+     <div class="modal fade" id="modalAvatar{{tp.author__id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+         <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                    
+                             {% if tp.author__profile__photo%}
+                                <img class="img-fluid img-circle" src="{{tp.author__profile__photo.url}}" width="150px;" height="150px;" alt="contributor image">
+                            {% else %}
+                                <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                            {% endif %}
+                                <h5 class="">{{tp.author__first_name}} {{tp.author__author.last_name}}</h5>
+
+                            </div>
+                            <div class="col-md-8">
+
+                                <p>{{recipe.author.profile.bio}}</p>
+                                <ul class="social-link list-inline text-right">
+                                    <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
 
        {% endblock content_base %}

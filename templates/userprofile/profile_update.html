@@ -35,31 +35,126 @@
 
 {% block content %}
  <!-- Post -->
- <div class="row">
+<div class="row single_mixi">
  
-    <div class="col-lg-offset-2 col-lg-8">
-        <section class="paper">
-            <h3 class="h3-responsive text-center">Account Settings</h3>
+    
+    <section class="rp-profile">
+            <h3 class="h3-responsive text-center">Modifier votre profil</h3>
             <hr>
-            <div class="row">
-                <div class="">
-                    <form method="post"  class="form-block" action="." enctype="multipart/form-data">
-                      {% csrf_token %}
-                <!--       {{ user_form.as_p }} -->
-                      <label>Nom:</label>
-                      <p>{{ user_form.last_name }}</p>
-                      <label>Prénoms:</label>
-                      <p>{{ user_form.first_name }}</p>
-
-                      {{ profile_form.as_p }}
-
-                      <button class="btn btn-primary" type="submit">Enregister</button>
-                    </form>
-                
+    
+            <form method="post"  class="form-block" action="." enctype="multipart/form-data">
+              {% csrf_token %}
+        <!--       {{ user_form.as_p }} -->
+              
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Nom</label>
+                            {{ user_form.last_name }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Prénoms</label>
+                           {{ user_form.first_name }}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Pays</label>
+                            {{ profile_form.country }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Tél</label>
+                           {{ profile_form.tel }}
+                           <span class="helptext">{{profile_form.tel.help_text}}</span>
+
+                        </div>
+
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Facebook Url</label>
+                            {{ profile_form.facebook }}
+                            <span class="helptext">{{profile_form.facebook.help_text}}</span>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Twitter Url</label>
+                           {{ profile_form.twitter }}
+                           <span class="helptext">{{profile_form.twitter.help_text}}</span> 
+
+                        </div>
+
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Linkedin Url</label>
+                            {{ profile_form.linkedin }}
+                            <span class="helptext">{{profile_form.linkedin.help_text}}</span>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Google + Url</label>
+                           {{ profile_form.gplus }}
+                           <span class="helptext">{{profile_form.gplus.help_text}}</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Instagram Link</label>
+                            {{ profile_form.instagram }}
+                            <span class="helptext">{{profile_form.instagram.help_text}}</span>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Cover image</label>
+                             {{ profile_form.photo }}
+                              {{ user.profile.photo.url }}
+                            <!-- <img src="{{ user.profile.photo.url }}" class="img-responsive"> -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>A propos de vous</label>
+                            {{ profile_form.bio }}
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+              <button class="btn btn-primary" type="submit">Enregister</button>
+            </form>
+                
+               
+    </section>
+    
  </div>
 {% endblock content %}
 

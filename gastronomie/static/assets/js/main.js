@@ -29,7 +29,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-
     /*---------------------------------------------*
      * STICKY scroll
      ---------------------------------------------*/
@@ -167,6 +166,13 @@ jQuery(document).ready(function ($) {
 
 
 
+    $('[data-toggle="slide-collapse"]').on('click', function() {
+                    console.log('test');
+
+            $('.slide-navbar-collapse').toggleClass('active');
+            console.log('test');
+        });
+
     // $('#menu').slicknav();
 
     // $('#mixcontent').mixItUp({
@@ -183,6 +189,8 @@ jQuery(document).ready(function ($) {
 
 
     //End
+    
+
 });
 
 
@@ -256,5 +264,7 @@ $(document).ready('click','.likevideo',function(e) {
   
 
 });
-  
 
+
+// document.getElementById("settime").value = "00:00:00";
+// document.getElementById("settime2").value = "00:00:00";

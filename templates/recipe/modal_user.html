@@ -1,0 +1,72 @@
+    {% load staticfiles %}
+
+        <div class="modal fade" id="modalAvatar{{recipe.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                    
+                             {% if recipe.author.profile.photo %}
+                                <img class="img-fluid img-circle" src="{{recipe.author.profile.photo.url}}" width="150px;" height="150px;" alt="contributor image">
+                            {% else %}
+                                <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                            {% endif %}
+                                <h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
+
+                            </div>
+                            <div class="col-md-8">
+
+                                <p>{{recipe.author.profile.bio}}</p>
+                                <ul class="social-link list-inline text-right">
+                                     <li><a href="{{recipe.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{recipe.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{{recipe.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+                                    
+                                    <li><a href="{{recipe.author.profile.instagram}}" class="btn-floating insta"><i class="fa fa-instagram"></i></a></li>
+
+                                    <li><a href="{{recipe.author.profile.linkedin}}" class="btn-floating li"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="modal fade" id="modalAvatar{{video.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{video.id}}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                            
+                            {% if video.author.profile.photo %}
+                                <span class="author-inner">
+                                <img src="{{video.author.profile.photo.url}}" class="img-responsive img-circle">
+                                </span>
+                                
+                            {% else %}
+                            
+                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                            
+                            {% endif %}
+                            <h5 class="">{{video.author.first_name}} {{video.author.last_name}}</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{video.author.profile.bio}}</p>
+                            </div>
+                        </div>
+                      
+                        <ul class="social-link list-inline text-center">
+                            <li><a href="{{video.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{video.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{video.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            

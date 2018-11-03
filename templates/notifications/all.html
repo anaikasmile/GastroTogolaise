@@ -1,0 +1,85 @@
+{% extends 'base.html' %}	
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% load comments %}
+{% load i18n %}
+{% load notification_tags %}
+{% block title %}{% trans "Notifications" %}{% endblock %}
+
+{% block slide %}
+
+<section id="home" class="home">
+
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+{% endblock slide %}
+
+{% block header %}
+
+   <section class="rp-post-header margin-top-40">
+        <h4 class="rp-post-title h4-responsive">{% trans 'Notifications' %}</h4> 
+            <hr>
+
+    </section>
+
+ 
+{% endblock header %}
+
+{% block content_base %}
+<div class="container">
+        <div class="row">
+<!--  <div class="main_mix_content text-center padding">
+
+        <div class="mixcontent row">
+            <div class="col-lg-offset-2 col-lg-8"> -->
+            <div class="col-md-offset-2 col-md-8">
+  
+            	{% block content %}
+				     <button class="btn btn-primary mark-all-notifications" data-mark-action="read">
+				    {% trans "Marquer tous comme lu" %}</button>
+				    <!-- <button class="btn btn-primary mark-all-notifications" data-mark-action="unread">{% trans "Marquer tous comme non lu" %}</button>  -->
+				    <br><br>
+				    <ul class="notifications list-group">
+				    {% if notifications %}
+				    {% render_notifications using request.user.notifications.active.unread %}
+				    {% endif %}
+				    </ul>
+				{% endblock %}
+
+           </div>
+        </div>
+    </div> 
+
+    
+
+                <!-- End   -->
+
+{% endblock %}
+
+
+                        

@@ -7,18 +7,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from django.utils.text import slugify
+from django.urls import reverse
 from django_comments.models import Comment
 from recipe.models import Recipe, Category, Video
-from recipe.forms import RecipeForm, VideoForm
-from blog.forms import CategoryForm
+
+from recipe.forms import RecipeForm, VideoForm, CategoryForm, OriginFormset, OriginForm
+from userprofile.models import Profile, User
+from blog.models import Post
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
-# ajout du 06/6/18
-from django.contrib.auth import login,authenticate
-from django_extras.contrib.auth.decorators import staff_required
-from userprofile.forms import ConnexionAdminForm
-# fin ajout
-
+from django.conf import settings
+from django.db.models import Count, F
+from notify.signals import notify
+import itertools
 
 # Create your views here.
 
@@ -62,9 +63,24 @@ def admin_pagination(request,fichier):
 def home(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')	
 	recipes = pagination(request, recipes)
-
+	
 	return render(request,'recipe/accueil.html',{'recipes':recipes})
 
+#Ajouter une ethnie
+@login_required
+def origin_add(request):
+	if request.method == "POST":
+		form = OriginForm(request.POST)
+
+		if form.is_valid():
+
+			form.save()
+			
+
+	else:
+		form = OriginForm()
+
+	return render(request,'recipe/origin_add.html', {'form':form})
 
 
 
@@ -72,18 +88,45 @@ def home(request):
 @login_required
 def recipe_add(request):
 	if request.method == "POST":
-
 		form = RecipeForm(request.POST, request.FILES)
+		#user = User.objects.get(username='root')
+		users = User.objects.filter(is_staff_member=True)
+
+		users_list = list(users)
+
+
 		if form.is_valid():
 			recipe = form.save(commit=False)
 			recipe.author = request.user
-			recipe.slug = slugify(recipe.title)
+			#recipe.slug = slugify(recipe.title)
+			max_length = Recipe._meta.get_field('slug').max_length
+			recipe.slug = orig = slugify(recipe.title)[:max_length]
+			#instance.author = request.user
+			for x in itertools.count(1):
+				if not Recipe.objects.filter(slug=recipe.slug).exists():
+					break
+
+			# Truncate the original slug dynamically. Minus 1 for the hyphen.
+				recipe.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
+
 			recipe.save()
+			
 			form.save_m2m()
+
 			recipe.readytime()
+
+			url = reverse('recipe_detail', args=(recipe.slug,))
+
+			
 			messages.success(request, ('Votre recette a été envoyée'))
 
+			if request.user.is_staff_member:
+				print('ok')
+			else:
+				notify.send(request.user, recipient_list=users_list, actor=request.user, target=recipe, target_url=url, verb='a publié une nouvelle recette', nf_type='waiting_recipe')
+
 			return redirect("recipe_add")
+	
 	else:
 		form = RecipeForm()
 	return render(request,'recipe/recipe_add.html', {'form':form})
@@ -106,12 +149,20 @@ def recipe_per_cat(request,slug):
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes, 'category':category})
 
 
+#Liste des recettes par ethnie
+def recipe_per_origin(request):
+	if request.method == 'GET':
+		origin = request.GET.get('origin')
+		recipes =  Recipe.objects.filter(origin__ethnic=origin).filter(published_at__isnull=False).order_by('-published_at')
+		recipes = pagination(request, recipes)
+	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
+
 #Liste des recettes par tag
 def recipe_per_tag(request):
 	#category = get_object_or_404(Category, pk=pk)
 	if request.method == 'GET':
 		tag = request.GET.get('tag')
-		recipes =  Recipe.objects.filter(tags__name=tag)
+		recipes =  Recipe.objects.filter(tags__name=tag).filter(published_at__isnull=False).order_by('-published_at')
 		recipes = pagination(request, recipes)
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
 
@@ -170,7 +221,7 @@ def video_per_tag(request):
 	#category = get_object_or_404(Category, pk=pk)
 	if request.method == 'GET':
 		tag = request.GET.get('tag')
-		videos =  Video.objects.filter(tags__name=tag)
+		videos =  Video.objects.filter(tags__name=tag).filter(published_at__isnull=False).order_by('-published_at')
 		videos = pagination(request, videos)
 	return render(request,'recipe/video_list.html', {'videos':videos})
 
@@ -217,31 +268,34 @@ def recipe_box_user(request):
 
 
 
-#Page accueil administration
-def dashLogin(request):
-	if request.method == "POST":
-		username = request.POST["username"]
-		password = request.POST["password"]
-		user = authenticate(request, username=username, password=password)
-		if user:
-			login(request, user)
-			return HttpResponseRedirect("/dashboard/accueil")
-		else:
-			messages.error(request, "Nom d'utilisateur ou mot de passe incorrect!")
-	return render(request, "dashLogin.html", locals())
 
+#Page accueil administration(Tableau de board)
 
 @login_required
 @staff_required
 def stats(request):
-	return render(request,'stats.html',{})
+	nb_recipes = Recipe.objects.filter(published_at__isnull=False).count()
+	nb_posts = Post.objects.filter(published_at__isnull=False).count()
+	nb_users = Profile.objects.count()
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')[:10]
+	
+
+
+	contextStats = {
+		'nb_recipes':nb_recipes,
+		'nb_posts':nb_posts,
+		'nb_users':nb_users,
+		'recipes': recipes
+	}
+
+	return render(request,'stats.html',contextStats)
 
 
 #Liste des recettes en attente de publication
 @login_required
 @staff_required
 def recipe_draft_list(request):
-	recipes = Recipe.objects.filter(published_at__isnull=True).order_by('created_at')
+	recipes = Recipe.objects.get_draft()
 	recipes = admin_pagination(request, recipes)
 	return render(request, 'recipe/recipe_draft_list.html', {'recipes':recipes})
 
@@ -249,7 +303,7 @@ def recipe_draft_list(request):
 @login_required
 @staff_required
 def recipe_publish_list(request):
-	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
+	recipes = Recipe.objects.get_publish()
 	recipes = admin_pagination(request, recipes)
 	return render(request, 'recipe/recipe_publish_list.html', {'recipes':recipes})
 
@@ -267,7 +321,9 @@ def recipe_preview(request,slug):
 def recipe_publish(request,slug):
 	recipe = get_object_or_404(Recipe,slug=slug)
 	recipe.publish()
-	messages.success(request, 'Votre recette a été publiée')
+	messages.success(request, 'approuvée')
+	notify.send(request.user, recipient=recipe.author, target=recipe, target_url="recipe_detail", actor=request.user, verb='a été publiée', nf_type='approve_recipe')
+
 	return redirect('recipe_draft_list')
 
 #ajout du 06/06/18
@@ -335,7 +391,6 @@ def recipe_new(request):
 			recipe.save()
 			recipe.readytime()
 			messages.success(request, 'Votre recette a été enregistrée')
-			return redirect("recipe_new")
 			return redirect ('recipe_preview',slug=recipe.slug)
 
 	else:
@@ -444,3 +499,62 @@ def video_delete(request,slug):
 	video.delete()
 	messages.success(request, 'Video deleted')
 	return redirect('video_publish_list')
+
+
+
+#Ajouter une cattegorie de recette
+@login_required
+@staff_required
+def recipe_new_category(request):
+	if request.method == "POST":
+		form = CategoryForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie ajoutée')
+			return HttpResponseRedirect("/recipe/new/category")
+		else:
+			pass
+	else:
+		form = CategoryForm()
+
+	categRecipe = Category.objects.all()
+	contextRecipe = {
+		'form':form,
+		'categRecipe':categRecipe
+	}
+	return render(request,'recipe/recipe_new_category.html', contextRecipe)
+
+
+#Modifier la categorie
+@login_required
+@staff_required
+def recipe_category_update(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	if request.method == "POST":
+		form = CategoryForm(request.POST,request.FILES, instance=category)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie mis à jour')
+		return redirect('recipe_new_categ')
+	else:
+		form = CategoryForm(instance=category)
+
+	categRecipe = Category.objects.all()
+	contextRecipe = {
+		'form':form,
+		'categRecipe':categRecipe
+	}
+	return render(request, 'recipe/recipe_new_category.html', contextRecipe)
+
+
+
+#Supprimer une categorie
+@login_required
+@staff_required
+def recipe_category_delete(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	category.delete()
+	messages.success(request, 'Catégorie supprimée')
+	return redirect('recipe_publish_list')
+
+#fin ajout

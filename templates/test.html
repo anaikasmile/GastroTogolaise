@@ -1,0 +1,268 @@
+<div class="main_mix_content ">
+
+     
+                          
+    {% for recipe in recipes %}
+    <div class="mixcontent row">    
+
+            <div class="col-md-4">
+                {% if recipe.image %}
+                   
+                    <img src="{{recipe.image.url}}" class="img-responsive">
+                   
+                {% else %}
+                    <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                {% endif %}
+            </div>
+
+            <div class="col-md-8">
+
+                <h4 class="rp-post-title">{{ recipe.title|truncatechars:50 }}</h4>
+                    
+           
+                    <!--/.Rating-->
+                    <p>{{ recipe.description|safe|truncatechars:150 }}</p>
+                   <!--  <a href="" class="rp-post-btn"><em> Lire la suite → </em></a> -->
+
+            </div>
+        </div>
+       <!--  {% empty %}
+          <h4 class="no-data">{% trans 'There are no results related to your search' %}.</h4> -->
+        {% endfor %}
+
+
+        <!-- {% for video in videos %}
+          {% include 'recipe/video_partial.html' %}
+        {% empty %}
+          <h4 class="no-data">{% trans 'There are no results related to your search' %}.</h4>
+        {% endfor %}  -->                 
+
+  </div>
+
+
+  
+<div class="main_mix_content ">
+
+    {% for restaurant in restaurants %}                
+                      
+        <div class="mixcontent row card">
+                        
+           
+            <div class="margin-bottom-20">
+                
+                    
+                    <div class="col-sm-5">
+                        <div class="view hm-zoom">
+                        {% if restaurant.image %}
+                            {% thumbnail restaurant.image  "900x800" crop="center" as im %}
+                                <img src="{{im.url}}" class="img-responsive">
+                            {% endthumbnail %} 
+                        
+                        {% else %}
+                            <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                        {% endif %}
+                            <div class="mask flex-center">
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-7">
+                       
+                        <h4 class="rp-post-title">{{ restaurant.name|truncatechars:50 }}</h4>
+                        
+                   <!--Rating-->
+                        
+                        {% ratings restaurant %}
+                        
+
+                        <!--/.Rating-->
+                        <p>{{ restaurant.description|safe|truncatechars:150 }}</p>
+                       <!--  <a href="" class="rp-post-btn"><em> Lire la suite → </em></a> -->
+                       
+
+                        <div class="rp-post-meta-info">
+                            
+                            <dfn>
+                            <ul class="list-inline">
+                            {% if restaurant.tel %}
+                                <li><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{restaurant.tel}}</li>
+                                
+                            {% endif %}
+                               
+                            {% if restaurant.address %} 
+                                <li><strong><i class="fa fa-map-marker" aria-hidden="true"></i> </strong>{{restaurant.address}}</li>
+                                
+                            {% endif %}
+                               
+                            {% if restaurant.web_site %}  
+                                <li><strong>Web site: </strong><a href="{{restaurant.web_site}}"> {{restaurant.web_site}}</a></li>
+                            {% endif %}   
+                            </ul>
+                            </dfn>
+                        </div>
+
+                    </div> 
+
+                </div>
+           
+              
+        </div>
+
+    <hr>
+     {% endfor %}
+    
+</div>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="box">
+    <div class="notifications">
+        <i class="fa fa-bell"></i>
+        <span class="num">4</span>
+        <ul>
+            <li class="icon">
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <span class="text">Someone Like Your Post</span>
+            </li>
+            <li class="icon">
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <span class="text">Someone Like Your Photo</span>
+            </li>
+            <li class="icon">
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <span class="text">Someone Dislike Your Post</span>
+            </li>
+            <li class="icon">
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <span class="text">Someone Comment on Your Post</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+body {
+    margin:0px;
+    padding:0px;
+    background:#d60049;
+}
+.box {
+    position:absolute;
+    top:30%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+.notifications {
+    width:60px;
+    height:60px;
+    background:#fff;
+    border-radius:30px;
+    box-sizing:border-box;
+    text-align:center;
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+.notifications:hover {
+    width:300px;
+    height:60px;
+    text-align:left;
+    padding:0 15px;
+    background:#ff2c74;
+    transform:translateY(-100%);
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+}
+.notifications:hover .fa {
+    color:#fff;
+}
+.notifications .fa {
+    color:#cecece;
+    line-height:60px;
+    font-size:30px;
+}
+.notifications .num {
+    position:absolute;
+    top:0;
+    right:-5px;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:#ff2c74;
+    color:#fff;
+    line-height:25px;
+    font-family:sans-serif;
+    text-align:center;
+}
+.notifications:hover .num {
+    position:relative;
+    background:transparent;
+    color:#fff;
+    font-size:24px;
+    top:-4px;
+}
+.notifications:hover .num:after {
+    content:' Notification';
+}
+ul {
+    position:absolute;
+    left:0;
+    top:50px;
+    margin:0;
+    width:100%;
+    background:#fff;
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+    padding:20px;
+    box-sizing:border-box;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+    display:none;
+}
+.notifications:hover ul {
+    display:block;
+}
+ul li {
+    list-style:none;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    padding:8px 0;
+    display:flex;
+}
+ul li:last-child {
+    border-bottom:none;
+}
+ul li .icon {
+    width:24px;
+    height:24px; 
+    background:#ccc;
+    border-radius:50%;
+    text-align:center;
+    line-height:24px;
+    margin-right:15px;
+}
+ul li .icon .fa {
+    color:#fff;
+    font-size:16px;
+    line-height:24px;
+}
+ul li .text {
+    position:relative;
+    font-family:sans-serif;
+    top:3px;
+    cursor:pointer;
+}
+ul li:hover .text {
+    font-weight:bold;
+    color:#ff2c74;
+}
+
+
+Proposer une recette
+Tout ce qu'il faut savoir avant de poster une recette en 4 points :
+● Choisissez un titre explicite : pour que l'on puisse facilement retrouver la recette sur le site !
+● Précisez les proportions (1 boite oui mais de quelle contenance ?), la durée et la température de cuisson.
+● Vérifiez si la recette est déjà sur le site, sinon, elle risque d'être refusée :(
+● Ne recopiez pas la recette sur un autre site Internet ou dans un livre de recettes par respect pour son auteur.

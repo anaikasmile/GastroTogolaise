@@ -11,7 +11,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import Restaurant, Category
 from .forms import RestaurantForm
 from gastronomie.decorators import *
-from django_extras.contrib.auth.decorators import staff_required
 # Create your views here.
 
 def pagination(request,fichier):
@@ -55,7 +54,7 @@ def restaurant_per_cat(request,slug):
 
 """ Administration """
 
-#Ajouter 
+#Ajouter
 @login_required
 @staff_required
 def restaurant_new(request):
@@ -96,7 +95,7 @@ def restaurant_update(request,pk):
 def restaurant_delete(request,pk):
 	restaurant = get_object_or_404(Restaurant, pk=pk)
 	restaurant.delete()
-	messages.success(request, 'Suppression réussie')	
+	messages.success(request, 'Suppression réussie')
 	return redirect('restaurant_publish_list')
 
 

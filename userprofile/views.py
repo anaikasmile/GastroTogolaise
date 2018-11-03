@@ -7,19 +7,14 @@ from django.db import transaction
 from django.contrib.auth.models import User, Group
 from .models import Profile, User
 from .forms import UserForm, ProfileForm, AdminForm
-#ajout 07/06/18
 from django.contrib.admin.views.decorators import staff_member_required
-
-from django.contrib.auth.decorators import login_required
 from gastronomie.decorators import *
-from django_extras.contrib.auth.decorators import staff_required
-from django.contrib.auth.forms import PasswordChangeForm
-#fin ajout
+
 
 # Create your views here.
 
-def admin_pagination(request,fichier):
-    paginator = Paginator(fichier,15)
+def admin_pagination(request, fichier):
+    paginator = Paginator(fichier, 15)
 
     page = request.GET.get('page')
     try:
@@ -35,8 +30,9 @@ def admin_pagination(request,fichier):
 
     return p
 
-def pagination(request,fichier):
-    paginator = Paginator(fichier,4)
+
+def pagination(request, fichier):
+    paginator = Paginator(fichier, 4)
 
     page = request.GET.get('page')
     try:
@@ -51,6 +47,7 @@ def pagination(request,fichier):
         p = paginator.page(paginator.num_pages)
 
     return p
+
 
 @login_required
 @transaction.atomic
@@ -61,11 +58,11 @@ def profile_update(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            
+
             messages.success(request, ('Votre profile a été mis à jour.'))
             return redirect('recipe_box_user')
         else:
-            messages.error(request, ('Une erreur s'/'est produite'))
+            messages.error(request, ('Une erreur s' / 'est produite'))
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
@@ -75,13 +72,10 @@ def profile_update(request):
     })
 
 
-
-def contributors(request):	
-	users = User.objects.filter(groups = None).order_by('username')
-	users = pagination(request, users)
-	return render(request,'userprofile/contributors.html', {'users':users})
-
-
+def contributors(request):
+    users = User.objects.filter(groups=None).order_by('username')
+    users = pagination(request, users)
+    return render(request, 'userprofile/contributors.html', {'users': users})
 
 
 # Partie Admin
@@ -100,55 +94,59 @@ def profile_add(request):
             messages.error(request, ('Please correct the error below.'))
     else:
         admin_form = AdminForm()
-        
+
     return render(request, 'userprofile/profile_add.html', {
         'admin_form': admin_form,
-        
+
     })
+
 
 @login_required
 @staff_required
 def staff_list(request):
     users = User.objects.filter(is_staff_member=True)
     users = admin_pagination(request, users)
-    return render(request,'userprofile/staff_list.html', {'users':users})
+    return render(request, 'userprofile/staff_list.html', {'users': users})
 
 
 @login_required
 @staff_required
-def contributor_list(request):	
-	users = User.objects.filter(is_contributor=True)
-	users = admin_pagination(request, users)
-	return render(request,'userprofile/contributor_list.html', {'users':users})
+def contributor_list(request):
+    users = User.objects.filter(is_contributor=True)
+    users = admin_pagination(request, users)
+    return render(request, 'userprofile/contributor_list.html', {'users': users})
+
 
 @login_required
 @staff_required
-def profile_preview(request,pk):
-	user = get_object_or_404(User, pk=pk)
-	return render(request, 'userprofile/profile_preview.html',{'user':user})
+def profile_preview(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    return render(request, 'userprofile/profile_preview.html', {'user': user})
 
-@login_required
+
+login_required
+
+
 @staff_member_required
 def profile_active(request, pk):
     user = get_object_or_404(User, pk=pk)
     if (user.is_active):
-        user.is_active=False
+        user.is_active = False
         user.save()
         messages.success(request, 'Compte désactivé!')
-        return redirect('contributor/list/')
     else:
-        user.is_active=True
+        user.is_active = True
         user.save()
         messages.success(request, 'Compte activé!')
-        return redirect('contributor/list/')
+
     return redirect(request.path)
 
 
-#Supprimer
+# Supprimer
 @login_required
 @staff_required
-def profile_delete(request,pk):
+def profile_delete(request, pk):
     user = get_object_or_404(User, pk=pk)
     user.delete()
-    user.success(request, 'Utilisateur supprimé') 
+    user.success(request, 'Utilisateur supprimé')
     return redirect('')

@@ -1,0 +1,60 @@
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% load comments %}
+{% load i18n %}
+   {% for recipe in recipes %}                
+
+   <div class="mixcontent row">
+                        
+            <div class="margin-bottom-20">
+                         
+                <div class="col-sm-4">
+                     <br>
+                        <img src="{{recipe.image.url}}" class="img-responsive">
+                </div>
+                <div class="col-sm-8">
+                   
+                    <h4 class="rp-post-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title}}</a></h4>
+
+                    <div class="rp-post-meta-info">
+                       <ul class="list-inline">
+                
+                            <li>
+                            {% if recipe.author.is_staff_member %}
+                                <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 16px; height: 16px;" alt="">
+                                 By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                            {% else %}
+                                {% if recipe.author.photo %}
+                                    <img src="{{recipe.author.photo.url}}" class="img-circle" width="20px;" alt="">
+                                {% else %}
+                                    <img src="{% static 'assets/images/user_icon.png' %}" class="img-circle" width="20px;" alt="">
+                                {% endif %}
+                                By <a  class="rp-author" data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a>
+                            {% endif %}
+                            <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ recipe.published_at|date:'F j, Y' }} </li> 
+                            
+                            <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{recipe.view}}</li>
+
+                            <li>
+                                <a type="button" class="like" data-like-pk="{{recipe.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{recipe.pk}}"> {{recipe.like}}</span>
+                            </li>
+                            
+                            {% get_comment_count for recipe as comment_count %}
+                            <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                        </ul>
+                    </div>
+
+                    <p>{{ recipe.description|safe|truncatechars:150 }}</p>
+                    <a href="{% url 'recipe_detail' slug=recipe.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
+                   
+
+                </div> 
+
+            </div>
+              
+        </div>
+
+    <hr>
+    {% endfor %}

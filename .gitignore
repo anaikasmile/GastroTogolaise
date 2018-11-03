@@ -1,6 +1,6 @@
 migrations
 __pycache__
 media
-staticfiles
 *.pyc
 .env
+gastronomie/settings/production.py

@@ -2,11 +2,11 @@
 
 Bonjour {{ user_display }},
 
-Pour activer votre compte, merci de vous rendre sur {{ activate_url }}
+Pour activer votre compte, <a href="{{ activate_url }}"> Cliquez ici </a>
 
 {% endblocktrans %}{% endautoescape %}
 {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
-Cordialement, 
+
 L'équipe {{ site_name }}!
 
 {{ site_domain }}{% endblocktrans %}

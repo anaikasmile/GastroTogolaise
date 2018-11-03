@@ -11,17 +11,17 @@ urlpatterns = [
 	url(r'^detail/(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
 	url(r'^like/$',views.like, name='post_like'),
 
-	#ajout 07/06/18
-	url(r'^new/category$', views.post_new_category, name='post_new_categ'),
-	url(r'^(?P<slug>[-\w]+)/edit/$', views.post_category_update, name='post_category_update'),
-	url(r'^(?P<slug>[-\w]+)/delete/$', views.post_category_delete, name='post_category_delete'),
-	#fin ajout
+	  #ajout 07/06/18
+    url(r'^new/category$', views.post_new_category, name='post_new_categ'),
+    url(r'^(?P<slug>[-\w]+)/edit/$', views.post_category_update, name='post_category_update'),
+    url(r'^(?P<slug>[-\w]+)/delete/$', views.post_category_delete, name='post_category_delete'),
+    #fin ajout
 
 	url(r'^new/$', views.post_new, name='post_new'),
 	url(r'^preview/(?P<slug>[-\w]+)/$', views.post_preview, name='post_preview'),
 	url(r'^(?P<slug>[-\w]+)/edit/$', views.post_edit, name='post_update'),
 	url(r'^draft/list/$', views.post_draft_list, name='post_draft_list'),
-	url(r'^publish/list/$', views.post_publish_list, name='post_publish_list'), 
+	url(r'^publish/list/$', views.post_publish_list, name='post_publish_list'),
 	url(r'^(?P<pk>[0-9]+)/publish/$', views.post_publish, name='post_publish'),
 	url(r'^(?P<pk>[0-9]+)/delete/$', views.post_delete, name='post_delete'),
 	# url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),

@@ -17,7 +17,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <img src="{% static 'assets/images/top-image.jpg' %}">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">
@@ -49,7 +49,7 @@
             <div class="col-md-6">
                 <div class="single_mixi_portfolio margin-bottom-40">
                     {% video video.video as video %}
-                        {% video video '340 x 260'  %}
+                        {% video video  %}
                     {% endvideo %}
                     <div class="single_mixi_portfolio_content">
                         <a href="{% url 'video_detail' slug=video.slug %}" class="title">{{video.title|truncatechars:20}}</a>
@@ -57,7 +57,7 @@
                          {% if video.author.is_staff_member %}
                             By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                         {% else %}
-                        By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}">{{video.author}}</a>
+                        By <a data-toggle="modal" data-target="#modalAvatar{{video.author.id}}" class="rp-author">{{video.author}}</a>
                         {% endif %}
                         </p>
                     </div>
@@ -67,45 +67,10 @@
 
 
              <!-- Modal -->
-           <div class="modal fade" id="modalAvatar{{video.author.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{video.id}}">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <div class="col-md-4">
-                            
-                            {% if video.author.profile.photo %}
-                                <span class="author-inner">
-                                <img src="{{video.author.profile.photo.url}}" class="img-responsive img-circle">
-                                </span>
-                                
-                            {% else %}
-                            
-                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
-                            
-                            {% endif %}
-                            <h5 class="">{{video.author.first_name}} {{video.author.last_name}}</h5>
-                            </div>
-                            <div class="col-md-8">
-                                <p>{{video.author.profile.bio}}</p>
-                            </div>
-                        </div>
-                      
-                        <div class="modal-footer">
-                            <ul class="social-link list-inline">
-                                <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                           </ul>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+            {% include 'recipe/modal_user.html' %}
+
         {% empty %}
-                <h2>Aucune vidéo pour le moment.</h2>
+                <h2>Aucune vidéo disponible.</h2>
         {% endfor %}
 
         </div>
