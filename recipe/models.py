@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from django.db import models
 from ckeditor.fields import RichTextField
 from sorl.thumbnail import ImageField

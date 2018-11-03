@@ -1,5 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from .base import *
- 
 
 
 DATABASES = {'default': dj_database_url.config(default="postgresql-angular-86634")}
