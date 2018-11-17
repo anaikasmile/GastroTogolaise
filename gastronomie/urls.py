@@ -25,6 +25,7 @@ from django.contrib.staticfiles import views
 from django_filters.views import FilterView
 from django.contrib.flatpages import views
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^pages/', include('django.contrib.flatpages.urls')),
@@ -34,8 +35,8 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
-	
-    url(r'^accounts/', include('allauth.urls')), 
+
+    url(r'^accounts/', include('allauth.urls')),
 
     url(r'^userprofile/', include('userprofile.urls')),
     url(r'^restaurant/', include('restaurant.urls')),
@@ -46,8 +47,8 @@ urlpatterns = [
     url(r'^notifications/', include('notify.urls', 'notifications')),
     url(r'^select2/', include('django_select2.urls')),
 
-   
 ]+ static(
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT
         )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

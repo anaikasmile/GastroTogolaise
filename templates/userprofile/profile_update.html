@@ -1,7 +1,7 @@
 {% extends 'base_principal.html' %}
 {% load staticfiles %}
 {% load thumbnail %}
-% load i18n %}
+{% load i18n %}
 
 {% block slide %}
     <section id="home" class="home">
@@ -131,9 +131,10 @@
                         <div class="form-group">
                             <label>Cover image</label>
                              {{ profile_form.photo }}
+                             {% if  user.profile.photo %}
                               {{ user.profile.photo.url }}
                             <!-- <img src="{{ user.profile.photo.url }}" class="img-responsive"> -->
-
+                            {% endif %}
                         </div>
                     </div>
                 </div>

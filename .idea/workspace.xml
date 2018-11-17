@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acd4bac7-93a0-496b-81be-33b64d3623be" name="Default Changelist" comment="Resol conflits">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/.travis.yml" afterDir="false" />
@@ -70,40 +65,364 @@
       <change beforePath="$PROJECT_DIR$/django-notify-x/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x/test_requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/test_requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x/tox.ini" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/tox.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gastronomie/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gastronomie/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/production.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gastronomie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gastronomie/production.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gastronomie/settings.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gastronomie/settings/development.py" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/settings/development.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gastronomie/static/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/static/assets/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gastronomie/static/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/static/assets/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gastronomie/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gastronomie/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/static/assets/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gastronomie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gastronomie/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/gastronomie/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/blog/Graviola_w728_h410_r4_q70.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/blog/Graviola_w728_h410_r4_q70_mYtKJkU.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/blog/corossol.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/blog/le-citron-pour-bébé.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/blog/le-citron-pour-bébé_Q0wK5VL.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/blog/vinaigre-de-cidre-ses-5-vertus-sante.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/00/8e/008ed56a906640899e347bb420c1bf52.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/01/8b/018b94241d38ee524f91a47fe0d73959.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/04/a8/04a8cfe84c9fe8f1ce2ceb816a04ad1e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/06/27/0627bb68eafd3bdd0af08183b7f5cf5e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/06/af/06af6e7255cfeed6b89a280d08a02402.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/07/90/0790483b640c60541f4f324ce918a8ea.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0a/30/0a301e574b81f09a43badde893eb4976.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0a/43/0a43fc2b6c0e93ca1563e64f1cff95ee.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0a/6b/0a6b22dc92458adc1c12175b1211bb37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0b/8b/0b8bf37c276384ec584df29f2636c00f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0b/d0/0bd0f79db80f8e6a820ab1f9e56aea41.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0d/3d/0d3d48b2079f422b7be57f8f530f7a58.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/0f/a9/0fa93aa5a8040d250b3eb82cecff92ae.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/11/63/11636ea2845908083f4f59f94bb17059.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/13/53/1353a8bacb94710cd92affcf3f85386f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/13/5c/135cec218a52bf834c0b8dc57b3c7bdd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/13/8e/138e40d699c973b873b7e3dae764293d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/15/be/15be4e4fe5feb8d4c41c3683909d8e79.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/15/f4/15f4cf598892978d4cdde27ac70c0164.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/16/ed/16ed9ad88cfc5dbe57afabeed6071427.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/18/3b/183bcdfed058236d11399fbe777316c6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/18/3d/183d98669e78cbeda74d1a619a22c4ca.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/19/0a/190adfbe3175c5473f2fde1245abc364.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/1f/26/1f26300e7e047de0c19ccc478e66c9b6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/20/38/203845bb26192b26639af09db67ccec9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/21/f1/21f10403a687a63233b5454b05fd1f6f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/23/63/2363e13fc25af96b76bd42aabf2ffa88.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/23/c6/23c61286381cf563d6aa07d39510518f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/27/8e/278e30830b879afe3abdac0d24c70cc5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/28/69/286954441c0f040bf2606e7a0f200fad.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/29/b2/29b280de640af34aedc29a896bc46600.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/29/c9/29c99dcd858a59533c68ef80f1de59b2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/2b/18/2b18c7834b0878f035344f4e42ab61fb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/2c/3c/2c3ce9d59a6ff22e321fb6a317b9ba3c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/2d/30/2d30c5af690d933db51582d77b16501b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/2f/80/2f80ff3279fcbc2a7b9501e5848b8a3c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/2f/b4/2fb48e22aefaab34ca62ebb2ad8a259c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/30/34/30340622ea63c6eda2f1b6cc309d82d6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/30/34/3034a3b7852e2dfeadeb5f202a3cc5cc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/30/36/3036cca63393d156b7c1076915088ec3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/32/cd/32cdfdbf35773440cb64a08fff38660e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/32/f1/32f13bf38f59e33b79c4cad57968fcde.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/34/37/3437d717b86a62f69b0ec2669459891d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/34/5f/345fdfce8a6970e216287f208559c914.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/34/a3/34a3e776f35c1538b98e84589ecb284c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/36/f0/36f01fb4cce93846e45b55ba9d472482.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/37/54/37548acf3b132611ed62b148179b0f5b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/38/29/382982b5efe5b4f3af5749c8cc2921f1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/39/e4/39e449fd74e76a163ba3e089528d2f3e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3a/4e/3a4e453ffde24edee915db72b3948f16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3b/26/3b266a7b0540778b9d74968e20f9fdb0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3b/a3/3ba3f19700ba4fae35b86ea27a5d5dbe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3b/fe/3bfe75716bd298cfaffddcdc4cdca818.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3c/9c/3c9c09f9c57e02a8b1c628e89a92c607.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3c/fc/3cfc8160b20ab721f549c981f18e9376.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3d/14/3d14889fb5fa27ccfacc2d9a7f4c7ceb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3e/32/3e32b6d6206a4f9024ed06109452abdc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/3e/4a/3e4a0eefc3a637e71117ca33e50ebd25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/41/12/41124eaf27ce1eb232739a2a191338f7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/41/31/4131f28f3e3faa4936dae47cd7a0c0b3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/41/6c/416cd839ab28dde9a77b33c26bdc4c1a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/45/07/45070b5290a2f7e495cdf10c8d6d6736.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/45/1f/451ff4eca1013e1b569bbd973ae3020e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/47/0e/470efd86d8aafde28c86b3014a1afd85.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/47/b5/47b544ac17eff8e3c56548971bd0e4eb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/47/d8/47d85eaa14d9e8e4d0c8bfd1a0d1ca31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/49/8a/498a705bef54dbcc0d14df046ffe16bc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4b/31/4b317806ccc749c11d2c8d3daba51a7b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4b/b9/4bb9fd345860e1357215ddf84601ffdd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4c/05/4c051a8215efc4fb9e467187e1c37ebe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4c/b1/4cb1611f7a4993685149090551ccad18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4c/fa/4cfa668f55a16fb204cf2fb8cd87a9c1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4d/e1/4de1246ce3ac581ccf27ad95e68028f8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/4f/5c/4f5c02eac63b3c2f62ec1d5aba0fa5db.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/50/b8/50b8b5da7df50647612253440be9ecaa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/52/55/5255cfb6a8b68492fb31b2e1ee84790d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/52/cd/52cd60898e09b3de70fcefe8046b2823.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/54/6f/546fc8184f53f7c744c1a0c0b5a71804.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/54/98/5498b822d0898ae142715bb219d27458.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/54/a4/54a431aed6108702a1ab3bf4ebb2b8b9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/54/e1/54e185a37f651ada6412c6b8c9b200ca.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/55/40/5540cba50c93a462ab5b7637ebd67e7c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/55/85/55858311796048d16215ea211b9a0938.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/56/11/5611d0915f15ddc3f0dff7a9f33cd2a6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/56/23/56235a587faf24902ba6e193ef80bc9a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/56/3b/563bf3ef7bdb40d4f6bd45de87cb74fe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/57/f6/57f61a87e3a05102ae30600db86a4dc6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/58/32/58327e4f852c462a662907581b5e8002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/58/34/583429883bd3cd97f0c20f85774bbd75.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/5a/74/5a744cdb235d9db9c4b5098bde21ea89.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/5c/33/5c33fbe63c7b3e7d6a52cbf5c5fa41ed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/5c/7f/5c7fa343c63ee2a7fa98ca2423aaa7dc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/5d/41/5d4104f5106a74ef4a2c49638aa395b2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/5e/47/5e475ac5df154f8b18bf8793d6bae57e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/60/15/60150f8e83c89cd5a23779a8bd98c114.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/61/23/6123188f42a05db4ce375bad0a994cfb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/61/4b/614b1b75e459375f3e38621e43d61363.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/61/4b/614bb39d06ae6b48f7e6c8ed30ea10e2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/62/ac/62ac8db4c6251444d860e413115db539.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/64/3d/643de5a2050e9b62a1eb8a7c818530f4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/69/f7/69f7f70bd4a468ea9fe5d823321d2b80.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/6a/2c/6a2c9dfcc6b11a6169a76e3aca0cea05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/6f/62/6f62cc8bf76806089607f6546c6583ce.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/6f/81/6f8144738e8826bc65b79fb26d52f30f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/6f/b6/6fb63803658dabc1945722decbdc4f7e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/70/d0/70d039958910f3fbfbe5b746efb5916e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/76/32/7632f3977e2bc8aebff3e5d446545fc2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/78/a8/78a835f4e994aa9233f2d8ff3b54ba52.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/7c/a8/7ca8da53e2fa4176f0a524aa901d528f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/7d/05/7d05935b2e045bd2d729be377d93a443.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/80/a8/80a80b329b8ae6cbf8cdfcceb66a56c3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/81/a7/81a7fd10d1b3f70d0aa0692c0d5727a7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/82/c7/82c7b7a6014c756a21dc67addc8cd09f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/82/e4/82e419d154eeab9171bc5c05adff8097.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/82/fb/82fb81aa3d9630a74d9c38cc71c42cc4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/83/6d/836d1bd564f99d5098d5e50efda653c2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/83/f0/83f0a9eb93e712630367c9a31302ab96.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/84/f4/84f445ae2b27863a418318e5a98c3bc0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/87/9b/879bb7f3c13de9fba191e07a02b89b40.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/89/ec/89ecaf62a3d05240f2b6a0957954a6fe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/8e/fb/8efbb6530d99aacd02863972d9fb2061.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/8f/fb/8ffbfe7209274adb9853e186da8fa8c7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/91/87/9187837c918692bd005f7c88f92be5bf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/91/f9/91f93597453796ef20190563b5fa28a2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/95/29/95297b0605b21b9f54a2a2a1d04e7115.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/95/83/958357119ccc1d7866ea98bce14a0c35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/96/e8/96e81373cfd73d973146cf692ee9cb9b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/97/29/972986ad52d3d91df06f3b78b83e0b03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/97/62/9762e21626bbd8357df2d73a13c0e6dd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/97/ed/97edc886c9936d1479d6d3651558399e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/98/08/9808c99ecb8c9fa9becd7fae143d56a5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/98/08/9808c99ecb8c9fa9becd7fae143d56a5_gZ6pK8s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/98/2e/982ead5ef78c6ed7e8bfc57550613894.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9a/18/9a18e5964b5f88806a1f555f6631f913.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9b/0f/9b0f71e9f1839e53062f35f9d6bfd358.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9b/f2/9bf2a3aeba4cc12047ef86b10fd22ddd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9b/fc/9bfc62677eba04ddc3af582b55f301e1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9d/23/9d23bd65b19f64bb683ae3ef92a4de54.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9d/62/9d62b1947f2159cffc1488bd3b631b39.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9d/bf/9dbf2319e062488be282de92d5f6d51a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9e/01/9e0165cb2c9502ddf7c1eed064a1113c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9e/98/9e987cb745cfce6bbc062e3999894221.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/9e/bf/9ebfeb319409c42fffc94dfd014a624d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a0/da/a0da0b69ef1a7472133e20686f9afd8c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a1/b7/a1b74a5f941facc36f61a2eeae1a89ea.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a2/77/a277d00cb3a9845a830867a7e2a4f447.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a3/af/a3af179dd863df3f045b1b422dcccbf1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a5/78/a578d3dd6f38b244791bf06ddd28fc04.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a5/d8/a5d8c41a6e79a027a58652f98511ba35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a5/f0/a5f081444d09792c4113369ff6abe3cb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a6/bb/a6bbd7906fb7e1d64d3d9d4811cf8004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a6/e0/a6e0cb7bbd204dc80abcfaad071ae7fd.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/a8/e9/a8e9a1e1d5756b468a361e7b54068192.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/aa/c7/aac7a98686769de908d4f7b6781cf23c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ac/2a/ac2a2ef97f3d29fb907512e561b129bb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ad/b1/adb1ac45eab1067475f13a1ddd56ec03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ae/4b/ae4b610c4d10a7dc9fd75b554e21a7f0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/af/56/af563992189170c605ea8f4a858b2ff8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/b1/c4/b1c4f551e769f29f6237c3e084c644b2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/b6/7b/b67bff69eefd18444767d33b72592f37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/b6/83/b683752abbe7eba0cf2ee7a8eadc0951.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/b7/b7/b7b7b63d266fa0230ede22c170b7d14b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/b7/c9/b7c9368ab39a8623e57cd6983c96eed1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/b8/ec/b8ec6ef8420ad8bd4bc54e8304c3270f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ba/b8/bab8fe56255d9ca2094560295df91f4b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ba/dd/badd70e2d9e477a5316ab1dcb8352abf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/bb/56/bb56c5ad538779d1190a6f72697240e0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/bb/86/bb86b153f772a23e109f4a3ba72dac37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/bc/47/bc47bfd8705165ebfa8dff5d9ed00110.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/bc/4a/bc4a7038ddb78536d198289f564b7509.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/bd/94/bd9424869afb229c83a048ab661ca84f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/be/b5/beb51d82bf89efaa31b5e72cb80202de.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/bf/47/bf475bb41182d637027d572da347237e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c0/0c/c00cf7398af31e3d420af0edda3618bb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c0/2b/c02bcca1e909d4672e29fd241b4cbef6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c0/48/c048d141749ac34c54079c65d160ec7e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c1/b1/c1b1fc4dcf345e40f1c2d6c6b76f4866.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c2/51/c25133f3146f0da51b2d8cb1bdfb1c81.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c2/9b/c29b5774712ba91c3f31e4e31ac1dfe5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c2/ba/c2ba9d5c9fc4b7388e8c212268281d6b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c4/4a/c44a68b66c3909790fa06bdf45e202dc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c8/00/c8000bf8050397e85cf5c1546eedca08.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c8/13/c813c1de744210f77893229f8d4755b3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c8/f2/c8f2289cc2b7d449955d0a67a0d3d6a5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c9/18/c918a4a707d385db31c6e7d5b13d40d7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c9/2a/c92a69a222894fca68aebbb73b6edce2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/c9/ee/c9ee3cd93133f3e914d9a37864d9c301.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ca/9c/ca9c3a2753c9462b088f4c36c7105413.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/cb/f7/cbf7cd4511d600b92042cea8273b0f45.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/cd/68/cd6872cb89790195c4a1026efa44146c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ce/1f/ce1f8ab27d46105cc984cb14a0bda104.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d1/33/d1335585cd61e951aa7392b89c3b7775.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d1/48/d1481554b9af8a8a3d1fa1864800c36a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d2/60/d2601c05f83a817829ae5bd694b433d0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d2/b3/d2b3cad413973ee344b0f5e366f4abb3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d3/71/d3710f56c22bcc8ac495581954eee740.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d4/ea/d4eaba97609fe3d4114e39a5604a1951.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d6/5d/d65d2b7198e52897608fd89c959ac0af.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d8/4b/d84bcf54467d666d1712f215f451911c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/d9/22/d922724d0815382b3bbc9bc71bd1f122.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/da/d0/dad0a18d25178b278e0a047c9a945fc2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/db/31/db31f21411c81c84676eef5e23295459.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/dc/8f/dc8fb0f9893ee7bef890b56f8c982ce2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/dd/b5/ddb58bb3ed8f877d250bd275081c3d33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/de/cd/decdc33d3c32a823001a8e5e5a9ee19e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/df/ba/dfba9bbe9035afed49fbcf2ff37767d8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e1/7b/e17bdf0ea7c8960c55a7b6da490c2c30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e1/f2/e1f230c7a24d99df7240e0370e1b218f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e3/b8/e3b8baacea6e6c3b922ad51c87480666.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e6/67/e6678d79b9f9d6b21c385e19b34a5426.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e6/6e/e66e6e49f02534356b5152a37108f2ce.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e7/4f/e74f8c48d8a427c5b92687acd4c77439.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/e7/b4/e7b4220bbd6a52b9d05de032b3115b83.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/eb/28/eb28420dbc24e3918b72e1101cf8c786.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/eb/4d/eb4df4f02f0079d001c56887d666ec7a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/eb/a0/eba0ae72113522ac75495030458dbe8a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ed/29/ed29d2fb66f3bf7ae7c62c193608a7d6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ed/76/ed762ae1048380782363dcdbded7d80a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ee/2c/ee2c4936c919f8ac1c77974035e176ac.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/ee/44/ee4428da921939c2528f88bf3295805f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f1/8f/f18fb34955bcc01b472858554e16ed97.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f1/96/f1961d6ea1b8084b49dcd38246c1ec99.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f1/db/f1dbacb9cc677d489489fa9664fe46ee.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f2/00/f200aa73a39d82ee15565c591fae1f6e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f2/be/f2be46e6a977f4b050747d61a5540540.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f3/5b/f35b2377728b5e1179463762c50bc7f2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f5/b4/f5b474fb76890600d1dc8a9533cb1a55.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f5/dc/f5dcc51121d4047e20fc2f0bfaf7be15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f6/f3/f6f38baf85d550de650a3a57a9e748bb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f9/1e/f91ed805b4c1a2d15fb79bd62e758989.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f9/21/f921adf0aa0278b378305ac7b6a2e922.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/f9/4c/f94cbfcdda95e18a27cad56ba3a818c4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/cache/fa/da/fadae9db8178b5e28150587a05ab907e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/profiles/IMG_20151209_124353-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/profiles/SAM_1597.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/profiles/chef3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/15639048-pizza-con-verdure-e-basilico-verde-Archivio-Fotografico.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ademe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ademe_8a2Sd7m.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ademe_E9ZCT1T.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ademe_kRB3SQ1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ademe_mDKoSiZ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/beignet.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/beignet_D2TFahz.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/beignet_OAwrxYU.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/beignet_wdBDmdl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/biscuit.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/burger.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/burger_3cOJUFs.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/burger_5mam7Wm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/burger_XGWQDMI.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/burger_yiHWu4o.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/burger_zd6UV5C.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/choux.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/dessert.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/dessert_TL92vny.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/flat-854498_960_720.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/flat-854498_960_720_erh9Oc9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/fondant.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/gateau-clairemedium.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/gateau.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/gateau_n2V8np6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/images.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pasta-1330541_960_720.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pate-a-crepes.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pate-a-crepes_825DJb6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pate-a-crepes_D1fUOoQ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pf5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_CktsTAT.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_EBXKYYa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_HfvyR9F.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_K4l4IwC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_LbS1QbQ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_NwCJf1E.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_QaV7Ko2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_RXoIA2p.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_Rrt1yDU.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_UbMVsLt.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_VuvsaYq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_Wm4kikr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_XkIaTvi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_gnXWTFC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_gv1tATC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_l2sNeMn.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_mFW6tmg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_mwblImr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_nY2vGWm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_ocWhSch.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_tjkpQUi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pinon_wCyqEwC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pizza.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pizza_AcUw2Gq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pizza_Olf7vr6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pizza_ZKHCa92.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pizza_eYA2JCb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/pizza_gdQ5vPn.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ravioli-2063535_960_720.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ravioli-2063535_960_720_MqlzeWs.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ravioli-2063535_960_720_Tor6mZc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ravioli.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ravioli_5aunSK2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/ravioli_C9ndS4G.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/recette.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/recette_7mobpmE.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/risotto.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/risotto_00FNP8y.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/risotto_00FNP8y_JXNIBWB.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sala.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sala_6YqeRU3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sala_ZjLnAHw.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sala_cKMJ4bB.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sala_cKMJ4bB_dIKifZ1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sala_mLfUTu0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salad-2068220_1920.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_20sY49s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_7hp0Ufz.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_Kkf66d1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_Kkf66d1_whbtSgJ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_iAuL3Hw.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_mDety30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_r9wf0K9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/salade_rw5KTbE.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sorrel-drink.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/sorrel-drink_9fDBhV8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/recipes/spaghetti.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/restaurants/a-la-banane-ivoirienne-panoramique.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/restaurants/a-la-banane-ivoirienne-panoramique_Db7meKA.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/restaurants/avatar3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/restaurants/dessert.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/restaurants/user-logo.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/recipe/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe/widgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipe/widgets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userprofile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userprofile/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userprofile/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userprofile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userprofile/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userprofile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/css.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashLogin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/js.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recipe/recipe_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recipe/recipe_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/userprofile/profile_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/userprofile/profile_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userprofile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/userprofile/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,143 +448,201 @@
     <session id="1268901687">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.25" value="2" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="6" />
-          <entry key="py" value="62" />
+          <entry key="Procfile" value="1" />
+          <entry key="Readme" value="1" />
+          <entry key="css" value="23" />
+          <entry key="erreurs" value="1" />
+          <entry key="gitignore" value="1" />
+          <entry key="html" value="69" />
+          <entry key="js" value="14" />
+          <entry key="json" value="1" />
+          <entry key="log" value="6" />
+          <entry key="md" value="1" />
+          <entry key="py" value="92" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="6" />
-          <entry key="Python" value="62" />
+          <entry key="CSS" value="23" />
+          <entry key="HTML" value="69" />
+          <entry key="JSON" value="1" />
+          <entry key="JavaScript" value="14" />
+          <entry key="Log" value="4" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="Python" value="92" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="52" />
+          <entry key="css" value="270" />
+          <entry key="gitignore" value="18" />
+          <entry key="html" value="824" />
+          <entry key="js" value="74" />
+          <entry key="md" value="128" />
+          <entry key="py" value="347" />
           <entry key="txt" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="15" />
-          <entry key="Python" value="52" />
+          <entry key="CSS" value="270" />
+          <entry key="HTML" value="824" />
+          <entry key="JavaScript" value="74" />
+          <entry key="Markdown" value="128" />
+          <entry key="PLAIN_TEXT" value="33" />
+          <entry key="Python" value="347" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gastronomie/settings/development.py">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+            <state relative-caret-position="3013">
+              <caret line="508" column="51" selection-start-line="508" selection-start-column="51" selection-end-line="508" selection-end-column="51" />
+              <folding>
+                <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#header#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gastronomie/settings/production.py">
+        <entry file="file://$PROJECT_DIR$/recipe/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            <state relative-caret-position="69">
+              <caret line="277" column="9" selection-start-line="277" selection-start-column="4" selection-end-line="277" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/apps.py">
+        <entry file="file://$PROJECT_DIR$/templates/stats.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+            <state relative-caret-position="285">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gastronomie/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/userprofile/profile_update.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1862">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blog/context_processors.py">
+        <entry file="file://$PROJECT_DIR$/templates/recipe/recipe_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="315">
+              <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/forms.py">
+        <entry file="file://$PROJECT_DIR$/templates/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/models.py">
+        <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/bootstrap.min.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="67523" selection-start-line="4" selection-start-column="67523" selection-end-line="4" selection-end-column="67523" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/tests.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+        <entry file="file://$PROJECT_DIR$/app.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state relative-caret-position="-50750">
+              <caret line="156933" column="32" selection-start-line="156933" selection-start-column="29" selection-end-line="156933" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>toastr</find>
+      <find>modernizr-2.8.3-respond-1.4.2.min</find>
+      <find>whi</find>
+      <find>facebook/js/fbconnect.js</find>
+      <find>jquery-2.1.0.min.js</find>
+      <find>toast</find>
+      <find>facebook</find>
+      <find>collapse-side</find>
+      <find>navbar-right</find>
+      <find>homebg</find>
+      <find>footer_socail</find>
+      <find>data-target</find>
+      <find>scrollup</find>
+      <find>scroll</find>
+      <find>menu-scroll</find>
+      <find>menu-scr</find>
+      <find>header</find>
+      <find>navbar-defa</find>
+      <find>menu</find>
+      <find>main-menu</find>
+      <find>99</find>
+      <find>991</find>
+      <find>.navbar-default .navbar-toggle</find>
+      <find>.navbar-inverse .navbar-toggle</find>
+      <find>navbar-default</find>
+      <find>font-fa</find>
+      <find>navbar-default .navbar-collapse,</find>
+      <find>.tab-content</find>
+      <find>stats</find>
+      <find>side-collapse-container</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -273,45 +650,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/blog/post_new_category.html" />
-        <option value="$PROJECT_DIR$/templates/base_admin.html" />
-        <option value="$PROJECT_DIR$/templates/userprofile/contributor_list.html" />
-        <option value="$PROJECT_DIR$/templates/recipe/recipe_new_category.html" />
-        <option value="$PROJECT_DIR$/recipe/forms.py" />
-        <option value="$PROJECT_DIR$/recipe/models.py" />
-        <option value="$PROJECT_DIR$/recipe/tests.py" />
-        <option value="$PROJECT_DIR$/recipe/urls.py" />
-        <option value="$PROJECT_DIR$/recipe/views.py" />
-        <option value="$PROJECT_DIR$/recipe/widgets.py" />
-        <option value="$PROJECT_DIR$/recipe/apps.py" />
-        <option value="$PROJECT_DIR$/recipe/admin.py" />
-        <option value="$PROJECT_DIR$/restaurant/admin.py" />
-        <option value="$PROJECT_DIR$/restaurant/apps.py" />
-        <option value="$PROJECT_DIR$/restaurant/context_processors.py" />
-        <option value="$PROJECT_DIR$/restaurant/forms.py" />
-        <option value="$PROJECT_DIR$/restaurant/models.py" />
-        <option value="$PROJECT_DIR$/restaurant/tests.py" />
-        <option value="$PROJECT_DIR$/restaurant/urls.py" />
-        <option value="$PROJECT_DIR$/restaurant/views.py" />
-        <option value="$PROJECT_DIR$/search/models.py" />
-        <option value="$PROJECT_DIR$/search/apps.py" />
-        <option value="$PROJECT_DIR$/search/admin.py" />
-        <option value="$PROJECT_DIR$/search/filters.py" />
-        <option value="$PROJECT_DIR$/search/urls.py" />
-        <option value="$PROJECT_DIR$/search/views.py" />
-        <option value="$PROJECT_DIR$/userprofile/admin.py" />
-        <option value="$PROJECT_DIR$/userprofile/apps.py" />
-        <option value="$PROJECT_DIR$/userprofile/forms.py" />
-        <option value="$PROJECT_DIR$/userprofile/models.py" />
-        <option value="$PROJECT_DIR$/userprofile/urls.py" />
-        <option value="$PROJECT_DIR$/userprofile/views.py" />
-        <option value="$PROJECT_DIR$/gastronomie/settings.py" />
-        <option value="$PROJECT_DIR$/gastronomie/urls.py" />
-        <option value="$PROJECT_DIR$/gastronomie/wsgi.py" />
         <option value="$PROJECT_DIR$/gastronomie/decorators.py" />
         <option value="$PROJECT_DIR$/gastronomie/production.py" />
-        <option value="$PROJECT_DIR$/gastronomie/settings/development.py" />
-        <option value="$PROJECT_DIR$/gastronomie/settings/production.py" />
         <option value="$PROJECT_DIR$/blog/apps.py" />
         <option value="$PROJECT_DIR$/blog/admin.py" />
         <option value="$PROJECT_DIR$/blog/forms.py" />
@@ -319,6 +659,48 @@
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/blog/urls.py" />
         <option value="$PROJECT_DIR$/blog/context_processors.py" />
+        <option value="$PROJECT_DIR$/userprofile/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/gastronomie/settings.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/recipe/views.py" />
+        <option value="$PROJECT_DIR$/app.log" />
+        <option value="$PROJECT_DIR$/recipe/static/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/recipe/recipe_list.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/accueil.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/recipe_box_user.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/recipe_detail.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/video_list.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/video_partial.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/video_detail.html" />
+        <option value="$PROJECT_DIR$/templates/restaurant/restaurant_list.html" />
+        <option value="$PROJECT_DIR$/templates/search/search.html" />
+        <option value="$PROJECT_DIR$/templates/userprofile/contributors.html" />
+        <option value="$PROJECT_DIR$/templates/base_principal.html" />
+        <option value="$PROJECT_DIR$/templates/blog/post_detail.html" />
+        <option value="$PROJECT_DIR$/templates/blog/post_list.html" />
+        <option value="$PROJECT_DIR$/templates/blog/post_partial.html" />
+        <option value="$PROJECT_DIR$/templates/500.html" />
+        <option value="$PROJECT_DIR$/gastronomie/static/css/error.css" />
+        <option value="$PROJECT_DIR$/gastronomie/urls.py" />
+        <option value="$PROJECT_DIR$/gastronomie/settings/development.py" />
+        <option value="$PROJECT_DIR$/gastronomie/static/css/navbar.css" />
+        <option value="$PROJECT_DIR$/templates/layout/layout.html" />
+        <option value="$PROJECT_DIR$/gastronomie/settings/production.py" />
+        <option value="$PROJECT_DIR$/gastronomie/settings/base.py" />
+        <option value="$PROJECT_DIR$/gastronomie/static/assets/css/navbar.css" />
+        <option value="$PROJECT_DIR$/gastronomie/staticfiles/assets/js/main.a10779a6c30c.js" />
+        <option value="$PROJECT_DIR$/gastronomie/staticfiles/assets/js/main.js" />
+        <option value="$PROJECT_DIR$/gastronomie/static/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/gastronomie/static/assets/js/main.js" />
+        <option value="$PROJECT_DIR$/gastronomie/static/assets/css/responsive.css" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/gastronomie/static/assets/css/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/templates/base_admin.html" />
+        <option value="$PROJECT_DIR$/templates/test.html" />
+        <option value="$PROJECT_DIR$/templates/userprofile/profile_update.html" />
+        <option value="$PROJECT_DIR$/templates/recipe/recipe_add.html" />
       </list>
     </option>
   </component>
@@ -331,13 +713,14 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/gastronomie/static/assets/select2-4.0.6-rc.1/package.json" />
+      <path value="$PROJECT_DIR$/gastronomie/staticfiles/assets/select2-4.0.6-rc.1/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
-    <option name="y" value="44" />
-    <option name="width" value="1282" />
-    <option name="height" value="704" />
+    <option name="x" value="67" />
+    <option name="y" value="75" />
+    <option name="width" value="1299" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -345,6 +728,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -355,18 +739,7 @@
             <path>
               <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
               <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
               <item name="gastronomie" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
-              <item name="gastronomie" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
@@ -376,23 +749,18 @@
             <path>
               <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
               <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
               <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
-              <item name="search" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
-              <item name="userprofile" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="recipe" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,31 +818,54 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="44" width="1282" height="704" extended-state="0" />
+    <frame x="67" y="75" width="1299" height="688" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23139158" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.3298611" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.817734" visible="true" weight="0.25618514" />
+      <window_info id="Structure" order="1" sideWeight="0.18226601" side_tool="true" weight="0.2184874" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32919255" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919093" weight="0.6423611" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" visible="true" weight="0.32928804" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5008091" side_tool="true" weight="0.2951389" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49919093" weight="0.20341615" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" side_tool="true" weight="0.02952913" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.817734" visible="true" weight="0.25618514" />
+      <window_info id="Structure" order="1" sideWeight="0.18226601" side_tool="true" weight="0.2184874" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32919255" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919093" weight="0.6423611" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5008091" side_tool="true" weight="0.2951389" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49919093" weight="0.20341615" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" side_tool="true" weight="0.02952913" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -483,422 +874,289 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/blog/post_new_category.html">
+    <entry file="file://$PROJECT_DIR$/templates/userprofile/contributor_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="-135" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/userprofile/profile_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-397" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/blog/post_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="57" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/blog/post_partial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-900">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        <state relative-caret-position="187">
+          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base_admin.html">
+    <entry file="file://$PROJECT_DIR$/templates/blog/post_preview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="270" column="38" lean-forward="true" selection-start-line="270" selection-start-column="38" selection-end-line="270" selection-end-column="38" />
-        </state>
+        <state relative-caret-position="-30" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/userprofile/contributor_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/recipe/recipe_new_category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#644#685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/widgets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipe/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/context_processors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding>
-            <element signature="e#644#685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/tests.py">
+    <entry file="file://$PROJECT_DIR$/templates/blog/post_publish_list.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/search/admin.py">
+    <entry file="file://$PROJECT_DIR$/templates/blog/post_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="2370">
+          <caret line="158" column="25" selection-start-line="158" selection-start-column="25" selection-end-line="158" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/search/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/filters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#1#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/decorators.py">
+    <entry file="file://$PROJECT_DIR$/templates/notifications/base.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/tests.py">
+    <entry file="file://$PROJECT_DIR$/templates/recipe/includes/recipe_header.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/recipe/includes/recipe_category_update.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/css/error.css" />
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/css/navbar.css" />
+    <entry file="file://$PROJECT_DIR$/templates/500.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/400.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="14" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/layout/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/userprofile/forms.py">
+    <entry file="file://$PROJECT_DIR$/templates/404.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/staticfiles/assets/css/responsive.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-2428" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gastronomie/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#312#321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/gastronomie/staticfiles/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/gastronomie/urls.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/navbar.css" />
+    <entry file="file://$PROJECT_DIR$/gastronomie/settings/production.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gastronomie/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gastronomie/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gastronomie/production.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="285">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gastronomie/settings/development.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gastronomie/settings/production.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/settings/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="285">
+          <caret line="220" selection-start-line="220" selection-end-line="220" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/admin.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/staticfiles/assets/js/main.a10779a6c30c.js" />
+    <entry file="file://$PROJECT_DIR$/gastronomie/staticfiles/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-499">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/tests.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/ jquery .2.1.1.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/views.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/select2.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state>
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/urls.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/toastr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state>
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/models.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/colors.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="75">
+          <caret line="5" column="174" selection-start-line="5" selection-start-column="174" selection-end-line="5" selection-end-column="174" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/apps.py">
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="102">
+          <caret line="244" column="60" selection-start-line="244" selection-start-column="60" selection-end-line="244" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/context_processors.py">
+    <entry file="file://$PROJECT_DIR$/templates/base_principal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="285">
+          <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2925">
+          <caret line="195" column="30" selection-start-line="195" selection-start-column="3" selection-end-line="195" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="221" column="34" selection-start-line="221" selection-start-column="34" selection-end-line="221" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/js/navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="818">
+          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/static/assets/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="67523" selection-start-line="4" selection-start-column="67523" selection-end-line="4" selection-end-column="67523" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashLogin.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/css.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/js.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gastronomie/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recipe/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recipe/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="277" column="9" selection-start-line="277" selection-start-column="4" selection-end-line="277" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-50750">
+          <caret line="156933" column="32" selection-start-line="156933" selection-start-column="29" selection-end-line="156933" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base_admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="66" column="60" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/userprofile/profile_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1862">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/stats.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3013">
+          <caret line="508" column="51" selection-start-line="508" selection-start-column="51" selection-end-line="508" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#header#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/recipe/recipe_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
         </state>
       </provider>
     </entry>
