@@ -1,0 +1,57 @@
+
+
+@font-face {
+    font-family: 'robotobold';
+    src: url("roboto-bold.4af30187f4f9.eot");
+    src: url("roboto-bold.4af30187f4f9.eot?#iefix") format('embedded-opentype'),
+         url("roboto-bold.56c0f55bfec9.woff2") format('woff2'),
+         url("roboto-bold.a9a261bf2063.woff") format('woff'),
+         url("roboto-bold.7d29da09867c.ttf") format('truetype'),
+         url("roboto-bold.289f81ba02af.svg#robotobold") format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotomedium';
+    src: url("roboto-medium.17e2661a44e3.eot");
+    src: url("roboto-medium.17e2661a44e3.eot?#iefix") format('embedded-opentype'),
+         url("roboto-medium.8c0dc3b1efa9.woff2") format('woff2'),
+         url("roboto-medium.45a38a5f9c13.woff") format('woff'),
+         url("roboto-medium.157353e544af.ttf") format('truetype'),
+         url("roboto-medium.74479a37f317.svg#robotomedium") format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url("roboto-regular.bf3b7a9f3776.eot");
+    src: url("roboto-regular.bf3b7a9f3776.eot?#iefix") format('embedded-opentype'),
+         url("roboto-regular.6544bc8489c7.woff2") format('woff2'),
+         url("roboto-regular.7c3e0f7e8f93.woff") format('woff'),
+         url("roboto-regular.722c2ddbf507.ttf") format('truetype'),
+         url("roboto-regular.6c4e6009a589.svg#robotoregular") format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+
+@font-face {
+    font-family: 'latoregular';
+    src: url("lato-regular-webfont.2a04bc5f5f50.eot");
+    src: url("lato-regular-webfont.2a04bc5f5f50.eot?#iefix") format('embedded-opentype'),
+         url("lato-regular-webfont.8310b1ece36a.woff2") format('woff2'),
+         url("lato-regular-webfont.f5a2c4d81492.woff") format('woff'),
+         url("lato-regular-webfont.6064093c974e.ttf") format('truetype'),
+         url("lato-regular-webfont.d348b1c6863e.svg#latoregular") format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
