@@ -6,32 +6,10 @@
 
 {% block slide %}
 
-<section id="home" class="home">
+    <section id="home" class="home">
 
-      <!--   <div class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="main_home_slider">
-                            <div class="single_home_slider">
-                                <div class="main_home wow"> -->
-                                    <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
-                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+        <img src="{% static 'assets/images/food_1.jpg' %}">
 
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div> -->
-<!-- 
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </section>
 
 {% endblock slide %}
@@ -45,32 +23,32 @@
 
     <div class="main_mix_content card padding">
 
-    
+
         <div id="mixcontent" class="mixcontent row ">
-      
-            
-            <div class="col-md-12">    
+
+
+            <div class="col-md-12">
                 <section class="paper padding-20">
                     <h3 class="h3-responsive text-center">Proposer votre recette</h3>
                      <p>Remplissez les champs suivants, après une étude vous recevrez une notification</p>
-                    
+
                     <hr>
-                   
-                            
+
+
                     <form method="POST"  name="add-form" id="add_origin" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
                         {% csrf_token %}
-                         {{ form.media }}
+
                          {{ form.as_p }}
-                         
-                       
+
+                        
 
                         <button type="submit" class="btn btn-primary" id="submit_origin">{% trans 'Envoyer' %}</button>
                     </form>
-                        
+
                 </section>
-                
-            </div>   
-        
+
+            </div>
+
 
         </div>
     </div>
@@ -87,7 +65,7 @@
 
     });
     </script>
-        
+
 {% endblock content %}
 
 

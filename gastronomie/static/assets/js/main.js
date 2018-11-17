@@ -46,7 +46,7 @@ jQuery(document).ready(function ($) {
 
 
     /*---------------------------------------------*
-     * Counter 
+     * Counter
      ---------------------------------------------*/
 
     $('.statistic-counter').counterUp({
@@ -136,7 +136,7 @@ jQuery(document).ready(function ($) {
     // jQuery(window).scroll(function () {
     //     var top = jQuery(document).scrollTop();
     //     var height = 300;
-     
+
     //     if (top > height) {
     //         jQuery('.navbar').removeClass('navbar-static-top').addClass('navbar-fixed-top');
     //         //jQuery('.navbar-fixed-top').removeClass('nave_menu');
@@ -148,7 +148,7 @@ jQuery(document).ready(function ($) {
     //     }
     // });
 
-  
+
 
 // scroll Up
 
@@ -164,14 +164,6 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
-
-
-    $('[data-toggle="slide-collapse"]').on('click', function() {
-                    console.log('test');
-
-            $('.slide-navbar-collapse').toggleClass('active');
-            console.log('test');
-        });
 
     // $('#menu').slicknav();
 
@@ -189,29 +181,10 @@ jQuery(document).ready(function ($) {
 
 
     //End
-    
+
 
 });
 
-
-
-
-$(document).on("scroll", function () {
-    if ($(document).scrollTop() > 120) {
-        $("nav").addClass('small navbar-fixed-top');
-        $("header").addClass('menu-scroll');
-        $("header").removeClass('main_menu');
-        
-
-        
-        
-    } else {
-        $("nav").removeClass('small navbar-fixed-top');
-      
-        $("header").removeClass('menu-scroll');
-        $("header").addClass('main_menu');
-    }
-});
 
 $(document).on('click','.navbar-collapse.in',function(e) {
     if( $(e.target).is('a') ) {
@@ -222,18 +195,18 @@ $(document).on('click','.navbar-collapse.in',function(e) {
 
   // Ajouter  function like
 $(document).on('click','.like', function(e){
-    
+
     var pk;
         pk = $(this).attr('data-like-pk');
         $.get('/recipe/like/', {
             recipe_pk: pk
         }, function(data) {
             $('#count-like-'+pk).html(data);
-            
+
         });
         return false;
 
-    
+
 });
 
 
@@ -244,27 +217,63 @@ $(document).on('click','.likepost',function(e) {
             post_pk: pk
         }, function(data) {
             $('.count-like-'+pk).html(data);
-            
+
         });
         return false;
 
 });
 
 $(document).ready('click','.likevideo',function(e) {
-   
+
     var pk;
         pk = $(this).attr('data-video-pk');
         $.get('/video/like/', {
             video_pk: pk
         }, function(data) {
             $('#count-like-'+pk).html(data);
-            
+
         });
         return false;
-  
+
+
 
 });
 
+$(document).ready(function() {
+      var sideslider = $('[data-toggle=collapse-side]');
+                var sel = sideslider.attr('data-target');
+                var sel2 = sideslider.attr('data-target-2');
+                sideslider.click(function(event){
+                    console.log('ok');
+
+                    $(sel).toggleClass('in');
+                    $(sel2).toggleClass('out');
+                });
+
+              if ($(window).width() > 992) {
+                     $(document).on("scroll", function () {
+                         if ($(document).scrollTop() > 120) {
+                             $("#main_menu_bg").addClass('navbar-fixed-top');
+                             $("header").addClass('menu-scroll');
+                             $("header").removeClass('main_menu');
+
+                         } else {
+                             $("#main_menu_bg").removeClass('navbar-fixed-top');
+
+                             $("header").removeClass('menu-scroll');
+                             $("header").addClass('main_menu');
+                         }
+                     });
+                 }
+                else {
+                         $("#main_menu_bg").addClass('navbar-fixed-top navbar-inverse');
+                                    //$("header").addClass('menu-scroll');
+                                    $("#main_menu_bg").removeClass('main_menu_bg');
+                    }
+
+
+
+            });
 
 // document.getElementById("settime").value = "00:00:00";
 // document.getElementById("settime2").value = "00:00:00";

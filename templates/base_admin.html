@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cook'It - Administration</title>
+    <title>TogoKuizine - Administration</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -35,7 +35,7 @@
 
     <!-- Custom Fonts -->
     <link href="{% static 'admin/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'assets/css/toastr.scss' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/toastr.css' %}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,8 +43,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
-<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script> -->
+
 
 	
     
@@ -65,7 +64,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Cook'It</a>
+                <a class="navbar-brand" href="/">Togokuizine</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -141,16 +140,14 @@
                         <li>
                             <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
-			<li>
-                            <a href="{% url 'password_change' %}"><i class="fa fa-fw fa-user"></i> Change password</a>
+			            <li>
+                            <a href="{% url 'account_change_password' %}"><i class="fa fa-fw fa-lock" ia-hidden="true"></i>{% trans 'Mot de passe' %}</a>
 
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>
-                        <li>
-                            <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
+
                         <li class="divider"></li>
                        
                         <li>
@@ -340,9 +337,10 @@
               "hideMethod": "fadeOut"
              }
 
-            
 
         });
+
+
     </script>
     {% if messages %}
     {% for message in messages %}

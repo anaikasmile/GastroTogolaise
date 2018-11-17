@@ -64,14 +64,30 @@ Author URI: http://www.bootstrapthemes.co
 
 }
 /* Landscape phones and portrait tablets */
-@media  (max-width: 768px) {
+@media  (max-width: 992px) {
     html {
         font-size: 95%;
     }
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
 		border-color: transparent;
-		background-color: rgba(31, 31, 31, 0.65);
+		/*background-color: rgba(31, 31, 31, 0.65);*/
 	}
+    .navbar-default .navbar-nav>li>a {
+        color: #333;
+        font-family: 'robotobold';
+        text-transform: uppercase;
+        font-size: 12px;
+		/*background-color: rgba(31, 31, 31, 0.65);*/
+	}
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+        color: #444;
+        font-family: 'robotobold';
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+        color: #f3b81f;
+    }
+
 	.main_menu_bg .navbar-nav>li>a {
         text-align: center;
     }
@@ -107,6 +123,11 @@ Author URI: http://www.bootstrapthemes.co
     .carousel-caption h1 {
         font-size: 18px;
     }
+    .top-navbar .navbar-right{
+        float: left;
+
+    }
+
 
 }
 
@@ -173,7 +194,7 @@ Author URI: http://www.bootstrapthemes.co
 
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   #slide-navbar-collapse {
     position: fixed;
     top: 0;
@@ -198,3 +219,29 @@ Author URI: http://www.bootstrapthemes.co
     z-index: 49;
   }
 }
+ @media screen and (max-width: 992px) {
+      .side-collapse-container{
+          width:100%;
+          position:relative;
+          left:0;
+          transition:left .4s;
+
+      }
+      .side-collapse-container.out{
+          left:200px;
+
+      }
+      .side-collapse {
+          top:50px;
+          bottom:0;
+          left:0;
+          width:200px;
+          position:fixed;
+          overflow:hidden;
+          transition:width .4s;
+
+      }
+      .side-collapse.in {
+          width:0;
+      }
+  }

@@ -26,14 +26,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Cook in Togo</title>
-        <meta name="description" content="">
+        <title>TogoKuizine</title>
+        <meta name="description" content="Cuisine, Togo">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-<!--    <link rel="stylesheet" href="{% static 'assets/css/skills/progressbar.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/skills/style.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/portfolio.jquery.css' %}"> -->
 
         <link rel="stylesheet" href="{% static 'assets/css/fonticons.css' %}">
         <link rel="stylesheet" href="{% static 'assets/fonts/stylesheet.css' %}">
@@ -43,7 +39,7 @@
 
         <link rel="stylesheet" href="{% static 'assets/css/colors.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/mdb.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/toastr.scss' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/toastr.css' %}">
       
         <!--Theme custom css -->
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
@@ -53,7 +49,7 @@
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 
-        <!-- <script src="{% static 'assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>  -->
+
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
@@ -64,17 +60,19 @@
         <link rel="stylesheet" href="{% static 'assets/css/error.css' %}">
         <link href="/static/django_addanother/addanother.css" type="text/css" media="all" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
-        
+
+
 
 
     </head>
+
 
     <body data-spy="scroll" data-target=".navbar-collapse">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!--  <div class='preloader'><div class='loaded'>&nbsp;</div></div> -->
-    <div class="top-bar">
+    <div class="top-bar hidden-sm hidden-xs">
         <div class="container">
             <div class="col-md-12">
                 
@@ -86,7 +84,7 @@
         
       
                    
-            <ul class="list-inline navbar-right">             
+            <ul class="list-inline navbar-right">
                 {% if user.is_authenticated %}
                     
                 <li class="dropdown">
@@ -95,7 +93,7 @@
                         <i class="fa fa-bell"></i> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu notification-box-list">
-                    
+
                         {% render_notifications using notifications.unread for box %}
                         <li><a href="/notifications/all" class="text-center">View all</li>
 
@@ -144,39 +142,78 @@
             </div>
               
         </div>
-    </div>  
+    </div>
+    <div class="side-collapse-container">
+    <header role="banner" class="main_menu">
 
-    <header class="main_menu">
-           
-        <div class="main_menu_bg">     
+        <div class="main_menu_bg navbar navbar-default" id="main_menu_bg">
 
-        <nav class="navbar navbar-default">
-                <div class="container">
+        <div class="container">
+            <div class="navbar-header">
 
-                    <div class="row">
-                        <div class="col-md-2">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="/">
-                                <img src="{% static 'assets/images/tk-small.png' %}">
+                <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 
-                               <!--  <img src="{% static 'assets/images/finalTK2.png' %}"> -->
-                            </a>
-                        </div>
-                        </div>
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'assets/images/tk-small.png' %}">
+                </a>
+                <ul class="list-inline navbar-right visible-sm visible-xs pull-right" style="padding-top:15px;">
+                {% if user.is_authenticated %}
 
-                        <div class="col-md-10">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="nf-count"></span>
+                        <i class="fa fa-bell"></i> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu notification-box-list">
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        {% render_notifications using notifications.unread for box %}
+                        <li><a href="/notifications/all" class="text-center">View all</li>
 
-                            <ul class="nav navbar-nav">        
-                  
-                                <li class="dropdown">
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ request.user.username }} <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+
+
+                        <li>
+                            <a href="{% url 'recipe_add' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> {% trans 'Ajouter une recette' %}</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'recipe_box_user' %}"><i class="fa fa-fw fa-gear"></i> {% trans 'Paramètres' %}</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-user" ia-hidden="true"></i>{% trans 'Modifier votre profil' %}</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'account_change_password' %}"><i class="fa fa-fw fa-lock" ia-hidden="true"></i>{% trans 'Mot de passe' %}</a>
+                        </li>
+                        {% if user.is_staff_member or user.is_staff %}
+
+                        <li>
+                            <a href="{% url 'stats' %}"><i class="fa fa-fw fa-dashboard" ia-hidden="true"></i> {% trans 'Dashboard' %}</a>
+                        </li>
+                        {% endif %}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#logout"><i class="fa fa-fw fa-power-off" ia-hidden="true"></i> {% trans 'Se déconnecter' %}</a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <a  href="{% url 'account_login' %}"><i class="fa fa-user"></i>&nbsp; {% trans 'Se connecter' %} </a>
+
+                {% endif %}
+                     </li>
+                </ul>
+            </div>
+            <div class="navbar-default side-collapse in">
+                  <nav role="navigation" class="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                              <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recettes</a>
                                     <ul class="dropdown-menu">
                                         {%for cat in categories %}
@@ -185,7 +222,7 @@
                                             <hr>
                                         </li>
                                         {% endfor %}
-                                        
+
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'video_list' %}">Videos</a></li>
@@ -198,11 +235,11 @@
                                             <hr>
                                         </li>
                                         {% endfor %}
-                                       
-                                 
+
+
                                     </ul>
                                 </li>
-                               
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses</a>
                                     <ul class="dropdown-menu">
@@ -212,79 +249,74 @@
                                             <hr>
                                         </li>
                                         {% endfor %}
-                                      
+
                                     </ul>
                                 </li>
-                            
-                                
+
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                                     <ul class="dropdown-menu">
-                                      <!-- 
+                                      <!--
                                         {% get_flatpages as flatpages %}
-                                        
+
                                        {% for page in flatpages %}
-                                           
+
                                        {% endfor %} -->
-                                       
+
                                         <li><a href="{% url 'about' %}">L'équipe</a></li>
-                                        
+
                                         <hr>
                                         <li><a href="{% url 'contributors' %}">Contributeurs</a></li>
                                            <hr>
                                         <li><a href="">Mentions Légales</a></li>
-                                          
+
                                     </ul>
                                 </li>
-                            
+
                                 <li><a href="{% url 'recipe_add' %}"> Proposer votre recette</a></li>
-                                
+
                                 <li>
                                     <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <span class="glyphicon glyphicon-search" style="font-size:20px;"></span></a>
                                     <ul class="dropdown-menu search">
                                         <li>
-                                       
+
                                             <form class="navbar-form" role="search" action="{% url 'search:results' %}">
 
                                                 <div class="form-group">
                                                     <input type="text" name="query" class="form-control" placeholder="{% trans 'Rechercher' %}">
                                                 </div>
-                                              
+
                                             </form>
-                                      
+
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
-                            
-                        </div>
-
-                        </div>
-                    </div>    
-               </div>
-
-                   
-            </nav>
+                        </ul>
+                  </nav>
+            </div>
         </div>
-                   
+        </div>
     </header>
+
+
 
  <!--End of header -->
 
-{% block slide %} 
+    {% block slide %}
 
-{% endblock slide %}
-
-
-{% block header %}
-
-{% endblock header %}
+    {% endblock slide %}
 
 
-{% block content_base %}
+    {% block header %}
 
-{% endblock content_base %}
+    {% endblock header %}
+
+
+    {% block content_base %}
+
+    {% endblock content_base %}
 
    
   <section id="contact" class="footer_widget">
@@ -378,7 +410,7 @@
                 </div>
             </div>
         </footer>
-
+</div>
 
 
 
@@ -420,31 +452,22 @@
         <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
         <script  type="text/javascript" src="{% static 'assets/js/main.js' %}"></script> 
-        <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.js' %}"></script>
 
-        <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script> 
-
-
-    <!--<script src="{% static 'assets/js/jquery.easypiechart.min.js' %}"></script>
-        <script src="{% static 'assets/js/portfolio.jquery.js' %}"></script>
-        <script src="{% static 'assets/js/jquery.mixitup.min.js' %}"></script>
-        <script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
-        <script src="{% static 'assets/css/skills/inview.min.js' %}"></script>
-        <script src="{% static 'assets/css/skills/progressbar.js' %}"></script>
-        <script src="{% static 'assets/css/skills/main.js' %}"></script>  -->
-
+        <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
        
         <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script> 
+        <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+
         {% include_notify_js_variables %}
         <script src="{% static 'notify/notifyX.js' %}"></script>
 
     
-        <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script> 
+        <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script>
         {{ form.media.js }}
         <script type="text/javascript">
-            $(document).ready(function() { 
-                
+            $(document).ready(function() {
+
                 toastr.options = {
                   "closeButton": false,
                   "debug": false,
@@ -463,9 +486,42 @@
                   "hideMethod": "fadeOut"
                  }
 
-                
+                var sideslider = $('[data-toggle=collapse-side]');
+                var sel = sideslider.attr('data-target');
+                var sel2 = sideslider.attr('data-target-2');
+                sideslider.click(function(event){
+                    console.log('ok');
+
+                    $(sel).toggleClass('in');
+                    $(sel2).toggleClass('out');
+                });
+
+              if ($(window).width() > 992) {
+                     $(document).on("scroll", function () {
+                         if ($(document).scrollTop() > 120) {
+                             $("#main_menu_bg").addClass('navbar-fixed-top');
+                             $("header").addClass('menu-scroll');
+                             $("header").removeClass('main_menu');
+
+                         } else {
+                             $("#main_menu_bg").removeClass('navbar-fixed-top');
+
+                             $("header").removeClass('menu-scroll');
+                             $("header").addClass('main_menu');
+                         }
+                     });
+                 }
+                else {
+                         $("#main_menu_bg").addClass('navbar-fixed-top navbar-inverse');
+                                    //$("header").addClass('menu-scroll');
+                                    $("#main_menu_bg").removeClass('main_menu_bg');
+                    }
+
+
 
             });
+
+
         </script>
         {% if messages %}
         {% for message in messages %}

@@ -16,7 +16,9 @@ Installer Django 1.10
 - Cloner le projet sur Github
 - Creer votre base de données Postgres avec le nom d'utilisateur et le mot de passe définis dans le settings
 - Executer la commande pip freeze >> requirements.txt pour installer toutes les app.
-
+- Executer python manage.py  makemigrations
+python manage.py migrate
+python manage.py createsuperuser s
 
 #Aborescence du projet
 #les apps
