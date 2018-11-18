@@ -262,7 +262,6 @@ MESSAGE_TAGS = {
 
 AUTH_USER_MODEL = "userprofile.User"
 
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 LOGGING = {
     'version': 1,
