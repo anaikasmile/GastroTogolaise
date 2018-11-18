@@ -9,7 +9,7 @@ DATABASES = {
         'NAME': 'togokuizine_db',
         'USER': 'togokuizine_user',
         'PASSWORD': 'togokuizine@n4n85fgh',
-        'HOST': 'localhost',
+        'HOST': '46.101.83.107',
         'PORT': '',
     }
 }
