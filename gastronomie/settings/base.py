@@ -215,7 +215,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'media'),
-
+    '/home/togokuizine/lib/python2.7/site-packages/django/contrib/admin/static/admin',
 )
 
 
@@ -259,7 +259,6 @@ MESSAGE_TAGS = {
 
 AUTH_USER_MODEL = "userprofile.User"
 
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 LOGGING = {
     'version': 1,

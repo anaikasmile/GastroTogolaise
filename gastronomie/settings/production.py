@@ -31,6 +31,3 @@ EMAIL_PORT = 587
 
 
 
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-
-
