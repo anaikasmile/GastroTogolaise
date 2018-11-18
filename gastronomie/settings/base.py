@@ -215,8 +215,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'media'),
-
+    os.path.join(BASE_DIR, 'media'),
+    '/home/sonia/Venv/lib/python3.5/site-packages/django/contrib/admin/static',
 )
+
+
 
 
 EMBED_VIDEO_BACKENDS = (

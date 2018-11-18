@@ -4,5 +4,5 @@ media
 staticfiles
 *.pyc
 .env
-.log
-settings/production.py
+*.log
+*/production.py
