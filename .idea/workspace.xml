@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acd4bac7-93a0-496b-81be-33b64d3623be" name="Default Changelist" comment="Resol conflits">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/django-notify-x/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/django-notify-x/.travis.yml" afterDir="false" />
@@ -130,11 +132,11 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="270" />
-          <entry key="gitignore" value="38" />
+          <entry key="gitignore" value="57" />
           <entry key="html" value="835" />
           <entry key="js" value="74" />
           <entry key="md" value="128" />
-          <entry key="py" value="377" />
+          <entry key="py" value="378" />
           <entry key="txt" value="15" />
         </counts>
       </usages-collector>
@@ -144,8 +146,8 @@
           <entry key="HTML" value="835" />
           <entry key="JavaScript" value="74" />
           <entry key="Markdown" value="128" />
-          <entry key="PLAIN_TEXT" value="53" />
-          <entry key="Python" value="377" />
+          <entry key="PLAIN_TEXT" value="72" />
+          <entry key="Python" value="378" />
         </counts>
       </usages-collector>
     </session>
@@ -194,8 +196,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gastronomie/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -233,8 +235,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="135">
+              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -380,6 +382,11 @@
               <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
               <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GastroTogolaise" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GastroTogolaise" type="462c0819:PsiDirectoryNode" />
+              <item name="gastronomie" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -444,7 +451,7 @@
     <frame x="67" y="75" width="1299" height="688" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.817734" weight="0.25618514" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.817734" visible="true" weight="0.25618514" />
       <window_info id="Structure" order="1" sideWeight="0.18226601" side_tool="true" weight="0.2184874" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -774,15 +781,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="135">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gastronomie/settings/production.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
