@@ -44,24 +44,18 @@
         <!--Theme custom css -->
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/login-register.css' %}">
-    
+        <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+        <link href="/static/django_addanother/addanother.css" type="text/css" media="all" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 
-
-        <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-
+        <!--font family css-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-
-        <link rel="stylesheet" href="{% static 'assets/css/error.css' %}">
-        <link href="/static/django_addanother/addanother.css" type="text/css" media="all" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
-
-
 
 
     </head>
@@ -319,134 +313,131 @@
     {% endblock content_base %}
 
    
-  <section id="contact" class="footer_widget">
-            <div class="container">
-                <div class="row">
-                    <div class="main_widget">
+   <section id="contact" class="footer_widget">
+        <div class="container">
+            <div class="row">
+                <div class="main_widget">
 
 
-                        <div class="row">
-
-
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_widget wow fadeIn" data-wow-duration="800ms">
-                                    <div class="footer_logo">
-                                        <!-- <h2>TogoKuizine</h2> -->
-
-                                        <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%"> 
-
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in egestas lectus. 
-                                        Etiam tempor odio tellus, at bibendum neque faucibus quis. Sed vel facilisis elit. </p>
-                                    <p>Nullam fringilla pharetra diam non accumsan. Morbi eget aliquam mauris. 
-                                        Etiam vehicula efficitur mi.</p>
-
-
-                                    <a class="weblink" href="">www.togokuizine.com</a>
-                                </div>
-                            </div>
-
-                            
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_widget wow fadeIn" data-wow-duration="800ms">
-                                    <h4 class="footer_title">LATEST NEWS</h4>
-                                    <div class="separator4"></div>
-
-                                    <div class="footer_gellary">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4  col-xs-12">
-                                <div class="single_widget wow fadeIn" data-wow-duration="800ms">
-                                    <h4 class="footer_title">CONTACT</h4>
-                                    <div class="separator4"></div>
-                                    <ul>
-                                        <li><a href=""><i class="fa fa-envelope"></i> admin@togokuizine.com</a></li>
-                                        <li><a href=""><i class="fa fa-phone"></i>000 000 00</a></li>
-                                        <li><a href=""><i class="fa fa-map-marker"></i> Lome, Togo</a></li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-
-
-                            
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-
-
-
-
-        <footer id="footer" class="footer text-center">
-            <div class="container">
-                <div class="main_footer">
                     <div class="row">
 
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="copyright_text">
-                                <p class=" wow fadeInRight" data-wow-duration="1s"> © 2018. All Rights Reserved</p>
+
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="single_widget wow fadeIn" data-wow-duration="800ms">
+                                <div class="footer_logo">
+                                    <!-- <h2>TogoKuizine</h2> -->
+
+                                    <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%">
+
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in egestas lectus.
+                                    Etiam tempor odio tellus, at bibendum neque faucibus quis. Sed vel facilisis elit. </p>
+                                <p>Nullam fringilla pharetra diam non accumsan. Morbi eget aliquam mauris.
+                                    Etiam vehicula efficitur mi.</p>
+
+
+                                <a class="weblink" href="">www.togokuizine.com</a>
                             </div>
                         </div>
 
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="footer_socail">
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                                <a href=""><i class="fa fa-instagram"></i></a>
-                                <a href=""><i class="fa fa-youtube"></i></a>
+
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="single_widget wow fadeIn" data-wow-duration="800ms">
+                                <h4 class="footer_title">LATEST NEWS</h4>
+                                <div class="separator4"></div>
+
+                                <div class="footer_gellary">
+
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="col-sm-4  col-xs-12">
+                            <div class="single_widget wow fadeIn" data-wow-duration="800ms">
+                                <h4 class="footer_title">CONTACT</h4>
+                                <div class="separator4"></div>
+                                <ul>
+                                    <li><a href=""><i class="fa fa-envelope"></i> admin@togokuizine.com</a></li>
+                                    <li><a href=""><i class="fa fa-phone"></i>000 000 00</a></li>
+                                    <li><a href=""><i class="fa fa-map-marker"></i> Lome, Togo</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+   </section>
+
+
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <div class="main_footer">
+                <div class="row">
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="copyright_text">
+                            <p class=" wow fadeInRight" data-wow-duration="1s"> © 2018. All Rights Reserved</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="footer_socail">
+                            <a href=""><i class="fa fa-facebook"></i></a>
+                            <a href=""><i class="fa fa-twitter"></i></a>
+                            <a href=""><i class="fa fa-google-plus"></i></a>
+                            <a href=""><i class="fa fa-instagram"></i></a>
+                            <a href=""><i class="fa fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-</div>
+        </div>
+    </footer>
+
 
 
 
 <!-- Modal  for logout-->
-        <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="">
+    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="">
           <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                 
-                </button>
-                  <h5 class="h5-responsive"> {% trans 'Log out' %}</h5>
-              </div>
-              <div class="modal-body">
-                <p>{% trans 'Etes-vous sur de vouloir vous déconnecter?' %}</p>
-                <form method="post" action="{% url 'account_logout' %}">
-                  {% csrf_token %}
-                  {% if redirect_field_value %}
-                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-                  {% endif %}
-                  <button  class="btn btn-primary" type="submit">{% trans 'Oui' %}</button>
-                </form>
-              </div>
-              
-            </div>
+                <div class="modal-content">
+                      <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+
+                            </button>
+                            <h5 class="h5-responsive"> {% trans 'Log out' %}</h5>
+                      </div>
+                      <div class="modal-body">
+                            <p>{% trans 'Etes-vous sur de vouloir vous déconnecter?' %}</p>
+                                <form method="post" action="{% url 'account_logout' %}">
+                                  {% csrf_token %}
+                                  {% if redirect_field_value %}
+                                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                                  {% endif %}
+                                  <button  class="btn btn-primary" type="submit">{% trans 'Oui' %}</button>
+                                </form>
+                      </div>
+
+                </div>
           </div>
-        </div>
+    </div>
  
 <!-- End modal -->
 
-        <!-- START SCROLL TO TOP  -->
+    <!-- START SCROLL TO TOP  -->
 
-        <div class="scrollup">
-            <a href="#"><i class="fa fa-chevron-up"></i></a>
-        </div>
+    <div class="scrollup">
+        <a href="#"><i class="fa fa-chevron-up"></i></a>
+    </div>
 
 
         <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
