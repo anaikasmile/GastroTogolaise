@@ -17,7 +17,7 @@ DATABASES = {
 ALLOWED_HOSTS = ['46.101.83.107', 'togokuizine.com','localhost']
 
 
-DEBUG  = False
+DEBUG  =  False
 
 
 
