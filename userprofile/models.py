@@ -10,13 +10,14 @@ from django.dispatch import receiver
 from sorl.thumbnail import ImageField
 from django_countries.fields import CountryField
 from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
 
-
+@python_2_unicode_compatible
 class User(AbstractUser):
 	is_contributor = models.BooleanField(default=True)
 	is_staff_member = models.BooleanField(default=False)
 
-
+@python_2_unicode_compatible
 class Profile(models.Model):
 	SEXE = (
         (u'F', _(u'Female')),

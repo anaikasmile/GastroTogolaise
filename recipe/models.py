@@ -10,9 +10,12 @@ from embed_video.fields import EmbedVideoField
 from django_countries.fields import CountryField
 from taggit.managers import TaggableManager
 from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
+
 #from bootstrap3_datetime.widgets import DateTimePicker
 # Create your models here.
 
+@python_2_unicode_compatible
 class Category(models.Model):
 	name = models.CharField(max_length=50)
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -22,7 +25,7 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name 
 
-
+@python_2_unicode_compatible
 class Origin(models.Model):
 	ethnic = models.CharField(max_length=200)
 	country = CountryField(blank_label=('select country'),blank=True, null=True)
@@ -31,7 +34,8 @@ class Origin(models.Model):
 
 	def __str__(self):
 		return self.ethnic
-
+		
+@python_2_unicode_compatible
 class Recipe(models.Model):
 	category = models.ForeignKey(Category,related_name='recipes',verbose_name="Catégorie *")
 	title = models.CharField(max_length=200,verbose_name="Nom de la recette *", help_text="Choisissez un titre explicite (Soyez créatif)")

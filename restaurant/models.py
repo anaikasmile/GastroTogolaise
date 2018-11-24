@@ -8,8 +8,9 @@ from sorl.thumbnail import ImageField
 # Create your models here.
 from django.utils import timezone
 from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
 
-
+@python_2_unicode_compatible
 class Category(models.Model):
 	name = models.CharField(max_length=50)
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -19,6 +20,8 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name 
 
+
+@python_2_unicode_compatible
 class Restaurant(models.Model):
 	ENABLED = (
         ('True', _(u'True')),

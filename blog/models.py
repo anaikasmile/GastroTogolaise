@@ -8,11 +8,11 @@ from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
 from taggit.managers import TaggableManager
 from django.conf import settings
-
+from django.utils.encoding import python_2_unicode_compatible
 
 # Create your models here.
 
-
+@python_2_unicode_compatible
 class Category(models.Model):
 	name = models.CharField(max_length=50)
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -22,7 +22,7 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name 
 
-
+@python_2_unicode_compatible
 class Post(models.Model):
 	category = models.ForeignKey(Category,related_name='posts',verbose_name="Categorie")
 	author = models.ForeignKey(settings.AUTH_USER_MODEL)
