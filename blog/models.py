@@ -24,8 +24,8 @@ class Category(models.Model):
 class Post(models.Model):
 	category = models.ForeignKey(Category,related_name='posts',verbose_name="Categorie")
 	author = models.ForeignKey(settings.AUTH_USER_MODEL)
-	title =  models.CharField(max_length=200,verbose_name="Titre")
-	text =   RichTextField(verbose_name="Description")
+	title = models.CharField(max_length=200,verbose_name="Titre")
+	text = RichTextField(verbose_name="Description")
 	image = models.ImageField(blank=True, null= True,upload_to="blog")
 	video = EmbedVideoField(blank=True, null= True)
 	view = models.IntegerField(default=0,null=True, blank= True)
