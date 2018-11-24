@@ -129,7 +129,7 @@ def post_preview(request,slug):
 #@login_required
 @login_required
 @staff_required
-def post_edit(request,pk):
+def post_update(request,slug):
 	post = get_object_or_404(Post, slug=slug)
 	if request.method == "POST":
 		form = PostForm(request.POST,request.FILES, instance=post)
@@ -138,7 +138,7 @@ def post_edit(request,pk):
 			post.save()
 			form.save_m2m()
 			messages.success(request, 'Post updated',extra_tags='alert')
-		return redirect('post_preview', pk=post.pk)
+		return redirect('post_preview', slug=post.slug)
 	else:
 		form = PostForm(instance=post)
 	return render(request, 'blog/post_new.html', {'form': form})
@@ -163,8 +163,8 @@ def post_publish_list(request):
 #@login_required
 @login_required
 @staff_required
-def post_publish(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def post_publish(request, slug):
+    post = get_object_or_404(Post, slug=slug)
     post.publish()
     messages.success(request, 'Your post was published!',extra_tags='alert')
     return redirect('post_draft_list')
@@ -174,8 +174,8 @@ def post_publish(request, pk):
 # @login_required
 @login_required
 @staff_required
-def post_delete(request,pk):
-	post = get_object_or_404(Post, pk=pk)
+def post_delete(request,slug):
+	post = get_object_or_404(Post, slug=slug)
 	post.delete()
 	messages.success(request, 'Post deleted',extra_tags='alert')
 	return redirect('post_publish_list')
@@ -237,28 +237,28 @@ def post_category_delete(request,slug):
 
 
 
-# def add_comment_post(request,pk):
-# 	post = get_object_or_404(Post, pk=pk)
+# def add_comment_post(request,slug):
+# 	post = get_object_or_404(Post, slug=slug)
 # 	if request.method == "POST":
 # 		form = CommentForm(request.POST)
 # 		if form.is_valid():
 # 			comment = form.save(commit=False)
 # 			comment.post = post
 # 			comment.save()
-# 		return redirect('post_detail', pk=post.pk)
+# 		return redirect('post_detail', slug=post.slug)
 # 	else:
 # 		form = CommentForm()
 # 	return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
 
 # @login_required
-# def comment_approve(request, pk):
-#     comment = get_object_or_404(Comment, pk=pk)
+# def comment_approve(request, slug):
+#     comment = get_object_or_404(Comment, slug=slug)
 #     comment.approve()
-#     return redirect('post_detail', pk=comment.post.pk)
+#     return redirect('post_detail', slug=comment.post.slug)
 
 # @login_required
-# def comment_remove(request, pk):
-#     comment = get_object_or_404(Comment, pk=pk)
+# def comment_remove(request, slug):
+#     comment = get_object_or_404(Comment, slug=slug)
 #     comment.delete()
-#     return redirect('post_detail', pk=comment.post.pk)
+#     return redirect('post_detail', slug=comment.post.slug)

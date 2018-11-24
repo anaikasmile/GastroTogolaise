@@ -297,7 +297,7 @@ def stats(request):
 @login_required
 @staff_required
 def recipe_draft_list(request):
-	recipes = Recipe.objects.get_draft()
+	recipes = Recipe.objects.filter(published_at__isnull=True).order_by('-created_at')
 	recipes = admin_pagination(request, recipes)
 	return render(request, 'recipe/recipe_draft_list.html', {'recipes':recipes})
 
@@ -305,7 +305,7 @@ def recipe_draft_list(request):
 @login_required
 @staff_required
 def recipe_publish_list(request):
-	recipes = Recipe.objects.get_publish()
+	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
 	recipes = admin_pagination(request, recipes)
 	return render(request, 'recipe/recipe_publish_list.html', {'recipes':recipes})
 

@@ -185,6 +185,8 @@ USE_TZ = True
 
 # Login
 
+AUTH_USER_MODEL = "userprofile.User"
+
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
@@ -216,6 +218,7 @@ STATICFILES_DIRS = (
      os.path.join(BASE_DIR, 'static'),
      os.path.join(BASE_DIR, 'media'),
      '/home/togokuizine/lib/python2.7/site-packages/django/contrib/admin/static',
+    #'/home/sonia/Venv/lib/python3.5/site-packages/django/contrib/admin/static/admin',
 )
 
 
@@ -237,8 +240,8 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-AWS_QUERYSTRING_AUTH = False
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor"
+CKEDITOR_UPLOAD_PATH = "/uploads"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
@@ -259,7 +262,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-AUTH_USER_MODEL = "userprofile.User"
 
 
 LOGGING = {

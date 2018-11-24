@@ -64,7 +64,7 @@
                                                 <a href="{% url 'post_preview' slug=post.slug %}"><i class="fa fa-eye" aria-hidden="true"></i> {% trans 'Voir' %}</a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'post_update' pk=post.pk %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{% trans 'Modifier' %}</a>
+                                                <a href="{% url 'post_update' slug=post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{% trans 'Modifier' %}</a>
                                             </li>
                                             <li>
                                                 <a data-toggle="modal" data-target="#deletepost{{post.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i> {% trans 'Supprimer' %}</a>
@@ -87,7 +87,7 @@
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <a href="{% url 'post_delete' pk=post.pk %}" type="submit" class="btn btn-danger">{% trans 'Suppimer l article' %}</a>
+                                            <a href="{% url 'post_delete' slug=post.slug %}" type="submit" class="btn btn-danger">{% trans 'Suppimer l article' %}</a>
                                           </div>
                                         </div>
                                       </div>

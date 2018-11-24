@@ -47,9 +47,9 @@
                     
                         <div class="row text-center">
                             <div class="col-sm-12">
-                                <a href="{% url 'restaurant_update' pk=restaurant.pk %}" class="btn btn-primary">Modifier</a>
+                                <a href="{% url 'restaurant_update' slug=restaurant.slug %}" class="btn btn-primary">Modifier</a>
                                 {% if not restaurant.published_at %}
-                                <a href="{% url 'restaurant_publish' pk=restaurant.pk %}" class="btn btn-primary">Publier</a>
+                                <a href="{% url 'restaurant_publish' slug=restaurant.slug %}" class="btn btn-primary">Publier</a>
                                 {% endif %}
                             </div>
                         </div>

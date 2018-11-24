@@ -55,7 +55,7 @@ body {
 }
 
 .notfound .notfound-404 h1>span {
-  color: #00b7ff;
+  color: #8BC34A;
 }
 
 .notfound h2 {
@@ -74,8 +74,25 @@ body {
   width: 100%;
   margin: auto;
 }
+.btn-default{
+  background-color: #5e9a28;
+  border-color: #8BC34A;
+  border-width: 0;
+  color: #FFFFFF;
+  display: block;
+  margin: 0 auto;
+  padding: 15px 50px;
+  width: 150px;
+}
 
-.
+.btn-default:hover {
+  background-color: #8BC34A;
+  color: #FFFFFF;
+}
+a .btn-default{
+  text-decoration: none;
+}
+
 
 @media only screen and (max-width: 767px) {
   .notfound h2 {

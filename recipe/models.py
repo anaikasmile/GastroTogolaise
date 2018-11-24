@@ -68,12 +68,6 @@ class Recipe(models.Model):
 		self.published_at = timezone.now()
 		self.save()
 
-	def get_publish(self):
-		return self.filter(published_at__isnull=False).order_by('-published_at')
-	
-	def get_draft(self):
-		return self.filter(published_at__isnull=True).order_by('-created_at')
-
 	def __str__(self):
 		return self.title
 

@@ -68,7 +68,7 @@ def restaurant_new(request):
 			restaurant.slug = slugify(restaurant.title)
 			restaurant.save()
 			messages.success(request, ('Enregistrement réussi'))
-			return redirect ('restaurant_preview',pk=restaurant.pk)
+			return redirect ('restaurant_preview',slug=restaurant.slug)
 
 	else:
 		form = RestaurantForm()
@@ -78,14 +78,14 @@ def restaurant_new(request):
 #Modifier
 @login_required
 @staff_required
-def restaurant_update(request,pk):
-	restaurant = get_object_or_404(Restaurant, pk=pk)
+def restaurant_update(request,slug):
+	restaurant = get_object_or_404(Restaurant, slug=slug)
 	if request.method == "POST":
 		form = RestaurantForm(request.POST,request.FILES, instance=restaurant)
 		if form.is_valid():
 			form.save()
 			messages.success(request, ('Enregistrement réussi'))
-		return redirect('restaurant_preview', pk=restaurant.pk)
+		return redirect('restaurant_preview', slug=restaurant.slug)
 	else:
 		form = RestaurantForm(instance=restaurant)
 	return render(request, 'restaurant/restaurant_update.html', {'form': form})
@@ -94,8 +94,8 @@ def restaurant_update(request,pk):
 #Supprimer
 @login_required
 @staff_required
-def restaurant_delete(request,pk):
-	restaurant = get_object_or_404(Restaurant, pk=pk)
+def restaurant_delete(request,slug):
+	restaurant = get_object_or_404(Restaurant, slug=slug)
 	restaurant.delete()
 	messages.success(request, 'Suppression réussie')
 	return redirect('restaurant_publish_list')
@@ -112,15 +112,15 @@ def restaurant_publish_list(request):
 
 @login_required
 @staff_required
-def restaurant_preview(request,pk):
-	restaurant = get_object_or_404(Restaurant,pk=pk)
+def restaurant_preview(request,slug):
+	restaurant = get_object_or_404(Restaurant,slug=slug)
 	return render(request,'restaurant/restaurant_preview.html',{'restaurant':restaurant})
 
 #Approuver une recette
 @login_required
 @staff_required
-def restaurant_publish(request,pk):
-	restaurant = get_object_or_404(Restaurant,pk=pk)
+def restaurant_publish(request,slug):
+	restaurant = get_object_or_404(Restaurant,slug=slug)
 	restaurant.publish()
 	messages.success(request, 'Action réussie')
 	return redirect('restaurant_publish_list')

@@ -7,7 +7,7 @@ from . base import *
 
 #DEBUG = config('DEBUG', default=False, cast=bool)
 
-DEBUG = False
+DEBUG = True
 
 #DATABASES = {'default': dj_database_url.config(default="postgres://qfshiulqbogrll:11e2a4a020aaca0707ecf132d0a0685caf76a7cb07feb6383a44771377fe8804@ec2-54-221-212-208.compute-1.amazonaws.com:5432/dfqktli8ama0hd")}
 

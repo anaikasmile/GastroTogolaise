@@ -25,17 +25,17 @@
                          <tr>
                             <td>{{post.created_at|date:'F j, Y'}}</td>
                             </td>
-                            <td><a href="{% url 'post_preview' pk=post.pk %}">{{post.title}}</a></td>
-                            <td><a href="{% url 'post_preview' pk=post.pk %}">{{post.text|truncatewords:15}}</a></td>
+                            <td><a href="{% url 'post_preview' slug=post.slug %}">{{post.title}}</a></td>
+                            <td><a href="{% url 'post_preview' slug=post.slug %}">{{post.text|truncatewords:15}}</a></td>
                             <td><a href="">{{post.author}}</a></td>
                             <td>
                             <a href="javascript:;" data-toggle="collapse" data-target="#publish_{{post.id}}"><i class="fa fa-fw fa-arrows-v"></i> Publish <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="publish_{{post.id}}" class="collapse">
                                     <li>
-                                        <a href="{% url 'post_publish' pk=post.pk %}">Yes</a>
+                                        <a href="{% url 'post_publish' slug=post.slug %}">Yes</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'post_delete' pk=post.pk %}">No</a>
+                                        <a href="{% url 'post_delete' slug=post.slug %}">No</a>
                                     </li>
                                 </ul>
 

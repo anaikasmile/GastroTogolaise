@@ -215,7 +215,7 @@
                              {% if tp.author__profile__photo%}
                                 <img class="img-fluid img-circle" src="{{tp.author__profile__photo.url}}" width="150px;" height="150px;" alt="contributor image">
                             {% else %}
-                                <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                                <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
                             {% endif %}
                                 <h5 class="">{{tp.author__first_name}} {{tp.author__author.last_name}}</h5>
 

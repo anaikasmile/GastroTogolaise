@@ -28,9 +28,9 @@ urlpatterns = [
 
                   url(r'^new/$', views.restaurant_new, name='restaurant_new'),
                   url(r'^liste/$', views.restaurant_publish_list, name='restaurant_publish_list'),
-                  url(r'^restaurant/preview/(?P<pk>[0-9]+)/$', views.restaurant_preview, name='restaurant_preview'),
-                  url(r'^(?P<pk>[0-9]+)/delete/$', views.restaurant_delete, name='restaurant_delete'),
-                  url(r'^(?P<pk>[0-9]+)/update/$', views.restaurant_update, name='restaurant_update'),
-                  url(r'^(?P<pk>[0-9]+)/publish/$', views.restaurant_publish, name='restaurant_publish'),
+                  url(r'^restaurant/preview/(?P<slug>[-\w]+)/$', views.restaurant_preview, name='restaurant_preview'),
+                  url(r'^(?P<slug>[-\w]+)/delete/$', views.restaurant_delete, name='restaurant_delete'),
+                  url(r'^(?P<slug>[-\w]+)/update/$', views.restaurant_update, name='restaurant_update'),
+                  url(r'^(?P<slug>[-\w]+)/publish/$', views.restaurant_publish, name='restaurant_publish'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

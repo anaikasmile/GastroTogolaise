@@ -53,16 +53,16 @@
                                         <td>{{forloop.counter}}</td>
                                         <td>{{restaurant.created_at|date:'F j, Y'}}</td>
                                         <td><a href="">{{restaurant.category.name}}</a></td>
-                                        <td><a href="{% url 'restaurant_preview' pk=restaurant.pk %}">{{restaurant.name}}</a></td>
+                                        <td><a href="{% url 'restaurant_preview' slug=restaurant.slug %}">{{restaurant.name}}</a></td>
                                         <td><a href="">{{restaurant.author}}</a></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="collapse" data-target="#action_{{restaurant.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                             <ul id="action_{{restaurant.id}}" class="collapse">
                                                 <li>
-                                                    <a href="{% url 'restaurant_preview' pk=restaurant.pk %}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
+                                                    <a href="{% url 'restaurant_preview' slug=restaurant.slug %}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{% url 'restaurant_update' pk=restaurant.pk %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
+                                                    <a href="{% url 'restaurant_update' slug=restaurant.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
                                                 </li>
                                                 <li>
                                                     <a data-toggle="modal" data-target="#deleterestaurant{{restaurant.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Supprimer</a>
@@ -85,7 +85,7 @@
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href="{% url 'restaurant_delete' pk=restaurant.pk %}" type="submit" class="btn btn-danger">{ trans 'Supprimer' }</a>
+                                                <a href="{% url 'restaurant_delete' slug=restaurant.slug %}" type="submit" class="btn btn-danger">{ trans 'Supprimer' }</a>
                                               </div>
                                             </div>
                                           </div>

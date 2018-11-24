@@ -126,9 +126,7 @@ def profile_preview(request, pk):
     return render(request, 'userprofile/profile_preview.html', {'user': user})
 
 
-login_required
-
-
+@login_required
 @staff_member_required
 def profile_active(request, pk):
     user = get_object_or_404(User, pk=pk)
