@@ -21,16 +21,9 @@ class PostForm(forms.ModelForm):
 			'text':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textarea','class':'form-control'}),    
 			'image':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
 			'video':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-        	'tags': TagWidget()
+        	'tags': TagWidget(),
             }
 
-# class CommentForm(forms.ModelForm):
-
-# 	class Meta:
-# 		model = Comment
-# 		fields = ('text','author',)
-
-#ajout 07/06/18
 class CategoryForm(forms.ModelForm):
 	class Meta:
 		model = Category
@@ -41,6 +34,4 @@ class CategoryForm(forms.ModelForm):
 			'slug': forms.TextInput(
 				attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
 		}
-
-# fin ajout
 

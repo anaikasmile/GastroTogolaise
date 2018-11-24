@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from recipe.models import Category, Video, Recipe
 from django.shortcuts import get_object_or_404
 from django.db.models import F, Count
