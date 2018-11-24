@@ -16,7 +16,7 @@
                             <img src="{{post.image.url}}" class="img-responsive">
                         
                     {% else %}
-                        <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                        <img src="" class="img-responsive">     
                     {% endif %} 
                         
                         </a>
@@ -75,7 +75,7 @@
                         
                     {% else %}
                     
-                    <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                    <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
                     
                     {% endif %}
                     <h5 class="">{{post.author.first_name}} {{post.author.last_name}}</h5>

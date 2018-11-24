@@ -10,7 +10,7 @@
                              {% if recipe.author.profile.photo %}
                                 <img class="img-fluid img-circle" src="{{recipe.author.profile.photo.url}}" width="150px;" height="150px;" alt="contributor image">
                             {% else %}
-                                <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                                <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
                             {% endif %}
                                 <h5 class="">{{recipe.author.first_name}} {{recipe.author.last_name}}</h5>
 
@@ -50,7 +50,7 @@
                                 
                             {% else %}
                             
-                            <img src="{% static 'img/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
+                            <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-responsive" data-pin-nopin="true">
                             
                             {% endif %}
                             <h5 class="">{{video.author.first_name}} {{video.author.last_name}}</h5>
