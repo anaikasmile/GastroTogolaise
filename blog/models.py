@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from sorl.thumbnail import ImageField
@@ -7,6 +8,7 @@ from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
 from taggit.managers import TaggableManager
 from django.conf import settings
+
 
 # Create your models here.
 

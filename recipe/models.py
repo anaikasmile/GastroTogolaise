@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.db import models
 from ckeditor.fields import RichTextField
 from sorl.thumbnail import ImageField
@@ -9,7 +10,6 @@ from embed_video.fields import EmbedVideoField
 from django_countries.fields import CountryField
 from taggit.managers import TaggableManager
 from django.conf import settings
-
 #from bootstrap3_datetime.widgets import DateTimePicker
 # Create your models here.
 

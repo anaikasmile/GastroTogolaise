@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonResponse
 from django.template import RequestContext
@@ -21,7 +22,9 @@ from gastronomie.decorators import *
 from django.conf import settings
 from django.db.models import Count, F
 from notify.signals import notify
+
 import itertools
+
 
 # Create your views here.
 
