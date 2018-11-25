@@ -102,8 +102,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SOCIALACCOUNT_PROVIDERS = \
-    {'facebook':
-         {'METHOD': 'oauth2',
+    {  'facebook':
+        {'METHOD': 'oauth2',
           'SCOPE': ['email', 'public_profile', 'user_friends'],
           'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
           'FIELDS': [
@@ -121,8 +121,21 @@ SOCIALACCOUNT_PROVIDERS = \
           'EXCHANGE_TOKEN': True,
           'LOCALE_FUNC': lambda request: 'kr_KR',
           'VERIFIED_EMAIL': False,
-          'VERSION': 'v2.4'}
-     }
+          'VERSION': 'v2.4'
+        },
+     
+
+        'google': {
+            'SCOPE': [
+                'profile',
+                'email',
+            ],
+            'AUTH_PARAMS': {
+                'access_type': 'offline',
+            }
+        }
+    }
+
 
 ROOT_URLCONF = 'gastronomie.urls'
 

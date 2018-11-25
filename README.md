@@ -18,7 +18,10 @@ Installer Django 1.10
 - Executer la commande pip freeze >> requirements.txt pour installer toutes les app.
 - Executer python manage.py  makemigrations
 python manage.py migrate
-python manage.py createsuperuser s
+python manage.py createsuperuser 
+-Se connecter à l'interface admin de django
+-Activer le compte du superadmin => Email => verified(a coché)
+- Lui attribuer le role de staff member et contributeur => User => is_contributeur , is_staff
 
 #Aborescence du projet
 #les apps
