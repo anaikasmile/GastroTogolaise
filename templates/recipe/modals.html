@@ -26,10 +26,45 @@
                         </div> -->
                         <div class="modal-footer">
                             <ul class="social-link list-inline">
-                                <li><a href="" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                           </ul>
+                                 <li>
+                                    {% if recipe.author.profile.facebook %}
+                                    <a href="{{recipe.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                    {% else %}
+                                     <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    {% if recipe.author.profile.twitter %}
+
+                                    <a href="{{recipe.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                    {% else %}
+                                    <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    {% if recipe.author.profile.gplus %}
+                                    <a href="{{recipe.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                    {% else %}
+                                     <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    {% if recipe.author.profile.instagram %}
+
+                                    <a href="{{recipe.author.profile.instagram}}" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                    {% else %}
+                                    <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                    {% endif %}
+
+                                </li>
+                                <li>
+                                    {% if recipe.author.profile.linkedin %}
+                                    <a href="{{recipe.author.profile.linkedin}}" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
+                                    {% else %}
+                                    <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
+                                    {% endif %}
+                                </li>
+                             </ul>
                             
                             
                         </div>

@@ -135,7 +135,7 @@
             {% endif %}
               
             <div class="rp-post-share" >
-            <strong> SHARE &nbsp;&nbsp;  </strong>
+            <strong> {% trans 'PARTAGER' %} &nbsp;&nbsp;  </strong>
                 {% post_to_facebook %}
 
                 <!--Twitter-->
@@ -266,15 +266,15 @@
                         {{ form.timestamp }}
                         {{ form.security_hash }}
                         <div class="row">
-                            <div class="form-group col-xs-12 col-sm-4">
-                                <label>{% trans 'Nom' %} <span class="label-description">(ex: Jean) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <label>{% trans 'Nom' %} <span class="label-description">(ex: Koffi) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
                             </div>
-                            <div class="form-group col-xs-12 col-sm-4">
+                            <div class="form-group col-xs-12 col-sm-6">
                                 <label>{% trans 'Email' %} <span class="label-description">(Non Publié) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
                             </div>
-                            <div class="form-group col-xs-12 col-sm-4">
+                            <!-- <div class="form-group col-xs-12 col-sm-4">
                                 <label>{% trans 'Website' %}<span class="label-description">(Optionnel)</span> </label> {{form.url|add_class:'form-control'}}  
-                            </div>
+                            </div> -->
                         </div>
                         
                         <div class="row">

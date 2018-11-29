@@ -1976,6 +1976,12 @@ blockquote footer, blockquote small, blockquote .small {
     order-width: 1px;
     border-style: solid;
 }
+
+.social-link .likedin:hover{
+    background: #007bb6;
+    border-width: 1px;
+    border-style: solid;
+    }
 /* CROUSAL-STARTS */
 #sg-carousel {
     position: relative;

@@ -1,5 +1,6 @@
 {% extends 'recipe/video_publish_list.html' %}	
 {% load staticfiles %}
+{% load i18n %}
 
 {% block content_video %}
 
@@ -12,10 +13,10 @@
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>Created at</th>                        
-                            <th>Title</th>
+                            <th>{% trans 'Date' %}</th>                        
+                            <th>{% trans 'Titre' %}</th>
                             <th>Video</th>
-                            <th>Posted by</th>
+                            <th>{% trans 'Auteur' %}</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -29,13 +30,13 @@
                             <td></td>
                             <td><a href="">{{video.author}}</a></td>
                             <td>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#publish_{{video.id}}"><i class="fa fa-fw fa-arrows-v"></i> Publish <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#publish_{{video.id}}"><i class="fa fa-fw fa-arrows-v"></i> {% trans 'Publier' %} <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="publish_{{video.id}}" class="collapse">
                                     <li>
-                                        <a href="{% url 'video_publish' slug=video.slug %}">Yes</a>
+                                        <a href="{% url 'video_publish' slug=video.slug %}">{% trans 'Oui' %}</a>
                                     </li>
                                     <li>
-                                        <a href="#">No</a>
+                                        <a href="#">{% trans 'Non' %}</a>
                                     </li>
                                 </ul>
 

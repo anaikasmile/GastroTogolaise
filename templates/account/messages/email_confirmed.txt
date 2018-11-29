@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %} {{email}} votre compte a été validé.{% endblocktrans %}
+{% blocktrans %} {{email}} Votre compte a été activé.{% endblocktrans %}

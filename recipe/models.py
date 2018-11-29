@@ -17,20 +17,20 @@ from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class Category(models.Model):
-	name = models.CharField(max_length=50)
-	created_at = models.DateTimeField(auto_now_add=True)
-	update_at = models.DateTimeField(auto_now=True)
-	slug = models.SlugField(null=False,unique=True)
+	name = models.CharField(max_length=50,verbose_name="Nom *")
+	created_at = models.DateTimeField(auto_now_add=True, verbose_name="Créé le")
+	update_at = models.DateTimeField(auto_now=True, verbose_name="Modifié le")
+	slug = models.SlugField(null=False,unique=True, verbose_name="Slug *")
 
 	def __str__(self):
 		return self.name 
 
 @python_2_unicode_compatible
 class Origin(models.Model):
-	ethnic = models.CharField(max_length=200)
-	country = CountryField(blank_label=('select country'),blank=True, null=True)
-	created_at = models.DateTimeField(auto_now_add=True)
-	update_at = models.DateTimeField(auto_now=True)
+	ethnic = models.CharField(max_length=200, verbose_name="Ethnie *")
+	country = CountryField(blank_label=('Choisissez le pays'),blank=True, null=True, verbose_name="Pays *")
+	created_at = models.DateTimeField(auto_now_add=True, verbose_name="Créé le")
+	update_at = models.DateTimeField(auto_now=True,verbose_name="Modifié le")
 
 	def __str__(self):
 		return self.ethnic

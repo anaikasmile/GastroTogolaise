@@ -27,7 +27,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
 	#sexe = models.TextField(max_length=2, blank=True)
 	bio = models.TextField(max_length=500, blank=True, verbose_name="Biographie")
-	country = CountryField(blank_label=_(u'select country'),blank=True, null=True,verbose_name="Pays de résidence")
+	country = CountryField(blank_label=_(u'Choisissez le pays'),blank=True, null=True,verbose_name="Pays de résidence")
 	# birth_date = models.DateField(null=True, blank=True)
 	tel = models.CharField(max_length=50, verbose_name=_(u'Téléphone'), blank=True, help_text=_(u'00228 00 00 00 00'))
 	photo = models.ImageField(upload_to="profiles", blank=True, null=True)

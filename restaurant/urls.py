@@ -33,4 +33,8 @@ urlpatterns = [
                   url(r'^(?P<slug>[-\w]+)/update/$', views.restaurant_update, name='restaurant_update'),
                   url(r'^(?P<slug>[-\w]+)/publish/$', views.restaurant_publish, name='restaurant_publish'),
 
+                  url(r'^new/category$', views.restaurant_new_category, name='restaurant_new_categ'),
+                  url(r'^(?P<slug>[-\w]+)/category/edit/$', views.restaurant_category_update, name='restaurant_category_update'),
+                  url(r'^(?P<slug>[-\w]+)/category/delete/$', views.restaurant_category_delete, name='restaurant_category_delete'),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

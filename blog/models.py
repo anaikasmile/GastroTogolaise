@@ -14,10 +14,10 @@ from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class Category(models.Model):
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=50,verbose_name="Nom *")
 	created_at = models.DateTimeField(auto_now_add=True)
 	update_at = models.DateTimeField(auto_now=True)
-	slug = models.SlugField(null=False,unique=True)
+	slug = models.SlugField(null=False,unique=True,verbose_name="Slug *")
 
 	def __str__(self):
 		return self.name 

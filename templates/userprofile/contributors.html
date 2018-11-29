@@ -67,7 +67,7 @@
                                         {% if user.profile.photo %}
                                         <img class="img-fluid" src="{{user.profile.photo.url}}" width="" alt="contributor image">
                                         {% else %}
-                                        <img src="{% static 'img/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                                        <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
                                         {% endif %}
 
                                     </p>
@@ -86,10 +86,44 @@
                                     {% else %} {{user.username}} {% endif %}</h5>
                                     <p class="card-text">{{user.profile.bio}}</p>                                    
                                     <ul class="social-link list-inline">
-                                        <li><a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a></li>
+                                        <li>
+                                            {% if user.profile.facebook %}
+                                            <a href="{{user.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                            {% else %}
+                                             <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if user.profile.twitter %}
+
+                                            <a href="{{user.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                            {% else %}
+                                            <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if user.profile.gplus %}
+                                            <a href="{{user.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                            {% else %}
+                                             <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if user.profile.instagram %}
+
+                                            <a href="{{user.profile.instagram}}" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                            {% else %}
+                                            <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                            {% endif %}
+
+                                        </li>
+                                        <li>
+                                            {% if user.profile.linkedin %}
+                                            <a href="{{user.profile.linkedin}}" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
+                                            {% else %}
+                                            <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
+                                            {% endif %}
+                                        </li>
                                      </ul>
 
                                 </div>

@@ -17,6 +17,9 @@ body {
     }
 }
 
+a:hover, a:active{
+    text-decoration: none;
+}
 #wrapper {
     padding-left: 0;
 }
@@ -224,4 +227,11 @@ ul.alert-dropdown {
 
 .panel-yellow > a:hover {
     color: #df8a13;
+}
+
+.save:hover{
+    background-color: #FF9800;
+    border-color: none;
+    border: 0px;
+    color: #fff;
 }

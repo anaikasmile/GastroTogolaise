@@ -12,7 +12,7 @@ from django_comments.models import Comment
 from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import Restaurant, Category
-from .forms import RestaurantForm
+from .forms import RestaurantForm, CategoryForm
 from gastronomie.decorators import *
 # Create your views here.
 
@@ -124,4 +124,58 @@ def restaurant_publish(request,slug):
 	restaurant = get_object_or_404(Restaurant,slug=slug)
 	restaurant.publish()
 	messages.success(request, 'Action réussie')
+	return redirect('restaurant_publish_list')
+
+
+
+
+# Ajout de la catégorie de post
+@login_required
+@staff_required
+def restaurant_new_category(request):
+	if request.method == "POST":
+		form = CategoryForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/restaurant/new/')
+		else:
+			pass
+	else:
+		form = CategoryForm()
+
+	categBlog = Category.objects.all()
+	contextBlog = {
+		'form': form,
+		'categBlog': categBlog
+	}
+	return render(request, 'restaurant/restaurant_new_category.html',contextBlog)
+
+#Modifier la categorie
+@login_required
+@staff_required
+def restaurant_category_update(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	if request.method == "POST":
+		form = CategoryForm(request.POST,request.FILES, instance=category)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie modifiée')
+		return redirect('restaurant_new_categ')
+	else:
+		form = CategoryForm(instance=category)
+	categBlog = Category.objects.all()
+	contextBlog = {
+		'form': form,
+		'categBlog': categBlog
+	}
+	return render(request, 'restaurant/restaurant_new_category.html', contextBlog)
+
+
+#Supprimer une categorie
+@login_required
+@staff_required
+def restaurant_category_delete(request,slug):
+	category = get_object_or_404(Category, slug=slug)
+	category.delete()
+	messages.success(request, 'Catégorie supprimée')
 	return redirect('restaurant_publish_list')

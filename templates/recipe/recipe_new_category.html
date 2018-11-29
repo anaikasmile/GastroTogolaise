@@ -12,11 +12,11 @@
         
          <!-- Ajouter/Modifier une cat. de recettes -->
         <div class="col-md-4">
-            <h4>{% trans 'Ajouter/Modifier une catégorie' %}</h4>
+            <h4>{% trans 'Ajouter une catégorie' %}</h4>
             <form method="POST" action=""  name="add-form" class="form-block" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">{% trans 'Save' %}</button>
+            <button type="submit" class="save btn btn-default">{% trans 'Enregistrer' %}</button>
             </form>
         </div>
         <!-- Liste de catégorie de blog -->
@@ -62,7 +62,7 @@
                                         <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette catégorie' %}<strong>{{ list.title}}</strong>?</p>
                                     </div>
                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Fermer' %}</button>
                                         <a href="{% url 'recipe_category_delete' slug=list.slug %}" type="submit" class="btn btn-danger">{% trans 'Supprimer' %}</a>
                                     </div>
                                 </div>

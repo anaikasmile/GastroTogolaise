@@ -55,3 +55,15 @@
     font-style: normal;
 
 }
+
+
+@font-face {
+    font-family: 'Tangerine';
+    src:
+        url('Tangerine-Regular.ttf') format('truetype'),
+        url('Tangerine-Bold.ttf') format('truetype'),
+         
+    font-weight: normal;
+    font-style: normal;
+
+}

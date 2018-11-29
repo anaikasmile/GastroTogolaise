@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles import views
 from django_filters.views import FilterView
 from django.contrib.flatpages import views
-
+from userprofile import views as userprofile
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'^comments/', include('django_comments.urls')),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
 
+    url(r'^accounts/password/change/$', userprofile.login_after_password_change,
+    name='account_change_password'), 
     url(r'^accounts/', include('allauth.urls')),
 
     url(r'^userprofile/', include('userprofile.urls')),

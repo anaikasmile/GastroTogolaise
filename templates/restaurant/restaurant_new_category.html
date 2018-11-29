@@ -1,39 +1,40 @@
-{% extends 'blog/post_publish_list.html' %}	
+{% extends 'restaurant/restaurant_publish_list.html' %}	
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% load thumbnail %}
 {% load i18n %}
 {% load humanize %} 
 
-{% block content_blog %}
+{% block content_restaurant %}
 
         <!-- Page Heading -->
         <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-offset-2 col-lg-8">
+                <!-- Ajout de  catégorie -->
+
+                <div class="col-md-4">
+                    <h4>{% trans 'Ajouter une catégorie' %}</h4>
+
 	                <form method="POST"  name="form" action=""  class="" enctype="multipart/form-data">
 		                {% csrf_token %}
 		                  {{ form.as_p }}
                         
-	                	<button type="submit" class="save btn btn-default">{% trans 'Envoyer' %}</button>
+
+	                	<button type="submit" class="save btn btn-default">{% trans 'Enregistrer' %}</button>
 	                </form>
                 </div>
-                
-            </div>
-        </div>
-        <!-- /.row -->
+                  <!-- Liste de catégorie de blog -->
+            {% if categBlog %}
+    
+            
+                <div class="col-md-offset-1 col-md-7">
+                <h4>{% trans 'Liste des catégories' %}</h4>
+                   <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
 
-    <div class="division"> <hr/></div>
-    <!-- Liste de catégorie de blog -->
-    {% if categBlog %}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="col-lg-offset-2 col-lg-8">
-	                <table class="table table-border">
                         <thead>
                             <tr>
-                                <th> Name</th>
-                                <th>Slug</th>
+                                <th> {% trans 'Nom' %}</th>
+                                <th>{% trans 'Slug' %}</th>
                                 <th>Actions</th>
 
                             </tr>
@@ -47,10 +48,10 @@
                                 <a href="javascript:;" data-toggle="collapse" data-target="#action_{{list.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                     <ul id="action_{{list.id}}" class="collapse">
                                         <li>
-                                            <a href="{% url 'post_category_update' slug=list.slug%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifier</a>
+                                            <a href="{% url 'restaurant_category_update' slug=list.slug%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{% trans 'Modifier' %}</a>
                                         </li>
                                         <li>
-                                            <a data-toggle="modal" data-target="#deletecategory{{list.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>Supprimer</a>
+                                            <a data-toggle="modal" data-target="#deletecategory{{list.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>{% trans 'Supprimer' %}</a>
                                         </li>
                                     </ul>
                                 </td>
@@ -64,26 +65,31 @@
                                                 <h4 class="modal-title" id="myModalLabel{{list.id}}">Confirmer votre action</h4>
                                               </div>
                                               <div class="modal-body">
-                                                <p class="lead">Etes-vous sûrs de vouloir supprimer cette catégorie<strong>{{ list.title}}</strong>?</p>
+                                                <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette catégorie' %}<strong>{{ list.title}}</strong>?</p>
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href="{% url 'post_category_delete' slug=list.slug %}" type="submit" class="btn btn-danger"> Supprimer</a>
+                                                <a href="{% url 'restaurant_category_delete' slug=list.slug %}" type="submit" class="btn btn-danger"> {% trans 'Supprimer' %}</a>
                                               </div>
                                             </div>
                                           </div>
                                         </div>
                             {% empty %}
-                            Aucune information sur la catégorie encore enrégistrée
+
+                                Aucune information sur la catégorie encore enrégistrée
+
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
 
-            </div>
+
+            {% endif %}
+                
+            
         </div>
         <!-- /.row -->
 
-    {% endif %}
+
         
 {% endblock %}

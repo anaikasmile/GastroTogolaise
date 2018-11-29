@@ -12,9 +12,18 @@ from .models import Profile, User
 from .forms import UserForm, ProfileForm, AdminForm
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
+from allauth.account.views import PasswordChangeView
+from django.core.urlresolvers import reverse_lazy
 
 
 # Create your views here.
+class LoginAfterPasswordChangeView(PasswordChangeView):
+    @property
+    def success_url(self):
+        return reverse_lazy('account_login')
+
+login_after_password_change = login_required(LoginAfterPasswordChangeView.as_view())
+
 
 def admin_pagination(request, fichier):
     paginator = Paginator(fichier, 15)
@@ -76,7 +85,7 @@ def profile_update(request):
 
 
 def contributors(request):
-    users = User.objects.filter(groups=None).order_by('username')
+    users = User.objects.filter(is_contributor=True).exclude(is_staff_member=True)
     users = pagination(request, users)
     return render(request, 'userprofile/contributors.html', {'users': users})
 
@@ -115,7 +124,7 @@ def staff_list(request):
 @login_required
 @staff_required
 def contributor_list(request):
-    users = User.objects.filter(is_contributor=True)
+    users = User.objects.filter(is_contributor=True).exclude(is_staff_member=True)
     users = admin_pagination(request, users)
     return render(request, 'userprofile/contributor_list.html', {'users': users})
 

@@ -38,11 +38,12 @@
                                 <thead>
                                     <tr>
                                         <td>#</td>
-                                        <th>Date of publication</th>
-                                        <th>Categorie</th>
-                                        <th>Title</th>
-                                        
-                                        <th>Posted by</th>
+                                        <th>{% trans 'Publié le' %}</th>
+                                        <th>{% trans 'Catégorie' %}</th>
+                                        <th>{% trans 'Nom' %}</th>
+                                        <th>{% trans 'Vues' %}</th>
+                                        <th>Likes</th>
+                                        <th>{% trans 'Auteur' %}</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -93,7 +94,7 @@
                                     
 
                                     {% empty %}
-                                        <tr>Aucune recette pour le moment.</tr>
+                                        <tr>Aucune publication pour le moment.</tr>
                                     {% endfor %}  
 
 
