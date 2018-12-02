@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load apps_filters %}
 {% load notification_tags %}
 
 <li data-nf-id="{{ notification.id }}" id="nf-{{ notification.id }}" class="notification list-group-item {{ notification.read|yesno:'read,unread' }}">
@@ -9,18 +10,18 @@
          
         {% endblocktrans %}
 
-            <p class="">
-                Votre recette <a href="{{ target_url}}" style="color:#000;">{{target }}</a> {{ verb }}<br>
+            <p class="no-justify">
+                Votre recette <a href="{{ target_url}}" style="color:#FFC107;">{{target }}</a> {{ verb }}<br>
                 <i class="fa fa-clock-o"></i> 
-                {% blocktrans with created=notification.created|timesince %}{{created}} ago{% endblocktrans %}
+                Il y'a {% blocktrans with created=notification.created|naturaltimez %}{{created}} {% endblocktrans %}
             </p>
 
     {% else %}
          
-            <p class="">
-                Votre recette <a href="{{ target_url}}" style="color: #000;">{{target }}</a> a été {{ verb }}<br>
-                <i class="fa fa-clock-o"></i> 
-                {% blocktrans with created=notification.created|timesince %}{{created}} ago{% endblocktrans %}
+            <p class="no-justify">
+                Votre recette <a href="{{ target_url}}" style="color: #FFC107;">{{target }}</a> a été {{ verb }}<br>
+                <i class="fa fa-clock-o"></i> Il y'a
+                {% blocktrans with created=notification.created|naturaltimez %}{{created}} {% endblocktrans %}
             </p>
     {% endif %}
     

@@ -88,8 +88,9 @@
                     </a>
                     <ul class="dropdown-menu notification-box-list">
 
-                        {% render_notifications using notifications.unread for box %}
-                        <li><a href="/notifications/all" class="text-center">View all</li>
+                        {% render_notifications using request.user.notifications.active.unread for box %}
+
+                        <li><a href="/notifications/all" class="text-center">Voir tout</li>
 
                     </ul>
                 </li>
@@ -160,8 +161,8 @@
                     </a>
                     <ul class="dropdown-menu notification-box-list">
 
-                        {% render_notifications using notifications.unread for box %}
-                        <li><a href="/notifications/all" class="text-center">View all</li>
+                        {% render_notifications using request.user.notifications.active.unread for box %}
+                        <li><a href="/notifications/all" class="text-center">Voir tout</li>
 
                     </ul>
                 </li>

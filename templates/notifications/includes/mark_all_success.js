@@ -4,6 +4,7 @@ var markAllSuccess = function (response) {
     if (response.action == 'read') {
         var mkClass = readNotificationClass;
         var rmClass = unreadNotificationClass;
+        $('.notifications').html("");
     } else {
         mkClass = unreadNotificationClass;
         rmClass = readNotificationClass;

@@ -120,7 +120,7 @@ def recipe_add(request):
 
 			recipe.readytime()
 
-			url = reverse('recipe_detail', args=(recipe.slug,))
+			url = reverse('recipe_preview', args=(recipe.slug,))
 
 			
 			messages.success(request, ('Votre recette a été envoyée'))
@@ -326,8 +326,10 @@ def recipe_preview(request,slug):
 def recipe_publish(request,slug):
 	recipe = get_object_or_404(Recipe,slug=slug)
 	recipe.publish()
+	url = reverse('recipe_detail', args=(recipe.slug,))
 	messages.success(request, 'approuvée')
-	notify.send(request.user, recipient=recipe.author, target=recipe, target_url="recipe_detail", actor=request.user, verb='a été publiée', nf_type='approve_recipe')
+
+	notify.send(request.user, recipient=recipe.author, target=recipe, target_url=url, actor=request.user, verb='a été publiée', nf_type='approve_recipe')
 
 	return redirect('recipe_draft_list')
 

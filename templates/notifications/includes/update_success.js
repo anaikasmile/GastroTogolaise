@@ -18,6 +18,8 @@ var updateSuccess = function (response) {
         $('.nf-count').text(unread_count);
     } else if (unread_count == 0) {
         $('.nf-count').hide();
+        $('.notification-box-list').html("");
+
     }
 
 };

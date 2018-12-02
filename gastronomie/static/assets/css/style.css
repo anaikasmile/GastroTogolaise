@@ -208,7 +208,9 @@ p {
 p:last-child {
     margin-bottom: 0px;
 }
-
+.no-justify{
+    text-align: left;
+}
 .text-floating{
     position: absolute;
     top: 10px;

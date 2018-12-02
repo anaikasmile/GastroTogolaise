@@ -26,6 +26,6 @@ def topvideos(request):
 # les top 10 contributeurs
 def topcontributors(request):
 	from django.db.models import F
-	top_contributors = Recipe.objects.filter(published_at__isnull=False).values('author','author__username','author__profile__photo').annotate(total=Count('author__username')).order_by()[:5]
+	top_contributors = Recipe.objects.filter(published_at__isnull=False).filter(author__is_contributor=True).exclude(author__is_staff_member=True).values('author','author__username','author__profile__photo').annotate(total=Count('author__username')).order_by()[:5]
 
 	return {'top_contributors': top_contributors}

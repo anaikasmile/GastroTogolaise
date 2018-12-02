@@ -30,35 +30,30 @@
 {% block content_base %}
 <div class="container">
         <div class="row">
+<!--  <div class="main_mix_content text-center padding">
+
+        <div class="mixcontent row">
+            <div class="col-lg-offset-2 col-lg-8"> -->
             <div class="col-md-offset-2 col-md-8">
   
-            	{% block content %}
-                     {% if notifications %}
-				     <button class="btn btn-primary mark-all-notifications" data-mark-action="read">
-				    {% trans "Marquer tous comme lu" %}</button>
-				    <!-- <button class="btn btn-primary mark-all-notifications" data-mark-action="unread">{% trans "Marquer tous comme non lu" %}</button>  -->
-				    <br><br>
-				    <ul class="notifications list-group">
-
-				    {% render_notifications using request.user.notifications.active.unread %}
-
-				    </ul>
-                     {% else %}
-                         <h4>{%  trans "Aucune notification" %}</h4>
-                     {% endif %}
-				{% endblock %}
-
-
+                {% block content %}
+                    {% if notifications.unread %}
+                     <button class="btn btn-primary mark-all-notifications" data-mark-action="read">
+                    {% trans "Marquer tous comme lu" %}</button>
+                    {% endif %}
+                    <!-- <button class="btn btn-primary mark-all-notifications" data-mark-action="unread">{% trans "Marquer tous comme non lu" %}</button>  -->
+                    <br><br>
+                    <ul class="notifications list-group">
+                    {% if notifications %}
+                    {% render_notifications using request.user.notifications.active.unread %}
+                    {% endif %}
+                    </ul>
+                {% endblock %}
 
            </div>
         </div>
     </div> 
 
-    
-
-                <!-- End   -->
+     <!-- End   -->
 
 {% endblock %}
-
-
-                        
