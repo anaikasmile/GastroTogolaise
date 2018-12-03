@@ -149,7 +149,7 @@ def profile_active(request, pk):
         user.save()
         messages.success(request, 'Compte activé!')
 
-    return redirect(request.path)
+    return redirect ('contributor_list')
 
 
 # Supprimer

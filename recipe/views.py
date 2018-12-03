@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.urls import reverse
 from django_comments.models import Comment
-from recipe.models import Recipe, Category, Video
+from recipe.models import Recipe, Category, Video, Origin
 
 from recipe.forms import RecipeForm, VideoForm, CategoryForm, OriginFormset, OriginForm
 from userprofile.models import Profile, User
@@ -22,6 +22,11 @@ from gastronomie.decorators import *
 from django.conf import settings
 from django.db.models import Count, F
 from notify.signals import notify
+from django.views import generic
+from django.views import generic
+
+from django_addanother.views import CreatePopupMixin, UpdatePopupMixin
+
 
 import itertools
 
@@ -72,21 +77,27 @@ def home(request):
 	return render(request,'recipe/accueil.html',{'recipes':recipes})
 
 #Ajouter une ethnie
-@login_required
-def origin_add(request):
-	if request.method == "POST":
-		form = OriginForm(request.POST)
+# @login_required
+# def origin_add(request):
+# 	if request.method == "POST":
+# 		form = OriginForm(request.POST)
 
-		if form.is_valid():
+# 		if form.is_valid():
 
-			form.save()
+# 			form.save()
 			
 
-	else:
-		form = OriginForm()
+# 	else:
+# 		form = OriginForm()
 
-	return render(request,'recipe/origin_add.html', {'form':form})
+# 	return render(request,'recipe/origin_add.html', {'form':form})
 
+
+class OriginAdd(CreatePopupMixin, generic.CreateView):
+    model = Origin
+    fields = ['ethnic','country']
+    def get_success_url(self):
+        return reverse('recipe_add')
 
 
 #Ajouter une recette

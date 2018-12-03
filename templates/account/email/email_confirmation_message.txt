@@ -2,7 +2,7 @@
 
 Bonjour {{ user_display }},
 
-Pour activer votre compte, Cliquez sr ce lien {{ activate_url }} 
+Pour activer votre compte, Cliquez sur ce lien {{ activate_url }} 
 
 {% endblocktrans %}{% endautoescape %}
 {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}

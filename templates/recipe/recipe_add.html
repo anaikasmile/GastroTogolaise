@@ -37,6 +37,7 @@
 
                     <form method="POST"  name="add-form" id="add_origin" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
                         {% csrf_token %}
+                         {{ form.media }}
 
                          {{ form.as_p }}
 
@@ -58,10 +59,10 @@
     <script type="text/javascript">
     $(document).ready(function () {
 
-        $("#add_id_origin").attr("title", "Ajouter une nouvelle ethnie");
-        $( "#submit_origin" ).click(function() {
-            window.close();
-        });
+        // $("#add_id_origin").attr("title", "Ajouter une nouvelle ethnie");
+        // $( "#submit_origin" ).click(function() {
+        //     window.close();
+        // });
 
     });
     </script>

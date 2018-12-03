@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django_comments.models import Comment
 from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.text import slugify
 
 from .models import Restaurant, Category
 from .forms import RestaurantForm, CategoryForm
@@ -66,7 +67,7 @@ def restaurant_new(request):
 		if form.is_valid():
 			restaurant = form.save(commit=False)
 			restaurant.author = request.user
-			restaurant.slug = slugify(restaurant.title)
+			restaurant.slug = slugify(restaurant.name)
 			restaurant.save()
 			messages.success(request, ('Enregistrement réussi'))
 			return redirect ('restaurant_preview',slug=restaurant.slug)
@@ -137,7 +138,7 @@ def restaurant_new_category(request):
 		form = CategoryForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/restaurant/new/')
+			return HttpResponseRedirect('/restaurant/new/category')
 		else:
 			pass
 	else:

@@ -12,8 +12,8 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'email')
         widgets = {
-            'first_name':forms.TextInput(attrs={'placeholder':_(u'Prénoms'),'name':'','id':'','class':'form-control'}),
-            'last_name':forms.TextInput(attrs={'placeholder':_(u'Nom'),'name':'','id':'','class':'form-control'}),
+            'first_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+            'last_name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'email':forms.TextInput(attrs={'placeholder':_(u'Email'),'name':'','id':'','class':'form-control'}),
               }
 

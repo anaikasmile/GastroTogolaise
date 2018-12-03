@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.contrib.auth import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import reverse
 from . import views
 
 urlpatterns = [
@@ -32,7 +33,7 @@ urlpatterns = [
                   url(r'^recipe/detail/(?P<slug>[-\w]+)/$', views.recipe_detail, name='recipe_detail'),
                   url(r'^recipe/like/$', views.like, name='recipe_like'),
                   url(r'^recipe/add/$', views.recipe_add, name='recipe_add'),
-                  url(r'^origin/add/$', views.origin_add, name='origin_add'),
+                  url(r'^origin/add/$', views.OriginAdd.as_view(), name='origin_add'),
 
                   url(r'^recipe/user/box/$', views.recipe_box_user, name='recipe_box_user'),
 

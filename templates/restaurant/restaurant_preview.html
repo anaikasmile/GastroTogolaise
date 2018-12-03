@@ -17,9 +17,13 @@
                         </div>
                         <br> 
                         <div class="row">
+                            {% if restaurant.image %}
                             <div class="col-md-7">
+                                
                                 <img src="{{restaurant.image.url}}" class="img-responsive">
+                                
                             </div> 
+                            {% endif %}
                             <div class="col-md-5">
                                 <h4><strong>Description:</strong></h4>
                                 <p>{{restaurant.description|safe}}</p>
