@@ -57,7 +57,8 @@
                             By <a href="" class="rp-author">{% trans 'L équipe' %}</a>
                             {% endif %}
                             </li>  
-                        <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.published_at|date:'F j, Y' }} </li> 
+                        <li><i class="fa fa-calendar" aria-hidden="true"></i>{% language 'fr' %}
+                         {{ post.published_at|date:'d M Y ' }}{% endlanguage %}</li> 
                         
                         <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
 
@@ -85,7 +86,7 @@
                 {% post_to_facebook %}
    
                 <!--Twitter-->
-                {% post_to_twitter "{{recipe.title}}"  "" %}
+                {% post_to_twitter "{{post.title}}"  "" %}
 
                 <!--Gplus-->
                 {% post_to_gplus  "" %}

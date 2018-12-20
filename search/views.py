@@ -6,13 +6,15 @@ from recipe.models import Recipe, Category, Video
 from blog.models import Post
 from django.shortcuts import render
 from .filters import CategoryFilter, RecipeFilter
-
+from itertools import chain
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import JsonResponse
 from django.views.generic import ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template import RequestContext
 
 from taggit.models import Tag
 
@@ -21,35 +23,59 @@ class SearchListView(ListView):
     """CBV to contain all the search results"""
     model = Recipe
     template_name = "search/search.html"
+    paginate_by = 2
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
         query = self.request.GET.get("query")
-        context ['word'] = query
-        context["active"] = 'recipes'
-        #context["hide_search"] = True
-        context["tags_list"] = Tag.objects.filter(name=query)
-        context["recipes"] = Recipe.objects.filter(Q(
-            title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
-        context["videos"] = Video.objects.filter(Q(
-            title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
+        
+        if query:
+            context ['word'] = query
+            context["active"] = 'recipes'
+            #context["hide_search"] = True
+            context["tags_list"] = Tag.objects.filter(name=query)
+            context["recipes"] = Recipe.objects.filter(Q(
+                title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
+            context["videos"] = Video.objects.filter(Q(
+                title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
 
-        context["posts"] = Post.objects.filter(Q(
-            title__icontains=query) | Q(text__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
-        #context["users_list"] = get_user_model().objects.filter(
-           # Q(username__icontains=query) | Q(
-            #    name__icontains=query))
-        context["recipes_count"] = context["recipes"].count()
-        context["posts_count"] = context["posts"].count()
-        context["videos_count"] = context["videos"].count()
-        #context["users_count"] = context["users_list"].count()
-        context["tags_count"] = context["tags_list"].count()
-        context["total_results"] = context["recipes_count"] + \
-            context["posts_count"] + context["videos_count"] + \
-            context["tags_count"]
+            context["posts"] = Post.objects.filter(Q(
+                title__icontains=query) | Q(text__icontains=query) | Q(category__name__icontains=query), published_at__isnull=False)
+            #context["users_list"] = get_user_model().objects.filter(
+               # Q(username__icontains=query) | Q(
+                #    name__icontains=query))
+            context["orders"] = list(
+                sorted(
+                    chain(context["recipes"], context["videos"], context["posts"]),
+                    key=lambda objects: objects.created_at
+                ))
+
+            paginator = Paginator(context["orders"], self.paginate_by)
+
+            page = self.request.GET.get('page')
+            
+            try:
+                file_exams = paginator.page(page)
+            except PageNotAnInteger:
+                file_exams = paginator.page(1)
+            except EmptyPage:
+                file_exams = paginator.page(paginator.num_pages)
+
+            context['orders'] = file_exams   
+
+            context["recipes_count"] = context["recipes"].count()
+            context["posts_count"] = context["posts"].count()
+            context["videos_count"] = context["videos"].count()
+            #context["users_count"] = context["users_list"].count()
+            context["tags_count"] = context["tags_list"].count()
+            context["total_results"] = context["recipes_count"] + \
+                context["posts_count"] + context["videos_count"] + \
+                context["tags_count"]
         return context
 
+
+   
 
 # # For autocomplete suggestions
 # @login_required

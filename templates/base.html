@@ -220,7 +220,7 @@
 
                                     </ul>
                                 </li>
-                                <li><a href="{% url 'video_list' %}">Videos</a></li>
+                                <li><a href="{% url 'video_list' %}">Vidéos</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                                     <ul class="dropdown-menu">
@@ -250,7 +250,7 @@
 
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
+                                   <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">A propos</a> -->
                                     <ul class="dropdown-menu">
                                       <!--
                                         {% get_flatpages as flatpages %}
@@ -331,31 +331,26 @@
                                     <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%">
 
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in egestas lectus.
-                                    Etiam tempor odio tellus, at bibendum neque faucibus quis. Sed vel facilisis elit. </p>
-                                <p>Nullam fringilla pharetra diam non accumsan. Morbi eget aliquam mauris.
-                                    Etiam vehicula efficitur mi.</p>
+                                <ul class="">
+                                    <li><a href="{% url 'about' %}">A propos</a></li>
+                                    <li><a href="">L' équipe</a></li>
 
+                                    <li><a href="{% url 'contributors' %}">Nos contributeurs</a></li>
+                                    <li><a href="">Nos partenaires</a></li>
+                                    <li><a>Conditions génerales d'utilisation</a></li>
 
-                                <a class="weblink" href="">www.togokuizine.com</a>
+                                    <li><a href="">Règles de confidentialité</a></li>
+                                   
+                                </ul>
+
+                               
                             </div>
                         </div>
 
 
                         <div class="col-sm-4 col-xs-12">
                             <div class="single_widget wow fadeIn" data-wow-duration="800ms">
-                                <h4 class="footer_title">ARTICLES RECENTS</h4>
-                                <div class="separator4"></div>
-
-                                <div class="footer_gellary">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4  col-xs-12">
-                            <div class="single_widget wow fadeIn" data-wow-duration="800ms">
-                                <h4 class="footer_title">CONTACT</h4>
+                                <h4 class="footer_title">Contact</h4>
                                 <div class="separator4"></div>
                                 <ul>
                                     <li><a href=""><i class="fa fa-envelope"></i> admin@togokuizine.com</a></li>
@@ -363,8 +358,29 @@
                                     <li><a href=""><i class="fa fa-map-marker"></i> Lome, Togo</a></li>
 
                                 </ul>
+                                
                             </div>
                         </div>
+
+                        <div class="col-sm-4  col-xs-12">
+                            <div class="single_widget wow fadeIn" data-wow-duration="800ms">
+                               
+                                <h4 class="footer_title">Newsletter</h4>
+                                <div class="separator4"></div>
+                           
+                                <div class="single">
+                                    
+                                    <form action="#">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Email">
+                                            <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit">{% trans 'Souscrire' %}</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
 
 
 
@@ -378,26 +394,35 @@
    </section>
 
 
-    <footer id="footer" class="footer text-center">
+    <footer id="footer" class="footer">
         <div class="container">
             <div class="main_footer">
                 <div class="row">
 
                     <div class="col-sm-6 col-xs-12">
-                        <div class="copyright_text">
-                            <p class=" wow fadeInRight" data-wow-duration="1s"> © 2018. All Rights Reserved</p>
+                        <div class="footer_socail">
+                            <div class="copyright_text ">
+                                <p class=" wow fadeInRight" data-wow-duration="1s"> © 2018. TogoKuizine</p>
+                            </div>
                         </div>
+                        
                     </div>
 
                     <div class="col-sm-6 col-xs-12">
-                        <div class="footer_socail">
+
+                        <div class="footer_socail_right">
+                           
                             <a href=""><i class="fa fa-facebook"></i></a>
                             <a href=""><i class="fa fa-twitter"></i></a>
                             <a href=""><i class="fa fa-google-plus"></i></a>
                             <a href=""><i class="fa fa-instagram"></i></a>
                             <a href=""><i class="fa fa-youtube"></i></a>
+                        
                         </div>
+                        
                     </div>
+                    
+
                 </div>
             </div>
         </div>

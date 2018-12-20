@@ -12,9 +12,9 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.urls import reverse
 from django_comments.models import Comment
-from recipe.models import Recipe, Category, Video, Origin
+from recipe.models import Recipe, Category, Video, Origin, CategoryVideo
 
-from recipe.forms import RecipeForm, VideoForm, CategoryForm, OriginFormset, OriginForm
+from recipe.forms import RecipeForm, VideoForm, CategoryForm, OriginFormset, OriginForm, CategoryVideoForm
 from userprofile.models import Profile, User
 from blog.models import Post
 from django.contrib.admin.views.decorators import staff_member_required
@@ -228,7 +228,7 @@ def like(request):
 ###   Videos  ###
 
 def video_list(request):
- 	videos = Video.objects.all().order_by('-published_at')
+ 	videos = Video.objects.filter(published_at__isnull=False).order_by('-published_at')
  	videos = pagination(request, videos)
  	return render(request,'recipe/video_list.html',{'videos':videos})
 
@@ -574,5 +574,60 @@ def recipe_category_delete(request,slug):
 	category.delete()
 	messages.success(request, 'Catégorie supprimée')
 	return redirect('recipe_publish_list')
+
+#Ajouter une categorie de video
+@login_required
+@staff_required
+def video_new_category(request):
+	if request.method == "POST":
+		form = CategoryVideoForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie ajoutée')
+			return HttpResponseRedirect("/video/new/category")
+		else:
+			pass
+	else:
+		form = CategoryVideoForm()
+
+	categVideo = CategoryVideo.objects.all()
+	contextVideo = {
+		'form':form,
+		'categVideo':categVideo
+	}
+	return render(request, 'recipe/video_new_category.html', contextVideo)
+
+
+#Modifier la categorie
+@login_required
+@staff_required
+def video_category_update(request,slug):
+	category = get_object_or_404(CategoryVideo, slug=slug)
+	if request.method == "POST":
+		form = CategoryVideoForm(request.POST,request.FILES, instance=category)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Catégorie mis à jour')
+		return redirect('video_new_categ')
+	else:
+		form = CategoryVideoForm(instance=category)
+
+	categVideo = CategoryVideo.objects.all()
+	contextVideo = {
+		'form':form,
+		'categVideo':categVideo
+	}
+	return render(request, 'recipe/video_new_category.html', contextVideo)
+
+
+
+#Supprimer une categorie
+@login_required
+@staff_required
+def video_category_delete(request,slug):
+	category = get_object_or_404(CategoryVideo, slug=slug)
+	category.delete()
+	messages.success(request, 'Catégorie supprimée')
+	return redirect('video_publish_list')
 
 #fin ajout

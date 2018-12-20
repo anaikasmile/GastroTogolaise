@@ -20,7 +20,7 @@
                                 <p>{{recipe.author.profile.bio}}</p>
                                 <ul class="social-link list-inline">
                                       {% if recipe.author.profile.facebook %}
-                                            <a href="{{recipe.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                            <a href="{{recipe.author.profile.facebook}}" target="blank" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
                                             {% else %}
                                              <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
                                             {% endif %}
@@ -28,14 +28,14 @@
                                         <li>
                                             {% if recipe.author.profile.twitter %}
 
-                                            <a href="{{recipe.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                            <a href="{{recipe.author.profile.twitter}}" target="blank" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
                                             {% else %}
                                             <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
                                             {% endif %}
                                         </li>
                                         <li>
                                             {% if recipe.author.profile.gplus %}
-                                            <a href="{{recipe.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                            <a href="{{recipe.author.profile.gplus}}" target="blank" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
                                             {% else %}
                                              <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
                                             {% endif %}
@@ -43,7 +43,7 @@
                                         <li>
                                             {% if recipe.author.profile.instagram %}
 
-                                            <a href="{{recipe.author.profile.instagram}}" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                            <a href="{{recipe.author.profile.instagram}}" target="blank" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
                                             {% else %}
                                             <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
                                             {% endif %}
@@ -51,7 +51,7 @@
                                         </li>
                                         <li>
                                             {% if recipe.author.profile.linkedin %}
-                                            <a href="{{recipe.author.profile.linkedin}}" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
+                                            <a href="{{recipe.author.profile.linkedin}}" target="blank" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
                                             {% else %}
                                             <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
                                             {% endif %}
@@ -100,3 +100,67 @@
                 </div>
             </div>
             
+
+
+    <div class="modal fade" id="modalUser{{tp.author__id}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="col-md-4">
+                    
+                             {% if tp.author__profile__photo %}
+                                <img class="img-fluid img-circle" src="{{tp.author__profile__photo.url}}" width="150px;" height="150px;" alt="contributor image">
+                            {% else %}
+                                <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
+                            {% endif %}
+                                <h5 class="">{{tp.author__id}}</h5>
+
+                            </div>
+                            <div class="col-md-8">
+
+                                <p>{{recipe.author.profile.bio}}</p>
+                                <ul class="social-link list-inline">
+                                      {% if recipe.author.profile.facebook %}
+                                            <a href="{{recipe.author.profile.facebook}}" target="blank" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                            {% else %}
+                                             <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if recipe.author.profile.twitter %}
+
+                                            <a href="{{recipe.author.profile.twitter}}" target="blank" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                            {% else %}
+                                            <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if recipe.author.profile.gplus %}
+                                            <a href="{{recipe.author.profile.gplus}}" target="blank" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                            {% else %}
+                                             <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if recipe.author.profile.instagram %}
+
+                                            <a href="{{recipe.author.profile.instagram}}" target="blank" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                            {% else %}
+                                            <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                                            {% endif %}
+
+                                        </li>
+                                        <li>
+                                            {% if recipe.author.profile.linkedin %}
+                                            <a href="{{recipe.author.profile.linkedin}}" target="blank" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
+                                            {% else %}
+                                            <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
+                                            {% endif %}
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>

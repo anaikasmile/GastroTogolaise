@@ -152,6 +152,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'recipe.context_processors.categories',
                 'recipe.context_processors.toprecipes',
+                'recipe.context_processors.topvideos',
                 'recipe.context_processors.topcontributors',
                 'blog.context_processors.post_lasted',
                 'blog.context_processors.post_category',
@@ -232,8 +233,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'media'),
-    '/home/togokuizine/lib/python2.7/site-packages/django/contrib/admin/static',
-    #'/home/sonia/Venv/lib/python3.5/site-packages/django/contrib/admin/static/admin',
+    #'/home/togokuizine/lib/python2.7/site-packages/django/contrib/admin/static',
+    '/home/sonia/Venv/lib/python3.5/site-packages/django/contrib/admin/static/admin',
 )
 
 

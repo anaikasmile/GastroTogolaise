@@ -25,6 +25,7 @@ class Profile(models.Model):
     )
 	sexe = models.CharField(max_length=10, choices= SEXE)
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+
 	#sexe = models.TextField(max_length=2, blank=True)
 	bio = models.TextField(max_length=500, blank=True, verbose_name="Biographie")
 	country = CountryField(blank_label=_(u'Choisissez le pays'),blank=True, null=True,verbose_name="Pays de résidence")

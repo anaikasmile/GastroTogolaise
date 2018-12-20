@@ -223,14 +223,14 @@ $(document).on('click','.likepost',function(e) {
 
 });
 
-$(document).ready('click','.likevideo',function(e) {
+$(document).on('click','.likevideo',function(e) {
 
     var pk;
         pk = $(this).attr('data-video-pk');
         $.get('/video/like/', {
             video_pk: pk
         }, function(data) {
-            $('#count-like-'+pk).html(data);
+            $('.count-like-'+pk).html(data);
 
         });
         return false;

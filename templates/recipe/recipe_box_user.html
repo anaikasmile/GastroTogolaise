@@ -19,11 +19,75 @@
 
 {% block content %}
  <!-- Post -->
+
  <div class="main_mix_content text-center padding">
+      <div class="row">
+
+                <a class="pull-left" href="">
+                {% if request.user.profile.photo %}
+                    {% thumbnail request.user.profile.photo  "100x100" as im %}
+ 
+                    <img src="{{request.user.profile.photo.url}}" width="" class="img-responsive img-circle">
+                   {% endthumbnail %} 
+                {% else %}
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" class="media-object img-circle img-responsive">
+                {% endif %}
+                
+                </a>
+           
+                
+                    <h3 class="">{{request.user.first_name}} {{request.user.last_name}}</h3>
+                    <p>
+                    {{request.user.profile.bio}}
+                    </p>
+                    <ul class="social-link list-inline">
+                  {% if request.user.profile.facebook %}
+                        <a href="{{request.user.profile.facebook}}" target="blank" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                        {% else %}
+                         <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if request.user.profile.twitter %}
+
+                        <a href="{{request.user.profile.twitter}}" target="blank" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                        {% else %}
+                        <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if request.user.profile.gplus %}
+                        <a href="{{request.user.profile.gplus}}" target="blank" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                        {% else %}
+                         <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if request.user.profile.instagram %}
+
+                        <a href="{{request.user.profile.instagram}}" target="blank" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                        {% else %}
+                        <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
+                        {% endif %}
+
+                    </li>
+                    <li>
+                        {% if request.user.profile.linkedin %}
+                        <a href="{{request.user.profile.linkedin}}" target="blank" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
+                        {% else %}
+                        <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
+                        {% endif %}
+                    </li>
+                </ul>
+                    
+          
+           
+        </div>
+    <br>
 
     <div id="mixcontent" class="mixcontent row">
      
-          
+            
             <div class="col-lg-8">
                 <p>
                 {% if nb < 1 %}

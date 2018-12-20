@@ -25,6 +25,7 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name 
 
+
 @python_2_unicode_compatible
 class Origin(models.Model):
 	ethnic = models.CharField(max_length=200, verbose_name="Ethnie *")
@@ -34,7 +35,9 @@ class Origin(models.Model):
 
 	def __str__(self):
 		return self.ethnic
-		
+
+
+
 @python_2_unicode_compatible
 class Recipe(models.Model):
 	category = models.ForeignKey(Category,related_name='recipes',verbose_name="Catégorie *")
@@ -76,10 +79,21 @@ class Recipe(models.Model):
 		return self.title
 
 
+@python_2_unicode_compatible
+class CategoryVideo(models.Model):
+	name = models.CharField(max_length=50,verbose_name="Nom *")
+	created_at = models.DateTimeField(auto_now_add=True, verbose_name="Créé le")
+	update_at = models.DateTimeField(auto_now=True, verbose_name="Modifié le")
+	slug = models.SlugField(null=False,unique=True, verbose_name="Slug *")
 
+	def __str__(self):
+	
+		return self.name 
 
+@python_2_unicode_compatible
 class Video(models.Model):
-	category = models.ForeignKey(Category,related_name='category_video', verbose_name="Catégorie")
+
+	category = models.ForeignKey(CategoryVideo,related_name='category_video', verbose_name="Catégorie", blank=True, null=True)
 	origin = models.ManyToManyField(Origin, related_name='origin_video',blank=True,verbose_name="Origine de la recette")
 	author = models.ForeignKey(settings.AUTH_USER_MODEL,related_name='videos')
 	title = models.CharField(max_length=100, verbose_name="Titre")

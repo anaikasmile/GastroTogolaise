@@ -74,7 +74,7 @@
 
             <div class="col-md-offset-4 col-md-4">
                 <div class="login">
-                    <h4 class="text-center">{% trans 'Se connecter via' %}</h4>
+                    <h4 class="text-center">{% trans 'Se connecter' %}</h4>
                             
                       <div class="box">
                            <div class="content">
@@ -133,16 +133,16 @@
                                     {% if redirect_field_value %}
                                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                                     {% endif %}
-                                        <input class="btn btn-sm btn-primary btn-login" type="submit" value="Log in">
+                                        <input class="btn btn-sm btn-primary btn-login" type="submit" value="Connexion">
 
                                 </form>
                             </div>
 
                             <div class="forgot login-footer">
-                                <small>Mot de passe oublié? 
-                                     <a href="{% url 'account_reset_password' %}">{% trans 'Cliquez ici' %}</a>
+                                <small>
+                                     <a href="{% url 'account_reset_password' %}">{% trans 'Mot de passe oublié? ' %}</a>
                                 </small><br>
-                                <small>Vous n'avez pas de compte?
+                                <small>Nouveau sur TogoKuizine?
                                      <a href="{% url 'account_signup' %}">{% trans 'Créer un compte' %}</a>
                                 </small>
                             </div>

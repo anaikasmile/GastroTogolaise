@@ -52,9 +52,9 @@
             <div class="rp-post-cat">
                 
                 <ul class="list-inline">
-
+                    {% if video.category.name %}
                     <li><a href="">{{video.category.name}}</a></li>   
-                  
+                    {% endif %}
                     {% for origin in video.origin.all %}
 
                     <li><a href="">{{origin.ethnic}}</a></li>
@@ -81,13 +81,15 @@
                         {% endif %}
                         By <a href="" class="rp-author">{{video.author}}</a></li> 
                     {% endif %} 
-                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ video.published_at|date:'F j, Y' }} </li> 
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {% language 'fr' %}
+                         {{ video.published_at|date:'d M Y ' }}{% endlanguage %} </li> 
                     
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
 
                     <li>
-                        <a class="video-like" data-video-like="{{video.like}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{video.like}}"> {{video.like}}</span>
+                        <a type="button" class="likevideo" data-video-pk="{{video.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{video.pk}}"> {{video.like}}</span>
                     </li>
+
                     {% get_comment_count for video as comment_count %}
                     <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
                 </ul>
@@ -98,7 +100,7 @@
 
                 
                 <!--Twitter-->
-                {% post_to_twitter "{{recipe.title}}"  "" %}
+                {% post_to_twitter "{{video.title}}"  "" %}
 
                 <!--Gplus-->
                 {% post_to_gplus  "" %}
@@ -128,7 +130,7 @@
             <div class="rp-post-description">
                 
                 <p>
-                    {{video.description}}
+                    {{video.description|safe}}
                 </p>
               
             </div>

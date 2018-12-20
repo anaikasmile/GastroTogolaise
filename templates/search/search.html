@@ -5,7 +5,7 @@
   {% load thumbnail %}
   {% load comments %}
   {% load ratings %}
-
+  {% load embed_video_tags %}
   {% block slide %}
 
       <section id="home" class="home">
@@ -49,26 +49,108 @@
   <div class="main_mix_content">
 
   <hr>
-    {{total_results}} results for: {{word}}  
+    {{total_results}} resultats pour: {{word}}  
   <hr>
 
    
+
+    {% for order in orders %}
+
+        <div class="mixcontent row">
+                        
+            <div class="margin-bottom-20">
+                         
+                <div class="col-sm-4">
+                      <br>
+                    {% if order.image %}
                       
-      {% include 'recipe/recipe_partial.html' %}
+                        <a href="">
+                            <img src="{{order.image.url}}" class="img-responsive">
+                        </a>
+                    {% else %}
+                        <a href="">
+                        {% video order.video as video %}
+                           {% video video %}
+                        {% endvideo %}
+                      </a>
+                    {% endif %} 
+                    
+                        
+                        
+                </div>
+                <div class="col-sm-8">
+                   
+                    <h4 class="rp-post-title"><a href="">{{order.title}}</a></h4>
 
+                    <div class="rp-post-meta-info">
+                       <ul class="list-inline">
+                
+                            <li>
+                            {% if order.author.is_staff_member %}
+                                <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 16px; height: 16px;" alt=""> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                            {% else %}
+                                By <a data-toggle="modal" data-target="#modalAvatar{{order.author.id}}" class="rp-author">{{order.author}}</a>
+                            {% endif %}
+                            </li>
+                            <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ order.published_at|date:'d M Y ' }} </li> 
+                            
+                            <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{order.view}}</li>
 
+                            <li>
+                                <a type="button" class="like" data-like-pk="{{post.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span id="count-like-{{post.pk}}"> {{order.like}}</span>
+                            </li>
+                            
+                            {% get_comment_count for order as comment_count %}
+                            <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                        </ul>
+                    </div>
 
-    {% for video in videos %}
+                    <p>{{ order.text|safe|truncatechars:150 }}</p>
+                    {% if order.text %}
+                    <a href="{% url 'post_detail' slug=order.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
+                   {% else %}
+                      {% if order.video %}
+                      <a href="{% url 'video_detail' slug=order.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
+                      {% else %}
+                      <a href="{% url 'recipe_detail' slug=order.slug %}" class="rp-post-btn"><em> Lire la suite → </em></a>
+                      {% endif %}
+                   {% endif %}
+                </div> 
 
-        {% include 'recipe/video_partial.html' %}
+            </div>
+              
+        </div>
+
+    <hr>
+        
 
     {% endfor %}
 
-    {% for post in posts %}
+    {% if is_paginated %}
 
-        {% include 'blog/post_partial.html' %}
+      {% if orders.paginator.num_pages > 1 %}
 
-    {% endfor %}
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a href="/search/?query={{word}}&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="/search/?query={{word}}&page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li><a href="/search/?query={{word}}&page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+      </ul>
+      {% endif %}
+{% endif %}
     
 </div>
 

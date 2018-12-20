@@ -67,4 +67,10 @@ urlpatterns = [
                   url(r'^video/(?P<slug>[-\w]+)/publish/$', views.video_publish, name='video_publish'),
                   url(r'^video/(?P<slug>[-\w]+)/delete/$', views.video_delete, name='video_delete'),
 
+                  url(r'^video/new/category$', views.video_new_category, name='video_new_categ'),
+                  url(r'^video/category/(?P<slug>[-\w]+)/delete/$', views.video_category_delete,
+                      name='video_category_delete'),
+                  url(r'^video/category/(?P<slug>[-\w]+)/update/$', views.video_category_update,
+                      name='video_category_update'),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

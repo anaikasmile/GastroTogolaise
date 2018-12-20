@@ -54,7 +54,7 @@
 
 		    <div class="col-md-offset-4 col-md-4">
 		        <div class="login">
-		            <h4 class="text-center">{% trans 'Créer un compte' %}</h4>
+		            <h4 class="text-center">{% trans 'Inscrivez-vous' %}</h4>
 		                    
 		              <div class="box">
 		                   <div class="content">
@@ -117,13 +117,14 @@
 		                           {% if redirect_field_value %}
 										<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 									{% endif %}
-		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Enregistrer" %}</button>
+		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Je m'inscris" %}</button>
+		                                <p>Je déclare avoir lu <a href="">les conditions d'utilisation</a></p>
 
 		                        </form>
 		                    </div>
 
 		                    <div class="forgot login-footer">
-		                        <p>{% blocktrans %} Avez-vous déjà un compte? Si oui<a href="{{ login_url }}"> Connectez-vous </a>.{% endblocktrans %}
+		                        <p>{% blocktrans %} Déjà sur TogoKuizine? <a href="{{ login_url }}"> Connectez-vous </a>.{% endblocktrans %}
 		                  		</p>
 		                    </div>
 		                </div>

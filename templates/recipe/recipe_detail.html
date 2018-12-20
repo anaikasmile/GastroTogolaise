@@ -86,7 +86,9 @@
                         {% endif %}
                         By <a  class="rp-author" data-toggle="modal" data-target="#modalAvatar{{recipe.author.id}}">{{recipe.author}}</a>
                     {% endif %}
-                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ recipe.published_at|date:'F j, Y' }} </li> 
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i>{% language 'fr' %}
+                         {{ recipe.published_at|date:'d M Y ' }} </li> 
+                         {% endlanguage %}
                     
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{recipe.view}}</li>
 

@@ -51,8 +51,19 @@
                     {% video video.video as video %}
                         {% video video  %}
                     {% endvideo %}
+                       <div class="text-floating">
+                            <ul class="list-inline">
+                                <li class="">
+                                    <a type="button" class="likevideo" data-video-pk="{{video.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{video.pk}}"> {{video.like}}</span>
+                                </li>
+                                <li class=""><a href="#"><i class="fa fa-eye cook-second-color" aria-hidden="true"></i></a><span> {{video.view}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="mask flex-center">
+
+                        </div>
                     <div class="single_mixi_portfolio_content">
-                        <a href="{% url 'video_detail' slug=video.slug %}" class="title">{{video.title|truncatechars:20}}</a>
+                        <a href="{% url 'video_detail' slug=video.slug %}" class="title">{{video.title|truncatechars:30}}</a>
                         <p>
                          {% if video.author.is_staff_member %}
                             By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>

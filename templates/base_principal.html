@@ -34,15 +34,27 @@
 
                     </div>
                     <!-- right menu -->
+
                    
                     <!-- right menu -->
                     <div class="col-md-4">
                         
+                        <div class="widget-left">
+
+                            
+                            <div class="single_video">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_l6CQRHIGyg"></iframe>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
                        <div class="widget-left">
                             <ul class="nav nav-tabs tabs-4">
-                                <li class="active"><a data-toggle="tab" href="#menu1">Top des recettes</a></li>
+                                <li class="active"><a data-toggle="tab" href="#menu1">Top Recettes</a></li>
                                 
-                                <li><a data-toggle="tab" href="#menu2">Top des vidéos</a></li>
+                                <li><a data-toggle="tab" href="#menu2">Top Vidéos</a></li>
                                 <li><a data-toggle="tab" href="#menu3">Articles récents</a></li>
                             </ul>   
 
@@ -51,7 +63,7 @@
                                 
                                 <div id="menu1" class="tab-pane fade in active ">
                                    {% for r in toprecipes %}
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
+                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'d M Y ' }}</div>
                                     <div class="media">
                                         {% if r.image %}
                                             <a class="pull-left card" href="{% url 'recipe_detail' slug=r.slug %}">
@@ -74,12 +86,16 @@
                                 </div>
 
                                 <div id="menu2" class="tab-pane fade">
+
                                     {% for r in topvideos %}
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
+                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'d M Y ' }}</div>
                                     <div class="media">
-                                        {% video video.video as video %}
-                                        {% video video "70x50"  %}
-                                        {% endvideo %}
+                                        <a class="pull-left card" style="width: 70px; height:50px;">
+                                           {% video r.video as video %}
+                                                {% video video  %}
+                                            {% endvideo %}
+                                        </a>
+                                        
                                        
                                         <div class="media-body">
                                             <h5 class="media-heading"><a class="cook-second-color" href="{% url 'video_detail' slug=r.slug %}">{{r.title|truncatechars:30}}</a></h5>
@@ -92,7 +108,7 @@
 
                                 <div id="menu3" class="tab-pane fade">
                                    {% for r in lastposts %}
-                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'F j, Y' }}</div>
+                                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{r.published_at|date:'d M Y ' }}</div>
                                     <div class="media">
                                         {% if r.image %}
                                             <a class="pull-left card" href="{% url 'post_detail' slug=r.slug %}">
@@ -119,22 +135,14 @@
 
                     
 
-                        <div class="widget-left">
-
-                            <div class="separator4"></div>
-                            <div class="single_video">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_l6CQRHIGyg"></iframe>
-                                </div>
-                            </div>
-                            
-                        </div>
+                       
 
                        <!-- widget -->
+                        {% if top_contributors %} 
 
                         <div class="widget-left">
 
-                            <h4>Top 10 des contributeurs</h4>
+                            <h4>Top 5 des contributeurs</h4>
                             <div class="separator4"></div>
                             <div class="card">
                                 
@@ -162,7 +170,7 @@
                                        
                                         <div class="media-body" style="font-size: 14px;">
                                             <h5 class="media-heading" style="font-size: 14px;">
-                                            <a class="cook-second-color" href=" ">
+                                            <a class="cook-second-color" href="#">
                                                 {{tp.author__username}}
                                             </a></h5>
                                             &nbsp;&nbsp; {{tp.total}} Posts
@@ -176,24 +184,8 @@
                             </div>
                         </div>
                         <!-- Widget -->
+                        {% endif %}
 
-                        <div class="widget-left">
-                            <h4>Newsletter</h4>
-                            <div class="separator4"></div>
-                       
-                            <div class="single">
-                                
-                                <form action="#">
-                                    <div class="input-group">
-                                        <input type="email" class="form-control" placeholder="Email">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">{% trans 'Souscrire' %}</button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                        
-                        </div>
 
 
                     </div>
@@ -205,68 +197,6 @@
 
         </section> <!-- End of portfolio two Section -->        
 
-     <div class="modal fade" id="modalUser{{tp.author__id}}" tabindex="-1" role="dialog">
-         <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <div class="col-md-4">
-                    
-                             {% if tp.author__profile__photo%}
-                                <img class="img-fluid img-circle" src="{{tp.author__profile__photo.url}}" width="150px;" height="150px;" alt="contributor image">
-                            {% else %}
-                                <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-fluid" width="" alt="contributor image">
-                            {% endif %}
-                                <h5 class="">{{tp.author__first_name}} {{tp.author__author.last_name}}</h5>
-
-                            </div>
-                            <div class="col-md-8">
-
-                                <p>{{recipe.author.profile.bio}}</p>
-                                <ul class="social-link list-inline">
-                                     <li>
-                                            {% if recipe.author.profile.facebook %}
-                                            <a href="{{recipe.author.profile.facebook}}" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
-                                            {% else %}
-                                             <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
-                                            {% endif %}
-                                        </li>
-                                        <li>
-                                            {% if recipe.author.profile.twitter %}
-
-                                            <a href="{{recipe.author.profile.twitter}}" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
-                                            {% else %}
-                                            <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
-                                            {% endif %}
-                                        </li>
-                                        <li>
-                                            {% if recipe.author.profile.gplus %}
-                                            <a href="{{recipe.author.profile.gplus}}" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
-                                            {% else %}
-                                             <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
-                                            {% endif %}
-                                        </li>
-                                        <li>
-                                            {% if recipe.author.profile.instagram %}
-
-                                            <a href="{{recipe.author.profile.instagram}}" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
-                                            {% else %}
-                                            <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
-                                            {% endif %}
-
-                                        </li>
-                                        <li>
-                                            {% if recipe.author.profile.linkedin %}
-                                            <a href="{{recipe.author.profile.linkedin}}" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
-                                            {% else %}
-                                            <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
-                                            {% endif %}
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
-                     </div>
-                </div>
-            </div>
+       
 
        {% endblock content_base %}

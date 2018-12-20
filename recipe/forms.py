@@ -4,7 +4,7 @@
 from django import forms
 from django.forms import modelformset_factory
 
-from .models import Recipe, Video, Origin, Category
+from .models import Recipe, Video, Origin, Category, CategoryVideo
 from django.forms import SelectDateWidget, SplitDateTimeField
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
@@ -85,6 +85,17 @@ class VideoForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
+        fields = ('name', 'slug')
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+            'slug': forms.TextInput(
+                attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+        }
+
+class CategoryVideoForm(forms.ModelForm):
+    class Meta:
+        model = CategoryVideo
         fields = ('name', 'slug')
         widgets = {
             'name': forms.TextInput(

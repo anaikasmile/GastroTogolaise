@@ -1,9 +1,24 @@
 <!-- this format is not compulsory, you can have HTML that suits your project -->
+{% load i18n %}
+{% load apps_filters %}
+{% load notification_tags %}
+
 <li data-nf-id="{{ notification.id }}"
 class="notification list-group-item {{ notification.read|yesno:'read,unread' }}">
-    <a href="{{ notification.actor_url }}">{{ notification.actor }}</a> {{ notification.verb }}
-    <span class="timesince">{{ notification.created|timesince }} ago</span>
+    {% block notification %}
 
+         {% blocktrans with actor_url=notification.actor_url actor=notification.actor verb=notification.verb target=notification.target target_url=notification.target_url%}
+
+         
+        {% endblocktrans %}
+
+                Votre recette <a href="{{ target_url}}" style="color:#FFC107;">{{notification.target }}</a> {{ notification.verb }}
+                <i class="fa fa-clock-o"></i> 
+                Il y'a {% blocktrans with created=notification.created|naturaltimez %}{{created}} {% endblocktrans %}
+
+    
+  
+    
    
     {% if notification.read == 0 %}
     	<a data-id="{{ notification.id }}" class="mark-notification"
@@ -17,4 +32,6 @@ class="notification list-group-item {{ notification.read|yesno:'read,unread' }}"
         </span></a>
     {% endif %}
     <!-- <button class="delete-notification" data-id="{{ notification.id }}">X</button> -->
+        {% endblock notification %}
+
 </li>

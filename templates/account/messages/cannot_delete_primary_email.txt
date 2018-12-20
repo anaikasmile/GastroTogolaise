@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}Vous ne pouvez pas supprimer votre adresse email principal. ({{email}}).{% endblocktrans %}
+{% blocktrans %}Vous ne pouvez pas supprimer votre adresse email de récupération. ({{email}}).{% endblocktrans %}

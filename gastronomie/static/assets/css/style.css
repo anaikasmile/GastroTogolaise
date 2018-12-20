@@ -37,8 +37,8 @@ hr{
 }
 
 .loaded {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -827,6 +827,11 @@ input::-ms-input-placeholder {
     display: none;
 }
 
+.widget-left .nav-tabs>li{
+    display: block;
+    float: left;
+    width: 33.33334%;
+}
 ul.tags li a {
     display: block;
     padding: 5px 15px;
@@ -1371,29 +1376,32 @@ blockquote footer, blockquote small, blockquote .small {
     border-top:1px solid #ddd;
 }
 .copyright_text p{
-    color:#aaa79e;
     font-size:0.8125rem;
     line-height: 25px;
-    padding:40px;
     max-width: 100%;
 }
-.copyright_text p i{
-    padding:0px 10px;
-    color:#ff0000;
-}
+
 .copyright_text p a{
-    padding:0px 10px;
+    
     color:#5e9a28;
 }
-
 .footer_socail{
-    padding:40px; 
+    padding: 20px;
+}
+.footer_socail_right{
+    padding:20px; 
     text-align: right;
 }
-.footer_socail a i{
+.footer_socail_right a i, .footer_socail ul>li>a{
     font-size:0.8125rem;
     color:#aaa79e;
     padding: 0px 10px;
+}
+.footer_socail_right a i:hover, .footer_socail ul>li>a:hover{
+    color: #f3b81f;
+}
+.single_widget ul>li>a:hover{
+    color: #f3b81f;
 }
 
 /* scrollup */
@@ -1644,6 +1652,10 @@ blockquote footer, blockquote small, blockquote .small {
     background-color: white;
 }
 
+.rp-post-meta-info .likevideo:hover{
+    background-color: white;
+}
+
 .rp-post-meta-info .rp-author{
     color: #b9456d;
 }
@@ -1653,7 +1665,7 @@ blockquote footer, blockquote small, blockquote .small {
 }
 
 .rp-post-share {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .rp-post-share .btn{
@@ -1942,6 +1954,10 @@ blockquote footer, blockquote small, blockquote .small {
 }
 .social-link{
     margin: 10px 0 10px 0;
+}
+
+.social-link:hover{
+    color:#f3b81f;
 }
 
 .social-link .facebook:hover{
@@ -2378,7 +2394,7 @@ iframe{
 
 .single .form-control {
     height: 50px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(158, 158, 158, 0.15);
     border-color: transparent;
     border-radius: 20px 0 0 20px; }
      .single .form-control:focus {
