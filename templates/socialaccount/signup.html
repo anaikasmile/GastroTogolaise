@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% load account socialaccount %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block head_title %}{% trans "Sign up" %}{% endblock %}
+
+{% block slide %}
+   
+<section id="home" class="home">
+    
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+{% endblock slide %}
+
+{% block header %}
+
+   
+{% endblock header %}
+
+{% block content_base %}
+
+
+<section class="portfolio">
+    <div class="container">                                 
+        <div class="row ">
+        	 <div class="col-md-offset-4 col-md-4">
+        	 	<div class="login">
+		            <h4 class="text-center">{% trans "Inscrivez-vous" %} </h4>
+				  
+
+						<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %} Vous êtes sur le point d'utiliser votre compte {{provider_name}} pour vous connecter à 
+						{{site_name}}.  Veuillez finaliser votre inscription. {% endblocktrans %}</p>
+
+						<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+						  {% csrf_token %}
+						  
+						   <div class="form-group">
+		                                {{ form.email|add_class:'form-control'}} 
+		                                <span class="help-block">{{ form.error }}</span>
+		                    </div>
+						  {% if redirect_field_value %}
+						  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+						  {% endif %}
+						  <button type="submit" class="btn btn-sm btn-primary btn-login">{% trans "Valider" %} </button>
+						</form>
+				</div>
+			</div>  
+		</div> 
+	</div>
+</section>       
+
+{% endblock %}

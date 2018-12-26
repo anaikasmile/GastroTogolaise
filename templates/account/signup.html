@@ -59,7 +59,7 @@
 		              <div class="box">
 		                   <div class="content">
 		                        <div class="social">
-		                            <a  href="{% url 'google_login' %}"  class="circle google">
+		                            <a  href="{% url 'google_login' %}" class="circle google">
 		                              <i class="fa fa-google-plus fa-fw"></i>
 		                            </a>
 		                            <a href="{% url 'facebook_login'  %}"  class="circle facebook" >
@@ -118,7 +118,9 @@
 										<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 									{% endif %}
 		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Je m'inscris" %}</button>
-		                                <p>Je déclare avoir lu <a href="">les conditions d'utilisation</a></p>
+		                                <br>
+		                                <p>En validant mon inscription <a href="">j'accepte les CGUs</a></p>
+		                               
 
 		                        </form>
 		                    </div>

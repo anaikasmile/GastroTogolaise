@@ -1312,7 +1312,7 @@ blockquote footer, blockquote small, blockquote .small {
     color:#223d61;
 }
 .footer_widget .main_widget{
-    padding: 55px 15px 80px 15px; 
+    padding: 55px 15px 40px 15px; 
     overflow: hidden;
 }
 .footer_title_left{
@@ -2405,3 +2405,4 @@ iframe{
     border-radius: 0 20px 20px 0;
     color: #fff;
 }
+

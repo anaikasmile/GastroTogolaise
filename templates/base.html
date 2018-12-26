@@ -45,7 +45,7 @@
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/login-register.css' %}">
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-        <link href="/static/django_addanother/addanother.css" type="text/css" media="all" rel="stylesheet">
+        <link href="{% static 'django_addanother/addanother.css' %}" type="text/css" media="all" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
 
         <!--Theme Responsive css-->
@@ -472,7 +472,9 @@
         <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.js' %}"></script>
 
         <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
-       
+        <script  type="text/javascript" src="{% static 'assets/django_select2/django_select2.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'assets/django_addanother/django_jquery.js' %}"></script>
+
         <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
         <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
 
@@ -481,7 +483,7 @@
 
     
         <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script>
-        {{ form.media.js }}
+        <!-- {{ form.media.js }} -->
         <script type="text/javascript">
             $(document).ready(function() {
 

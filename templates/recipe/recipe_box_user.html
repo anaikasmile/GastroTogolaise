@@ -25,12 +25,12 @@
 
                 <a class="pull-left" href="">
                 {% if request.user.profile.photo %}
-                    {% thumbnail request.user.profile.photo  "100x100" as im %}
- 
-                    <img src="{{request.user.profile.photo.url}}" width="" class="img-responsive img-circle">
-                   {% endthumbnail %} 
+                    
+                     {% thumbnail request.user.profile.photo  "200x200" crop="center" as img %}
+                    <img src="{{img.url}}">
+                        {% endthumbnail %}
                 {% else %}
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" class="media-object img-circle img-responsive">
+                    <img src="{% static 'assets/images/user_icon_g.png' %}" class="img-responsive img-rounded">
                 {% endif %}
                 
                 </a>

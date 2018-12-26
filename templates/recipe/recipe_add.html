@@ -35,15 +35,14 @@
                     <hr>
 
 
-                    <form method="POST"  name="add-form" id="add_origin" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
+                    <form method="POST"  name="add-form" id="" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
                         {% csrf_token %}
                          {{ form.media }}
-
                          {{ form.as_p }}
 
 
 
-                        <button type="submit" class="btn btn-primary" id="submit_origin">{% trans 'Envoyer' %}</button>
+                        <button type="submit" class="btn btn-primary">{% trans 'Envoyer' %}</button>
                     </form>
 
                 </section>
@@ -56,16 +55,7 @@
 
     <br>
     <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-
-        // $("#add_id_origin").attr("title", "Ajouter une nouvelle ethnie");
-        // $( "#submit_origin" ).click(function() {
-        //     window.close();
-        // });
-
-    });
-    </script>
+    
 
 {% endblock content %}
 

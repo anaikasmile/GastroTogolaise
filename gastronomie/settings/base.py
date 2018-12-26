@@ -132,7 +132,8 @@ SOCIALACCOUNT_PROVIDERS = \
             ],
             'AUTH_PARAMS': {
                 'access_type': 'offline',
-            }
+            },
+            'VERIFIED_EMAIL': False
         }
     }
 
@@ -215,6 +216,8 @@ EMAIL_CONFIRMATION_SIGNUP = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 LOGIN_REDIRECT_URL = "/"
