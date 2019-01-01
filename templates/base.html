@@ -440,10 +440,10 @@
                                 <span aria-hidden="true">&times;</span>
 
                             </button>
-                            <h5 class="h5-responsive"> {% trans 'Log out' %}</h5>
+                            <h5 class="h5-responsive"> {% trans 'Déconnexion' %}</h5>
                       </div>
                       <div class="modal-body">
-                            <p>{% trans 'Etes-vous sur de vouloir vous déconnecter?' %}</p>
+                            <p>{% trans 'Etes-vous sûrs de vouloir vous déconnecter?' %}</p>
                                 <form method="post" action="{% url 'account_logout' %}">
                                   {% csrf_token %}
                                   {% if redirect_field_value %}
@@ -472,9 +472,7 @@
         <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.js' %}"></script>
 
         <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'assets/django_select2/django_select2.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'assets/django_addanother/django_jquery.js' %}"></script>
-
+        
         <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
         <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
 
@@ -483,7 +481,13 @@
 
     
         <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script>
-        <!-- {{ form.media.js }} -->
+     
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+        <script type="text/javascript" src="/static/django_select2/django_select2.js"></script>
+        <script type="text/javascript" src="/static/django_addanother/django_jquery.js"></script>
+       
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
         <script type="text/javascript">
             $(document).ready(function() {
 

@@ -21,35 +21,33 @@
 
 
 
-    <div class="main_mix_content card padding">
+    <div class="main_mix_content padding">
+
+        <div class="card-header">
+            {% include 'recipe/recipe_header.html' %}
+        </div>
+        <div class="card-body">
+            <div id="mixcontent" class="mixcontent row ">
 
 
-        <div id="mixcontent" class="mixcontent row ">
+                <div class="col-md-12">
+                    <section class="paper padding-20">
+                        <h3 class="h3-responsive text-center">Proposer votre recette</h3>
 
+                        <hr>
 
-            <div class="col-md-12">
-                <section class="paper padding-20">
-                    <h3 class="h3-responsive text-center">Proposer votre recette</h3>
-                     <p>Remplissez les champs suivants, après une étude vous recevrez une notification</p>
+                        <form method="POST"  name="add-form" id="" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
+                            {% csrf_token %}
+                             {{ form.media }}
+                             {{ form.as_p }}
 
-                    <hr>
+                            <button type="submit" class="btn btn-primary">{% trans 'Envoyer' %}</button>
+                        </form>
 
+                    </section>
 
-                    <form method="POST"  name="add-form" id="" action="{% url 'recipe_add' %}" class="form-block" enctype="multipart/form-data">
-                        {% csrf_token %}
-                         {{ form.media }}
-                         {{ form.as_p }}
-
-
-
-                        <button type="submit" class="btn btn-primary">{% trans 'Envoyer' %}</button>
-                    </form>
-
-                </section>
-
+                </div>
             </div>
-
-
         </div>
     </div>
 

@@ -1,24 +1,28 @@
-{% extends 'base_principal.html' %}
+{% extends "recipe/recipe_box_user.html" %}
 {% load staticfiles %}
-{% load thumbnail %}
 {% load i18n %}
+{% load account %}
+{% load widget_tweaks %}
 
-{% block slide %}
-    <section id="home" class="home">
+{% block head_title %}{% trans "Modifier le mot de passe" %}{% endblock %}
 
-     
-        <img src="{% static 'assets/images/food_1.jpg' %}">
-                                   
-    </section>
-{% endblock slide %}
 
-{% block content %}
- <!-- Post -->
-<div class="row single_mixi">
- 
+{% block content_box_user %}
+    <div class="row padding-20">
+        <div class="col-lg-4 ">
+             <ul class="list-block">
+                <li>
+                    <a href="{% url 'userprofile_update' %}" class="active"> Profil</a>
+                </li>
+                <li>
+                    <a href="{% url 'account_change_password' %}"> Mot de passe</a>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="col-lg-7 content-left">    
     
-    <section class="rp-profile">
-            <h3 class="h3-responsive text-center">Modifier votre profil</h3>
+            <h3 class="h3-responsive text-center">Modifier mon profil</h3>
             <hr>
     
             <form method="post"  class="form-block" action="." enctype="multipart/form-data">
@@ -129,12 +133,9 @@
                 </div>
 
 
-              <button class="btn btn-primary" type="submit">Enregister</button>
-            </form>
-                
-               
-    </section>
-    
+               <button class="btn btn-primary" type="submit">Enregister</button>
+        </form>
+    </div>
  </div>
-{% endblock content %}
+{% endblock %}
 

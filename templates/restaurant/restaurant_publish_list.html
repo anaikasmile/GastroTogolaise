@@ -79,11 +79,11 @@
                                                 <h4 class="modal-title" id="myModalLabel{{restaurant.id}}">Confirmer votre action</h4>
                                               </div>
                                               <div class="modal-body">
-                                                <p class="lead">% trans 'Etes-vous sûrs de vouloir supprimer cette recette?' %}<strong>{{ restaurant.title}}</strong>?</p>
+                                                <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette recette?' %}<strong>{{ restaurant.title}}</strong>?</p>
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href="{% url 'restaurant_delete' slug=restaurant.slug %}" type="submit" class="btn btn-danger">{ trans 'Supprimer' }</a>
+                                                <a href="{% url 'restaurant_delete' slug=restaurant.slug %}" type="submit" class="btn btn-danger">{% trans 'Supprimer' %}</a>
                                               </div>
                                             </div>
                                           </div>

@@ -1,4 +1,4 @@
-{% extends 'base_principal.html' %}
+{% extends "base.html" %}
 {% load staticfiles %}
 {% load i18n %}
 {% load thumbnail %}
@@ -17,175 +17,137 @@
 
 {% endblock slide %}
 
-{% block content %}
- <!-- Post -->
 
- <div class="main_mix_content text-center padding">
-      <div class="row">
+{% block content_base %} <!-- Post -->
 
-                <a class="pull-left" href="">
-                {% if request.user.profile.photo %}
-                    
-                     {% thumbnail request.user.profile.photo  "200x200" crop="center" as img %}
-                    <img src="{{img.url}}">
-                        {% endthumbnail %}
-                {% else %}
-                    <img src="{% static 'assets/images/user_icon_g.png' %}" class="img-responsive img-rounded">
-                {% endif %}
-                
-                </a>
-           
-                
-                    <h3 class="">{{request.user.first_name}} {{request.user.last_name}}</h3>
-                    <p>
-                    {{request.user.profile.bio}}
-                    </p>
-                    <ul class="social-link list-inline">
-                  {% if request.user.profile.facebook %}
-                        <a href="{{request.user.profile.facebook}}" target="blank" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
-                        {% else %}
-                         <a href="#" class="btn-floating facebook"><i class="fa fa-facebook"></i></a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if request.user.profile.twitter %}
-
-                        <a href="{{request.user.profile.twitter}}" target="blank" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
-                        {% else %}
-                        <a href="#" class="btn-floating twitter"><i class="fa fa-twitter"></i></a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if request.user.profile.gplus %}
-                        <a href="{{request.user.profile.gplus}}" target="blank" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
-                        {% else %}
-                         <a href="#" class="btn-floating gplus"><i class="fa fa-google-plus"></i></a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if request.user.profile.instagram %}
-
-                        <a href="{{request.user.profile.instagram}}" target="blank" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
-                        {% else %}
-                        <a href="#" class="btn-floating insta"><i class="fa fa-instagram"></i></a>
-                        {% endif %}
-
-                    </li>
-                    <li>
-                        {% if request.user.profile.linkedin %}
-                        <a href="{{request.user.profile.linkedin}}" target="blank" class="btn-floating linkedin"><i class="fa fa-linkedin"></i></a>
-                        {% else %}
-                        <a href="#" class="btn-floating likedin"><i class="fa fa-linkedin"></i></a>
-                        {% endif %}
-                    </li>
-                </ul>
-                    
-          
-           
-        </div>
-    <br>
-
-    <div id="mixcontent" class="mixcontent row">
-     
-            
-            <div class="col-lg-8">
-                <p>
-                {% if nb < 1 %}
-                    Vous n'avez encore rien publié. On dirait que vous êtes très occupés à cuisiner. Prenez quelques instants pour publier vos délicieuses recettes et vous ferez de TogoKuizine une meilleure plateforme.
-                 {% else %}
-                    Continuez par publier vos recettes et vous ferez partis de nos top 10 contributeurs.
-
-                {% endif %}
-                </p>
-            </div>
-            <div class="col-lg-4">
-                        
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped">
-                        
-                        <tbody>
-                            <tr>
-                                <td> 
-                                    <p>{% trans 'Recettes' %}</p>
-                                    <h3 class="">{{nb}}</h3>
-                                </td>
-                                 
-                            </tr>
-                        </tbody>
-
-                    </table>
+    <section class="portfolio">
+        <div class="container">                                 
+            <div class="row">
+                <div class="tab-box-user">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{% url 'recipe_add' %}"><i class="fa fa-edit"></i> Ajouter une recette</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'recipe_box_user' %}"><i class="fa fa-cutlery" aria-hidden="true"></i> Mes recettes</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'userprofile_update' %}"><i class="fa fa-fw fa-gear" aria-hidden="true"></i> Paramètres</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
 
-        </div>
-        
-        <br>
-        <div class="row">
-                    
-                    <div class="col-lg-12">
+                <div class="card padding-40">
+
+                    {% block content_box_user %}
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>
+                                    {% if nb < 1 %}
+                                        Vous n'avez encore rien publié. On dirait que vous êtes très occupés à cuisiner. Prenez quelques instants pour publier vos délicieuses recettes et vous ferez de TogoKuizine une meilleure plateforme.
+                                     {% else %}
+                                        Continuez par publier vos recettes et vous ferez partis de nos top 10 contributeurs.
+
+                                    {% endif %}
+                                    </p>
+                                </div>
+                                <div class="col-md-4"> 
+
+                                     <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            
+                                            <tbody>
+                                                <tr>
+                                                    <td> 
+                                                        <p>{% trans 'Recettes' %}</p>
+                                                        <h3 class="">{{nb}}</h3>
+                                                    </td>
+                                                     
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
                         
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>{% trans 'Publié le' %}</th>
-                                         <th>{% trans 'Catégorie' %}</th>
-                                        <th>{% trans 'Nom' %}</th>
-                                        <th>{% trans 'Vues' %}</th>
-                                        <th>{% trans 'Likes' %}</th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    {% for recipe in recipes %}
-                                    <tr>
-                                        <td>{{recipe.published_at|date:'F j, Y'}}</td>
-                                        <td><a href="">{{recipe.category.name}}</a></td>
-                                        <td><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{recipe.title}}</a></td>
-                                        <td><a href="">{{recipe.view}}</a></td>
-                                        <td><a href="">{{recipe.like}}</a></td>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>{% trans 'Publié le' %}</th>
+                                             <th>{% trans 'Catégorie' %}</th>
+                                            <th>{% trans 'Nom' %}</th>
+                                            <th>{% trans 'Vues' %}</th>
+                                            <th>{% trans 'Likes' %}</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         
-                                    </tr>
+                                        {% for recipe in recipes %}
+                                        <tr>
+                                            <td>{{recipe.published_at|date:'F j, Y'}}</td>
+                                            <td><a href="">{{recipe.category.name}}</a></td>
+                                            <td><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{recipe.title}}</a></td>
+                                            <td><a href="">{{recipe.view}}</a></td>
+                                            <td><a href="">{{recipe.like}}</a></td>
+                                            
+                                        </tr>
 
-                                    {% empty %}
-                                        <tr>{% trans 'Aucune recette publiée' %}.</tr>
-                                    {% endfor %}  
+                                        {% empty %}
+                                            <tr>{% trans 'Aucune recette publiée' %}.</tr>
+                                        {% endfor %}  
 
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+
                     </div>
 
-                </div>
-                <!-- /.row -->
+                    <div class="rp-pagination text-center">
+   
+                        {% if recipes.has_other_pages %}
+                            <ul class="pagination">
+                                {% if recipes.has_previous %}
+                                  <li><a href="?page={{ recipes.previous_page_number }}">&laquo;</a></li>
+                                {% else %}
+                                <li class="disabled"><span>&laquo;</span></li>
+                                {% endif %}
+                                {% for i in recipes.paginator.page_range %}
+                                  {% if recipes.number == i %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if recipes.has_next %}
+                                  <li><a href="?page={{ recipes.next_page_number }}">&raquo;</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>&raquo;</span></li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                        </div>
+                    {% endblock content_box_user %}
 
-        <div class="rp-pagination text-center">
-       
-		{% if recipes.has_other_pages %}
-			<ul class="pagination">
-				{% if recipes.has_previous %}
-			      <li><a href="?page={{ recipes.previous_page_number }}">&laquo;</a></li>
-			    {% else %}
-				<li class="disabled"><span>&laquo;</span></li>
-			    {% endif %}
-			    {% for i in recipes.paginator.page_range %}
-			      {% if recipes.number == i %}
-			        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-			      {% else %}
-			        <li><a href="?page={{ i }}">{{ i }}</a></li>
-			      {% endif %}
-			    {% endfor %}
-			    {% if recipes.has_next %}
-			      <li><a href="?page={{ recipes.next_page_number }}">&raquo;</a></li>
-			    {% else %}
-			      <li class="disabled"><span>&raquo;</span></li>
-			    {% endif %}
-			</ul>
-		{% endif %}
-		</div>
-    </div>
-		
-{% endblock content %}
+
+                </div>
+             
+            </div>
+        </div>
+    </section>
+
+
+    
+
+
+{% endblock content_base %}
 

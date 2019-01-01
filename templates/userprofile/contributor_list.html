@@ -60,9 +60,9 @@
                                         <td><a href="">{{user.first_name}} {{user.last_name}}</a></td>
                                         <td><a href=""> {% trans 'Contributeurs' %} </a></td>
                                         <td><a href="">{% if user.is_active %}
-                                            Active
+                                            Activé
                                         {% else %}
-                                            Desactiver
+                                            Désactivé
                                         {% endif %}
 
                                         </a></td>
@@ -70,7 +70,7 @@
                                             <a href="javascript:;" data-toggle="collapse" data-target="#action_{{user.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
                                             <ul id="action_{{user.id}}" class="collapse">
                                                 <li>
-                                                    <a href="{% url 'userprofile_preview' pk=user.pk%}"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
+                                                    <a href="{% url 'userprofile_preview' pk=user.pk%}"><i class="fa fa-eye" aria-hidden="true"></i>Voir</a>
                                                 </li>
                                             {% if request.user.is_staff %}
                                                 <li>
@@ -78,7 +78,7 @@
 
                                                     <a href="{% url 'userprofile_active' pk=user.pk%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Desactiver</a>
                                                 {% else %}
-                                                    <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Activer</a>
+                                                    <a href="{% url 'userprofile_active' pk=user.pk%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Activer</a>
 
                                                 {% endif %}
                                                 </li>

@@ -1,3 +1,4 @@
+
 {% load staticfiles %}
 {% load thumbnail %}
 {% load i18n %}
@@ -7,8 +8,6 @@
     {% csrf_token %}
     
     {{ form.as_p }}
-     
-   
-
+    
     <button type="submit" class="btn btn-primary">{% trans 'Envoyer' %}</button>
 </form>

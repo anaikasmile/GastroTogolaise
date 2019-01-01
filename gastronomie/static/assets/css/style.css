@@ -521,6 +521,10 @@ Extra height css
 .padding-20{
     padding: 20px;
 }
+.padding-40{
+    padding: 40px;
+}
+
 .padding-top-20 {
     padding-top: 1.33rem;
 }
@@ -933,6 +937,23 @@ ul.tags li a:hover {
 .main_mixi_content{
      position:relative;
 
+}
+
+
+.main_mix_content .card-header{
+    overflow: hidden;
+    background-color: #ccc;
+    border-radius: .25rem;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    z-index: 2;
+    padding: 15px;
+}
+
+.main_mix_content .card-body{
+    background-color: #fff;
+    margin-right: 3%;
+    margin-left: 3%;
+    /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
 }
 .main_mix_menu{
     margin-bottom:50px;
@@ -2405,4 +2426,43 @@ iframe{
     border-radius: 0 20px 20px 0;
     color: #fff;
 }
+.tab-box-user {
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+.tab-box-user .list-inline > li> a{
+    text-transform: uppercase;
+    color: #444;
+}
 
+.content-left:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -40px;
+    border-right: 1px solid #e5e5e5;
+}
+
+.list-block{
+    margin-top: 50px;
+    float: left;
+    width: 100%;
+}
+
+.list-block li {
+    margin:20px 0px 20px 0px;
+
+}
+.list-block li>a{
+    padding: 10px;
+    text-transform: uppercase;
+    
+
+}
+
+.list-block li>a:hover, .list-block li>a:active{
+    background-color: #CCC;
+    color: #fff;
+}
