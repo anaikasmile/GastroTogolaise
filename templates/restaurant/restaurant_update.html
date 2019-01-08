@@ -1,27 +1,121 @@
-{% extends 'restaurant/restaurant_publish_list.html' %}   
+{% extends 'base_admin.html' %} 
 {% load staticfiles %}
+{% load widget_tweaks %}
+{% load thumbnail %}
 {% load i18n %}
-{% block content_restaurant %}
+{% load humanize %} 
 
+{% block content %}
+ <div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Modifier une adresse </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bonnes adresses</a></li>
 
- <!-- Page Heading -->
-        <div class="row">
-            
-                <div class="col-lg-offset-2 col-lg-8">
-                    <form method="POST"  name="form" action="."  class="" enctype="multipart/form-data">
-                        {% csrf_token %}
-                         {{ form.media }}
-                          {{ form.as_p }}
-                        
-                        <button type="submit" class="save btn btn-default">Envoyer</button>
-                    </form>
+                            <li class="breadcrumb-item active" aria-current="page">Modifier</li>
+                        </ol>
+                    </nav>
                 </div>
+            </div>
+        </div>
+    </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
+<!-- Page Heading -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST"  action="."  name="add-form" class="form-block" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.name.label}}:</label>
+                                    {{ form.name }}
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.category.label}}:</label>
+                                    {{ form.category }}
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.tel.label}} :</label> <br>
+                                    {{ form.tel }}
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                      <label for="id_title">{{form.address.label}}:  </label>
+                                    {{ form.address }}
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.web_site.label}}:</label>
+                                    {{ form.web_site }}
+                                </div>
+                                 <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.image.label}}:</label><br>
+                                    {{ form.image }}
+                                </div>
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <label for="id_title">{{form.description.label}}:</label>
+                                    {{ form.description }}
+                                </div>
+                               
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <label for="id_title">{{form.enabled.label}}:</label>
+                                    {{ form.enabled }}
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                       
+                                     <button type="submit" class="save btn btn-success">{% trans 'Enregistrer' %}</button>
+                                </div>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
                 
             
-        </div>
+    </div>
         <!-- /.row -->
 
+</div>
+        
+               
 
+   
 
 {% endblock %}
 

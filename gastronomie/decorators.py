@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib import messages
 
 def group_required(*group_names):
     """Requires user membership in at least one of the groups passed in."""
@@ -14,7 +15,7 @@ def group_required(*group_names):
 
 
 
-def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='login'):
+def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='account_login'):
 	'''
 	Decorator for views that checks that the logged in user is a student,
 	redirects to the log-in page if necessary.
@@ -27,3 +28,20 @@ def staff_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login
 	if function:
 		return actual_decorator(function)
 	return actual_decorator
+
+
+
+def superuser_required(view_func=None, redirect_field_name=REDIRECT_FIELD_NAME,
+                   login_url='account_login'):
+    """
+    Decorator for views that checks that the user is logged in and is a
+    superuser, redirecting to the login page if necessary.
+    """
+    actual_decorator = user_passes_test(
+        lambda u: u.is_active and u.is_superuser,
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
+    if view_func:
+        return actual_decorator(view_func)
+    return actual_decorator

@@ -20,7 +20,7 @@ from gastronomie.decorators import *
 
 
 def pagination(request,fichier):
-    paginator = Paginator(fichier,3)
+    paginator = Paginator(fichier,2)
 
     page = request.GET.get('page')
     try:
@@ -139,7 +139,7 @@ def post_update(request,slug):
 			post = form.save(commit=False)
 			post.save()
 			form.save_m2m()
-			messages.success(request, 'Post updated',extra_tags='alert')
+			messages.success(request, 'Post modifié',extra_tags='alert')
 		return redirect('post_preview', slug=post.slug)
 	else:
 		form = PostForm(instance=post)
@@ -168,7 +168,7 @@ def post_publish_list(request):
 def post_publish(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.publish()
-    messages.success(request, 'Your post was published!',extra_tags='alert')
+    messages.success(request, 'Post publié!',extra_tags='alert')
     return redirect('post_draft_list')
 
 
@@ -179,20 +179,22 @@ def post_publish(request, slug):
 def post_delete(request,slug):
 	post = get_object_or_404(Post, slug=slug)
 	post.delete()
-	messages.success(request, 'Post deleted',extra_tags='alert')
+	messages.success(request, 'Post supprimé',extra_tags='alert')
 	return redirect('post_publish_list')
 
 
 
 # Ajout de la catégorie de post
+@superuser_required
 @login_required
-@staff_required
 def post_new_category(request):
 	if request.method == "POST":
 		form = CategoryForm(request.POST)
 		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect('/blog/new/')
+			category = form.save(commit=False)
+			category.slug = slugify(category.name)
+			category.save()
+			return HttpResponseRedirect('/blog/new/category')
 		else:
 			pass
 	else:
@@ -233,7 +235,7 @@ def post_category_delete(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	category.delete()
 	messages.success(request, 'Catégorie supprimée')
-	return redirect('post_publish_list')
+	return redirect('post_new_categ')
 
 #fin ajout
 

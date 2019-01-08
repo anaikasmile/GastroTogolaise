@@ -1,4 +1,4 @@
-{% extends 'base_principal.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 {% load thumbnail %}
 {% load i18n %}
@@ -8,24 +8,162 @@
 
     <section id="home" class="home">
 
-        <img src="{% static 'assets/images/food_1.jpg' %}">
+        <img src="{% static 'assets/images/top-header.jpg' %}">
 
     </section>
 
 {% endblock slide %}
 
-{% block content %}
+{% block content_base %}
 
-
- <!-- Post -->
-
+    <br><br>
+     <!-- Post -->
 
 
     <div class="main_mix_content padding">
+        <div class="container">
+
+            <form method="POST"  action="."  name="add-form" class="form-block" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+            <div id="mixcontent" class="mixcontent row">
+
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="product-slider">
+                        <h3 class="h3-responsive text-center">Proposer votre recette</h3>
+                        {% include 'recipe/recipe_header.html' %}
+                    </div>
+                </div>
+                
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                   
+                    <div class="product-details">
+                       
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.title.label}}:</label>
+                                {{ form.title }}
+                                <span class="helptext">{{ form.title.help_text }}</span>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.category.label}}:</label>
+                                {{ form.category }}
+                                 <span class="helptext">{{ form.category.help_text }}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.prepare_time.label}}:</label>
+                                {{ form.prepare_time }}
+                                 <span class="helptext">{{ form.prepare_time.help_text }}</span>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.cooking_time.label}}:</label>
+                                {{ form.cooking_time }}
+                                 <span class="helptext">{{ form.cooking_time.help_text }}</span>
+
+                            </div>
+                        </div>
+                         <br>  
+                        <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                <label for="id_title">{{form.origin.label}}:</label>
+                                {{ form.origin }}
+                                 <span class="helptext">{{ form.origin.help_text }}</span>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 col-lg-12">
+                                <label for="id_title">{{form.description.label}}:</label>
+                                {{ form.description }}
+                                 <span class="helptext">{{ form.description.help_text }}</span>
+                            </div>
+                           
+                        </div>
+                         <br>
+                         
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.image.label}}:  </label>
+                                {{ form.image }}
+                                 <span class="helptext">{{ form.image.help_text }}</span>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.image_1.label}}:</label>
+                                {{ form.image_1 }}
+                                 <span class="helptext">{{ form.image_1.help_text }}</span>
+                            </div>
+                           
+                        </div>
+                         <br>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.image_2.label}}:</label>
+                                {{ form.image_2 }}
+                                 <span class="helptext">{{ form.image_2.help_text }}</span>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                <label for="id_title">{{form.image_3.label}}:</label>
+                                {{ form.image_3 }}
+                                 <span class="helptext">{{ form.image_2.help_text }}</span>
+                            </div>
+                           
+                        </div>
+                         <br>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label for="id_title">{{form.ingredient.label}}:</label>
+                                {{ form.ingredient }}
+                                 <span class="helptext">{{ form.ingredient.help_text }}</span>
+                            </div>
+                            <div class="col-xs-12">
+                                <label for="id_title">{{form.preparation.label}}:</label>
+                                {{ form.preparation }}
+                                 <span class="helptext">{{ form.preparation.help_text }}</span>
+                            </div>
+                       
+                        </div>
+
+                        <br>
+                        <div class="row">
+                                
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    
+                                     <label for="id_title">{{form.tags.label}}:</label>
+                                    {{ form.tags }}
+                                    <span class="helptext">Séparer les tags par des virgules (,)</span>
+                            </div>
+                                </div>
+                                
+
+                        <button type="submit" class="btn btn-primary">{% trans 'Envoyer' %}</button>
+
+                            
+                    </div>
+
+
+                </div>
+
+
+                   
+
+                
+            </div>
+
+        </form>
+        </div>
+
+    </div>
+
+    <!-- <div class="main_mix_content padding">
 
         <div class="card-header">
             {% include 'recipe/recipe_header.html' %}
         </div>
+
         <div class="card-body">
             <div id="mixcontent" class="mixcontent row ">
 
@@ -50,12 +188,12 @@
             </div>
         </div>
     </div>
-
+ -->
     <br>
     <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
     
 
-{% endblock content %}
+{% endblock %}
 
 
 

@@ -1,42 +1,139 @@
-{% extends 'recipe/video_publish_list.html' %}	
+{% extends 'base_admin.html' %} 
 {% load staticfiles %}
-{% load i18n %}
+{% load widget_tweaks %}
 {% load thumbnail %}
+{% load i18n %}
+{% load threadedcomments_tags %}
 {% load embed_video_tags %}
-{% block content_video %}
 
+{% load humanize %} 
 
-    <div class="row text-center">
-        
-        <div class="col-lg-offset-2 col-lg-8">
-
-        <h2><a href="">{{ video.title }}</a></h2>
-               
-                    <ul class="list-inline">
-                        <li><i class="fa fa-calendar" aria-hidden="true"></i>
-                        {{ video.published_at|date:'F j, Y' }}</li>
-                        <li><i class="fa fa-user" aria-hidden="true"></i>
-                        {{video.author}}
-                        </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> {{video.view}}</a></li>    
-                        <li><a><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>{{video.like}}</a></li>
-                        <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i> 0 </a></li>
-                    </ul>
+{% block content %}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Article détail </h3>
                 
-                    {% video video.video as video %}
-                    {% video video '640 x 480'  %}
-                    {% endvideo %}
-                        
-                
-                <hr>
-                {% if not video.published_at %}
-                <div class="video-share">
-                    <a href="{% url 'video_publish' slug=video.slug %}" class="btn btn-default">Publier</a>
-                    
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Blog</a></li>
+
+                            <li class="breadcrumb-item active" aria-current="page">Article détail</li>
+                        </ol>
+                    </nav>
                 </div>
-                {% endif %}
+            </div>
         </div>
     </div>
-    <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
+
+   <div class="row">
+        <div class="offset-xl-1 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30">
+                    <div class="product-slider">
+                        <div id="productslider-1" class="product-carousel carousel slide" data-ride="carousel">
+                            
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                   
+                                {% video video.video as video %}
+                                    {% video video  %}
+                                {% endvideo %}
+                                    
+                                </div>
+                                                              
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left m-b-30">
+                    <div class="product-details">
+                        <div class="border-bottom pb-3 mb-3">
+                            <div class="product-rating d-inline-block float-right">
+                              <h4>{{video.category.name}}</h4>
+                            </div>
+                            <h2 class="mb-3">{{video.title}}</h2>
+                            <div class="product-rating d-inline-block float-right">
+                              {{video.author}}
+                            </div>
+                            <h3 class="mb-0 text-primary">video by</h3>
+                        </div>
+                       
+                        <div class="product-size border-bottom">
+                           
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                {{ video.published_at|date:'F j, Y' }} |
+                                {% get_comment_count for video as comment_count %}
+                                <i class="fa fa-comments" aria-hidden="true"></i>  {{comment_count}} |
+                                <i class="fa fa-eye" aria-hidden="true"></i> {{video.view}} |
+                                <i class="fas fa-heart" aria-hidden="true"></i> {{video.like}}
+                               
+                            
+                        </div>
+                       
+                        
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-b-60">
+                    <div class="simple-card">
+                        <ul class="nav nav-tabs" id="myTab5" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active border-left-0" id="product-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="product-tab-1" aria-selected="true">Descriptions</a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" id="product-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="product-tab-2" aria-selected="false">Tags</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent5">
+                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="product-tab-1">
+                               {{video.description|safe}}
+                                
+                            </div>
+                           
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="product-tab-2">
+                                {% for tag in video.tags.all %}
+
+                                    <a href="#">{{tag.name}}, </a>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div class="col-sm-12">
+                   <a href="{% url 'video_update' slug=video.slug %}" class="btn btn-primary">Modifier</a>
+                    {% if not video.published_at %}
+                    <a href="{% url 'video_publish' slug=video.slug %}" class="btn btn-primary">Publier</a>
+                    {% endif %}
+                </div>
+            </div>
+           
+            
+        </div>
+    </div>
+</div>
 
 {% endblock %}
+
+ 

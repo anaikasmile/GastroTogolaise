@@ -22,13 +22,13 @@ class PostForm(forms.ModelForm):
 			'text':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textarea','class':'form-control'}),    
 			'image':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
 			'video':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
-        	'tags': TagWidget(),
+        	'tags': TagWidget(attrs={'class':'form-control'}),
             }
 
 class CategoryForm(forms.ModelForm):
 	class Meta:
 		model = Category
-		fields = ('name', 'slug')
+		fields = ('name',)
 		widgets = {
 			'name': forms.TextInput(
 				attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),

@@ -1,24 +1,94 @@
-{% extends 'recipe/video_publish_list.html' %} 
+{% extends 'base_admin.html' %} 
 {% load staticfiles %}
 {% load i18n %}
 
 
-{% block content_video %}
-
+{% block content %}
+    <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader  -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">Ajouter une vidéo</h3>
+                    
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item" ><a href="#" class="breadcrumb-link">Vidéos</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="col-lg-offset-2 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
                     <form method="POST"  name="update-form" action="."  class="" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.media }}
-                        {{ form.as_p }}
-                        <button type="submit" class="save btn btn-default">{% trans 'Envoyer' %}</button>
-                    </form>
+                            {% csrf_token %}
+                            {{ form.media }}
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.title.label}} de la vidéo:</label>
+                                    {{ form.title }}
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">Lien vers la {{form.video.label}}:</label>
+                                    {{ form.video }}
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.category.label}}:</label>
+                                    {{ form.category }}
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.tags.label}}:</label>
+                                    {{ form.tags }}
+
+                                </div>
+                            </div>
+
+                           
+                            
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <label for="id_title">{{form.description.label}}:</label>
+                                    {{ form.description }}
+                                </div>
+                               
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <button type="submit" class="save btn btn-success">{% trans 'Envoyer' %}</button>
+                                </div>
+                               
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                
             </div>
+                 
         </div>
         <!-- /.row -->
+
+    </div>
               
 {% endblock %}

@@ -70,7 +70,8 @@ INSTALLED_APPS = [
     'search',
     'notify',
     'django_select2',
-    'django_addanother'
+    'django_addanother',
+    'newsletter'
 
 ]
 
@@ -253,7 +254,7 @@ EMBED_VIDEO_BACKENDS = (
 CKEDITOR_CONFIGS = {
     'default': {
         "removePlugins": "stylesheetparser",
-        'toolbar': 'full',
+        'toolbar': 'basic',
         'height': 300,
         'width': "auto",
     },
@@ -281,7 +282,19 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
+NEWSLETTER_CONFIRM_EMAIL = False
 
+# Using django-tinymce
+NEWSLETTER_RICHTEXT_WIDGET = "tinymce.widgets.TinyMCE"
+
+# Amount of seconds to wait between each email. Here 100ms is used.
+NEWSLETTER_EMAIL_DELAY = 0.1
+
+# Amount of seconds to wait between each batch. Here one minute is used.
+NEWSLETTER_BATCH_DELAY = 60
+
+# Number of emails in one batch
+NEWSLETTER_BATCH_SIZE = 100
 
 LOGGING = {
     'version': 1,

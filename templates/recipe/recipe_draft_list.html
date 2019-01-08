@@ -1,102 +1,143 @@
-{% extends 'recipe/recipe_publish_list.html' %}   
+{% extends 'base_admin.html' %}   
 {% load staticfiles %}
 {% load i18n %}
-{% load humanize %}
-
-{% block content_recipe %}
-
-
+{% block content %}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
     <div class="row">
-        
-        <div class="col-lg-12">
-            <h2> {% trans 'Recettes en attente de publication' %}</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>{% trans 'Catégorie' %}</th>
-                            <th>{% trans 'Titre' %}</th>
-                            <th>{% trans 'Auteur' %}</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       
-                        {% for recipe in recipes %}
-                         <tr>
-                            <td>{{recipe.created_at|date:'F j, Y'}}</td>
-                            <td><a href="#">{{recipe.category.name}}</a></td>
-                            <td><a href="{% url 'recipe_preview' slug=recipe.slug %}">{{recipe.title}}</a></td>
-                            <td><a href="">{{recipe.author}}</a></td>
-                            <td>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#publish_{{recipe.id}}"><i class="fa fa-fw fa-arrows-v"></i> {% trans 'Publier' %} <i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="publish_{{recipe.id}}" class="collapse">
-                                    <li>
-                                        <a href="{% url 'recipe_publish' slug=recipe.slug %}">{% trans 'Oui' %}</a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="modal" data-target="#unpublish{{recipe.id}}">{% trans 'Non' %}</a>
-                                    </li>
-                                </ul>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Recettes en attente </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                         <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Recettes</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Liste en attente</li>
 
-                            </td>
-                         </tr>
-                          <!-- Modal -->
-                                        <div class="modal fade" id="unpublish{{recipe.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
-                                          <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel{{recipe.id}}">{% trans 'Confirmer votre action' %}</h4>
-                                              </div>
-                                              <div class="modal-body">
-                                                <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette recette?' %} <strong>{{ recipe.title}}</strong>?</p>
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <a href="{% url 'recipe_delete' slug=recipe.slug %}" type="submit" class="btn btn-danger">{% trans 'Supprimer' %}</a>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </form>
-                         {% empty %}
-                            <tr>{% trans 'Aucune recette pour le moment' %}</tr>
-
-                        {% endfor %}  
- 
-                    </tbody>
-                </table>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
-    <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
+<!-- Page Heading -->
+    <div class="row">
+    
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+              
+                <div class="card-body">
+
+                  <table class="table table-bordered table-hover table-striped">
+                      <thead>
+                          <tr>
+                              <th>Date</th>
+                              <th>{% trans 'Catégorie' %}</th>
+                              <th>{% trans 'Titre' %}</th>
+                              <th>{% trans 'Auteur' %}</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                         
+                          {% for recipe in recipes %}
+                           <tr>
+                              <td>{{recipe.created_at|date:'F j, Y'}}</td>
+                              <td><a href="#">{{recipe.category.name}}</a></td>
+                              <td><a href="{% url 'recipe_preview' slug=recipe.slug %}">{{recipe.title}}</a></td>
+                              <td><a href="">{{recipe.author}}</a></td>
+                              <td>
+                                   <div class="btn-group ml-auto">
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <a href="{% url 'recipe_preview' slug=recipe.slug %}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"><i class="fas fa-eye"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <a href="{% url 'recipe_update' slug=recipe.slug %}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"><i class="far fa-edit"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <a data-toggle="modal" data-target="#deleteRecipe{{recipe.id}}">
+                                                <i class="fa fa-trash-o" aria-hidden="true"><i class="far fa-trash-alt"></i>
+                                            </a>
+                                        </button>
+                                    </div>
+
+                              </td>
+                           </tr>
+                            <!-- Modal -->
+
+                            <div class="modal fade" id="deleteRecipe{{recipe.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{recipe.id}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                          <div class="modal-header">
+                                                <h5 class="modal-title" id="myModalLabel{{recipe.id}}">Confirmer votre action</h5>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p class="lead">Etes-vous sûrs de vouloir supprimer cette recette <strong>{{ recipe.title}}</strong>?</p>
+                                          </div>
+                                          <div class="modal-footer">
+                                                <a href="#" class="btn btn-brand" data-dismiss="modal">Fermer</a>
+                                                <a href="{% url 'recipe_delete' slug=recipe.slug %}" class="btn btn-primary">Supprimer</a>
+                                          </div>
+                                    </div>
+                              </div>
+                            </div>
+                           {% empty %}
+                              <tr>{% trans 'Aucune recette pour le moment' %}</tr>
+
+                          {% endfor %}  
+   
+                      </tbody>
+                  </table>
+            
 
                 
-       <div class="text-center">
-                {% if recipes.has_other_pages %}
-                    <ul class="pagination">
-                        {% if recipes.has_previous %}
-                          <li><a href="?page={{ recipes.previous_page_number }}">&laquo;</a></li>
-                        {% else %}
-                        <li class="disabled"><span>&laquo;</span></li>
-                        {% endif %}
-                        {% for i in recipes.paginator.page_range %}
-                          {% if recipes.number == i %}
-                            <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                          {% else %}
-                            <li><a href="?page={{ i }}">{{ i }}</a></li>
-                          {% endif %}
-                        {% endfor %}
-                        {% if recipes.has_next %}
-                          <li><a href="?page={{ recipes.next_page_number }}">&raquo;</a></li>
-                        {% else %}
-                          <li class="disabled"><span>&raquo;</span></li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
-                </div>
+                   <div class="text-center">
+                      {% if recipes.has_other_pages %}
+                          <ul class="pagination">
+                              {% if recipes.has_previous %}
+                                <li><a href="?page={{ recipes.previous_page_number }}">&laquo;</a></li>
+                              {% else %}
+                              <li class="disabled"><span>&laquo;</span></li>
+                              {% endif %}
+                              {% for i in recipes.paginator.page_range %}
+                                {% if recipes.number == i %}
+                                  <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                  <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                              {% endfor %}
+                              {% if recipes.has_next %}
+                                <li><a href="?page={{ recipes.next_page_number }}">&raquo;</a></li>
+                              {% else %}
+                                <li class="disabled"><span>&raquo;</span></li>
+                              {% endif %}
+                          </ul>
+                      {% endif %}
+                    </div>
 
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}
 

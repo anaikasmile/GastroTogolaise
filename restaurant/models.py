@@ -24,8 +24,8 @@ class Category(models.Model):
 @python_2_unicode_compatible
 class Restaurant(models.Model):
 	ENABLED = (
-        ('True', _(u'True')),
-        ('False', _(u'False')),
+        ('True', _(u'Oui')),
+        ('False', _(u'Non')),
     )
 
 	category = models.ForeignKey(Category,related_name='addresses',verbose_name="Catégorie")

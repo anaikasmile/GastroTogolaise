@@ -1,32 +1,119 @@
-{% extends 'restaurant/restaurant_publish_list.html' %}   
+{% extends 'base_admin.html' %} 
 {% load staticfiles %}
-{% load i18n %}
+{% load widget_tweaks %}
 {% load thumbnail %}
-{% block content_restaurant %}
+{% load i18n %}
+{% load threadedcomments_tags %}
+{% load humanize %} 
 
+{% block content %}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Adresse détail </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                       <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bonnes adresses</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Adresse détail</li>
 
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-10">
-                        <div class="row text-center">
-                            <h2 class="">{{restaurant.name}}</h2>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-calendar" aria-hidden="true"></i>
-                                {{ restaurant.created_at|date:'F j, Y' }}</li>
-                            <li class="post-author">Post by <a href="">{{restaurant.author}}</a></li>
-                        </ul>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
+
+ <div class="row">
+        <div class="offset-xl-1 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30">
+                    <div class="product-slider">
+                        <div id="productslider-1" class="product-carousel carousel slide" data-ride="carousel">
+                            
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                
+                                {% if restaurant.image %}
+                                {% thumbnail restaurant.image  "500x200" crop="center" as img %}
+                                    <img src="{{img.url}}" class="img-responsive">
+                                  {% endthumbnail %}
+                                {% else %}
+                                  <img src="{% static 'dashboard/assets/images/avatar-1.jpg' %}"" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                {% endif %}
+                                </div>
+                                
+                                
+                                
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                             <span class="sr-only">Previous</span>
+                                  </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="sr-only">Next</span>
+                                     </a>
                         </div>
-                        <br> 
-                        <div class="row">
-                            {% if restaurant.image %}
-                            <div class="col-md-7">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left m-b-30">
+                    <div class="product-details">
+                        <div class="border-bottom pb-3 mb-3">
+                            <div class="product-rating d-inline-block float-right">
+                              <h4>{{restaurant.category.name}}</h4>
+                            </div>
+                            <h2 class="mb-3">{{restaurant.name}}</h2>
+                            <div class="product-rating d-inline-block float-right">
+                              {{restaurant.author}}
+                            </div>
+                            <h3 class="mb-0 text-primary">Post by</h3>
+                        </div>
+                       
+                        <div class="product-size border-bottom">
+                           
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                {{ restaurant.created_at|date:'F j, Y' }} 
+                                  
+                        </div>
+                        Statut: {% if restaurant.enabled == 'True' %} Publié {% else %} Non publié {% endif %}
+                       
+                        
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-b-60">
+                    <div class="simple-card">
+                        <ul class="nav nav-tabs" id="myTab5" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active border-left-0" id="product-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="product-tab-1" aria-selected="true">Descriptions</a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" id="product-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="product-tab-2" aria-selected="false">Plus d'infos</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent5">
+                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="product-tab-1">
+                               {{restaurant.description|safe}}
                                 
-                                <img src="{{restaurant.image.url}}" class="img-responsive">
-                                
-                            </div> 
-                            {% endif %}
-                            <div class="col-md-5">
-                                <h4><strong>Description:</strong></h4>
-                                <p>{{restaurant.description|safe}}</p>
+                            </div>
+                           
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="product-tab-2">
                                 <ul class="list-inline">
                                 {% if restaurant.tel %}
                                     <li><strong><i class="fa fa-phone" aria-hidden="true"></i> </strong>{{restaurant.tel}}</li>
@@ -42,27 +129,33 @@
                                     <li><strong>Web site: </strong><a href="{{restaurant.web_site}}"> {{restaurant.web_site}}</a></li>
                                 {% endif %}   
                                 </ul>
-                            </div> 
-                        </div>
-                        
-                   
-                    
-                        <br>
-                    
-                        <div class="row text-center">
-                            <div class="col-sm-12">
-                                <a href="{% url 'restaurant_update' slug=restaurant.slug %}" class="btn btn-primary">Modifier</a>
-                                {% if not restaurant.published_at %}
-                                <a href="{% url 'restaurant_publish' slug=restaurant.slug %}" class="btn btn-primary">Publier</a>
-                                {% endif %}
+                                <div class="border-top user-social-box">
+                                        <div class="user-social-media d-xl-inline-block"><span class="mr-2 twitter-color"><a href="{{restaurant.twit_id}}"> <i class="fab fa-twitter-square"></i></a></span></div>
+                                        
+                                        <div class="user-social-media d-xl-inline-block"><span class="mr-2 instagram-color"><a href="{{restaurant.insta_id}}"><i class="fab fa-instagram"></i></a></span></div>
+
+                                        <div class="user-social-media d-xl-inline-block"><span class="mr-2  facebook-color"><a href="{{restaurant.fb_id}}"><i class="fab fa-facebook-square "></i></a></span></div>
+                                        
+                                    </div>
                             </div>
                         </div>
-                
-
+                    </div>
                 </div>
-           
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
-{% endblock %}
+            </div>
 
+
+            <div class="row text-center">
+                <div class="col-sm-12">
+                   <a href="{% url 'restaurant_update' slug=restaurant.slug %}" class="btn btn-primary">Modifier</a>
+                    
+                </div>
+            </div>
+           
+            
+        </div>
+    </div>
+</div>
+
+    <!-- /.row -->
+
+{% endblock %}

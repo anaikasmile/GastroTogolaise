@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
 
 	$(window).load(function () {
 		$(".loaded").fadeOut();
-		$(".preloader").delay(1000).fadeOut("slow");
+		$(".preloader").delay(500).fadeOut("slow");
 	});
     /*---------------------------------------------*
      * Mobile menu
@@ -68,7 +68,7 @@ jQuery(document).ready(function ($) {
 
     $('.main_home_slider').owlCarousel({
         responsiveClass: true,
-        autoplay: false,
+        autoplay: true,
         items: 1,
         loop: true,
         dots: true,

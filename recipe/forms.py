@@ -85,18 +85,17 @@ class VideoForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ('name', 'slug')
+        fields = ('name',)
         widgets = {
             'name': forms.TextInput(
-                attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
-            'slug': forms.TextInput(
-                attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
+                attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'})
+            
         }
 
 class CategoryVideoForm(forms.ModelForm):
     class Meta:
         model = CategoryVideo
-        fields = ('name', 'slug')
+        fields = ('name',)
         widgets = {
             'name': forms.TextInput(
                 attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),

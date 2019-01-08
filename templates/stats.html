@@ -9,175 +9,189 @@
 {% load i18n %}
 
 {% block content %}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Tableau de bord </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                         <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                          
+                            <li class="breadcrumb-item active" aria-current="page">Accueil</li>
 
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Tableau de bord <small>Statistics Overview</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Tableau de bord
-                            </li>
                         </ol>
-                    </div>
+                    </nav>
                 </div>
-                
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-cutlery fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">{{nb_recipes}}</div>
-                                        <div>{% trans 'Recipes' %}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">{{nb_posts}}</div>
-                                        <div>{% trans 'Posts' %}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-user fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">{{nb_users}}</div>
-                                        <div>{% trans 'Users' %}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                
-
-                <div class="row">
-                    
-                    <div class="col-lg-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">{% trans 'Les dernières recettes' %}</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Date</th>
-                                                <th>{% trans 'Catégorie' %}</th>
-                                                <th>{% trans 'Nom' %}</th>
-                                                <th>{% trans 'Auteur' %}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for recipe in recipes %}
-                                        <tr>
-                                            <td>{{forloop.counter}}</td>
-                                            <td>{{recipe.published_at|date:'F j, Y'}}</td>
-                                            <td><a href="">{{recipe.category.name}}</a></td>
-                                            <td><a href="{% url 'recipe_preview' slug=recipe.slug %}">{{recipe.title}}</a></td>
-                                            <td><a href="">{{recipe.author}}</a></td>
-                                        </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="text-right">
-                                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Logs connexion</h3>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Date</th>
-                                                <th>{% trans 'Users' %}</th>
-                                                <th>{% trans 'Dernière connexion' %}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <!-- {% for recipe in recipes %} -->
-                                        <tr>
-                                           
-                                        </tr>
-                                       <!--  {% endfor %} -->
-                                        </tbody>
-                                    </table>
-                                <div class="text-right">
-                                    <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- /#page-wrapper -->
+    </div>
+
+    
+     <div class="row">
+        <!-- ============================================================== -->
+        <!-- sales  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Recettes</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">{{nb_recipes}}</h1>
+                    </div>
+                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end sales  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- new customer  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Posts</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">{{nb_posts}}</h1>
+                    </div>
+                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1"> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end new customer  -->
+        <!-- ============================================================== -->
+
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Vidéos</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">{{nb_videos}}</h1>
+                    </div>
+                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1"> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- visitor  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="card border-3 border-top border-top-primary">
+                <div class="card-body">
+                    <h5 class="text-muted">Contributeurs</h5>
+                    <div class="metric-value d-inline-block">
+                        <h1 class="mb-1">{{nb_users}}</h1>
+                    </div>
+                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end visitor  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+       
+    </div>
+                        
 
 
+        
+    <div class="row">
+        <!-- ============================================================== -->
+  
+        <!-- ============================================================== -->
+
+                      <!-- recent orders  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Dernières recettes</h5>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="bg-light">
+                                <tr class="border-0">
+                                     <th>#</th>
+                                    <th>Date</th>
+                                    <th>{% trans 'Catégorie' %}</th>
+                                    <th>{% trans 'Nom' %}</th>
+                                    <th>{% trans 'Auteur' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for recipe in recipes %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{recipe.published_at|date:'F j, Y'}}</td>
+                                        <td><a href="">{{recipe.category.name}}</a></td>
+                                        <td><a href="{% url 'recipe_preview' slug=recipe.slug %}">{{recipe.title}}</a></td>
+                                        <td><a href="">{{recipe.author}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                               
+                               
+                                <tr>
+                                    <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end recent orders  -->
+
+
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- customer acquistion  -->
+        <!-- ============================================================== -->
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Customer Acquisition</h5>
+                <div class="card-body">
+                    <div class="ct-chart ct-golden-section" style="height: 354px;"></div>
+                    <div class="text-center">
+                        <span class="legend-item mr-2">
+                                <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
+                        <span class="legend-text">Returning</span>
+                        </span>
+                        <span class="legend-item mr-2">
+
+                                <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
+                        <span class="legend-text">First Time</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end customer acquistion  -->
+        <!-- ============================================================== -->
+    </div>
+                   
+</div>
+  
+            <!-- ==========================
+
+               
 {% endblock content %}

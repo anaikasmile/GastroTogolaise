@@ -1,29 +1,104 @@
-{% extends 'blog/post_publish_list.html' %}	
+{% extends 'base_admin.html' %}	
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% load thumbnail %}
 {% load i18n %}
 {% load humanize %} 
 
-{% block content_blog %}
+{% block content %}
+ <div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Blog </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Blog</a></li>
 
-        <!-- Page Heading -->
+                            <li class="breadcrumb-item active" aria-current="page">Article</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
+<!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="col-lg-offset-2 col-lg-8">
-	                <form method="POST"  name="form" action="."  class="" enctype="multipart/form-data">
-		                {% csrf_token %}
-                         {{ form.media }}
-		                  {{ form.as_p }}
-                        
-	                	<button type="submit" class="save btn btn-default">{% trans 'Enregistrer' %}</button>
-	                </form>
+                <div class="card">
+                    <div class="card-body">
+    	                <form method="POST"  name="form" action="."  class="" enctype="multipart/form-data">
+    		                {% csrf_token %}
+                            {{ form.media }}
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.title.label}}:</label>
+                                    {{ form.title }}
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.category.label}}:</label>
+                                    {{ form.category }}
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.image.label}} :</label> <br>
+                                    {{ form.image }}
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                      <label for="id_title">{{form.video.label}}:  </label>
+                                    {{ form.video }}
+                                </div>
+                               
+                            </div>
+                             <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <label for="id_title">{{form.text.label}}:</label>
+                                    {{ form.text }}
+                                </div>
+                               
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <label for="id_title">{{form.tags.label}}:</label>
+                                    {{ form.tags }}
+                                </div>
+                                
+                            </div>
+                            
+<!-- 
+    		                {{ form.as_p }} -->
+                             <div class="row">
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+    	                	      <button type="submit" class="btn btn-success">{% trans 'Enregistrer' %}</button>
+                                </div>
+                            </div>
+    	                </form>
+                    </div>
                 </div>
-                
             </div>
+                
+            
         </div>
         <!-- /.row -->
 
-
+</div>
         
 {% endblock %}

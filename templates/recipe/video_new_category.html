@@ -1,86 +1,125 @@
-{% extends 'recipe/recipe_publish_list.html' %}   
+{% extends 'base_admin.html' %}   
 % load staticfiles %}
 {% load thumbnail %}
 {% load i18n %}
 
 
-{% block content_recipe %}
+{% block content%}
 
-    <hr>
-    <!-- Page Heading -->
+
+<div class="container-fluid  dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
     <div class="row">
-        
-         <!-- Ajouter/Modifier une cat. de recettes -->
-        <div class="col-md-4">
-            <h4>{% trans 'Ajouter une catégorie' %}</h4>
-            <form method="POST" action=""  name="add-form" class="form-block" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">{% trans 'Enregistrer' %}</button>
-            </form>
-        </div>
-        <!-- Liste de catégorie de blog -->
-        {% if categVideo %}
-        <div class="col-md-offset-1 col-md-7">
-            <h4>{% trans 'Liste des catégories' %}</h4>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th> {% trans 'Nom' %}</th>
-                            <th>{% trans 'Slug' %}</th>
-                            <th>{% trans 'Actions' %}</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for list in categVideo %}
-                        <tr>
-                            <td>{{ list.name }}</td>
-                            <td>{{ list.slug }}</td>
-                            <td>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#action_{{list.id}}"><i class="fa fa-fw fa-arrows-v"></i> Actions <i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="action_{{list.id}}" class="collapse">
-                                    <li>
-                                        <a href="{% url 'video_category_update' slug=list.slug%}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>{% trans 'Modifier' %}</a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="modal" data-target="#deletecategory{{list.id}}"><i class="fa fa-trash-o" aria-hidden="true"></i>{% trans 'Supprimer' %}</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <!-- Modal Pour les actions-->
-                        <div class="modal fade" id="deletecategory{{list.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{list.id}}">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel{{list.id}}">{% trans 'Confirmer votre action' %}</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette catégorie' %}<strong>{{ list.title}}</strong>?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                         <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Fermer' %}</button>
-                                        <a href="{% url 'video_category_delete' slug=list.slug %}" type="submit" class="btn btn-danger">{% trans 'Supprimer' %}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    </tbody>
-                </table>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Catégories Vidéos </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Catégories</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Vidéos</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
-        {% endif %}
-            
-        
     </div>
-            
-    
+    <!-- ============================================================== -->
+    <!-- end pageheader  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- content  -->
 
-   
+    <div class="row">
+
+        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h4 class="card-header">{% trans 'Ajouter une catégorie' %}</h4>
+                <div class="card-body">
+                    <form method="POST"  name="form" action=""  class="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                          {{ form.as_p }}
+                        
+                        <button type="submit" class="save btn btn-success">{% trans 'Enregistrer' %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+       <!-- responsive table -->
+        <!-- ============================================================== -->
+         {% if categVideo %}
+        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <h5 class="card-header">Liste des catégories de vidéos</h5>
+                <div class="card-body">
+                    <div class="table-responsive table-striped">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {% trans 'Nom' %}</th>
+                                    <th>{% trans 'Slug' %}</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for list in categVideo %}
+                                <tr>
+                                    <td>{{ list.name }}</td>
+                                    <td>{{ list.slug }}</td>
+                                    <td>
+                                        <div class="btn-group ml-auto">
+                                            <button class="btn btn-sm btn-outline-light">
+                                                <a href="{% url 'video_category_update' slug=list.slug%}"><i class="far fa-edit"></i></a>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-light">
+                                                <a data-toggle="modal" data-target="#deletecategory{{list.id}}"><i class="fa fa-trash-o" aria-hidden="true"><i class="far fa-trash-alt"></i></a>
+                                            </button>
+                                        </div>
+                                   
+                                    </td>
+                                </tr>
+                                <!-- Modal Pour les actions-->
+                                <div class="modal fade" id="deletecategory{{list.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{list.id}}" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="myModalLabel{{list.id}}">Confirmer votre action</h5>
+                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </a>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="lead">{% trans 'Etes-vous sûrs de vouloir supprimer cette catégorie' %}<strong>{{ list.title}}</strong>?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
+                                                <a href="{% url 'video_category_delete' slug=list.slug %}" class="btn btn-primary">Supprimer</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end responsive table -->
+        <!-- ============================================================== -->
+        {% endif %}
+        </div>
+
+    </div>
+
 
 {% endblock %}
 

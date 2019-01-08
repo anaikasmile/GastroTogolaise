@@ -1,83 +1,146 @@
-{% extends 'recipe/video_publish_list.html' %}	
+{% extends 'base_admin.html' %}   
 {% load staticfiles %}
 {% load i18n %}
-
-{% block content_video %}
-
-
+{% block content %}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader  -->
+    <!-- ============================================================== -->
     <div class="row">
-        
-        <div class="col-lg-12">
-            <h2> Videos en attente de publication</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>{% trans 'Date' %}</th>                        
-                            <th>{% trans 'Titre' %}</th>
-                            <th>Video</th>
-                            <th>{% trans 'Auteur' %}</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       
-                        {% for video in videos %}
-                         <tr>
-                            <td>{{video.created_at|date:'F j, Y'}}</td>
-                            </td>
-                            <td><a href="{% url 'video_preview' slug=video.slug %}">{{video.title}}</a></td>
-                            <td></td>
-                            <td><a href="">{{video.author}}</a></td>
-                            <td>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#publish_{{video.id}}"><i class="fa fa-fw fa-arrows-v"></i> {% trans 'Publier' %} <i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="publish_{{video.id}}" class="collapse">
-                                    <li>
-                                        <a href="{% url 'video_publish' slug=video.slug %}">{% trans 'Oui' %}</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">{% trans 'Non' %}</a>
-                                    </li>
-                                </ul>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h3 class="mb-2">Vidéos en attente </h3>
+                
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                         <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Vidéos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Liste en attente</li>
 
-                            </td>
-                         </tr>
-
-                        {% empty %}
-                        <tr>Aucune video pour moment.</tr>
-                        {% endfor %}  
-                        
-
-
-                    </tbody>
-                </table>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
-    <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- content  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- influencer profile  -->
+        <!-- ============================================================== -->
+<!-- Page Heading -->
+    <div class="row">
+    
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+              
+                <div class="card-body">
+                       
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>{% trans 'Date' %}</th>                        
+                                <th>{% trans 'Titre' %}</th>
+                                <th>Video</th>
+                                <th>{% trans 'Auteur' %}</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                            {% for video in videos %}
+                             <tr>
+                                <td>{{video.created_at|date:'F j, Y'}}</td>
+                                </td>
+                                <td><a href="{% url 'video_preview' slug=video.slug %}">{{video.title}}</a></td>
+                                <td></td>
+                                <td><a href="">{{video.author}}</a></td>
+                                <td>
+                                    <div class="btn-group ml-auto">
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <a href="{% url 'video_preview' slug=video.slug%}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"><i class="fas fa-eye"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <a href="{% url 'video_update' slug=video.slug%}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"><i class="far fa-edit"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-light">
+                                            <a data-toggle="modal" data-target="#deletevideo{{video.id}}">
+                                                <i class="fa fa-trash-o" aria-hidden="true"><i class="far fa-trash-alt"></i>
+                                            </a>
+                                        </button>
+                                    </div>
 
 
-    <div class="text-center">
-    {% if videos.has_other_pages %}
-        <ul class="pagination">
-            {% if videos.has_previous %}
-              <li><a href="?page={{ videos.previous_page_number }}">&laquo;</a></li>
-            {% else %}
-            <li class="disabled"><span>&laquo;</span></li>
-            {% endif %}
-            {% for i in videos.paginator.page_range %}
-              {% if videos.number == i %}
-                <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-              {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% if videos.has_next %}
-              <li><a href="?page={{ videos.next_page_number }}">&raquo;</a></li>
-            {% else %}
-              <li class="disabled"><span>&raquo;</span></li>
-            {% endif %}
-        </ul>
-    {% endif %}
+                                  <!-- Modal -->
+                                    <div class="modal fade" id="deletevideo{{video.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{video.id}}">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    
+                                                    <h5 class="modal-title" id="myModalLabel{{video.id}}">Confirmer votre action</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="lead">Etes-vous sûrs de vouloir supprimer cette vidéo <strong>{{ video.title}} *</strong>?</p>
+                                                  </div>
+                                                <div class="modal-footer">
+                                                    <a href="#" class="btn btn-brand" data-dismiss="modal">Fermer</a>
+                                                    <a href="{% url 'video_delete' slug=video.slug %}" type="submit" class="btn btn-primary"> Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+
+                                </td>
+                             </tr>
+
+                            {% empty %}
+                            <tr>Aucune video pour moment.</tr>
+                            {% endfor %}  
+                            
+
+
+                        </tbody>
+                    </table>
+               
+
+                    <div class="text-center">
+                    {% if videos.has_other_pages %}
+                        <ul class="pagination">
+                            {% if videos.has_previous %}
+                              <li><a href="?page={{ videos.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in videos.paginator.page_range %}
+                              {% if videos.number == i %}
+                                <li class="active waves-effect"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                              {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if videos.has_next %}
+                              <li><a href="?page={{ videos.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                              <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+</div>
 {% endblock %}

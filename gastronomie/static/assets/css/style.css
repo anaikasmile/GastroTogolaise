@@ -9,7 +9,8 @@ Author URI: http://bootstrapthemes.co
    ========================================================================== */
 html,
 body {
-    background-color: #f5f5f5;
+    
+    background-color: #efeff6;
     font-size: 1rem;
     color: #525658;
     width: 100%;
@@ -202,7 +203,7 @@ h6 {
 }
 p {
     line-height: 1.375rem;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     text-align: justify;
 }
 p:last-child {
@@ -761,6 +762,8 @@ input::-ms-input-placeholder {
     background-size: cover;
     background-position: center center;
     background-color: rgba(19, 10, 10, 0.84);
+
+
 }
 
 .home .main_home{
@@ -2409,6 +2412,7 @@ iframe{
 .helptext{
     color: #5e9a28;
     font-size: 0.8rem;
+    line-height: 32px;
 }
 
 
@@ -2462,7 +2466,39 @@ iframe{
 
 }
 
-.list-block li>a:hover, .list-block li>a:active{
-    background-color: #CCC;
+.list-block li>a:hover, .list-block li>.active{
+    background-color: #f6c23a;
     color: #fff;
 }
+
+
+@media only screen and (max-width: 1200px)
+{.product-slider {
+    padding: 30px 15px;
+}
+}
+@media only screen and (max-width: 1400px){
+.product-slider {
+    background-color: #fff;
+    border-top-left-radius: 4px;
+    padding: 30px 18px;
+}
+}
+.product-slider {
+    background-color: #fff;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding: 30px;
+}
+.product-details {
+    background-color: #fff;
+    padding: 30px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    position: relative;
+}
+
+.border-left {
+    border-left: 1px solid #e6e6f2 !important;
+}
+

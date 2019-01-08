@@ -137,7 +137,9 @@ def restaurant_new_category(request):
 	if request.method == "POST":
 		form = CategoryForm(request.POST)
 		if form.is_valid():
-			form.save()
+			category = form.save(commit=False)
+			category.slug = slugify(category.name)
+			category.save()
 			return HttpResponseRedirect('/restaurant/new/category')
 		else:
 			pass
@@ -179,4 +181,4 @@ def restaurant_category_delete(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	category.delete()
 	messages.success(request, 'Catégorie supprimée')
-	return redirect('restaurant_publish_list')
+	return redirect('restaurant_new_categ')

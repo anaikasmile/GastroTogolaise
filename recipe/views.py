@@ -292,6 +292,7 @@ def recipe_box_user(request):
 def stats(request):
 	nb_recipes = Recipe.objects.filter(published_at__isnull=False).count()
 	nb_posts = Post.objects.filter(published_at__isnull=False).count()
+	nb_videos = Video.objects.filter(published_at__isnull=False).count()
 	nb_users = Profile.objects.count()
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')[:10]
 	
@@ -300,6 +301,7 @@ def stats(request):
 	contextStats = {
 		'nb_recipes':nb_recipes,
 		'nb_posts':nb_posts,
+		'nb_videos':nb_videos,
 		'nb_users':nb_users,
 		'recipes': recipes
 	}
@@ -338,7 +340,7 @@ def recipe_publish(request,slug):
 	recipe = get_object_or_404(Recipe,slug=slug)
 	recipe.publish()
 	url = reverse('recipe_detail', args=(recipe.slug,))
-	messages.success(request, 'approuvée')
+	messages.success(request, 'Recette publiée')
 
 	notify.send(request.user, recipient=recipe.author, target=recipe, target_url=url, actor=request.user, verb='a été publiée', nf_type='approve_recipe')
 
@@ -348,7 +350,7 @@ def recipe_publish(request,slug):
 
 #Ajouter une cattegorie de recette
 @login_required
-@staff_required
+@superuser_required
 def recipe_new_category(request):
 	if request.method == "POST":
 		form = CategoryForm(request.POST)
@@ -370,7 +372,7 @@ def recipe_new_category(request):
 
 #Modifier la categorie
 @login_required
-@staff_required
+@superuser_required
 def recipe_category_update(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	if request.method == "POST":
@@ -386,7 +388,7 @@ def recipe_category_update(request,slug):
 
 #Supprimer une categorie
 @login_required
-@staff_required
+@superuser_required
 def recipe_category_delete(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	category.delete()
@@ -522,12 +524,14 @@ def video_delete(request,slug):
 
 #Ajouter une cattegorie de recette
 @login_required
-@staff_required
+@superuser_required
 def recipe_new_category(request):
 	if request.method == "POST":
 		form = CategoryForm(request.POST)
 		if form.is_valid():
-			form.save()
+			category = form.save(commit=False)
+			category.slug = slugify(category.name)
+			category.save()
 			messages.success(request, 'Catégorie ajoutée')
 			return HttpResponseRedirect("/recipe/new/category")
 		else:
@@ -545,7 +549,7 @@ def recipe_new_category(request):
 
 #Modifier la categorie
 @login_required
-@staff_required
+@superuser_required
 def recipe_category_update(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	if request.method == "POST":
@@ -568,21 +572,23 @@ def recipe_category_update(request,slug):
 
 #Supprimer une categorie
 @login_required
-@staff_required
+@superuser_required
 def recipe_category_delete(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	category.delete()
 	messages.success(request, 'Catégorie supprimée')
-	return redirect('recipe_publish_list')
+	return redirect('recipe_new_categ')
 
 #Ajouter une categorie de video
 @login_required
-@staff_required
+@superuser_required
 def video_new_category(request):
 	if request.method == "POST":
 		form = CategoryVideoForm(request.POST)
 		if form.is_valid():
-			form.save()
+			category = form.save(commit=False)
+			category.slug = slugify(category.name)
+			category.save()
 			messages.success(request, 'Catégorie ajoutée')
 			return HttpResponseRedirect("/video/new/category")
 		else:
@@ -600,7 +606,7 @@ def video_new_category(request):
 
 #Modifier la categorie
 @login_required
-@staff_required
+@superuser_required
 def video_category_update(request,slug):
 	category = get_object_or_404(CategoryVideo, slug=slug)
 	if request.method == "POST":
@@ -623,11 +629,11 @@ def video_category_update(request,slug):
 
 #Supprimer une categorie
 @login_required
-@staff_required
+@superuser_required
 def video_category_delete(request,slug):
 	category = get_object_or_404(CategoryVideo, slug=slug)
 	category.delete()
 	messages.success(request, 'Catégorie supprimée')
-	return redirect('video_publish_list')
+	return redirect('video_new_categ')
 
 #fin ajout

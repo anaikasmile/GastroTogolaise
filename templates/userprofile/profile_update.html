@@ -12,10 +12,12 @@
         <div class="col-lg-4 ">
              <ul class="list-block">
                 <li>
-                    <a href="{% url 'userprofile_update' %}" class="active"> Profil</a>
+                    {% url 'userprofile_update' as url %}
+                    <a href="{% url 'userprofile_update' %}" {% if request.path == url %} class="active" {% endif %}> Profil</a>
                 </li>
                 <li>
-                    <a href="{% url 'account_change_password' %}"> Mot de passe</a>
+                    {% url 'account_change_password' as url %}
+                    <a href="{% url 'account_change_password' %}" {% if request.path == url %} class="active" {% endif %}> Mot de passe</a>
                 </li>
                 
             </ul>

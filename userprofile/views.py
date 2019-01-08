@@ -10,6 +10,8 @@ from django.db import transaction
 from django.contrib.auth.models import User, Group
 from .models import Profile, User
 from .forms import UserForm, ProfileForm, AdminForm
+from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.admin.views.decorators import staff_member_required
 from gastronomie.decorators import *
 from allauth.account.views import PasswordChangeView

@@ -1,72 +1,116 @@
 {% extends 'base_admin.html' %}   
 {% load staticfiles %}
+{% load apps_filters %}
+
 {% load i18n %}
 {% block content %}
 
 
-
-<div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-fw fa-user"></i><a>{% trans 'Utilisateurs' %}</a>
-                            </li>
-                            
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-12"><a href="{% url 'userprofile_add' %}" class="btn btn-primary">{% trans 'Ajouter un utilisateur' %}</a></div>
-                </div>
-
-                {% block content_user %}
-                <div class="row">
-                    <div class="col-lg-offset-2 col-lg-8">
-                        <h2 class="">{{user.first_name}} {{user.last_name}}</h2>
-                        <ul class="list-inline">
+                <div class="container-fluid dashboard-content">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h3 class="mb-2">Profil Utilisateur </h3>
                                 
-                        </ul>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-7">
-                             {% if user.profile.photo %}
-                                <img src="{{user.profile.photo.url}}" class="img-responsive">
-                            {% endif %}
-                            </div> 
-                             {% if user.profile.bio %}
-                            <div class="col-md-5">
-                                <label>Description:</label>
-                                <p>{{user.profile.bio}}</p>
-                            </div> 
-                            {% endif %}
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Utilisateurs</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
-                        <br>
-                    
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- content  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- influencer profile  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card influencer-profile-data">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
+                                            <div class="text-center">
+                                                
+                                                {% if user.profile.photo %}
+                                                    <img src="{{user.profile.photo.url}}" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                                {% else %}
+                                                    <img src="{% static 'dashboard/assets/images/avatar-1.jpg' %}"" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                                {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
+                                                <div class="user-avatar-info">
+                                                    <div class="m-b-20">
+                                                        <div class="user-avatar-name">
+                                                            <h2 class="mb-1">{{user.first_name}} {{user.last_name}}</h2>
+                                                        </div>
+                                                        <div class="rating-star  d-inline-block">
+                                                            {nb}
+                                                            <p class="d-inline-block text-dark"> Recettes </p>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="user-avatar-address">
+                                                        <p class="border-bottom pb-3">
+                                                            <span class="d-xl-inline-block d-block mb-2"><i class="fa fa-map-marker-alt mr-2 text-primary "></i>{{user.profile.country}}</span>
+                                                            <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">Joined date: {{user.profile.created_at|date:"d/m/Y"}}  </span>
+                                                            <span class=" mb-2 d-xl-inline-block d-block ml-xl-4"> {% if user.profile.sexe %}  {{user.profile.sexe}} {% endif %}
+                                                                    </span>
+                                                            <span class=" mb-2 d-xl-inline-block d-block ml-xl-4"> {% if user.profile.job %}  {{user.profile.job}} {% endif %}
+                                                                    </span>
+                                                            
+                                                        </p>
+                                                        <p>
+                                                             {% if user.profile.bio %}   {{user.profile.bio}} {% endif %}
+                                                        </p>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border-top user-social-box">
+                                        <div class="user-social-media d-xl-inline-block">
+                                            <span class="mr-2 twitter-color">
+                                            <a href="{{user.profile.twitter}}"> <i class="fab fa-twitter-square"></i></i></span>
+                                        </div>
+                                        
+                                        <div class="user-social-media d-xl-inline-block">
+                                            <span class="mr-2 instagram-color">
+                                             <a href="{{user.profile.instagram}}">  <i class="fab fa-instagram"></i></a></span>
+                                        </div>
+                                        <div class="user-social-media d-xl-inline-block">
+                                            <span class="mr-2  facebook-color"> 
+                                             <a href="{{user.profile.facebook}}"> <i class="fab fa-facebook-square "></i></a></span>
+                                        </div>
+                                        <div class="user-social-media d-xl-inline-block"> <a href="{{user.profile.gplus}}"> <span class="mr-2 googleplus-color"> <i class="fab fa-google-plus-square"></i></span></span></div>
 
-                </div>
-           
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
-         {% endblock %}  
+                                        <div class="user-social-media d-xl-inline-block"><span class="mr-2 linkedin-color"><a href="{{user.profile.linkedin}}"> <i class="fab fa-linkedin"></i></a></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end influencer profile  -->
+                <!-- end content  -->
+                                        <!-- ============================================================== -->
+                    </div>
 
-               
 
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
-        <!-- /#page-wrapper -->
         
     
+
+   
 {% endblock content %}
