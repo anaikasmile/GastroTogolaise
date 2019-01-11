@@ -49,6 +49,7 @@
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
 
         <!--font family css-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"> 
@@ -466,21 +467,45 @@
         <a href="#"><i class="fa fa-chevron-up"></i></a>
     </div>
 
-
-        <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script> 
         <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
         <script  type="text/javascript" src="{% static 'assets/js/main.js' %}"></script> 
+        <script src="{% static 'assets/js/jquery.bootstrap.modal.forms.min.js' %}"></script>
         
-        <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <!-- <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+        <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>-->
         <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script>
 
      
         <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'django_select2/django_select2.js' %}"></script>
         <script type="text/javascript" src="{% static 'django_addanother/django_jquery.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.js' %}"></script>
-     
+<!--         <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.js' %}"></script>
+ -->        <script  type="text/javascript" src="{% static 'assets/js/wow.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+            <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+        <script>
+                wow = new WOW(
+                  {
+                    animateClass: 'animated',
+                    offset:       100,
+                    live:         true
+                    
+                  }
+                );
+                wow.init();
+
+                $(function () {
+
+                     $(".create-origin").modalForm({
+                            formURL: "{% url 'origin_add' %}"
+                        });
+
+                });
+                
+      </script>
          {% include_notify_js_variables %}
         <script src="{% static 'notify/notifyX.js' %}"></script>
 

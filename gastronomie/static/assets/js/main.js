@@ -49,14 +49,14 @@ jQuery(document).ready(function ($) {
      * Counter
      ---------------------------------------------*/
 
-    $('.statistic-counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
-    $('.statistic').counterUp({
-        delay: 10,
-        time: 2000
-    });
+    // $('.statistic-counter').counterUp({
+    //     delay: 10,
+    //     time: 2000
+    // });
+    // $('.statistic').counterUp({
+    //     delay: 10,
+    //     time: 2000
+    // });
 
 
 
@@ -66,52 +66,52 @@ jQuery(document).ready(function ($) {
      Carousel
      ---------------------------------------------------------------------= */
 
-    $('.main_home_slider').owlCarousel({
-        responsiveClass: true,
-        autoplay: true,
-        items: 1,
-        loop: true,
-        dots: true,
-        nav: false,
-        navText: [
-            "<i class='lnr lnr-chevron-left'></i>",
-            "<i class='lnr lnr-chevron-right'></i>"
-        ],
-        autoplayHoverPause: true
+    // $('.main_home_slider').owlCarousel({
+    //     responsiveClass: true,
+    //     autoplay: true,
+    //     items: 1,
+    //     loop: true,
+    //     dots: true,
+    //     nav: false,
+    //     navText: [
+    //         "<i class='lnr lnr-chevron-left'></i>",
+    //         "<i class='lnr lnr-chevron-right'></i>"
+    //     ],
+    //     autoplayHoverPause: true
 
-    });
-
-
-    $('.main_team_content').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 1,
-        loop: true,
-        dots: false,
-        nav: true,
-        navText: [
-            "<i class='lnr lnr-chevron-left'></i>",
-            "<i class='lnr lnr-chevron-right'></i>"
-        ],
-        autoplayHoverPause: true
-
-    });
+    // });
 
 
-    $('.main_blog').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 4,
-        loop: true,
-        dots: false,
-        nav: true,
-        navText: [
-            "<i class='lnr lnr-chevron-left'></i>",
-            "<i class='lnr lnr-chevron-right'></i>"
-        ],
-        autoplayHoverPause: true
+    // $('.main_team_content').owlCarousel({
+    //     responsiveClass: true,
+    //     autoplay: false,
+    //     items: 1,
+    //     loop: true,
+    //     dots: false,
+    //     nav: true,
+    //     navText: [
+    //         "<i class='lnr lnr-chevron-left'></i>",
+    //         "<i class='lnr lnr-chevron-right'></i>"
+    //     ],
+    //     autoplayHoverPause: true
 
-    });
+    // });
+
+
+    // $('.main_blog').owlCarousel({
+    //     responsiveClass: true,
+    //     autoplay: false,
+    //     items: 4,
+    //     loop: true,
+    //     dots: false,
+    //     nav: true,
+    //     navText: [
+    //         "<i class='lnr lnr-chevron-left'></i>",
+    //         "<i class='lnr lnr-chevron-right'></i>"
+    //     ],
+    //     autoplayHoverPause: true
+
+    // });
 
     // $('.main_gellary_content').owlCarousel({
     //     responsiveClass: true,
@@ -275,5 +275,9 @@ $(document).ready(function() {
 
             });
 
+
+      
+
 // document.getElementById("settime").value = "00:00:00";
 // document.getElementById("settime2").value = "00:00:00";
+

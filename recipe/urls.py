@@ -34,7 +34,7 @@ urlpatterns = [
                   url(r'^recipe/like/$', views.like, name='recipe_like'),
                   url(r'^recipe/add/$', views.recipe_add, name='recipe_add'),
                   url(r'^origin/add/$', views.OriginAdd.as_view(), name='origin_add'),
-
+                  #url(r'^origin/new/$', views.origin_new, name='add_origin'),
                   url(r'^recipe/user/box/$', views.recipe_box_user, name='recipe_box_user'),
 
                   # ajout du 06/06/18

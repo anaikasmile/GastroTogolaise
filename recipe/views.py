@@ -23,9 +23,11 @@ from django.conf import settings
 from django.db.models import Count, F
 from notify.signals import notify
 from django.views import generic
-from django.views import generic
 
-from django_addanother.views import CreatePopupMixin, UpdatePopupMixin
+from bootstrap_modal_forms.mixins import PassRequestMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.template.loader import render_to_string
 
 
 import itertools
@@ -93,12 +95,48 @@ def home(request):
 # 	return render(request,'recipe/origin_add.html', {'form':form})
 
 
-class OriginAdd(CreatePopupMixin, generic.CreateView):
-    model = Origin
-    fields = ['ethnic','country']
-    def get_success_url(self):
-        return reverse('recipe_add')
 
+
+class OriginAdd(PassRequestMixin, SuccessMessageMixin,
+                     generic.CreateView):
+    template_name = 'recipe/includes/add_origin.html'
+    form_class = OriginForm
+    success_message = 'Success: Nouvelle ethnie ajoutée.'
+    success_url = reverse_lazy('recipe_add')
+
+
+def save_origin_form(request, form, template_name):
+    # form = OriginForm()
+    # context = {'form': form}
+    # html_form = render_to_string('recipe/includes/add_origin.html',
+    #     context,
+    #     request=request,
+    # )
+    # return JsonResponse({'html_form': html_form})
+
+	data = dict()
+
+	if request.method == 'POST':
+		if request.is_ajax():
+			if form.is_valid():
+
+				form.save()
+				data['form_is_valid'] = True
+				redirect("recipe_add")
+			else:
+				data['form_is_valid'] = False
+		
+	context = {'form': form}
+	data['html_form'] = render_to_string(template_name, context, request=request)
+		
+	return JsonResponse(data)
+
+def origin_new(request):
+	if request.method == 'POST':
+		form = OriginForm(request.POST)
+	else:
+		form = OriginForm()
+	return save_origin_form(request, form, 'recipe/includes/add_origin.html')
 
 #Ajouter une recette
 @login_required

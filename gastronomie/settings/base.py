@@ -70,8 +70,8 @@ INSTALLED_APPS = [
     'search',
     'notify',
     'django_select2',
-    'django_addanother',
-    'newsletter'
+    'newsletter',
+    'bootstrap_modal_forms'
 
 ]
 
