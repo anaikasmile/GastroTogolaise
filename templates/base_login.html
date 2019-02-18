@@ -1,0 +1,57 @@
+{% load staticfiles %}
+{% load thumbnail %}
+{% load widget_tweaks %}
+{% load humanize %}
+{% load flatpages %}
+{% load embed_video_tags %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load socialaccount %}
+{% load notification_tags %}
+
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>A la découverte de l'art culinaire togolais</title>
+        <meta name="application-name" content="TogoKuizine">
+        <meta name="description" content="Nous sommes une communauté de passionnés de cuisine réunis sur une  même plateforme pour partager recettes, astuces, événements et informations sur la gastronomie togolaise">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:site_name" content="TogoKuizine">
+        <meta property="og:title" content="Accueil" />
+        <meta property="og:description" content="Nous sommes une communauté de passionnés de cuisine réunis sur une  même plateforme pour partager recettes, astuces, événements et informations sur la gastronomie togolaise" />
+        <meta property="og:url" content="https://www.togokuizine.com" />
+        <meta property="og:image" content="image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+
+
+        <link rel="icon" type="image/png" href="{% static 'assets/images/tk-favicon.png' %}" />
+
+        <link rel="stylesheet" href="{% static 'assets/fonts/stylesheet.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"> 
+             
+        <link rel="stylesheet" href="{% static 'assets/css/login-register.css' %}">
+       
+       
+
+    </head>
+
+
+    <body>
+        <h1>TogoKuizine</h1>
+        {% block content %}
+
+        {% endblock %}
+       
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <noscript>Your browser does not support JavaScript!</noscript>
+        
+    </body>
+</html>

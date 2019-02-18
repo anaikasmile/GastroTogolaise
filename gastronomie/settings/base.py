@@ -223,6 +223,8 @@ SOCIALACCOUNT_AUTO_SIGNUP = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 LOGIN_REDIRECT_URL = "/"
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
@@ -260,10 +262,9 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor"
-CKEDITOR_UPLOAD_PATH = "/uploads"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+
 
 THUMBNAIL_FORCE_OVERWRITE = True
 THUMBNAIL_QUALITY = 60

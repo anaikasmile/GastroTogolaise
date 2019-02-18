@@ -24,25 +24,30 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>TogoKuizine</title>
+        <title>A la découverte de l'art culinaire togolais</title>
         <meta name="application-name" content="TogoKuizine">
-        <meta name="description" content="Cuisine, Togo">
+        <meta name="description" content="Nous sommes une communauté de passionnés de cuisine réunis sur une  même plateforme pour partager recettes, astuces, événements et informations sur la gastronomie togolaise">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="{% static 'assets/images/tk-icon.png' %}" />
+        <meta property="og:site_name" content="TogoKuizine">
+        <meta property="og:title" content="Accueil" />
+        <meta property="og:description" content="Nous sommes une communauté de passionnés de cuisine réunis sur une  même plateforme pour partager recettes, astuces, événements et informations sur la gastronomie togolaise" />
+        <meta property="og:url" content="https://www.togokuizine.com" />
+        <meta property="og:image" content="image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
 
-        <link rel="stylesheet" href="{% static 'assets/css/fonticons.css' %}">
+
+        <link rel="icon" type="image/png" href="{% static 'assets/images/tk-favicon.png' %}" />
+
         <link rel="stylesheet" href="{% static 'assets/fonts/stylesheet.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-      
-        <link rel="stylesheet" href="{% static 'assets/css/colors.css' %}">
+    
         <link rel="stylesheet" href="{% static 'assets/css/mdb.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/toastr.css' %}">
       
         <!--Theme custom css -->
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/login-register.css' %}">
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
         <link href="{% static 'django_addanother/addanother.css' %}" type="text/css" media="all" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
@@ -52,11 +57,9 @@
         <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
 
         <!--font family css-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"> 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-        <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-
+       
+       
+       
 
     </head>
 
@@ -149,7 +152,7 @@
                 <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 
                 <a class="navbar-brand" href="/">
-                    <img src="{% static 'assets/images/tk-small.png' %}">
+                    <img src="{% static 'assets/images/tk-small.png' %}" alt="logo togokuizine">
                 </a>
                 <ul class="list-inline navbar-right visible-sm visible-xs pull-right" style="padding-top:15px;">
                 {% if user.is_authenticated %}
@@ -208,36 +211,37 @@
             <div class="navbar-default side-collapse in">
                 <nav role="navigation" class="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                                {% url 'recipe_per_cat' slug=cat.slug  as url %}
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" {% if request.path == url %} class="active" {% endif %}>Recettes</a>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle {% if "/recipes/" in request.path %}active{% endif %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Recettes</a>
                                 <ul class="dropdown-menu">
-                                    {%for cat in categories %}
+                                    {%for cat in categories %}  
+                                  
                                     <li>
-                                        <a href="{% url 'recipe_per_cat' slug=cat.slug %}">{{cat.name}}</a>
+                                        <a href="{% url 'recipe_per_cat' slug=cat.slug %}" >{{cat.name}}</a>
                                         <hr>
                                     </li>
                                     {% endfor %}
 
                                 </ul>
                             </li>
-                            <li><a href="{% url 'video_list' %}">Vidéos</a></li>
+                            
+                            <li><a href="{% url 'video_list' %}" {% if "video" in request.path %} class="active"{% endif %}>Vidéos</a></li>
+
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                                <a href="#" class="dropdown-toggle {% if "/blog/" in request.path %} active{% endif %}"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                                 <ul class="dropdown-menu">
                                     {%for post_cat in post_categories %}
                                     <li>
-                                        <a href="{% url 'post_per_cat' pk=post_cat.pk %}">{{post_cat.name}}</a>
+                                        <a href="{% url 'post_per_cat' slug=post_cat.slug %}">{{post_cat.name}}</a>
                                         <hr>
                                     </li>
                                     {% endfor %}
-
-
                                 </ul>
                             </li>
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses</a>
+                                <a href="#" class="dropdown-toggle {% if "/restaurant/" in request.path %} active{% endif %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bonnes adresses</a>
                                 <ul class="dropdown-menu">
                                      {%for restaurant_cat in restaurant_categories %}
                                     <li>
@@ -270,7 +274,7 @@
                                 </ul>
                             </li>
 
-                            <li><a href="{% url 'recipe_add' %}"> Proposer votre recette</a></li>
+                            <li><a href="{% url 'recipe_add' %}" {% if "/recipe/add" in request.path %} class="active"{% endif %}> Propose ta recette</a></li>
 
                             <li>
                                 <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -329,7 +333,7 @@
                                 <div class="footer_logo">
                                     <!-- <h2>TogoKuizine</h2> -->
 
-                                    <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%">
+                                    <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%" alt="logo TogoKuizine">
 
                                 </div>
                                 <ul class="">
@@ -338,7 +342,7 @@
 
                                     <li><a href="{% url 'contributors' %}">Nos contributeurs</a></li>
                                     <li><a href="">Nos partenaires</a></li>
-                                    <li><a>Conditions génerales d'utilisation</a></li>
+                                    <li><a>Conditions générales d'utilisation</a></li>
 
                                     <li><a href="">Règles de confidentialité</a></li>
                                    
@@ -354,8 +358,8 @@
                                 <h4 class="footer_title">Contact</h4>
                                 <div class="separator4"></div>
                                 <ul>
-                                    <li><a href=""><i class="fa fa-envelope"></i> admin@togokuizine.com</a></li>
-                                    <li><a href=""><i class="fa fa-phone"></i>000 000 00</a></li>
+                                    <li><a href=""><i class="fa fa-envelope"></i> togokuizine@gmail.com</a></li>
+                                    <li><a href=""><i class="fa fa-phone"></i>+228 90 11 27 83</a></li>
                                     <li><a href=""><i class="fa fa-map-marker"></i> Lome, Togo</a></li>
 
                                 </ul>
@@ -371,7 +375,7 @@
                            
                                 <div class="single">
                                     
-                                    <form enctype="multipart/form-data" action="/newsletter/togokuizine/subscribe/" method="post" >
+                                    <form enctype="multipart/form-data" action="#" method="post" >
                                         {% csrf_token %}
                                         <div class="input-group">
                                             <input type="email"  type="email" name="email_field" required="" id="id_email_field" class="form-control" placeholder="Email">
@@ -404,7 +408,7 @@
                     <div class="col-sm-6 col-xs-12">
                         <div class="footer_socail">
                             <div class="copyright_text ">
-                                <p class=" wow fadeInRight" data-wow-duration="1s"> © 2018. TogoKuizine</p>
+                                <p> © 2019. TogoKuizine</p>
                             </div>
                         </div>
                         
@@ -467,24 +471,24 @@
         <a href="#"><i class="fa fa-chevron-up"></i></a>
     </div>
 
-        <script  type="text/javascript" src="{% static 'assets/js/jquery-1.11.2.min.js' %}"></script> 
-        <script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+       
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 
-        <script  type="text/javascript" src="{% static 'assets/js/main.js' %}"></script> 
+        <script  src="{% static 'assets/js/main.js' %}"></script> 
         <script src="{% static 'assets/js/jquery.bootstrap.modal.forms.min.js' %}"></script>
         
-        <!-- <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>-->
-        <script  type="text/javascript" src="{% static 'assets/js/toastr.js' %}"></script>
+        <script src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+         
+        <script src="{% static 'assets/js/toastr.js' %}"></script>
 
-     
-        <script  type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'django_select2/django_select2.js' %}"></script>
-        <script type="text/javascript" src="{% static 'django_addanother/django_jquery.js' %}"></script>
-<!--         <script  type="text/javascript" src="{% static 'assets/js/jquery-2.1.0.js' %}"></script>
- -->        <script  type="text/javascript" src="{% static 'assets/js/wow.min.js' %}"></script>
-            <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
-            <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+        <script src="{% static 'assets/js/select2.min.js' %}"></script>
+        <script src="{% static 'django_select2/django_select2.js' %}"></script>
+        <script src="{% static 'django_addanother/django_jquery.js' %}"></script>
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>
+        <script src="{% static 'ckeditor/ckeditor-init.min.js' %}"></script>
+        <script src="{% static 'ckeditor/ckeditor/ckeditor.min.js' %}"></script>
+        <script src="{% static 'notify/notifyX.js' %}"></script>
 
         <script>
                 wow = new WOW(
@@ -506,10 +510,10 @@
                 });
                 
       </script>
-         {% include_notify_js_variables %}
-        <script src="{% static 'notify/notifyX.js' %}"></script>
+       
+       
 
-        <script type="text/javascript">
+        <script>
             $(document).ready(function() {
 
                 toastr.options = {
@@ -534,13 +538,12 @@
                 var sel = sideslider.attr('data-target');
                 var sel2 = sideslider.attr('data-target-2');
                 sideslider.click(function(event){
-                    
-
                     $(sel).toggleClass('in');
                     $(sel2).toggleClass('out');
                 });
 
-              if ($(window).width() > 992) {
+                if ($(window).width() > 992) {
+
                      $(document).on("scroll", function () {
                          if ($(document).scrollTop() > 120) {
                              $("#main_menu_bg").addClass('navbar-fixed-top');
@@ -554,28 +557,24 @@
                              $("header").addClass('main_menu');
                          }
                      });
-                 }
-                else {
+                }
+                else{
                          $("#main_menu_bg").addClass('navbar-fixed-top navbar-inverse');
                                     //$("header").addClass('menu-scroll');
                                     $("#main_menu_bg").removeClass('main_menu_bg');
                     }
 
-
-
             });
-
-
         </script>
         {% if messages %}
-        {% for message in messages %}
-         
-          <script type="text/javascript">
-               toastr.{{message.tags }}("{{ message }}");
-          </script>
-        {% endfor %}
+            {% for message in messages %}
+             
+            <script type="text/javascript">
+                   toastr.{{message.tags }}("{{ message }}");
+              </script>
+            {% endfor %}
         {% endif  %}
-
+        <noscript>Your browser does not support JavaScript!</noscript>
         
     </body>
 </html>

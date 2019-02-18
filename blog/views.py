@@ -60,8 +60,8 @@ def post_list(request):
 	return render(request,'blog/post_list.html',{'posts':posts})
 
 #Liste des articles par categorie
-def post_per_cat(request,pk):
-	category_post = get_object_or_404(Category, pk=pk)
+def post_per_cat(request,slug):
+	category_post = get_object_or_404(Category, slug=slug)
 	posts = category_post.posts.all().filter(published_at__isnull=False).order_by('-published_at')
 	posts = pagination(request, posts)
 	return render(request,'blog/post_list.html', {'posts':posts, 'category_post':category_post})

@@ -61,41 +61,6 @@
   transition: all 0.4s ease-in-out;
 }
 
-.pattern-1 {
-  background: url(/img/overlays/01.png);
-}
-
-.pattern-2 {
-  background: url(/img/overlays/02.png);
-}
-
-.pattern-3 {
-  background: url(/img/overlays/03.png);
-}
-
-.pattern-4 {
-  background: url(/img/overlays/04.png);
-}
-
-.pattern-5 {
-  background: url(/img/overlays/05.png);
-}
-
-.pattern-6 {
-  background: url(/img/overlays/06.png);
-}
-
-.pattern-7 {
-  background: url(/img/overlays/07.png);
-}
-
-.pattern-8 {
-  background: url(/img/overlays/08.png);
-}
-
-.pattern-9 {
-  background: url(/img/overlays/09.png);
-}
 
 .hm-zoom img {
   transition: all 0.2s linear;
@@ -220,4 +185,66 @@ button.btn-floating {
 
 .z-depth-1 {
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)!important;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)!importa
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)!important;
+
+}
+/*********************
+Colors
+**********************/
+
+.hm-white-slight .mask {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.rgba-grey-slight,
+.rgba-grey-slight:after {
+  background-color: rgba(158, 158, 158, 0.1); }
+
+.rgba-grey-light,
+.rgba-grey-light:after {
+  background-color: rgba(158, 158, 158, 0.3); }
+
+
+.cook-first-color-bg{
+  background-color: #5e9a28;
+}
+
+.cook-first-color{
+  color: #5e9a28;
+}
+
+.cook-second-color-bg{
+  background-color: #f6c23a;
+}
+
+.cook-second-color{
+  color: #f6c23a;
+}
+
+.cook-third-color{
+  color: #cc2d63;
+}
+
+.cook-third-color-bg{
+  background-color: #cc2d63;
+}
+
+.fb-bg {
+    background-color: #3B5998;
+}
+.tw-bg {
+    background-color: #55ACEE;
+}
+
+.gplus-bg {
+    background-color: #DD4B39;
+}
+.ins-bg {
+    background-color: #3F729B;
+}
+.pin-bg {
+    background-color: #C61118;
+}
+.li-bg{
+  background-color: #0082CA;
+}

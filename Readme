@@ -101,3 +101,27 @@ compte aws:
 nom: gastronomie.togolaise
 adresse mail:gastronomie.togolaise@gmail.com
 password: gastronomie.togolaise_2017
+
+http://preview.themeforest.net/item/muka-bakery-and-cooking-classes-html-template/full_screen_preview/22880677?_ga=2.159727613.1138409500.1548107521-1004060086.1534795747
+
+
+Congratulations! You have successfully enabled https://www.togokuizine.com
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=www.togokuizine.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/www.togokuizine.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/www.togokuizine.com/privkey.pem
+   Your cert will expire on 2019-04-26. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+

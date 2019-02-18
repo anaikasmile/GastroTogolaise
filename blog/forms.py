@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django import forms
 from .models import Post, Category
 
+
 from django.forms import SelectDateWidget, SplitDateTimeField
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone

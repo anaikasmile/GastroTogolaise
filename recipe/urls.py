@@ -24,13 +24,13 @@ from . import views
 
 urlpatterns = [
                   url(r'^$', views.home, name='home'),
-                  url(r'^recipe/$', views.recipe_list, name='recipe_list'),
-                  url(r'^recipe/category/(?P<slug>[-\w]+)/$', views.recipe_per_cat, name='recipe_per_cat'),
-                  url(r'^recipe/tag/$', views.recipe_per_tag, name='recipe_tag'),
-                  url(r'^recipe/origin/$', views.recipe_per_origin, name='recipe_origin'),
-                  url(r'^recipe/contributor/(?P<pk>[0-9]+)/$', views.recipe_per_contributor,
+                  url(r'^recipes/$', views.recipe_list, name='recipe_list'),
+                  url(r'^recipes/category/(?P<slug>[-\w]+)/$', views.recipe_per_cat, name='recipe_per_cat'),
+                  url(r'^recipes/tag/$', views.recipe_per_tag, name='recipe_tag'),
+                  url(r'^recipes/origin/$', views.recipe_per_origin, name='recipe_origin'),
+                  url(r'^recipes/contributor/(?P<pk>[0-9]+)/$', views.recipe_per_contributor,
                       name='recipe_per_contributor'),
-                  url(r'^recipe/detail/(?P<slug>[-\w]+)/$', views.recipe_detail, name='recipe_detail'),
+                  url(r'^recipes/detail/(?P<slug>[-\w]+)/$', views.recipe_detail, name='recipe_detail'),
                   url(r'^recipe/like/$', views.like, name='recipe_like'),
                   url(r'^recipe/add/$', views.recipe_add, name='recipe_add'),
                   url(r'^origin/add/$', views.OriginAdd.as_view(), name='origin_add'),
@@ -45,7 +45,7 @@ urlpatterns = [
                       name='recipe_category_update'),
                   # fin ajout
 
-                  url(r'^recipe/video', views.video_list, name='video_list'),
+                  url(r'^videos', views.video_list, name='video_list'),
                   url(r'^video/tag/$', views.video_per_tag, name='video_tag'),
                   url(r'^video/detail/(?P<slug>[-\w]+)/$', views.video_detail, name='video_detail'),
                   url(r'^video/like/$', views.likevideo, name='video_like'),

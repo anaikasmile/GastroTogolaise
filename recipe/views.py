@@ -101,7 +101,7 @@ class OriginAdd(PassRequestMixin, SuccessMessageMixin,
                      generic.CreateView):
     template_name = 'recipe/includes/add_origin.html'
     form_class = OriginForm
-    success_message = 'Success: Nouvelle ethnie ajoutée.'
+    success_message = 'Origine bien ajoutée.'
     success_url = reverse_lazy('recipe_add')
 
 
@@ -268,7 +268,7 @@ def like(request):
 def video_list(request):
  	videos = Video.objects.filter(published_at__isnull=False).order_by('-published_at')
  	videos = pagination(request, videos)
- 	return render(request,'recipe/video_list.html',{'videos':videos})
+ 	return render(request,'video/video_list.html',{'videos':videos})
 
 #Liste des recettes video par tag
 def video_per_tag(request):
@@ -277,7 +277,7 @@ def video_per_tag(request):
 		tag = request.GET.get('tag')
 		videos =  Video.objects.filter(tags__name=tag).filter(published_at__isnull=False).order_by('-published_at')
 		videos = pagination(request, videos)
-	return render(request,'recipe/video_list.html', {'videos':videos})
+	return render(request,'video/video_list.html', {'videos':videos})
 
 
 def video_detail(request,slug):
@@ -296,7 +296,8 @@ def video_detail(request,slug):
 	except EmptyPage:
 		video_author = paginator.page(paginator.num_pages)
 
-	return render(request,'recipe/video_detail.html',{'video':video,'video_author':video_author})
+
+	return render(request,'video/video_detail.html',{'video':video,'video_author':video_author})
 
 # Liker une video
 def likevideo(request):
@@ -430,7 +431,7 @@ def recipe_category_update(request,slug):
 def recipe_category_delete(request,slug):
 	category = get_object_or_404(Category, slug=slug)
 	category.delete()
-	messages.success(request, 'Your category deleted')
+	messages.success(request, 'Caégorie supprimée')
 	return redirect('recipe_publish_list')
 
 #fin ajout
@@ -482,7 +483,7 @@ def recipe_update(request,slug):
 def recipe_delete(request,slug):
 	recipe = get_object_or_404(Recipe, slug=slug)
 	recipe.delete()
-	messages.success(request, 'Your recipe deleted')	
+	messages.success(request, 'Votre recette a été supprimée')	
 	return redirect('recipe_publish_list')
 
 
@@ -501,7 +502,7 @@ def video_new(request):
 			return redirect ('video_preview',slug=video.slug)
 	else:
 		form = VideoForm()
-	return render(request, 'recipe/video_new.html',{'form':form})
+	return render(request, 'video/video_new.html',{'form':form})
 
 @login_required
 @staff_required
@@ -517,7 +518,7 @@ def video_edit(request,slug):
 		return redirect('video_preview', slug=video.slug)
 	else:
 		form = VideoForm(instance=video)
-	return render(request, 'recipe/video_new.html', {'form': form})
+	return render(request, 'video/video_new.html', {'form': form})
 
 
 # Apercu
@@ -525,20 +526,20 @@ def video_edit(request,slug):
 @staff_required
 def video_preview(request,slug):
 	video = get_object_or_404(Video, slug=slug)
-	return render(request, 'recipe/video_preview.html',{'video':video})
+	return render(request, 'video/video_preview.html',{'video':video})
 
 
 @login_required
 @staff_required
 def video_draft_list(request):
 	videos = Video.objects.filter(published_at__isnull=True).order_by('published_at')
-	return render(request,'recipe/video_draft_list.html',{'videos':videos})
+	return render(request,'video/video_draft_list.html',{'videos':videos})
 
 @login_required
 @staff_required
 def video_publish_list(request):
 	videos = Video.objects.filter(published_at__isnull=False).order_by('published_at')
-	return render(request,'recipe/video_publish_list.html',{'videos':videos})
+	return render(request,'video/video_publish_list.html',{'videos':videos})
 
 
 
@@ -547,7 +548,7 @@ def video_publish_list(request):
 def video_publish(request, slug):
     video = get_object_or_404(Video, slug=slug)
     video.publish()
-    messages.success(request, 'Your video was published!')
+    messages.success(request, 'Vidéo supprimée!')
     return redirect('video_draft_list')
 
 @login_required
@@ -555,7 +556,7 @@ def video_publish(request, slug):
 def video_delete(request,slug):
 	video = get_object_or_404(Video, slug=slug)
 	video.delete()
-	messages.success(request, 'Video deleted')
+	messages.success(request,'Vidéo supprimée')
 	return redirect('video_publish_list')
 
 
@@ -639,7 +640,7 @@ def video_new_category(request):
 		'form':form,
 		'categVideo':categVideo
 	}
-	return render(request, 'recipe/video_new_category.html', contextVideo)
+	return render(request, 'video/video_new_category.html', contextVideo)
 
 
 #Modifier la categorie
@@ -661,7 +662,7 @@ def video_category_update(request,slug):
 		'form':form,
 		'categVideo':categVideo
 	}
-	return render(request, 'recipe/video_new_category.html', contextVideo)
+	return render(request, 'video/video_new_category.html', contextVideo)
 
 
 

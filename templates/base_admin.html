@@ -6,11 +6,6 @@
 {% load i18n %}
 
 
-{% block extrahead %}
-<script>window.CKEDITOR_BASEPATH = '{% static "ckeditor/ckeditor/" %}';</script>
-{{ block.super }}
-{% endblock %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -356,8 +351,12 @@
     <script src="{% static 'dashboard/assets/vendor/charts/c3charts/d3-5.4.0.min.js' %}"></script>
     <script src="{% static 'dashboard/assets/vendor/charts/c3charts/C3chartjs.js' %}"></script>
     <script src="{% static 'dashboard/assets/libs/js/dashboard-ecommerce.js' %}"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-    <script type="text/javascript" src="/static/django_select2/django_select2.js"></script>
+    <script src="{% static 'assets/js/select2.min.js' %}"></script>
+    <script src="{% static 'django_select2/django_select2.js' %}"></script>
+    <script src="{% static 'django_addanother/django_jquery.js' %}"></script>
+    <script src="{% static 'ckeditor/ckeditor-init.min.js' %}"></script>
+    <script src="{% static 'ckeditor/ckeditor/ckeditor.min.js' %}"></script>
+    
 
     <script type="text/javascript">
       $(document).ready(function() { 

@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}Vous êtes déconnectés.{% endblocktrans %}
+{% blocktrans %}Nous espérons vous revoir bientôt.{% endblocktrans %}

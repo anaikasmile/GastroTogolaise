@@ -239,41 +239,6 @@ $(document).on('click','.likevideo',function(e) {
 
 });
 
-$(document).ready(function() {
-      var sideslider = $('[data-toggle=collapse-side]');
-                var sel = sideslider.attr('data-target');
-                var sel2 = sideslider.attr('data-target-2');
-                sideslider.click(function(event){
-                    console.log('ok');
-
-                    $(sel).toggleClass('in');
-                    $(sel2).toggleClass('out');
-                });
-
-              if ($(window).width() > 992) {
-                     $(document).on("scroll", function () {
-                         if ($(document).scrollTop() > 120) {
-                             $("#main_menu_bg").addClass('navbar-fixed-top');
-                             $("header").addClass('menu-scroll');
-                             $("header").removeClass('main_menu');
-
-                         } else {
-                             $("#main_menu_bg").removeClass('navbar-fixed-top');
-
-                             $("header").removeClass('menu-scroll');
-                             $("header").addClass('main_menu');
-                         }
-                     });
-                 }
-                else {
-                         $("#main_menu_bg").addClass('navbar-fixed-top navbar-inverse');
-                                    //$("header").addClass('menu-scroll');
-                                    $("#main_menu_bg").removeClass('main_menu_bg');
-                    }
-
-
-
-            });
 
 
       
