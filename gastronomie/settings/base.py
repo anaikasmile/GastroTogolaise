@@ -20,16 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#l3#%g^k@g9wjtsnzkwce-7uy92_%1x=)gt%t_o_+fd!7%g($3'
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'togokuizine_db',
-        'USER': 'togokuizine_user',
-        'PASSWORD': 'togokuizine@n4n85fgh',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+
 # Application definition
 SITE_ID = 2
 
