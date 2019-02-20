@@ -265,7 +265,7 @@
                         <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
                         {% for tag in recipe.tags.all %}
 
-                        <li><a href="/recipe/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
+                        <li><a href="/recipes/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
 
                         {% endfor %}
                         </ul>
