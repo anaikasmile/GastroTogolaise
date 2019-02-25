@@ -1,52 +1,22 @@
-{% extends "base.html" %}
+{% extends "base_login.html" %}
+
 {% load staticfiles %}
+{% load thumbnail %}
+{% load widget_tweaks %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Envoi email" %}{% endblock %}
+{% load account socialaccount %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block slide %}
-   
-<section id="home" class="home">
-    
-      <!--   <div class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="main_home_slider">
-                            <div class="single_home_slider">
-                                <div class="main_home wow"> -->
-                                    <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/top-recette.jpg' %}">
-                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
-
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div> -->
-<!-- 
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </section>
-{% endblock slide %}
-
-{% block header %}
-
-   
-{% endblock header %}
-
-{% block content_base %}
+{% block content %}
 
 <section class="portfolio">
      <div class="container">                                 
         <div class="row ">
 
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-md-offset-2 col-md-8 padding-20">
 
 			    <h4>{% trans "Vérifier votre adresse e-mail" %}</h4>
 
@@ -55,7 +25,7 @@
 			    </p>
 			    
 			    <p>Consultez votre dossier de spams pour vérifier que le message envoyé ne s'y trouve pas. 
-				Si vous ne recevez toujours pas l'e-mail, veuillez nous <a href="#">contacter</a>
+				Si vous ne recevez toujours pas l'e-mail, veuillez nous <a href="">contacter</a>
 
 			    {% endblocktrans %}</p>
 			</div>  

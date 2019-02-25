@@ -10,8 +10,15 @@
 <section id="home" class="home">
 
    
-        <img src="{% static 'assets/images/top-header.jpg' %}">
-         {% if "entrees" in request.path %}
+       
+        {% if "entrees" in request.path %}
+
+             <img src="{% static 'assets/images/entree.jpg' %}">
+
+
+        {% else %}
+
+            <img src="{% static 'assets/images/plat.jpg' %}">
 
         {% endif %}
         
@@ -29,7 +36,7 @@
 
         <div class="mixcontent row">
         {% for recipe in recipes %}
-            <div class="col-md-6 wow fadeIn" data-wow-duration="5s" data-wow-delay="2s">
+            <div class="col-md-6 wow fadeIn" data-wow-duration="4s" data-wow-delay="2s">
                 <div class="single_mixi_portfolio margin-bottom-40">
                     <div class="view hm-zoom">
            

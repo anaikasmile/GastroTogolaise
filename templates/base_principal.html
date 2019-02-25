@@ -8,6 +8,10 @@
 {% load i18n %}
 {% load account socialaccount %}
 {% load socialaccount %}
+{% load cache %}
+{% cache 500 iframe %}
+    
+{% endcache %}
 {% providers_media_js %}
 
 

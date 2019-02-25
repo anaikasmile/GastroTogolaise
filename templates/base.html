@@ -11,10 +11,6 @@
 
 
 
-{% block extrahead %}
-<script>window.CKEDITOR_BASEPATH = '{% static "ckeditor/ckeditor/" %}';</script>
-{{ block.super }}
-{% endblock %}
 
 
 <!doctype html>
@@ -24,7 +20,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>A la découverte de l'art culinaire togolais</title>
+        <title>TogoKuizine: A la découverte de l'art culinaire togolais</title>
         <meta name="application-name" content="TogoKuizine">
         <meta name="description" content="Nous sommes une communauté de passionnés de cuisine réunis sur une  même plateforme pour partager recettes, astuces, événements et informations sur la gastronomie togolaise">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -230,7 +226,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle {% if "/blog/" in request.path %} active{% endif %}"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
                                 <ul class="dropdown-menu">
-                                    {%for post_cat in post_categories %}
+                                    {% for post_cat in post_categories %}
                                     <li>
                                         <a href="{% url 'post_per_cat' slug=post_cat.slug %}">{{post_cat.name}}</a>
                                         <hr>

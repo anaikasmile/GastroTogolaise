@@ -103,8 +103,8 @@
 
         <div class="mixcontent row">
         {% for recipe in recipes %}
-            <div class="col-md-6">
-                <div class="single_mixi_portfolio margin-bottom-40  wow fadeIn" data-wow-duration="5s" data-wow-delay="2s">
+            <div class="col-md-6 wow fadeIn" data-wow-duration="4s" data-wow-delay="2s">
+                <div class="single_mixi_portfolio margin-bottom-40">
                     <div class="view hm-zoom">
            
                         {% if recipe.image %}
@@ -113,8 +113,7 @@
                             <img src="{{im.url}}" class="img-responsive">
                         {% endthumbnail %}  
                         </a>
-                        {% else %}
-                            <a href=""></a>
+                       
                         {% endif %}
                         <div class="text-floating">
                             <ul class="list-inline">
