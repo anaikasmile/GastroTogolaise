@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^pages/', include('django.contrib.flatpages.urls')),
     url('about/', views.flatpage, {'url': '/about/'}, name='about'),
+    url('mentions/', views.flatpage, {'url': '/mentions/'}, name='mentions'),
     #url('license/', views.flatpage, {'url': '/license/'}, name='license'),
 
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),

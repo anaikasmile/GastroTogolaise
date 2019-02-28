@@ -7,6 +7,7 @@
 {% load comments %}
 {% load threadedcomments_tags %}
 {% load social_share %}
+{% block head_title %}{% trans "Blog" %} - {{post.title}}{% endblock %}
 
 
 {% block slide %}
@@ -14,7 +15,7 @@
     <section id="home" class="home">
     
       
-         <img src="{% static 'assets/images/top-blog.jpg' %}">
+         <img src="{% static 'assets/images/top-blog.jpg' %}" width="100%">
                                     
     </section>
 {% endblock slide %}

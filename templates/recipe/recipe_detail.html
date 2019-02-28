@@ -7,7 +7,6 @@
 {% load widget_tweaks %}
 {% load social_share %}
 
-
 <!-- {% load comments %} -->
 {% load threadedcomments_tags %}
 {% block extrahead %}
@@ -18,12 +17,13 @@
 
 {% endblock %}
 
+{% block head_title %}{% trans "Recette" %}-{{recipe.title}}{% endblock %}
 
 {% block slide %}
    
 <section id="home" class="home">
   
-    <img src="{% static 'assets/images/top-header.jpg' %}">
+    <img src="{% static 'assets/images/top-recette.jpg' %}" width="100%">
                                    
 </section>
 {% endblock slide %}

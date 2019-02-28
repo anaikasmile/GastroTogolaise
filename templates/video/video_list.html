@@ -5,6 +5,7 @@
 {% load embed_video_tags %}
 {% load comments %}
 {% load i18n %}
+{% block head_title %}{% trans "Nos vidéos" %}{% endblock %}
 
 {% block slide %}
 <section id="home" class="home">
@@ -17,7 +18,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/top-video.jpg' %}">
+                                    <img src="{% static 'assets/images/top-video.jpg' %}" width="100%">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">

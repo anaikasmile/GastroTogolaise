@@ -3,15 +3,16 @@
 {% load thumbnail %}
 {% load humanize %}
 {% load embed_video_tags %}
-<!-- {% load comments %} -->
 {% load apps_filters %}
 {% load widget_tweaks %}
 {% load comments %}
 {% load threadedcomments_tags %}
 {% load social_share %}
-
-
 {% load i18n %}
+
+{% block head_title %}{% trans "Vidéo-" %}{{video.title}}{% endblock %}
+
+
 
 {% block slide %}
 <section id="home" class="home">
@@ -24,7 +25,7 @@
                             <div class="single_home_slider">
                                 <div class="main_home wow"> -->
                                     <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/top-video.jpg' %}">
+                                    <img src="{% static 'assets/images/top-video.jpg' %}" class="img-responsive">
                                     <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
 
                                     <div class="home_btn">

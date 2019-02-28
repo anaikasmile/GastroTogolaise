@@ -5,23 +5,13 @@
 {% load embed_video_tags %}
 {% load comments %}
 {% load i18n %}
-
+{% block head_title %}{% trans "Nos recettes" %}{% endblock %}
 {% block slide %}
 <section id="home" class="home">
 
-   
+
+    <img src="{% static 'assets/images/top-recette.jpg' %}" width="100%">
        
-        {% if "entrees" in request.path %}
-
-             <img src="{% static 'assets/images/entree.jpg' %}">
-
-
-        {% else %}
-
-            <img src="{% static 'assets/images/plat.jpg' %}">
-
-        {% endif %}
-        
                                    
 </section>
 
@@ -36,7 +26,7 @@
 
         <div class="mixcontent row">
         {% for recipe in recipes %}
-            <div class="col-md-6 wow fadeIn" data-wow-duration="4s" data-wow-delay="2s">
+            <div class="col-md-6 wow fadeIn" data-wow-duration="3s" data-wow-delay="1s">
                 <div class="single_mixi_portfolio margin-bottom-40">
                     <div class="view hm-zoom">
            
