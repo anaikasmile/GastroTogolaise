@@ -44,7 +44,7 @@
                     <div class="card-body">
     	                <form method="POST"  name="form" action="."  class="" enctype="multipart/form-data">
     		                {% csrf_token %}
-                            {{ form.media }}
+                          
                             <div class="row">
                                 <div class="col-xs-12 col-md-6 col-lg-6">
                                     <label for="id_title">{{form.title.label}}:</label>
