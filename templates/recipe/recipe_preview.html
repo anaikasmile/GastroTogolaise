@@ -128,10 +128,12 @@
                         </div>
                         <div class="product-description">
 
-                            <strong>Temps de préparation: </strong>{{recipe.prepare_time|format_time}} <br>
+                            <strong>Temps de préparation: </strong>{% if recipe.prepare_time %} {{recipe.prepare_time|format_time}} {% else %} --- {% endif %} <br>
                             <strong>Temps de cuisson: </strong> 
-                            {{recipe.cooking_time|format_time}} <br>
-                            <strong>Prêt dans: </strong> {{recipe.total_time|format_time}}
+                                                {% if recipe.cooking_time %}  {{recipe.cooking_time|format_time}} {% else %} --- {% endif %}
+ <br>
+                            <strong>Prêt dans: </strong>                    {% if recipe.total_time %}{{recipe.total_time|format_time}} {% else %} --- {% endif %}
+
                         </div>
                     </div>
                 </div>
