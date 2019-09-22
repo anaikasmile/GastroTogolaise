@@ -7,7 +7,7 @@
 {% load comments %}
 {% load threadedcomments_tags %}
 {% load social_share %}
-{% block head_title %}{% trans "Blog" %} - {{post.title}}{% endblock %}
+{% block head_title %}{{post.title}}{% endblock %}
 
 
 {% block slide %}
@@ -90,7 +90,6 @@
                 {% post_to_twitter "{{post.title}}"  "" %}
 
                 <!--Gplus-->
-                {% post_to_gplus  "" %}
     </div>    
 
 

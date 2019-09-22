@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% load comments %}
+{% load i18n %}
+
+{% block slide %}
+
+<section id="home" class="home">
+
+    
+    <img src="{% static 'assets/images/food_1.jpg' %}">
+                                  
+</section>
+{% endblock slide %}
+
+
+{% block content_base %}
+ <div class="main_mix_content text-center padding">
+
+        <div class="mixcontent row">
+            <div class="col-lg-offset-2 col-lg-8">
+          
+                <p>{{ flatpage.content }}</p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+                        

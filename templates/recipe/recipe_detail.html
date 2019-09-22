@@ -17,7 +17,7 @@
 
 {% endblock %}
 
-{% block head_title %}{% trans "Recette" %}-{{recipe.title}}{% endblock %}
+{% block head_title %}{{recipe.title}}{% endblock %}
 
 {% block slide %}
    
@@ -91,7 +91,6 @@
                 {% post_to_twitter "{{recipe.title}}"  "" %}
 
                 <!--Gplus-->
-                {% post_to_gplus ""  %}
 
                 <!--linkedin-->
                
@@ -241,7 +240,6 @@
                 {% post_to_twitter "{{recipe.title}}"  "" %}
 
                 <!--Gplus-->
-                {% post_to_gplus  "" %}
             <!--Pinterest-->
 <!--             <a class="btn pin-bg waves-effect waves-light" href=""><i class="fa fa-pinterest"></i></a>
  -->        </div> 

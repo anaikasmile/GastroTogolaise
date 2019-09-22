@@ -43,7 +43,7 @@
                     {% endif %}
                     <!-- <button class="btn btn-primary mark-all-notifications" data-mark-action="unread">{% trans "Marquer tous comme non lu" %}</button>  -->
                     <br><br>
-                    <ul class="notifications list-group">
+                    <ul class="notifications notification-box-list list-group">
                     {% if notifications %}
                     {% render_notifications using request.user.notifications.active.unread %}
                     {% endif %}
