@@ -37,6 +37,13 @@
             <div class="col-md-offset-2 col-md-8">
   
                 {% block content %}
+                     <button class="mark-all-notifications" data-mark-action="read">{% trans "Mark all as read" %}</button>
+                    <button class="mark-all-notifications" data-mark-action="unread">{% trans "Mark all as unread" %}</button>
+                    <ul class="notifications list-group">
+                    {% if notifications %}
+                    {% render_notifications using notifications %}
+                    {% endif %}
+                    </ul>
                     {% if notifications.unread %}
                      <button class="btn btn-primary mark-all-notifications" data-mark-action="read">
                     {% trans "Marquer tous comme lu" %}</button>
@@ -49,6 +56,8 @@
                     {% endif %}
                     </ul>
                 {% endblock %}
+
+                
 
            </div>
         </div>

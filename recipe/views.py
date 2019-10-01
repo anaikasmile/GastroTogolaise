@@ -334,7 +334,7 @@ def stats(request):
 	nb_videos = Video.objects.filter(published_at__isnull=False).count()
 	nb_users = Profile.objects.count()
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')[:10]
-	
+	users =  User.objects.all()[:10]
 
 
 	contextStats = {
@@ -342,7 +342,8 @@ def stats(request):
 		'nb_posts':nb_posts,
 		'nb_videos':nb_videos,
 		'nb_users':nb_users,
-		'recipes': recipes
+		'recipes': recipes,
+		'users':users
 	}
 
 	return render(request,'stats.html',contextStats)

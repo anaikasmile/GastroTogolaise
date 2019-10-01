@@ -156,6 +156,44 @@
                     
                 </div>
             </div>
+
+
+            <div class="card">
+                <h5 class="card-header">Dernières connexion</h5>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="bg-light">
+                                <tr class="border-0">
+                                     <th>#</th>
+                                    <th>Vu à</th>
+                                    <th>{% trans 'Utilisateurs' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{user.last_login}}</td>
+                                        <td><a href="">{{user.username}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                               
+                               
+                                <tr>
+                                    <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+
+
+
         </div>
         <!-- ============================================================== -->
         <!-- end recent orders  -->

@@ -1,5 +1,5 @@
-var markAllSuccess = function (response) {
-    //console.log(response);
+/*var markAllSuccess = function (response) {
+    console.log(response);
     // console.log(response.action);
     if (response.action == 'read') {
         var mkClass = readNotificationClass;
@@ -14,3 +14,6 @@ var markAllSuccess = function (response) {
     // console.log(rmClass);
     $(nfSelector).removeClass(rmClass).addClass(mkClass);
 };
+*/
+
+  

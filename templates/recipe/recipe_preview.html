@@ -60,7 +60,7 @@
                                 {% if recipe.image_1 %}
                 
                                 <div class="carousel-item">
-                                    {% thumbnail recipe.image  "500x200" crop="center" as img %}
+                                    {% thumbnail recipe.image_1  "500x200" crop="center" as img %}
 
                                         <img class="d-block" src="{{img.url}}" alt="Second slide">
                                     {% endthumbnail %}
@@ -69,18 +69,18 @@
                                 {% if recipe.image_2 %}
                 
                                 <div class="carousel-item">
-                                    {% thumbnail recipe.image  "500x200" crop="center" as img %}
+                                    {% thumbnail recipe.image_2  "500x200" crop="center" as img %}
 
-                                    <img class="d-block" src="{{recipe.image_2.url}}" alt="Second slide">
+                                    <img class="d-block" src="{{img.url}}" alt="Second slide">
                                     {% endthumbnail %}
                                 </div>
                                 {% endif %}
                                  {% if recipe.image_3 %}
                 
                                 <div class="carousel-item">
-                                    {% thumbnail recipe.image  "500x200" crop="center" as img %}
+                                    {% thumbnail recipe.image_3  "500x200" crop="center" as img %}
 
-                                    <img class="d-block" src="{{recipe.image_3.url}}" alt="Third slide">
+                                    <img class="d-block" src="{{img.url}}" alt="Third slide">
                                    {% endthumbnail %}
                                 </div>
                                 {% endif %}

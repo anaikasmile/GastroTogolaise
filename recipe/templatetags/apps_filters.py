@@ -40,6 +40,11 @@ def naturaltimez(value):
     now = datetime.now(utc if is_aware(value) else None)
     if value < now:
         delta = now - value
+        if delta.days >= 30:
+            count = delta.days // 30
+            return ungettext(
+                '1 mois', '%(count)s mois', count
+            ) % {'count': count}
         if delta.days != 0:
             count = delta.days 
             return ungettext(

@@ -2496,10 +2496,7 @@ iframe{
     h1 {
         font-size: 3.5rem;
     }
-    .single_mixi_portfolio img {
-        height: 230px;
-    }
-
+   
 }
 
 /* Portrait tablets and small desktops */
@@ -2686,3 +2683,19 @@ iframe{
         margin-top: 20px;
       }
   }
+
+
+
+.indicator {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: 11px;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: #ef172c;
+    animation: .9s infinite beatHeart;
+    transform-origin: center;
+}

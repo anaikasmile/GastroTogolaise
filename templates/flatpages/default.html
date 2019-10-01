@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_principal.html' %}
 {% load staticfiles %}
 {% load thumbnail %}
 {% load humanize %}
@@ -9,52 +9,37 @@
 {% block slide %}
 
 <section id="home" class="home">
+  
+    <img src="{% static 'assets/images/team.jpg' %}" width="100%">
+                                   
+</section>
+{% endblock %}
 
-      <!--   <div class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="main_home_slider">
-                            <div class="single_home_slider">
-                                <div class="main_home wow"> -->
-                                    <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/food_1.jpg' %}">
-                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+{% block content %}
 
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div> -->
-<!-- 
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </section>
-{% endblock slide %}
+     <!-- Post -->
 
 
-{% block content_base %}
- <div class="main_mix_content text-center padding">
-
-        <div class="mixcontent row">
-            <div class="col-lg-offset-2 col-lg-8">
-          
+    <div class="main_mix_content single_mixi">
+    
+  
+        <div class="mixcontent">
+      
+      
+       
                 <p>{{ flatpage.content }}</p>
 
-            </div>
+                
+
         </div>
+
     </div>
 
-    
-
-                <!-- End   -->
 
 {% endblock %}
+
+
+                        
 
 
                         

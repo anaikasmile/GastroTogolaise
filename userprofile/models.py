@@ -43,7 +43,7 @@ class Profile(models.Model):
 	slug = models.SlugField(null=False,unique=False, blank=True)
 
 	job = models.CharField(max_length=50, verbose_name=_(u'Profession'), blank=True, null= True, help_text=_(u''))
-
+    
 	def __str__(self):
 		return self.user.username
 

@@ -1,0 +1,301 @@
+{% extends 'base_principal.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+<!-- {% load comments %} -->
+{% load apps_filters %}
+{% load widget_tweaks %}
+{% load comments %}
+{% load threadedcomments_tags %}
+{% load social_share %}
+
+
+{% load i18n %}
+
+{% block slide %}
+<section id="home" class="home">
+
+      <!--   <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="main_home_slider">
+                            <div class="single_home_slider">
+                                <div class="main_home wow"> -->
+                                    <!-- <h1>Cook' iT</h1> -->
+                                    <img src="{% static 'assets/images/top-video.jpg' %}">
+                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
+
+                                    <div class="home_btn">
+                                        <a href="" class="btn btn-primary">LEARN MORE</a>
+                                    </div> -->
+<!-- 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+{% endblock slide %}
+
+
+{% block header %}
+
+   <section class="rp-post-header margin-top-40">
+            
+            <div class="rp-post-cat">
+                
+                <ul class="list-inline">
+                    {% if video.category.name %}
+                    <li><a href="">{{video.category.name}}</a></li>   
+                    {% endif %}
+                    {% for origin in video.origin.all %}
+
+                    <li><a href="">{{origin.ethnic}}</a></li>
+
+                    {% endfor %}
+                
+                </ul>
+                
+            </div>
+            <h2 class="rp-post-title">{{video.title}}</h2>
+        
+            <div class="rp-post-meta-info">
+                <ul class="list-inline">
+                
+                    <li>
+                   {% if video.author.is_staff_member %}
+                          <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 26px; height: 26px;" alt="">
+                          By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                    {% else %}
+                        {% if video.author.photo %}
+                            <img src="{{video.author.photo.url}}" class="img-circle" width="20px;" alt="">
+                        {% else %}
+                            <img src="{% static 'assets/images/user_icon.png' %}" class="img-circle" width="20px;" alt="">
+                        {% endif %}
+                        By <a href="" class="rp-author">{{video.author}}</a></li> 
+                    {% endif %} 
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {% language 'fr' %}
+                         {{ video.published_at|date:'d M Y ' }}{% endlanguage %} </li> 
+                    
+                    <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
+
+                    <li>
+                        <a type="button" class="likevideo" data-video-pk="{{video.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{video.pk}}"> {{video.like}}</span>
+                    </li>
+
+                    {% get_comment_count for video as comment_count %}
+                    <li><a href="#comment"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
+                </ul>
+            </div>
+            <div class="rp-post-share">
+                 <!--Facebook-->
+                {% post_to_facebook %}
+
+                
+                <!--Twitter-->
+                {% post_to_twitter "{{video.title}}"  "" %}
+
+                <!--Gplus-->
+                {% post_to_gplus  "" %}
+                
+            </div>
+            
+           
+        </section>
+
+{% endblock header %}
+
+{% block content %}
+ 
+
+    <div class="main_mix_content single_mixi rp-post-detail">
+     
+        <div class="rp-post-image" style="height: 350px;">
+            
+           {% video video.video as video %}
+            {% video video  %}
+            {% endvideo %}
+        </div>
+
+        
+        <div class="padding-5">
+            {% if video.description %}
+            <div class="rp-post-description">
+                
+                <p>
+                    {{video.description|safe}}
+                </p>
+              
+            </div>
+            {% endif %}
+              
+            <div class="rp-post-share" >
+            <strong> {% trans 'PARTAGER' %} &nbsp;&nbsp;  </strong>
+                {% post_to_facebook %}
+
+                <!--Twitter-->
+                {% post_to_twitter "{{recipe.title}}"  "" %}
+
+                <!--Gplus-->
+                {% post_to_gplus  "" %}
+
+            </div> 
+        </div>   
+        <!-- Modal Author -->
+        {% include 'recipe/modal_user.html' %}
+
+
+    </div>
+
+    <!-- Section Tags -->
+
+    <section class="main_mix_content single_mixi padding-20 margin-top-40">
+        <div class="pull-left">
+              
+                <ul class="list-inline">
+
+                <li>  <i class="fa fa-tags cook-first-color"></i><strong>TAGS:</strong></li>
+                {% for tag in video.tags.all %}
+
+                 <li><a href="/video/tag/?tag={{ tag.name }}">{{tag.name}}</a></li>
+
+                {% endfor %}
+                </ul>
+        </div>
+        <br>
+    </section>
+
+
+      <!-- Section comments -->
+    <section class="main_mix_content single_mixi padding-20 margin-top-40">
+
+        <div class="row" id="comment">
+           {% get_comment_count for video as comment_count %}
+            <h5 class="padding-20" data-toggle="collapse" href="#collapse1"><i class="fa fa-comments" aria-hidden="true"></i> {{comment_count}} {% trans 'Commentaires' %} </h5>              
+
+            <div id="collapse1" class="panel-collapse collapse">
+             
+                <div id="comment-list" class="padding-20">
+
+                    <ul class="list">
+                        {% get_comment_list for video as comment_list %}
+
+                        {% for comment in comment_list|fill_tree reversed %}
+                        <div {% if request.REQUEST.c|add:"0" == node.id %}id="newly_posted_comment"{% endif %}>
+                        <div class="name">
+                            <div class="media">
+                                <a class="pull-left" href="#"> 
+                                  
+                                    <img src="{% static 'assets/images/user-logo.jpg' %}" class="img-rounded" width="50px;" alt="">
+                                </a> 
+                                <div class="media-body rp-comment">
+                                    <span class="rp-arrow">
+                                    </span>
+                                   
+                                    <h6 class="media-heading"><a href="" class="cook-second-color">
+                            
+
+                                    {{comment.user_name}}</a> <span class="text-right">{{comment.submit_date|naturaltime}}</span></h6>
+                                   
+                                    
+                                    <p style="padding-left: 10px;">{{comment.comment}}</p>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                      
+                    </ul>
+                   
+                    <!-- Pagination comments -->
+
+                    <div class="comment-pagination">
+                        <ul class="pagination"></ul>
+                    </div>
+                    
+                </div>
+            </div> 
+
+            <!-- Comment form -->
+            <div class="form-block col-xs-12">
+                <div class="">
+                    <h4>{% trans 'Laisser un commentaire' %}</h4>
+                    <div class="separator4"></div>
+                    <p class="">{% trans 'Votre adresse email ne sera pas publié' %}.</p>
+                    <br>
+                </div>
+            
+               
+               {% if user.is_authenticated %}
+                {% get_comment_form for video as form %}
+                 <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %}style="display:none;"{% endif %}>
+                    <form action="{% comment_form_target %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.comment|add_class:'form-control' }}
+                    
+                    
+                    {{ form.content_type }}
+                    {{ form.object_pk }}
+                    {{ form.timestamp }}
+                    {{ form.security_hash }}
+                    <br>
+                    <input type="hidden" name="next" value="{% url 'video_detail' video.pk %}" />
+                    
+                    <button class="btn btn-primary" type="submit" id="id_submit">{% trans 'Envoyer' %}</button>
+                    </form>
+                </div>
+                {% else %}
+
+                <p class="">{% trans 'Veuillez vous' %} <a href="{% url 'account_login' %}">{% trans 'connecter' %}</a>{% trans ' si vous êtes déjà membre. Sinon, remplissez juste ces champs' %} . 
+                </p>
+                {% get_comment_form for video as form %}
+                
+               <!--  <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %}style="display:none;"{% endif %}> -->
+                    <form action="{% comment_form_target %}" method="post">
+                        {% csrf_token %}
+                        {{ form.content_type }}
+                        {{ form.object_pk }}
+                        {{ form.timestamp }}
+                        {{ form.security_hash }}
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <label>{% trans 'Nom' %} <span class="label-description">(ex: Koffi) <sup>*</sup></span></label></span> {{form.name|add_class:'form-control'}}  
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6">
+                                <label>{% trans 'Email' %} <span class="label-description">(Non Publié) <sup>*</sup></span></label></span> {{form.email|add_class:'form-control'}}  
+                            </div>
+                            <!-- <div class="form-group col-xs-12 col-sm-4">
+                                <label>{% trans 'Website' %}<span class="label-description">(Optionnel)</span> </label> {{form.url|add_class:'form-control'}}  
+                            </div> -->
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                            <label>{% trans 'Commentaire' %}<sup>*</sup></label></span><br> 
+                            {{form.comment|add_class:'form-control'}}
+                            </div>
+                        </div>
+                           <input type="hidden" name="next" value="{% url 'video_detail' video.slug %}" />
+                        <button class="btn btn-primary" type="submit">{% trans 'Envoyer' %}</button>
+                        
+                    </form> 
+                <!-- </div> -->
+
+            {% endif %}
+            </div>     
+
+    </section>
+
+  <br>
+
+{% endblock content %}    
