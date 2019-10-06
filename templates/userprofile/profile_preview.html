@@ -1,6 +1,7 @@
 {% extends 'base_admin.html' %}   
 {% load staticfiles %}
 {% load apps_filters %}
+{% load thumbnail %}
 
 {% load i18n %}
 {% block content %}
@@ -44,7 +45,11 @@
                                             <div class="text-center">
                                                 
                                                 {% if user.profile.photo %}
+                                                    {% thumbnail user.profile.photo  "128x128" crop="center" as img %}
+
                                                     <img src="{{user.profile.photo.url}}" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                                    {% endthumbnail %}
+
                                                 {% else %}
                                                     <img src="{% static 'dashboard/assets/images/avatar-1.jpg' %}"" alt="User Avatar" class="rounded-circle user-avatar-xxl">
                                                 {% endif %}

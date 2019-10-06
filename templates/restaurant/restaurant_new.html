@@ -19,9 +19,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bonnes adresses</a></li>
+                            <li class="breadcrumb-item active"><a href="#" class="breadcrumb-link">Bonnes adresses</a></li>
 
-                            <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
                         </ol>
                     </nav>
                 </div>
@@ -78,6 +77,29 @@
                                 </div>
                                
                             </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.fb_id.label}}:</label>
+                                    {{ form.fb_id }}
+                                </div>
+                                 <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.insta_id.label}}:</label><br>
+                                    {{ form.insta_id }}
+                                </div>
+                               
+                            </div>
+                             <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.twit_id.label}}:</label>
+                                    {{ form.twit_id }}
+                                </div>
+                                 <div class="col-xs-12 col-md-6 col-lg-6">
+                                    <label for="id_title">{{form.lind_id.label}}:</label><br>
+                                    {{ form.lind_id }}
+                                </div>
+                               
+                            </div>
+
                             <div class="row">
                                 <div class="col-xs-12 col-md-12 col-lg-12">
                                     <label for="id_title">{{form.description.label}}:</label>

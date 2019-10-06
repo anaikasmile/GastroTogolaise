@@ -71,7 +71,7 @@
                                         {% if r.image %}
                                             <a class="pull-left card" href="{% url 'recipe_detail' slug=r.slug %}">
                                             {% thumbnail r.image  "70x50" crop="center" as im %}
-                                                <img src="{{im.url}}" class="media-object">       
+                                                <img src="{{im.url}}" class="media-object  img-responsive">       
                                             {% endthumbnail %}  
                                             </a>
                                         {% else %}
@@ -116,7 +116,7 @@
                                         {% if r.image %}
                                             <a class="pull-left card" href="{% url 'post_detail' slug=r.slug %}">
                                             {% thumbnail r.image  "70x50" crop="center" as im %}
-                                                <img src="{{im.url}}" class="media-object">       
+                                                <img src="{{im.url}}" class="media-object img-responsive">       
                                             {% endthumbnail %}  
                                             </a>
                                         {% else %}
@@ -159,7 +159,7 @@
                                                 
                                             {% if tp.author__profile__photo %}
                                                 {% thumbnail tp.author__profile__photo  "70x70" crop="center" as im %}
-                                                    <img src="{{im.url}}" class="media-object">     
+                                                    <img src="{{im.url}}" class="media-object img-responsive">     
                                                 {% endthumbnail %}        
 
                                             {% else %}

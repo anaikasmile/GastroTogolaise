@@ -747,6 +747,10 @@ input::-ms-input-placeholder {
 
 
 }
+
+
+
+
 .home .main_home{
     padding-top: 250px;
 }
@@ -1638,6 +1642,7 @@ blockquote footer, blockquote small, blockquote .small {
     font-weight: 700;
     margin-top: 20px;
     margin-bottom: 10px;
+    padding-left: 5px;
 }
 
 .rp-post-title a{

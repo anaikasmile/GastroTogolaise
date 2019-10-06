@@ -90,7 +90,7 @@ def restaurant_update(request,slug):
 		return redirect('restaurant_preview', slug=restaurant.slug)
 	else:
 		form = RestaurantForm(instance=restaurant)
-	return render(request, 'restaurant/restaurant_update.html', {'form': form})
+	return render(request, 'restaurant/restaurant_new.html', {'form': form})
 
 
 #Supprimer

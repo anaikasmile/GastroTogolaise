@@ -4,6 +4,7 @@
 {% load humanize %}
 {% load flatpages %}
 {% load i18n %}
+{% load notification_tags %}
 
 
 <!DOCTYPE html>
@@ -64,38 +65,25 @@
                                 <input class="form-control" type="text" placeholder="Search..">
                             </div>
                         </li>
+                        {% if request.user.notifications.active.unread  %}
+
                         <li class="nav-item dropdown notification">
+
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
-                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown notification-box-list">
+                               <div class="notification-title"> Notification</div>
+
+                                {% render_notifications using request.user.notifications.active.unread for box %}
+
+                                
                                 <li>
-                                    <div class="notification-title"> Notification</div>
-                                    <div class="notification-list">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="static 'dashboard/assets/images/avatar-2.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="static 'dashboard/assets/images/avatar-3.jpg' %}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            
-                                        </div>
-                                    </div>
+                                    <div class="list-footer"> <a href="/notifications/all">Voir tout</a></div>
                                 </li>
-                                <li>
-                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
-                                </li>
+
                             </ul>
                         </li>
+                        {% endif %}
+
                         
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'dashboard/assets/images/avatar-1.jpg' %}" alt="" class="user-avatar-md rounded-circle"></a>

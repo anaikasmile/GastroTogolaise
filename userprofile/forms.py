@@ -20,7 +20,7 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('bio', 'country','tel', 'photo','facebook','twitter','linkedin','gplus','instagram')
+        fields = ('bio', 'country','tel', 'photo','facebook','twitter','linkedin','gplus','instagram','job')
         widgets = {
             'bio':forms.Textarea(attrs={'placeholder':_(u''),'name':'','id':'textArea','class':'form-control'}),
             'country':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
@@ -31,6 +31,8 @@ class ProfileForm(forms.ModelForm):
            	'gplus':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'instagram':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'photo':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
+            'job':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
+
             }
 
 

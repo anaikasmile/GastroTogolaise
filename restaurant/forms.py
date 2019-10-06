@@ -10,7 +10,7 @@ from django.utils import timezone
 class RestaurantForm(forms.ModelForm):
     class Meta:
         model = Restaurant
-        fields = ['category','name','description','tel','address','web_site','image','enabled']
+        fields = ['category','name','description','tel','address','web_site','image','enabled','fb_id','insta_id','twit_id','lind_id']
         widgets = {
             'category':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'name':forms.TextInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),

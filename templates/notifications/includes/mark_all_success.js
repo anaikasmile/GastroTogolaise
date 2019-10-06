@@ -1,4 +1,4 @@
-/*var markAllSuccess = function (response) {
+var markAllSuccess = function (response) {
     console.log(response);
     // console.log(response.action);
     if (response.action == 'read') {
@@ -14,6 +14,6 @@
     // console.log(rmClass);
     $(nfSelector).removeClass(rmClass).addClass(mkClass);
 };
-*/
+
 
   

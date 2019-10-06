@@ -1,0 +1,37 @@
+{% extends 'base_principal.html' %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% load humanize %}
+{% load embed_video_tags %}
+{% load comments %}
+{% load i18n %}
+
+{% block slide %}
+
+<section id="home" class="home">
+  
+    <img src="{% static 'assets/images/team.jpg' %}" width="100%">
+                                   
+</section>
+{% endblock %}
+
+{% block content %}
+
+     <!-- Post -->
+
+
+    <div class="main_mix_content single_mixi padding-20">
+    
+        
+        <p>{{ flatpage.content }}</p>
+
+    </div>
+
+
+{% endblock %}
+
+
+                        
+
+
+                        

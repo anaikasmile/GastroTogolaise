@@ -50,8 +50,8 @@
                                 <div class="carousel-item active">
                                 
                                 {% if restaurant.image %}
-                                {% thumbnail restaurant.image  "500x200" crop="center" as img %}
-                                    <img src="{{img.url}}" class="img-responsive">
+                                {% thumbnail restaurant.image  "128x128" crop="center" as img %}
+                                    <img src="{{img.url}}" class="img-responsive" class="rounded-circle user-avatar-xxl">
                                   {% endthumbnail %}
                                 {% else %}
                                   <img src="{% static 'dashboard/assets/images/avatar-1.jpg' %}"" alt="User Avatar" class="rounded-circle user-avatar-xxl">

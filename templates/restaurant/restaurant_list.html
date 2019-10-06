@@ -56,7 +56,7 @@
                             {% endthumbnail %} 
                         
                         {% else %}
-                            <img src="{% static 'img/post-1.jpg' %}" class="img-responsive">     
+                            <img src="{% static 'assets/images/map.png' %}" class="img-responsive">     
                         {% endif %}
                             <div class="mask flex-center">
                                
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <h4 class="rp-post-title">{{ restaurant.name|truncatechars:50 }}</h4>
+                    <h4 class="rp-post-title">{{ restaurant.name}}</h4>
                         
                    <!--Rating-->
                     <div class="padding">
@@ -73,7 +73,7 @@
                         
 
                         <!--/.Rating-->
-                        <p>{{ restaurant.description|safe|truncatechars:150 }}</p>
+                        <p>{{ restaurant.description|safe }}</p>
                         <!-- <a href="" class="rp-post-btn"><em> Lire la suite → </em></a>  -->
                        
 
@@ -96,6 +96,14 @@
                             {% endif %}   
                             </ul>
                             </dfn>
+                        </div>
+                        <div class="footer_socail_right">
+                           
+                            <a href="https://www.facebook.com/" target="blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/"><i class="fa fa-twitter" target="blank"></i></a>
+                            <a href="https://instagram.com/"><i class="fa fa-instagram" target="blank"></i></a>
+                            <a href="https://likedin/" target="blank"><i class="fa fa-linkedin"></i></a>
+                        
                         </div>
                     </div>
                 </div>

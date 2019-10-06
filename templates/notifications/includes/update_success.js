@@ -1,4 +1,4 @@
-/*var updateSuccess = function (response) {
+var updateSuccess = function (response) {
     var notification_box = $(nfBoxListClassSelector);
     console.log(notification_box);
     var notifications = response.notifications;
@@ -23,13 +23,7 @@
 
     }
 
-};*/
-
-var updateSuccess = function (response) {
-    var notification_box = $(nfBoxListClassSelector);
-    var notifications = response.notifications;
-    $.each(notifications, function (i, notification) {
-        notification_box.prepend(notification.html);
-    });
 };
+
+
 
