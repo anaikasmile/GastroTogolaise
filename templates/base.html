@@ -55,6 +55,7 @@
 
         <!--font family css-->
         <link href="{% static 'assets/fonts/circular-std/style.css' %}" rel="stylesheet">
+        
 
        
        
@@ -151,7 +152,7 @@
                 <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 
                 <a class="navbar-brand" href="/">
-                    <img src="{% static 'assets/images/tk-small.png' %}" alt="logo togokuizine">
+                    <img src="{% static 'assets/images/tklogo.png' %}" alt="logo togokuizine" width="150px;">
                 </a>
                 <ul class="list-inline visible-sm visible-xs pull-right" style="padding-top:15px;">
                 {% if user.is_authenticated %}
@@ -359,12 +360,12 @@
                                 <div class="footer_logo">
                                     <!-- <h2>TogoKuizine</h2> -->
 
-                                    <img src="{% static 'assets/images/finalTK2.png' %}"  width="50%" alt="logo TogoKuizine">
+                                    <img src="{% static 'assets/images/tklogo.png' %}"  width="50%" alt="logo TogoKuizine">
 
                                 </div>
 
                                 <ul class="">
-                                    <li><a href="{% url 'about' %}">L'équipe</a></li>
+                                    <li><a href="{% url 'about' %}">L' équipe</a></li>
                                     <li><a href="{% url 'contributors' %}">Nos contributeurs</a></li>
                                     <li><a href="">Nos partenaires</a></li>
                                     <li><a href="{% url 'legacy' %}">Mentions légales</a></li>
@@ -514,6 +515,9 @@
         <script src="{% static 'ckeditor/ckeditor/ckeditor.min.js' %}"></script>
         {% include_notify_js_variables %}
         <script src="{% static 'notify/notifyX.js' %}"></script>
+        
+
+
 
         
         <script>

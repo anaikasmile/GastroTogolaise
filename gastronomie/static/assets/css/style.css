@@ -1514,53 +1514,6 @@ blockquote footer, blockquote small, blockquote .small {
 }
 
 
-/*team section css*/
-.team{}
-.team .head_title{
-    color:#223d61;
-}
-.team .single_team{}
-.team .single_item{
-    position: relative;
-    max-width: 100%;
-    margin-bottom:30px;
-}
-.team .single_item img{
-    max-width: 100%;
-}
-.team .single_item:hover .single_team_overlay{
-    opacity: 1; 
-}
-
-.team .single_item .single_team_overlay{
-    background: rgba(94, 154, 40, 0.55);
-    position: absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height: 100%;
-    text-align: center;
-    padding: 50px 0px 10px 0px;
-    transition: .6s;
-    opacity: 0;
-}
-.team .single_item .single_team_overlay h4{
-    color:#fff;
-    text-transform: uppercase;
-}
-.team .single_item .single_team_overlay p{
-    color:#223d61;
-    text-transform: uppercase;
-}
-.team .single_item .single_team_overlay .team_socail{
-    margin-top:50px;
-}
-
-.team .single_item .single_team_overlay .team_socail a i{
-    color:#fff;
-    font-size:1.5rem;
-    padding: 0px 5px;
-}
 
 /*contact section css*/
 .contact{}

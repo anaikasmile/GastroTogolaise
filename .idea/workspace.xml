@@ -150,7 +150,7 @@
       <find>btn-pr</find>
       <find>btn-login</find>
       <find>bt</find>
-      <find>user-logo</find>
+      <find>top-chef</find>
       <find>add</find>
     </findStrings>
     <replaceStrings>

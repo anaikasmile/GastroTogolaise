@@ -341,11 +341,10 @@
                {% if user.is_authenticated %}
                 {% get_comment_form for recipe as form %}
                  <div class="comment-form" id="comment-form-{{ node.id }}" {% if node.id %} style="display:none;" {% endif %}>
-                    <form action="{% comment_form_target %}" method="POST"  id="comment-form-{{ node.id }}f">
+                    <form action="{% comment_form_target %}" method="POST" >
                     {% csrf_token %}
                     {{ form.comment|add_class:'form-control' }}
                     
-                    <!-- {{ form.honeypot }} -->
                     {{ form.content_type }}
                     {{ form.object_pk }}
                     {{ form.timestamp }}
