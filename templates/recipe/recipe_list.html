@@ -9,7 +9,7 @@
 {% block slide %}
 <section id="home" class="home">
 
-    <img src="{% static 'assets/images/top-recette.jpg' %}" width="100%">
+    <img src="{% static 'assets/images/top-recette.jpg' %}" width="100%" alt='top header recipe'>
                                   
 </section>
 
@@ -31,7 +31,7 @@
                         {% if recipe.image %}
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}">
                         {% thumbnail recipe.image  "900x500" crop="center" as im %}
-                            <img src="{{im.url}}" class="img-responsive">
+                            <img src="{{im.url}}" class="img-responsive" alt='{{recipe.slug}}'>
                         {% endthumbnail %}  
                         </a>
                         {% else %}
@@ -54,7 +54,7 @@
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}" class="title">{{recipe.title|truncatechars:30}}</a>
                         <p>
                          {% if recipe.author.is_staff_member %}
-                             <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 20px; height: 20px;" alt=""> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
+                             <img src="{% static 'assets/images/tk-icon.png' %}" class="img-circle" style="background-color: #000; width: 20px; height: 20px;" alt="tklogo"> By <a href="#" class="rp-author">{% trans 'L équipe' %}</a>
                         {% else %}
                             
 

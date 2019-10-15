@@ -51,7 +51,7 @@ def naturaltimez(value):
                 '1 jour', '%(count)s jours', count
             ) % {'count': count}
         elif delta.seconds == 0:
-            return _('now')
+            return ('now')
         elif delta.seconds < 60:
             return ungettext(
                 'une seconde', '%(count)s secondes', delta.seconds
@@ -73,7 +73,7 @@ def naturaltimez(value):
                 'naturaltime', '%(delta)s'
             ) % {'delta': defaultfilters.timeuntil(value, now)}
         elif delta.seconds == 0:
-            return _('now')
+            return ('now')
         elif delta.seconds < 60:
             return ungettext(
                 'une seconde', '%(count)s secondes', delta.seconds

@@ -19,32 +19,16 @@
             <!-- Carousel items -->
             <div class="carousel-inner carousel-zoom">
                 <div class="item active"><img  src="{% static 'assets/images/slide-1.jpg' %}" alt="img-1">
-                  <div class="carousel-caption">
-                    <h1  data-animation="animated zoomInLeft" class="cap-txt "></h1>
-                    <p data-animation="animated bounceInDown"></p>
-                   
-                  </div>
+                 
                 </div>
                <div class="item"><img  src="{% static 'assets/images/slide-2.jpg' %}" alt="img-2">
-                  <div class="carousel-caption">
-                    <h1 data-animation="animated zoomInLeft" class="cap-txt"></h1>
-                    <p data-animation="animated bounceInDown"></p>
-                    
-                  </div>
+                  
                 </div>
                 <div class="item"><img src="{% static 'assets/images/slide-3.jpg' %}" alt="img-3">
-                  <div class="carousel-caption animated slideInLeft">
-                    <h1 data-animation="animated zoomInLeft" class="cap-txt"></h1>
-                    <p data-animation="animated bounceInDown"></p>
-                    
-                  </div>
+                  
                 </div>
                 <div class="item"><img src="{% static 'assets/images/slide-4.jpg' %}" alt="img-4">
-                  <div class="carousel-caption animated slideInLeft">
-                    <h1 data-animation="animated zoomInLeft" class="cap-txt"></h1>
-                    <p data-animation="animated bounceInDown"></p>
-                    
-                  </div>
+                  
                 </div>
             <!-- Carousel nav -->
                 <a class="carousel-control left" href="#sg-carousel" data-slide="prev">‹</a>
@@ -67,11 +51,13 @@
                     <div class="view hm-zoom">
            
                         {% if recipe.image %}
+                        {% thumbnail recipe.image "900x500" crop="center" as img %}
+
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}">
-                        {% thumbnail recipe.image  "900x500" crop="center" as im %}
-                            <img src="{{im.url}}" class="img-responsive">
-                        {% endthumbnail %}  
+                            <img src="{{img.url}}" class="img-responsive" alt='{{recipe.slug}}'>
                         </a>
+                        {% endthumbnail %}
+
                        
                         {% endif %}
                         <div class="text-floating">

@@ -447,7 +447,16 @@ def recipe_new(request):
 			recipe = form.save(commit=False)
 			recipe.author = request.user
 			#recipe.published_at = timezone.now()
-			recipe.slug = slugify(recipe.title)
+			#recipe.slug = slugify(recipe.title)
+			max_length = Recipe._meta.get_field('slug').max_length
+			recipe.slug = orig = slugify(recipe.title)[:max_length]
+			#instance.author = request.user
+			for x in itertools.count(1):
+				if not Recipe.objects.filter(slug=recipe.slug).exists():
+					break
+
+			# Truncate the original slug dynamically. Minus 1 for the hyphen.
+				recipe.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
 			recipe.save()
 			recipe.readytime()
 			messages.success(request, 'Votre recette a été enregistrée')

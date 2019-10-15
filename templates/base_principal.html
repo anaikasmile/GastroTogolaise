@@ -71,7 +71,7 @@
                                         {% if r.image %}
                                             <a class="pull-left card" href="{% url 'recipe_detail' slug=r.slug %}">
                                             {% thumbnail r.image  "70x50" crop="center" as im %}
-                                                <img src="{{im.url}}" class="media-object  img-responsive">       
+                                                <img src="{{im.url}}" class="media-object">       
                                             {% endthumbnail %}  
                                             </a>
                                         {% else %}
@@ -150,16 +150,15 @@
                             <div class="card">
                                 
                                 {% for tp in top_contributors %}
-
                                         
                                     
                                     <div class="media" style="padding: 10px;">
                                             
-                                            <a class="pull-left" data-toggle="modal" data-target="#modalUser{{tp.author__id}}">
+                                            <a class="pull-left" data-toggle="modal" data-target="#modalUser{{tp.author}}">
                                                 
                                             {% if tp.author__profile__photo %}
                                                 {% thumbnail tp.author__profile__photo  "70x70" crop="center" as im %}
-                                                    <img src="{{im.url}}" class="media-object img-responsive">     
+                                                    <img src="{{im.url}}" class="media-object img-responsive" alt='contributeur image'>     
                                                 {% endthumbnail %}        
 
                                             {% else %}

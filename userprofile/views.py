@@ -46,7 +46,7 @@ def admin_pagination(request, fichier):
 
 
 def pagination(request, fichier):
-    paginator = Paginator(fichier, 4)
+    paginator = Paginator(fichier, 6)
 
     page = request.GET.get('page')
     try:
