@@ -28,7 +28,7 @@ class Category(models.Model):
 
 @python_2_unicode_compatible
 class Origin(models.Model):
-	ethnic = models.CharField(max_length=200, verbose_name="Ethnie *")
+	ethnic = models.CharField(max_length=200, verbose_name="Région *")
 	country = CountryField(blank_label=('Choisissez le pays'),blank=True, null=True, verbose_name="Pays *")
 	created_at = models.DateTimeField(auto_now_add=True, verbose_name="Créé le")
 	update_at = models.DateTimeField(auto_now=True,verbose_name="Modifié le")

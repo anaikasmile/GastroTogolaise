@@ -83,7 +83,7 @@
 									{% endif %}
 		                                <button class="btn btn-sm btn-primary btn-login" type="submit">{% trans "Je m'inscris" %}</button>
 		                                <br>
-		                                <p>En validant mon inscription <a href="{% url 'legacy' %}">j'accepte les CGUs</a></p>
+		                                <p><input type="checkbox" name="agree" value="agree" required /> En validant mon inscription <a href="{% url 'legacy' %}">j'accepte les CGUs</a></p>
 		                               
 
 		                        </form>

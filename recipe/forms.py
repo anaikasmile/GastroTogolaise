@@ -67,7 +67,7 @@ OriginFormset = modelformset_factory(
         'ethnic': forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Une autre ethnie'
+                'placeholder': 'Une autre région'
             }
         ),
 
