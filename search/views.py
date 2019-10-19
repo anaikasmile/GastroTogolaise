@@ -26,7 +26,7 @@ class SearchListView(ListView):
     paginate_by = 2
 
     def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
+        context = super(SearchListView,self).get_context_data(*args, **kwargs)
 
         query = self.request.GET.get("query")
         
