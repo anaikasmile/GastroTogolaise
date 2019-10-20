@@ -116,7 +116,7 @@
                                         {% if r.image %}
                                             <a class="pull-left card" href="{% url 'post_detail' slug=r.slug %}">
                                             {% thumbnail r.image  "70x50" crop="center" as im %}
-                                                <img src="{{im.url}}" class="media-object img-responsive">       
+                                                <img src="{{im.url}}" class="media-object">       
                                             {% endthumbnail %}  
                                             </a>
                                         {% else %}
@@ -158,7 +158,7 @@
                                                 
                                             {% if tp.author__profile__photo %}
                                                 {% thumbnail tp.author__profile__photo  "70x70" crop="center" as im %}
-                                                    <img src="{{im.url}}" class="media-object img-responsive" alt='contributeur image'>     
+                                                    <img src="{{im.url}}" class="media-object" alt='contributeur image'>     
                                                 {% endthumbnail %}        
 
                                             {% else %}

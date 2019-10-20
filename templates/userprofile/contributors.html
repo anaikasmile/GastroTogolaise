@@ -1,9 +1,14 @@
-{% extends 'base.html' %}	
+{% extends 'base.html' %}  
 {% load staticfiles %}
-
-{% load i18n %}
 {% load thumbnail %}
-{% load comments %}
+{% load widget_tweaks %}
+{% load humanize %}
+{% load flatpages %}
+{% load embed_video_tags %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load socialaccount %}
+
 {% block head_title %}{% trans 'Contributeurs' %}{% endblock %}
 
 
@@ -20,7 +25,7 @@
 
     <section class="rp-post-header margin-top-40">
         <h4 class="rp-post-title h4-responsive">{% trans 'Nos chefs cuistos' %}</h4> 
-        <p class="text-center">Vous êtes passionné(e)s de cuisine? Vous avez envie de partager votre art culinaire avec d'autres personnes? <b>Rejoignez la communauté!<b></p>
+        <p class="text-center">Vous êtes passionné(e)s de cuisine? Vous avez envie de partager votre art culinaire avec d'autres personnes? Rejoignez la communauté!</p>
     </section>
 
 {% endblock header %}
@@ -151,7 +156,7 @@
 </section>
 <!-- Team -->
 
-
+{% endblock content_base %}
 
 <script type="text/javascript">
     // Instantiate the Bootstrap carousel
@@ -176,4 +181,3 @@ $('.multi-item-carousel .item').each(function(){
 });
 </script>
 	
-{% endblock content_base %}
