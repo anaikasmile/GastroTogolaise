@@ -50,6 +50,9 @@
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
         <link href="{% static 'django_addanother/addanother.css' %}" type="text/css" media="all" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/loading-btn/loading.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/loading-btn/loading-btn.css' %}">
+
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
@@ -85,7 +88,7 @@
                     
                 {% if request.user.notifications.active.unread %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle notif" data-toggle="dropdown">
                         <span class="nf-count"></span>
                         <i class="fa fa-bell"></i> <span class="indicator"></span><b class="caret"></b>
                     </a>

@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import F, Count
 
 def categories(request):
-	return {'categories':Category.objects.all()[:5]}
+	return {'categories':Category.objects.all()}
 
 # def recipe_lasted(request):	
 # 	return {'lastrecipes': Recipe.objects.filter(published_at__isnull=False).order_by('published_at').desc()[:4]}

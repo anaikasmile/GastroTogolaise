@@ -48,7 +48,7 @@ class Recipe(models.Model):
 	total_time = models.DurationField(null=True, blank=True, verbose_name="Prêt dans")
 	ingredient = RichTextField(verbose_name="Ingrédients *", help_text="Utilisez les listes à puces (.) pour lister les ingrédients les uns au dessous des autres")
 	preparation = RichTextField(verbose_name="Instructions *",help_text="Utilisez les listes numérotées  (1,2) pour décrire chaque étape")
-	image = models.ImageField(upload_to="recipes",null=True, blank=True,verbose_name="Image principale*")
+	image = models.ImageField(upload_to="recipes",verbose_name="Image principale*")
 	image_1 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 1")
 	image_2 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 2")
 	image_3 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 3")

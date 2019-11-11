@@ -9,4 +9,4 @@ Pour valider votre compte, merci de vous rendre sur {{ activate_url }}
 
 L'équipe TogoKuizine!
 
-{{ site_domain }}{% endblocktrans %}
+{% endblocktrans %}
