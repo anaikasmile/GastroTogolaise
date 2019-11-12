@@ -124,7 +124,7 @@
                     <!-- First slide -->
                     <div class="item active">
 
-                      {% thumbnail recipe.image  "800x400" crop="center" as img %}
+                      {% thumbnail recipe.image  "900x650" crop="center" as img %}
                         <img src="{{img.url}}" class="img-responsive">
                       {% endthumbnail %}
                         
@@ -135,7 +135,7 @@
                     {% if recipe.image_1 %}
                     <!-- Second slide -->
                     <div class="item">
-                        {% thumbnail recipe.image_1  "800x400" crop="center" as img %}
+                        {% thumbnail recipe.image_1  "900x650" crop="center" as img %}
                        <img src="{{img.url}}" class="img-responsive">
                         {% endthumbnail %}
                     </div>
@@ -144,7 +144,7 @@
                     {% if recipe.image_2 %}
                     <!-- Second slide -->
                     <div class="item">
-                        {% thumbnail recipe.image_2  "800x400" crop="center" as img %}
+                        {% thumbnail recipe.image_2  "900x650" crop="center" as img %}
                        <img src="{{img.url}}" class="img-responsive">
                         {% endthumbnail %}
                     </div>
@@ -155,7 +155,7 @@
                    {% if recipe.image_3 %}
                
                     <div class="item">
-                        {% thumbnail recipe.image_3  "800x400" crop="center" as img %}
+                        {% thumbnail recipe.image_3  "900x650" crop="center" as img %}
                        <img src="{{img.url}}" class="img-responsive">
                         {% endthumbnail %}
                     </div>

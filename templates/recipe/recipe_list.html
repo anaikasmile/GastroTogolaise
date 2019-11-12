@@ -30,7 +30,7 @@
            
                         {% if recipe.image %}
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}">
-                        {% thumbnail recipe.image  "900x500" crop="center" as im %}
+                        {% thumbnail recipe.image  "900x650" crop="center" as im %}
                             <img src="{{im.url}}" class="img-responsive" alt='{{recipe.slug}}'>
                         {% endthumbnail %}  
                         </a>

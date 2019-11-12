@@ -2608,6 +2608,10 @@ iframe{
     top: 0;
     z-index: 49;
   }
+
+  .blog_title{
+    font-size: 1.5rem;
+  }
 }
  @media screen and (max-width: 992px) {
       .side-collapse-container{

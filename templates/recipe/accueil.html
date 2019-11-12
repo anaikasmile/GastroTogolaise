@@ -51,7 +51,7 @@
                     <div class="view hm-zoom">
            
                         {% if recipe.image %}
-                        {% thumbnail recipe.image "900x500" crop="center" as img %}
+                        {% thumbnail recipe.image "900x650" crop="center" as img %}
 
                         <a href="{% url 'recipe_detail' slug=recipe.slug %}">
                             <img src="{{img.url}}" class="img-responsive" alt='{{recipe.slug}}'>
