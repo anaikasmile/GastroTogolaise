@@ -72,6 +72,9 @@
                   "showMethod": "fadeIn",
                   "hideMethod": "fadeOut"
                  }
+
+
+
         });
         </script>
         {% if messages %}
@@ -82,6 +85,20 @@
               </script>
             {% endfor %}
         {% endif  %}
+            <script type="text/javascript">
+
+                 $(".toggle-password").click(function() {
+                      $(this).toggleClass("fa-eye fa-eye-slash");
+                      var input = $("#id_password");
+                      if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                      } else {
+                        input.attr("type", "password");
+
+                      }
+                    });
+                            </script>
+   
         <noscript>Your browser does not support JavaScript!</noscript>
         
     </body>

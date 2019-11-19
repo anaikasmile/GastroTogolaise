@@ -291,3 +291,11 @@ a span {
     border-color: #00A4E4;
     color:  #00A4E4;
 }
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -35px;
+  position: relative;
+  z-index: 2;
+}

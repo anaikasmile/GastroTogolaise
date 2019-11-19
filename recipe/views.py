@@ -473,7 +473,7 @@ def recipe_new(request):
 def recipe_update(request,slug):
 	recipe = get_object_or_404(Recipe, slug=slug)
 	if request.method == "POST":
-		form = RecipeForm(request.POST,request.FILES, instance=recipe)
+		form = RecipeForm(request.POST,request.FILES or None, instance=recipe)
 		if form.is_valid():
 			recipe = form.save(commit=False)
 			recipe.save()
