@@ -50,8 +50,7 @@
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
         <link href="{% static 'django_addanother/addanother.css' %}" type="text/css" media="all" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/loading-btn/loading.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/loading-btn/loading-btn.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/button-loader/buttonLoader.css' %}">
 
 
         <!--Theme Responsive css-->
@@ -516,6 +515,8 @@
         <script src="{% static 'assets/js/wow.min.js' %}"></script>
         <script src="{% static 'ckeditor/ckeditor-init.min.js' %}"></script>
         <script src="{% static 'ckeditor/ckeditor/ckeditor.min.js' %}"></script>
+        <script src="{% static 'assets/button-loader/jquery.buttonLoader.min.js' %}"></script>
+
         {% include_notify_js_variables %}
         <script src="{% static 'notify/notifyX.js' %}"></script>
         
@@ -548,6 +549,15 @@
 
         <script>
             $(document).ready(function() {
+
+
+                // $('.has-spinner').click(function () {
+                //     var btn = $(this);
+                //     $(btn).buttonLoader('start');
+                //     setTimeout(function () {
+                //         $(btn).buttonLoader('stop');
+                //     }, 5000);
+                // });
 
                 toastr.options = {
                   "closeButton": false,

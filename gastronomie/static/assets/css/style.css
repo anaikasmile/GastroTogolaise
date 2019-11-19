@@ -2656,7 +2656,6 @@ iframe{
   }
 
 
-
 .indicator {
     content: '';
     position: absolute;
@@ -2670,3 +2669,4 @@ iframe{
     animation: .9s infinite beatHeart;
     transform-origin: center;
 }
+
