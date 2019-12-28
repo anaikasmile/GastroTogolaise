@@ -31,7 +31,9 @@ urlpatterns = [
                   url(r'^recipes/contributor/(?P<pk>[0-9]+)/$', views.recipe_per_contributor,
                       name='recipe_per_contributor'),
                   url(r'^recipes/detail/(?P<slug>[-\w]+)/$', views.recipe_detail, name='recipe_detail'),
-                  url(r'^recipe/like/$', views.like, name='recipe_like'),
+                  #url(r'^recipe/like/$', views.like, name='recipe_like'),
+                  url(r'^recipe/like/$', views.LikeRecipe, name='recipe_like'),
+
                   url(r'^recipe/add/$', views.recipe_add, name='recipe_add'),
                   url(r'^origin/add/$', views.OriginAdd.as_view(), name='origin_add'),
                   #url(r'^origin/new/$', views.origin_new, name='add_origin'),
@@ -49,6 +51,7 @@ urlpatterns = [
                   url(r'^video/tag/$', views.video_per_tag, name='video_tag'),
                   url(r'^video/detail/(?P<slug>[-\w]+)/$', views.video_detail, name='video_detail'),
                   url(r'^video/like/$', views.likevideo, name='video_like'),
+
 
                   url(r'^dashboard/$', views.stats, name='stats'),
                   url(r'^recipe/draft/list/$', views.recipe_draft_list, name='recipe_draft_list'),

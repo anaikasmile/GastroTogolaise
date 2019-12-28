@@ -88,7 +88,9 @@
                     <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{video.view}}</li>
 
                     <li>
-                        <a type="button" class="likevideo" data-video-pk="{{video.pk}}" ><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{video.pk}}"> {{video.like}}</span>
+                        
+                       <a type="button" class="likevideo" data-video-pk="{{video.pk}}" id="like" {% if ip in list_ip %} title="je n'aime plus" {% else %} title="j'aime" {% endif %}><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{video.pk}}"> {{likes.count}}</span>
+
                     </li>
 
                     {% get_comment_count for video as comment_count %}

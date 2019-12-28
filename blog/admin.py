@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Register your models here.
 # Register your models here.
-from blog.models import Post, Category
+from blog.models import Post, Category, PostLike
 from django import forms
 
 from ckeditor.widgets import CKEditorWidget
@@ -22,3 +22,4 @@ class PostAdmin(admin.ModelAdmin):
     
 admin.site.register(Category)
 admin.site.register(Post)
+admin.site.register(PostLike)

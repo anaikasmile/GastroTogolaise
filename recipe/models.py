@@ -79,6 +79,17 @@ class Recipe(models.Model):
 		return self.title
 
 
+class RecipeLike(models.Model):
+    recipe = models.ForeignKey(Recipe, blank=False, null=False)
+    ip = models.GenericIPAddressField(blank=False, null=False)
+
+    class Meta:
+        unique_together = ('recipe', 'ip')
+
+    def __str__(self):
+        return self.recipe.title
+
+
 @python_2_unicode_compatible
 class CategoryVideo(models.Model):
 	name = models.CharField(max_length=50,verbose_name="Nom *")
@@ -114,3 +125,14 @@ class Video(models.Model):
 
 	def __str__(self):
 		return self.title
+
+
+class VideoLike(models.Model):
+    video = models.ForeignKey(Video, blank=False, null=False)
+    ip = models.GenericIPAddressField(blank=False, null=False)
+
+    class Meta:
+        unique_together = ('video', 'ip')
+
+    def __str__(self):
+        return self.video.title
