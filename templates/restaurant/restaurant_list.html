@@ -10,30 +10,8 @@
 
     <section id="home" class="home">
 
-      <!--   <div class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="main_home_slider">
-                            <div class="single_home_slider">
-                                <div class="main_home wow"> -->
-                                    <!-- <h1>Cook' iT</h1> -->
-                                    <img src="{% static 'assets/images/top-adresse.jpg' %}" width="100%"">
-                                    <!-- <p class="subtitle">Découvir, Cuisiner, Savourer</p>
-
-                                    <div class="home_btn">
-                                        <a href="" class="btn btn-primary">LEARN MORE</a>
-                                    </div> -->
-<!-- 
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        <img src="{% static 'assets/images/top-adresse.jpg' %}" width="100%">
+                                   
     </section>
 {% endblock slide %}
 
@@ -99,10 +77,10 @@
                         </div>
                         <div class="footer_socail_right">
                            
-                            <a href="https://www.facebook.com/" target="blank"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/"><i class="fa fa-twitter" target="blank"></i></a>
-                            <a href="https://instagram.com/"><i class="fa fa-instagram" target="blank"></i></a>
-                            <a href="https://likedin/" target="blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="{{restaurant.fb_id}}" target="blank"><i class="fa fa-facebook"></i></a>
+                            <a href="{{restaurant.twit_id}}"><i class="fa fa-twitter" target="blank"></i></a>
+                            <a href="{{restaurant.insta_id}}"><i class="fa fa-instagram" target="blank"></i></a>
+                            <a href="{{restaurant.lind_id}}" target="blank"><i class="fa fa-linkedin"></i></a>
                         
                         </div>
                     </div>

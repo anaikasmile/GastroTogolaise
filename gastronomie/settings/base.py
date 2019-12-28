@@ -147,6 +147,7 @@ TEMPLATES = [
                 'recipe.context_processors.toprecipes',
                 'recipe.context_processors.topvideos',
                 'recipe.context_processors.topcontributors',
+                'recipe.context_processors.clientIp',
                 'blog.context_processors.post_lasted',
                 'blog.context_processors.post_category',
                 'restaurant.context_processors.restaurant_category',

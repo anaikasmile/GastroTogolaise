@@ -202,11 +202,13 @@ $(document).on('click','.like', function(e){
         $.get('/recipe/like/', {
             recipe_pk: pk
         }, function(data) {
-            $('#count-like-'+pk).html(data);
+            $('#count-like-'+pk).html(data.nb);
+
+            $('#like').attr("title", data.message);
+
 
         });
         return false;
-
 
 });
 
@@ -217,18 +219,38 @@ $(document).on('click','.likepost',function(e) {
         $.get('/blog/like/', {
             post_pk: pk
         }, function(data) {
-            $('.count-like-'+pk).html(data);
+            $('.count-like-'+pk).html(data.nb);
+            $('#like').attr("title", data.message);
+
 
         });
         return false;
 
 });
 
+
+
 $(document).on('click','.likevideo',function(e) {
 
     var pk;
         pk = $(this).attr('data-video-pk');
         $.get('/video/like/', {
+            video_pk: pk
+        }, function(data) {
+            $('.count-like-'+pk).html(data.nb);
+            $('#like').attr("title", data.message);
+
+
+        });
+        return false;
+
+});
+
+$(document).on('click','.unlikevideo',function(e) {
+
+    var pk;
+        pk = $(this).attr('data-video-pk');
+        $.get('/video/unlike/', {
             video_pk: pk
         }, function(data) {
             $('.count-like-'+pk).html(data);

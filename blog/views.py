@@ -11,8 +11,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.text import slugify
 
-from .models import Post, Category
+from .models import Post, Category, PostLike
 from .forms import PostForm, CategoryForm
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 from gastronomie.decorators import *
@@ -57,7 +58,10 @@ def admin_pagination(request,fichier):
 def post_list(request):
 	posts = Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
 	posts = pagination(request, posts)
-	return render(request,'blog/post_list.html',{'posts':posts})
+	likes = PostLike.objects.filter(post=post.pk)
+	list_ip = PostLike.objects.values_list('ip', flat=True)
+	list_ip = list(list_ip)
+	return render(request,'blog/post_list.html',{'likes':likes,'list_ip':list_ip,'posts':posts})
 
 #Liste des articles par categorie
 def post_per_cat(request,slug):
@@ -83,19 +87,56 @@ def post_detail(request,slug):
 
 	#post_related = Post.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(pk=post.pk)[:3]
 	post_author = Post.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=post.author).exclude(pk=post.pk)
-	return render(request, 'blog/post_detail.html',{'post':post,'post_author':post_author})
+	
+	likes = PostLike.objects.filter(post=post.pk)
+	list_ip = PostLike.objects.values_list('ip', flat=True)
+	list_ip = list(list_ip)
+	return render(request, 'blog/post_detail.html',{'likes':likes,'list_ip':list_ip,'post':post,'post_author':post_author})
 
 
 
 # Liker
+# def like(request):
+# 	if request.method =='GET':
+# 		post_pk  = request.GET['post_pk']
+# 		p = Post.objects.get(pk=post_pk)
+# 		like = p.like + 1
+# 		p.like = like
+# 		p.save()
+# 	return HttpResponse(like)
+
+def get_client_ip(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+	if x_forwarded_for:
+		ip = x_forwarded_for.split(',')[-1].strip()
+	elif request.META.get('HTTP_X_REAL_IP'):
+		ip = request.META.get('HTTP_X_REAL_IP')
+	else:
+		ip = request.META.get('REMOTE_ADDR')
+	return ip
+
 def like(request):
 	if request.method =='GET':
 		post_pk  = request.GET['post_pk']
 		p = Post.objects.get(pk=post_pk)
-		like = p.like + 1
+
+		try:
+			rl = PostLike.objects.get(post=p, ip=get_client_ip(request))
+			rl.delete()
+			message = "J'aime"
+			like = p.like - 1
+
+		except ObjectDoesNotExist:
+			rl = PostLike.objects.get_or_create(post=p, ip=get_client_ip(request))
+			message = "Je n'aime plus"
+			like = p.like + 1
+
+		nb_like = PostLike.objects.filter(post=p)
 		p.like = like
+
 		p.save()
-	return HttpResponse(like)
+
+	return JsonResponse({'nb':nb_like.count(), 'message':message})
 
 
 ''' Administration '''

@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.urls import reverse
 from django_comments.models import Comment
-from recipe.models import Recipe, Category, Video, Origin, CategoryVideo
+from recipe.models import Recipe, Category, Video, Origin, CategoryVideo, RecipeLike, VideoLike
 
 from recipe.forms import RecipeForm, VideoForm, CategoryForm, OriginFormset, OriginForm, CategoryVideoForm
 from userprofile.models import Profile, User
@@ -28,6 +28,7 @@ from bootstrap_modal_forms.mixins import PassRequestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
+from django.core.exceptions import ObjectDoesNotExist
 
 
 import itertools
@@ -192,6 +193,7 @@ def recipe_add(request):
 def recipe_list(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
 	recipes = pagination(request, recipes)
+
 	return render(request,'recipe/recipe_list.html', {'recipes':recipes})
 
 
@@ -240,7 +242,9 @@ def recipe_detail(request,slug):
 
 	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(slug=recipe.slug)[:3]
 	recipe_related = Recipe.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(slug=recipe.slug)[:3]
-	
+	likes = RecipeLike.objects.filter(recipe=recipe.pk)
+	list_ip = RecipeLike.objects.values_list('ip', flat=True)
+	list_ip = list(list_ip)
 	# page = request.GET.get('page', 1)
 	# paginator = Paginator(recipe_author, 3)
 	# try:
@@ -250,7 +254,8 @@ def recipe_detail(request,slug):
 	# except EmptyPage:
 	# 	recipe_author = paginator.page(paginator.num_pages)
 
-	return render(request,'recipe/recipe_detail.html',{'recipe':recipe,'recipe_author':recipe_author,'recipe_related':recipe_related})
+	return render(request,'recipe/recipe_detail.html',{'likes':likes,'recipe':recipe,
+		'recipe_author':recipe_author,'recipe_related':recipe_related,'list_ip':list_ip})
 
 # Liker une recette
 def like(request):
@@ -261,6 +266,41 @@ def like(request):
 		r.like = like
 		r.save()
 	return HttpResponse(like)
+
+
+def get_client_ip(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+	if x_forwarded_for:
+		ip = x_forwarded_for.split(',')[-1].strip()
+	elif request.META.get('HTTP_X_REAL_IP'):
+		ip = request.META.get('HTTP_X_REAL_IP')
+	else:
+		ip = request.META.get('REMOTE_ADDR')
+	return ip
+
+def LikeRecipe(request):
+	if request.method =='GET':
+		recipe_pk  = request.GET['recipe_pk']
+		r = Recipe.objects.get(pk=recipe_pk)
+		try:
+			rl = RecipeLike.objects.get(recipe=r, ip=get_client_ip(request))
+			rl.delete()
+			like = r.like - 1
+    
+			message = "J'aime"
+
+		except ObjectDoesNotExist:
+			rl = RecipeLike.objects.get_or_create(recipe=r, ip=get_client_ip(request))
+			message = "Je n'aime plus"
+			like = r.like + 1
+
+
+		nb_like = RecipeLike.objects.filter(recipe=recipe_pk)
+		r.like = like
+
+		r.save()
+
+	return JsonResponse({'nb':nb_like.count(), 'message':message})
 
 
 ###   Videos  ###
@@ -296,18 +336,46 @@ def video_detail(request,slug):
 	except EmptyPage:
 		video_author = paginator.page(paginator.num_pages)
 
+	likes = VideoLike.objects.filter(video=video.pk)
+	list_ip = VideoLike.objects.values_list('ip', flat=True)
+	list_ip = list(list_ip)
 
-	return render(request,'video/video_detail.html',{'video':video,'video_author':video_author})
+	return render(request,'video/video_detail.html',{'likes':likes,'video':video,
+		'video_author':video_author,'list_ip':list_ip})
 
 # Liker une video
+# def likevideo(request):
+# 	if request.method =='GET':
+# 		video_pk  = request.GET['video_pk']
+# 		r = Video.objects.get(pk=video_pk)
+# 		like = r.like + 1
+# 		r.like = like
+# 		r.save()
+#	return HttpResponse(like)
+
 def likevideo(request):
 	if request.method =='GET':
 		video_pk  = request.GET['video_pk']
 		r = Video.objects.get(pk=video_pk)
-		like = r.like + 1
+		try:
+			rl = VideoLike.objects.get(video=r, ip=get_client_ip(request))
+			rl.delete()
+			message = "J'aime"
+			like = r.like - 1
+
+		except ObjectDoesNotExist:
+			rl = VideoLike.objects.get_or_create(video=r, ip=get_client_ip(request))
+			message = "Je n'aime plus"
+			like = r.like + 1 
+
+		nb_like = VideoLike.objects.filter(video=video_pk)
 		r.like = like
+
 		r.save()
-	return HttpResponse(like)
+
+	return JsonResponse({'nb':nb_like.count(), 'message':message})
+
+
 
 
 #Box de l'utilisateur en ligne

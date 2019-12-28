@@ -29,3 +29,14 @@ def topcontributors(request):
 	top_contributors = Recipe.objects.filter(published_at__isnull=False).filter(author__is_contributor=True).exclude(author__is_staff_member=True).values('author','author__username','author__profile__photo').annotate(total=Count('author__username')).order_by()[:5]
 
 	return {'top_contributors': top_contributors}
+
+
+def clientIp(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+	if x_forwarded_for:
+		ip = x_forwarded_for.split(',')[-1].strip()
+	elif request.META.get('HTTP_X_REAL_IP'):
+		ip = request.META.get('HTTP_X_REAL_IP')
+	else:
+		ip = request.META.get('REMOTE_ADDR')
+	return {'ip':ip}

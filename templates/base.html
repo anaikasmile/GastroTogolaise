@@ -50,7 +50,7 @@
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
         <link href="{% static 'django_addanother/addanother.css' %}" type="text/css" media="all" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/button-loader/buttonLoader.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/ladda/css/ladda.css' %}">
 
 
         <!--Theme Responsive css-->
@@ -515,7 +515,11 @@
         <script src="{% static 'assets/js/wow.min.js' %}"></script>
         <script src="{% static 'ckeditor/ckeditor-init.min.js' %}"></script>
         <script src="{% static 'ckeditor/ckeditor/ckeditor.min.js' %}"></script>
-        <script src="{% static 'assets/button-loader/jquery.buttonLoader.min.js' %}"></script>
+        <script src="{% static 'assets/ladda/css/ladda.jquery.min.js' %}"></script>
+
+        <script src="{% static 'assets/ladda/css/spin.min.js' %}"></script>
+
+        <script src="{% static 'assets/ladda/css/ladda.min.js' %}"></script>
 
         {% include_notify_js_variables %}
         <script src="{% static 'notify/notifyX.js' %}"></script>
@@ -609,6 +613,14 @@
 
             });
 
+
+             $('form').submit(function (e)
+                {
+                        var l = Ladda.create( document.querySelector('.ladda-button'));
+                        l.start();
+
+                }
+                    );
 
 
         </script>

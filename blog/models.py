@@ -44,3 +44,13 @@ class Post(models.Model):
 		
 	def __str__(self):
 		return self.title
+
+class PostLike(models.Model):
+    post = models.ForeignKey(Post, blank=False, null=False)
+    ip = models.GenericIPAddressField(blank=False, null=False)
+
+    class Meta:
+        unique_together = ('post', 'ip')
+
+    def __str__(self):
+        return self.post.title
