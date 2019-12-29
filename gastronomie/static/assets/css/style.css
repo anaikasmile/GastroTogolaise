@@ -1397,10 +1397,17 @@ blockquote footer, blockquote small, blockquote .small {
 .footer_socail{
     padding: 20px;
 }
+
+.social_right{
+    text-align: right;
+    margin-top: 10px;
+
+}
 .footer_socail_right{
-    padding:20px; 
     text-align: right;
 }
+
+
 .footer_socail_right a i, .footer_socail ul>li>a{
     font-size:0.8125rem;
     color:#aaa79e;

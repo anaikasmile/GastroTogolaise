@@ -43,9 +43,9 @@
                 </div>
                 <div class="col-md-7">
                     <h4 class="rp-post-title">{{ restaurant.name}}</h4>
-                        
+                  <div class="padding">
+  
                    <!--Rating-->
-                    <div class="padding">
                         
                         {% ratings restaurant %}
                         
@@ -73,16 +73,18 @@
                                 <li><strong>Web site: </strong><a href="{{restaurant.web_site}}"> {{restaurant.web_site}}</a></li>
                             {% endif %}   
                             </ul>
+                            
                             </dfn>
+
                         </div>
-                        <div class="footer_socail_right">
-                           
-                            <a href="{{restaurant.fb_id}}" target="blank"><i class="fa fa-facebook"></i></a>
-                            <a href="{{restaurant.twit_id}}"><i class="fa fa-twitter" target="blank"></i></a>
-                            <a href="{{restaurant.insta_id}}"><i class="fa fa-instagram" target="blank"></i></a>
-                            <a href="{{restaurant.lind_id}}" target="blank"><i class="fa fa-linkedin"></i></a>
-                        
-                        </div>
+
+                    
+                    <div class="footer_socail_right">
+                        <a href="{{restaurant.fb_id}}" target="blank"><i class="fa fa-facebook"></i></a>
+                        <a href="{{restaurant.twit_id}}" target="blank"><i class="fa fa-twitter" target="blank"></i></a>
+                        <a href="{{restaurant.insta_id}}" target="blank"><i class="fa fa-instagram" target="blank"></i></a>
+                        <a href="{{restaurant.lind_id}}" target="blank"><i class="fa fa-linkedin"></i></a>
+                    </div>
                     </div>
                 </div>
         </div>

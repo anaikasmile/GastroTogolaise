@@ -52,6 +52,9 @@ class Recipe(models.Model):
 	image_1 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 1")
 	image_2 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 2")
 	image_3 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 3")
+	image_4 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 4")
+	image_5 = models.ImageField(upload_to="recipes",blank=True, null=True,verbose_name="Image 5")
+
 	origin = models.ManyToManyField(Origin, related_name='origines',blank=True,verbose_name="Origine de la recette", help_text="D'où vient la recette?")
 	view = models.IntegerField(default=0,null=True, blank= True,verbose_name="Vue")
 	like = models.IntegerField(default=0,null=True, blank= True,verbose_name="Like")

@@ -21,7 +21,7 @@ from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['category','title','origin','description','prepare_time','cooking_time','ingredient','preparation','image','image_1','image_2','image_3','tags']
+        fields = ['category','title','origin','description','prepare_time','cooking_time','ingredient','preparation','image','image_1','image_2','image_3','image_4','image_5','tags']
         widgets = {
             'category':forms.Select(attrs={'placeholder':_(u''),'name':'','id':'','class':'form-control'}),
             'origin': Select2MultipleWidget(attrs={'name':'','id':'','class':'js-example-placeholder-multiple js-states form-control'}),
@@ -37,6 +37,9 @@ class RecipeForm(forms.ModelForm):
             'image_1':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
             'image_2':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
             'image_3':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
+            'image_4':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
+            'image_5':forms.FileInput(attrs={'placeholder':_(u''),'name':'','id':'','class':'input-file'}),
+
             'tags': TagWidget(attrs={'class':'form-control'})
             }
 
