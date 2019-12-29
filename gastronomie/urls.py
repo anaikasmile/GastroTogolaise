@@ -25,6 +25,7 @@ from django.contrib.staticfiles import views
 from django_filters.views import FilterView
 from django.contrib.flatpages import views
 from userprofile import views as userprofile
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -51,6 +52,7 @@ urlpatterns = [
     url(r'^notifications/', include('notify.urls', 'notifications')),
     url(r'^select2/', include('django_select2.urls')),
     url(r'^newsletter/', include('newsletter.urls')),
+    url(r'^robots\.txt$', TemplateView.as_view(template_name="gastronomie/robots.txt", content_type='text/plain')),
 
 ]+ static(
         settings.STATIC_URL,
