@@ -1405,6 +1405,7 @@ blockquote footer, blockquote small, blockquote .small {
 }
 .footer_socail_right{
     text-align: right;
+
 }
 
 
@@ -1412,6 +1413,7 @@ blockquote footer, blockquote small, blockquote .small {
     font-size:0.8125rem;
     color:#aaa79e;
     padding: 0px 10px;
+   
 }
 .footer_socail_right a i:hover, .footer_socail ul>li>a:hover{
     color: #f3b81f;
