@@ -240,11 +240,17 @@ def recipe_detail(request,slug):
 	search_word = recipe.title
 	
 
-	recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(slug=recipe.slug)[:3]
-	recipe_related = Recipe.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(slug=recipe.slug)[:3]
-	likes = RecipeLike.objects.filter(recipe=recipe.pk)
-	list_ip = RecipeLike.objects.values_list('ip', flat=True)
-	list_ip = list(list_ip)
+	#recipe_author = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at').filter(author=recipe.author).exclude(slug=recipe.slug)[:3]
+	#recipe_related = Recipe.objects.filter(title__contains=search_word).filter(published_at__isnull=False).order_by('-published_at').exclude(slug=recipe.slug)[:3]
+	#likes = RecipeLike.objects.filter(recipe=recipe.pk)
+
+	#list_ip = RecipeLike.objects.values_list('ip', flat=True)
+	
+
+	#list_ip = list(list_ip)
+	#if not list_ip:
+	#    list_ip = []
+
 	# page = request.GET.get('page', 1)
 	# paginator = Paginator(recipe_author, 3)
 	# try:
@@ -254,8 +260,7 @@ def recipe_detail(request,slug):
 	# except EmptyPage:
 	# 	recipe_author = paginator.page(paginator.num_pages)
 
-	return render(request,'recipe/recipe_detail.html',{'likes':likes,'recipe':recipe,
-		'recipe_author':recipe_author,'recipe_related':recipe_related,'list_ip':list_ip})
+	return render(request,'recipe/recipe_detail.html',{'recipe':recipe})
 
 # Liker une recette
 def like(request):
