@@ -81,7 +81,7 @@ class Recipe(models.Model):
 	def __str__(self):
 		return self.title
 
-
+@python_2_unicode_compatible
 class RecipeLike(models.Model):
     recipe = models.ForeignKey(Recipe, blank=False, null=False)
     ip = models.GenericIPAddressField(blank=False, null=False)
@@ -129,7 +129,7 @@ class Video(models.Model):
 	def __str__(self):
 		return self.title
 
-
+@python_2_unicode_compatible
 class VideoLike(models.Model):
     video = models.ForeignKey(Video, blank=False, null=False)
     ip = models.GenericIPAddressField(blank=False, null=False)

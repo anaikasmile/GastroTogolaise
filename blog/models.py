@@ -45,6 +45,7 @@ class Post(models.Model):
 	def __str__(self):
 		return self.title
 
+@python_2_unicode_compatible
 class PostLike(models.Model):
     post = models.ForeignKey(Post, blank=False, null=False)
     ip = models.GenericIPAddressField(blank=False, null=False)
