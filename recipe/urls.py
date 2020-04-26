@@ -30,7 +30,7 @@ urlpatterns = [
                   url(r'^recipes/origin/$', views.recipe_per_origin, name='recipe_origin'),
                   url(r'^recipes/contributor/(?P<pk>[0-9]+)/$', views.recipe_per_contributor,
                       name='recipe_per_contributor'),
-                  url(r'^recipes/detail/(?P<slug>[-\w]+)/$', views.recipe_detail, name='recipe_detail'),
+                  url(r'^recipes/(?P<slug>[-\w]+)$', views.recipe_detail, name='recipe_detail'),
                   #url(r'^recipe/like/$', views.like, name='recipe_like'),
                   url(r'^recipe/like/$', views.LikeRecipe, name='recipe_like'),
 
@@ -48,9 +48,9 @@ urlpatterns = [
                   # fin ajout
 
                   url(r'^videos', views.video_list, name='video_list'),
-                  url(r'^video/tag/$', views.video_per_tag, name='video_tag'),
-                  url(r'^video/detail/(?P<slug>[-\w]+)/$', views.video_detail, name='video_detail'),
+                  url(r'^video/(?P<slug>[-\w]+)$', views.video_detail, name='video_detail'),
                   url(r'^video/like/$', views.likevideo, name='video_like'),
+                  url(r'^video/tag/$', views.video_per_tag, name='video_tag'),
 
 
                   url(r'^dashboard/$', views.stats, name='stats'),
@@ -64,11 +64,11 @@ urlpatterns = [
 
                   url(r'^video/new/$', views.video_new, name='video_new'),
                   url(r'^video/preview/(?P<slug>[-\w]+)/$', views.video_preview, name='video_preview'),
-                  url(r'^video/(?P<slug>[-\w]+)/edit/$', views.video_edit, name='video_update'),
+                  url(r'^video/edit/(?P<slug>[-\w]+)/$', views.video_edit, name='video_update'),
                   url(r'^video/draft/list/$', views.video_draft_list, name='video_draft_list'),
                   url(r'^video/publish/list/$', views.video_publish_list, name='video_publish_list'),
-                  url(r'^video/(?P<slug>[-\w]+)/publish/$', views.video_publish, name='video_publish'),
-                  url(r'^video/(?P<slug>[-\w]+)/delete/$', views.video_delete, name='video_delete'),
+                  url(r'^video/publish/(?P<slug>[-\w]+)/$', views.video_publish, name='video_publish'),
+                  url(r'^video/delete/(?P<slug>[-\w]+)/$', views.video_delete, name='video_delete'),
 
                   url(r'^video/new/category$', views.video_new_category, name='video_new_categ'),
                   url(r'^video/category/(?P<slug>[-\w]+)/delete/$', views.video_category_delete,

@@ -260,7 +260,7 @@ def recipe_detail(request,slug):
 	except EmptyPage:
 	 	recipe_author = paginator.page(paginator.num_pages)
 
-	return render(request,'recipe/recipe_detail.html',{'recipe':recipe})
+	return render(request,'recipe/recipe_detail.html',{'recipe':recipe, 'likes':likes, 'list_ip':list_ip})
 
 # Liker une recette
 def like(request):
@@ -427,7 +427,7 @@ def stats(request):
 @staff_required
 def recipe_draft_list(request):
 	recipes = Recipe.objects.filter(published_at__isnull=True).order_by('-created_at')
-	recipes = admin_pagination(request, recipes)
+	#recipes = admin_pagination(request, recipes)
 	return render(request, 'recipe/recipe_draft_list.html', {'recipes':recipes})
 
 #Liste des recettes en attente de publication
@@ -435,7 +435,7 @@ def recipe_draft_list(request):
 @staff_required
 def recipe_publish_list(request):
 	recipes = Recipe.objects.filter(published_at__isnull=False).order_by('-published_at')
-	recipes = admin_pagination(request, recipes)
+	#recipes = admin_pagination(request, recipes)
 	return render(request, 'recipe/recipe_publish_list.html', {'recipes':recipes})
 
 
@@ -631,7 +631,7 @@ def video_publish_list(request):
 def video_publish(request, slug):
     video = get_object_or_404(Video, slug=slug)
     video.publish()
-    messages.success(request, 'Vidéo supprimée!')
+    messages.success(request, 'Vidéo publiée!')
     return redirect('video_draft_list')
 
 @login_required

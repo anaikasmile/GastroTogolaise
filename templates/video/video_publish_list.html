@@ -41,7 +41,7 @@
               
                 <div class="card-body">
                        
-                    <table class="table table-bordered table-hover table-striped">
+                    <table class="table table-bordered table-hover table-striped" id="video-table">
                         <thead>
                             <tr>
                                 <th>{% trans 'Publié le' %}</th>
@@ -147,3 +147,16 @@
     
 {% endblock content %}
 
+
+{% block scripts %}
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#video-table').DataTable(
+        {
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+            
+            });
+    } );
+</script>
+{% endblock %}

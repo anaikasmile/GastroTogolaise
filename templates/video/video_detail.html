@@ -250,7 +250,7 @@
                     {{ form.timestamp }}
                     {{ form.security_hash }}
                     <br>
-                    <input type="hidden" name="next" value="{% url 'video_detail' video.pk %}" />
+                    <input type="hidden" name="next" value="{% url 'video_detail' video.slug %}" />
                     
                     <button class="btn btn-primary" type="submit" id="id_submit">{% trans 'Envoyer' %}</button>
                     </form>

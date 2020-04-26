@@ -58,10 +58,10 @@ def admin_pagination(request,fichier):
 def post_list(request):
 	posts = Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
 	posts = pagination(request, posts)
-	likes = PostLike.objects.filter(post=post.pk)
+	#likes = PostLike.objects.filter(post=post.pk)
 	list_ip = PostLike.objects.values_list('ip', flat=True)
 	list_ip = list(list_ip)
-	return render(request,'blog/post_list.html',{'likes':likes,'list_ip':list_ip,'posts':posts})
+	return render(request,'blog/post_list.html',{'list_ip':list_ip,'posts':posts})
 
 #Liste des articles par categorie
 def post_per_cat(request,slug):
@@ -191,7 +191,7 @@ def post_update(request,slug):
 @staff_required
 def post_draft_list(request):
 	posts = Post.objects.filter(published_at__isnull=True).order_by('published_at')
-	posts = admin_pagination(request, posts)
+	#posts = admin_pagination(request, posts)
 	return render(request,'blog/post_draft_list.html',{'posts':posts})
 
 #@login_required
@@ -199,7 +199,7 @@ def post_draft_list(request):
 @staff_required
 def post_publish_list(request):
 	posts = Post.objects.filter(published_at__isnull=False).order_by('published_at')
-	posts = admin_pagination(request, posts)
+	#posts = admin_pagination(request, posts)
 	return render(request,'blog/post_publish_list.html',{'posts':posts})
 
 

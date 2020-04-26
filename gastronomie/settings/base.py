@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'notify',
     'django_select2',
     'newsletter',
-    'bootstrap_modal_forms'
+    'bootstrap_modal_forms',
+    'clear_cache'
 
 ]
 

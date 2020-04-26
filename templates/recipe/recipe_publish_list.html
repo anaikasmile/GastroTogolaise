@@ -41,7 +41,7 @@
               
                 <div class="card-body">
 
-                    <table id="" class="table table-bordered table-hover table-striped">
+                    <table id="recipe-table" class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
                                 <td>#</td>
@@ -156,3 +156,15 @@
         
 {% endblock content %}
 
+{% block scripts %}
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $('#recipe-table').DataTable(
+        {
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+            
+            });
+    } );
+</script>
+{% endblock %}
