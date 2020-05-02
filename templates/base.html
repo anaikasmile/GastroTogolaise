@@ -234,7 +234,7 @@
                                 </ul>
                             </li>
                             
-                            <li><a href="{% url 'video_list' %}" {% if "video" in request.path %} class="active"{% endif %}>Vidéos</a></li>
+                            <li><a href="{% url 'video_list' %}" {% if "/video/" or "/videos/" in request.path %} class="active"{% endif %}>Vidéos</a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle {% if "/blog/" in request.path %} active{% endif %}"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
