@@ -216,7 +216,7 @@ $(document).on('click','.like', function(e){
 $(document).on('click','.likepost',function(e) {
     var pk;
         pk = $(this).attr('data-post-pk');
-        $.get('/blog/like/post', {
+        $.get('/blog/like/post/', {
             post_pk: pk
         }, function(data) {
             $('.count-like-'+pk).html(data.nb);

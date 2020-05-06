@@ -70,7 +70,7 @@
 			                <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
 
 			                <li>
-			                    <a class="likepost" data-post-pk="{{post.pk}}" type="button"><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{post.pk}}">{{post.like}}</span>
+			                     <a class="likepost" data-post-pk="{{post.pk}}" type="button" id="like" {% if ip in list_ip %} title="je n'aime plus" {% else %} title="j'aime" {% endif %}><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{post.pk}}">{{likes.count}}</span>
 			                </li>
 			                {% get_comment_count for post as comment_count %}
 			                <li><a href="#commentaire"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
@@ -79,18 +79,7 @@
 
                     <div class="padding-20">
                     	 <p>{{post.text|safe|truncatewords:50}}</p>
-                    	 <br>
-                    	 <div class="pull-left ">
-                    		<i class="fa fa-tags"></i><strong>TAGS: &nbsp; </strong>
-                            
-                                {% for tag in post.tags.all %}
-
-                                <a href="/blog/tag/?tag={{ tag.name }}">{{tag.name}}</a> &nbsp;
-
-        
-                                {% endfor %}
-                            
-                    	</div>
+                    	
 
                     </div>
                    
@@ -98,22 +87,20 @@
 
                     	<hr>
                     	<div class="pull-left ">
-                    		<strong><a href="{% url 'post_detail' slug=post.slug %}" class="cook-first-color">{% trans 'LIRE PLUS' %}</a></strong>
+                            <i class="fa fa-tags"></i><strong>TAGS: &nbsp; </strong>
+                            
+                                {% for tag in post.tags.all %}
+
+                                <a href="/blog/tag/?tag={{ tag.name }}">{{tag.name}}</a> &nbsp;
+
+        
+                                {% endfor %}
                     	</div>
                     	<div class="share pull-right clearfix">
                     		
-                    			<strong style="padding-right:25px;">{% trans 'PARTAGER' %}:</strong> 
+                            <strong><a href="{% url 'post_detail' slug=post.slug %}" class="cook-first-color">{% trans 'LIRE PLUS' %}</a></strong>
 
-                    		<div class="pull-right">
-
-                    			<a class="" href=""><i class="fa fa-facebook"></i></a> 
-				                <!--Twitter-->
-				                <a class="" href=""><i class="fa fa-twitter"></i></a> 
-				                <!--Gplus-->
-				                <!--Pinterest-->
-				             <!--    <a class="" href=""><i class="fa fa-pinterest"></i></a> -->
-
-                    		 </div>
+                    		
                     	</div>
                    		
                     </div>
