@@ -70,7 +70,7 @@
 			                <li><i class="fa fa-eye cook-second-color" aria-hidden="true"></i>{{post.view}}</li>
 
 			                <li>
-			                     <a class="likepost" data-post-pk="{{post.pk}}" type="button" id="like" {% if ip in list_ip %} title="je n'aime plus" {% else %} title="j'aime" {% endif %}><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{post.pk}}">{{likes.count}}</span>
+			                     <a class="likepost" data-post-pk="{{post.pk}}" type="button" id="like" {% if ip in list_ip %} title="je n'aime plus" {% else %} title="j'aime" {% endif %}><i class="fa fa-heart cook-second-color" aria-hidden="true"></i></a><span class="count-like-{{post.pk}}">{{post.like}}</span>
 			                </li>
 			                {% get_comment_count for post as comment_count %}
 			                <li><a href="#commentaire"><i class="fa fa-comments cook-second-color" aria-hidden="true"></i></a>{{comment_count}}</li>
