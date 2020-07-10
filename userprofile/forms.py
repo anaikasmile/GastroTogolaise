@@ -85,10 +85,6 @@ class ChangePasswordForm(ChangePasswordForm):
 
         return self.cleaned_data["oldpassword"]
 
-    def save(self):
-        get_adapter().set_password(self.user, self.cleaned_data["password1"])
-        messages.success('Mot de passe modifié')
-
 
 class LoginForm(LoginForm):
 
