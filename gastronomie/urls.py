@@ -39,8 +39,8 @@ urlpatterns = [
     url(r'^comments/', include('django_comments.urls')),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
 
-    url(r'^accounts/password/change/$', userprofile.login_after_password_change,
-    name='account_change_password'), 
+    #url(r'^accounts/password/change/$', userprofile.login_after_password_change,
+    #name='account_change_password'), 
     url(r'^accounts/', include('allauth.urls')),
 
     url(r'^userprofile/', include('userprofile.urls')),

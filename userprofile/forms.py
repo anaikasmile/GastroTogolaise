@@ -6,6 +6,8 @@ from .models import Profile , User
 
 from django.forms import SelectDateWidget, SplitDateTimeField
 from django.utils.translation import ugettext_lazy as _
+from allauth.account.forms import ChangePasswordForm, PasswordVerificationMixin, LoginForm, SignupForm
+
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -61,4 +63,44 @@ class ConnexionAdminForm(forms.ModelForm):
             'password': forms.TextInput(attrs={'placeholder': _(u''), 'name': '', 'id': '', 'class': 'form-control'}),
         }
 
-# fin ajout
+
+class ChangePasswordForm(ChangePasswordForm):
+    oldpassword = forms.CharField(required=False, widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Mot de passe actuel'}))
+    password1 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder':'Nouveau mot de passe'}))
+    password2 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder':'Nouveau mot de passe (encore)'}))
+
+    def clean(self):
+        cleaned_data = super(PasswordVerificationMixin, self).clean()
+        password1 = cleaned_data.get('password1')
+        password2 = cleaned_data.get('password2')
+        if (password1 and password2) and password1 != password2:
+            self.add_error(
+                'password2', _("Répétez le même mot de passe.")
+            )
+        return cleaned_data
+
+    def clean_oldpassword(self):
+        if not self.user.check_password(self.cleaned_data.get("oldpassword")):
+            raise forms.ValidationError(_("Veuillez saisir votre mot de passe actuel"))
+
+        return self.cleaned_data["oldpassword"]
+
+    def save(self):
+        get_adapter().set_password(self.user, self.cleaned_data["password1"])
+        messages.success('Mot de passe modifié')
+
+
+class LoginForm(LoginForm):
+
+    error_messages = {
+        'account_inactive':
+        _("Votre compte a été désactivé. Contactez l'admin"),
+
+        'email_password_mismatch':
+        _("E-mail address et/ou mot de passe incorrects."),
+
+        'username_password_mismatch':
+        _("Nom d'utilisateur et/ou mot de passe incorrects"),
+    }
+
+

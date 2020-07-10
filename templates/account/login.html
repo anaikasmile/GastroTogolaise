@@ -25,18 +25,18 @@
                               
                         <div class="box">
                              <div class="content">
-                                  <div class="social">
+                                  <!-- <div class="social">
                                       <a  href="{% url 'google_login' %}"  class="circle google">
                                         <i class="fa fa-google-plus fa-fw"></i>
                                       </a>
                                       <a href="{% provider_login_url "facebook" method="oauth2" %}"  class="circle facebook" >
                                         <i class="fa fa-facebook fa-fw"></i>
                                       </a>
-                                  </div>
+                                  </div> -->
 
                               <div class="division">
                                   <div class="line l"></div>
-                                      <span>{% trans 'Ou' %}</span>
+                                      <span></span>
                                   <div class="line r"></div>
                               </div>
                                 
@@ -75,6 +75,7 @@
                                           {{ form.password |add_class:'form-control'}} 
                                           <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                           <span class="help-block">{{ form.password.error }}</span>
+                                          
                                       </div>
                                       
                             

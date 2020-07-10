@@ -16,24 +16,24 @@
     <div class="container">                                 
         <div class="row ">
 
-		    <div class="col-md-offset-4 col-md-4">
+		    <div class="col-md-offset-4 col-md-5">
 		        <div class="login">
 		            <h4 class="text-center">{% trans 'Inscrivez-vous' %}</h4>
 		                    
 		              <div class="box">
 		                   <div class="content">
-		                        <div class="social">
+		                       <!--  <div class="social">
 		                            <a  href="{% url 'google_login' %}" class="circle google">
 		                              <i class="fa fa-google-plus fa-fw"></i>
 		                            </a>
 		                            <a href="{% url 'facebook_login'  %}"  class="circle facebook" >
 		                              <i class="fa fa-facebook fa-fw"></i>
 		                            </a>
-		                        </div>
+		                        </div> -->
 
 		                    <div class="division">
 		                        <div class="line l"></div>
-		                            <span>ou</span>
+		                            <span></span>
 		                        <div class="line r"></div>
 		                    </div>
 		                   <!--  <h4 class="text-center">Use your email </h4> -->
@@ -70,13 +70,14 @@
 		                            <div class="form-group">
 		                                {{ form.password1 |add_class:'form-control'}} 
 		                                <span class="help-block">{{ form.password1.error }}</span>
+
 		                            </div>
 		                            <div class="form-group">
 		                                {{ form.password2 |add_class:'form-control'}} 
 		                                <span class="help-block">{{ form.password2.error }}</span>
 		                            </div>
 		                            
-		                            
+		                            <span class="help-block"><b>** Le mot de ne doit pas contenir moins de 8 caractères **</b></span>
 		                            
 		                           {% if redirect_field_value %}
 										<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

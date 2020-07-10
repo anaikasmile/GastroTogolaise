@@ -2679,3 +2679,6 @@ iframe{
     transform-origin: center;
 }
 
+.errorlist li {
+    color: red;
+}
